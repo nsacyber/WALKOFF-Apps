@@ -1,6 +1,8 @@
 # WALKOFF-Apps
 
-WALKOFF-enabled applications created for the WALKOFF platform.  
+WALKOFF-enabled applications created for the WALKOFF platform. 
+
+Note: Many of these apps are under continued development 
 
 WALKOFF can be found at www.github.com/iadgov/walkoff
 
