@@ -7,10 +7,21 @@ class Main(appdevice.App):
         # The parent app constructor looks for a device configuration and returns that as a dict called self.config
         appdevice.App.__init__(self, name, device)
 
-        self.ip = ""
-        self.username = ""
-        self.password = ""
-        self.winrm = winrm.Session(self.ip, auth=(self.username, self.password))
+
+        device = self.devices[device] if device in self.devices else None
+        if device is None:
+            self.ip = ""
+            self.port = 22
+            self.username = ""
+            password = ""
+        else:
+            self.ip = device.ip
+            self.port = device.port
+            self.username = device.username
+            password = device.password
+
+        self.winrm = winrm.Session(self.ip, auth=(self.username, password))
+
 
     def execCommand(self, args={}):
         """

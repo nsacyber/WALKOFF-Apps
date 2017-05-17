@@ -1,5 +1,5 @@
 from server import appdevice
-import paramiko, json, socket, os
+import paramiko, socket, os
 
 
 class Main(appdevice.App):
@@ -7,18 +7,26 @@ class Main(appdevice.App):
     Initialize the Linux Shell App, which includes initializing the SSH client given the IP address, port, username, and
     password for the remote server
     """
-    def __init__(self, name=None, device=None):
+
+    def __init__(self, name='', device=''):
         appdevice.App.__init__(self, name, device)
 
         self.ssh = paramiko.SSHClient()
         self.ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
-        self.ip = ""
-        self.port = 22
-        self.username = ""
-        self.password = ""
+        device = self.devices[device] if device in self.devices else None
+        if device is None:
+            self.ip = ""
+            self.port = 22
+            self.username = ""
+            password = ""
+        else:
+            self.ip = device.ip
+            self.port = device.port
+            self.username = device.username
+            password = device.password
 
-        self.ssh.connect(self.ip, self.port, self.username, self.password)
+        self.ssh.connect(self.ip, self.port, self.username, password)
 
     def execCommand(self, args={}):
         """ Use SSH client to execute commands on the remote server and produce an array of command outputs
@@ -61,22 +69,22 @@ class Main(appdevice.App):
                                      % args["remotePath"])
             print(args["remotePath"])
             scp_channel.send('C%s %d %s\n'
-                             %(oct(os.stat(args["localPath"]).st_mode)[-4:],
-                               os.stat(args["localPath"])[6],
-                               args["remotePath"].split('/')[-1]))
+                             % (oct(os.stat(args["localPath"]).st_mode)[-4:],
+                                os.stat(args["localPath"])[6],
+                                args["remotePath"].split('/')[-1]))
 
             scp_channel.sendall(lf.read())
 
             lf.close()
             scp_channel.close()
             t.close()
-            sock.close()
-
+            status = "SUCCESS"
         except Exception as e:
             print(e)
+            status = "UNSUCCESSFUL"
+        finally:
             sock.close()
-            return "UNSUCCESSFUL"
-        return "SUCCESS"
+            return status
 
     def runLocalScriptRemotely(self, args={}):
         """ Use SSH client to execute a script on the remote server and produce an array of command outputs
