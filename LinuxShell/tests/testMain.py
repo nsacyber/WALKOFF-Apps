@@ -2,6 +2,7 @@ from unittest import TestCase
 from apps.LinuxShell import main
 import os.path
 
+
 class TestMain(TestCase):
     def setUp(self):
         self.app = main.Main()
