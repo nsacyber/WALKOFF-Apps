@@ -1,14 +1,14 @@
-from server import appDevice
+from server import appdevice
 import paramiko, json, socket, os
 
 
-class Main(appDevice.App):
+class Main(appdevice.App):
     """
     Initialize the Linux Shell App, which includes initializing the SSH client given the IP address, port, username, and
     password for the remote server
     """
     def __init__(self, name=None, device=None):
-        appDevice.App.__init__(self, name, device)
+        appdevice.App.__init__(self, name, device)
 
         self.ssh = paramiko.SSHClient()
         self.ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -20,14 +20,13 @@ class Main(appDevice.App):
 
         self.ssh.connect(self.ip, self.port, self.username, self.password)
 
-    """
-    Use SSH client to execute commands on the remote server and produce an array of command outputs
-    Input:
-        args: A dictionary with the key of 'command' and the value being a String array of commands
-    Output:
-        result: A String array of the command outputs
-    """
     def execCommand(self, args={}):
+        """ Use SSH client to execute commands on the remote server and produce an array of command outputs
+        Input:
+            args: A dictionary with the key of 'command' and the value being a String array of commands
+        Output:
+            result: A String array of the command outputs
+        """
         result = []
         if "command" in args:
             for cmd in args["command"]:
@@ -36,16 +35,16 @@ class Main(appDevice.App):
                 result.append(output)
         return str(result)
 
-    """
-    Use SSH client to execute a scp command to copy a local file to the remote server
-    Input:
-        args: A dictionary with one entry having a key of 'localPath' and the value being the local filepath and another
-              entry having a key of 'remotePath' and the value being the remote filepath
-    Output:
-        result: A String message of 'SUCCESS' if the file gets copied to the remote server successfully, otherwise, a
-        message of 'UNSUCCESSFUL' if any error occurs while trying to copy the file to the remote server
-    """
     def secureCopy(self, args={}):
+        """
+        Use SSH client to execute a scp command to copy a local file to the remote server
+        Input:
+            args: A dictionary with one entry having a key of 'localPath' and the value being the local filepath and another
+                  entry having a key of 'remotePath' and the value being the remote filepath
+        Output:
+            result: A String message of 'SUCCESS' if the file gets copied to the remote server successfully, otherwise, a
+            message of 'UNSUCCESSFUL' if any error occurs while trying to copy the file to the remote server
+        """
         try:
             print(os.path.abspath(args['localPath']))
 
@@ -79,14 +78,13 @@ class Main(appDevice.App):
             return "UNSUCCESSFUL"
         return "SUCCESS"
 
-    """
-    Use SSH client to execute a script on the remote server and produce an array of command outputs
-    Input:
-        args: A dictionary with the key of 'localPath' and the value being the local filepath of the script
-    Output:
-        result: A String array of the command outputs
-    """
     def runLocalScriptRemotely(self, args={}):
+        """ Use SSH client to execute a script on the remote server and produce an array of command outputs
+        Input:
+            args: A dictionary with the key of 'localPath' and the value being the local filepath of the script
+        Output:
+            result: A String array of the command outputs
+        """
         result = []
         if "localPath" in args:
             script = open(args["localPath"], "r").read()
@@ -96,10 +94,10 @@ class Main(appDevice.App):
             result.append(output)
         return str(result)
 
-    """
-    Close the SSH connection if there is a SSH connection
-    """
     def shutdown(self):
+        """
+        Close the SSH connection if there is a SSH connection
+        """
         if self.ssh:
             print("SSH Connection Closed")
             self.ssh.close()

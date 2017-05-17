@@ -9,7 +9,7 @@
       }
     ]
   },
-  
+
   "runLocalScriptRemotely": {
     "description":"Runs a local script on a remote machine",
     "args":[
