@@ -2,7 +2,6 @@ from server import appDevice
 import winrm
 
 
-
 class Main(appDevice.App):
     def __init__(self, name=None, device=None):
         # The parent app constructor looks for a device configuration and returns that as a dict called self.config
@@ -26,7 +25,7 @@ class Main(appDevice.App):
             for cmd in args["command"]:
                 rs = self.winrm.run_cmd(cmd)
                 result.append(rs.std_out)
-        return result
+        return str(result)
 
     """
     Use Powershell client to execute a script on the remote server and produce an array of command outputs
@@ -42,7 +41,7 @@ class Main(appDevice.App):
             cmd = "Powershell -Command " + script
             rs = self.winrm.run_ps(cmd)
             result.append(rs.std_out)
-        return result
+        return str(result)
 
     def shutdown(self):
         # print("SHUTTING DOWN")

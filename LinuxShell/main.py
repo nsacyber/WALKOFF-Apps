@@ -34,7 +34,7 @@ class Main(appDevice.App):
                 stdin, stdout, stderr = self.ssh.exec_command(cmd)
                 output = stdout.read()
                 result.append(output)
-        return result
+        return str(result)
 
     """
     Use SSH client to execute a scp command to copy a local file to the remote server
@@ -94,7 +94,7 @@ class Main(appDevice.App):
             stdin, stdout, stderr = self.ssh.exec_command(cmd)
             output = stdout.read()
             result.append(output)
-        return result
+        return str(result)
 
     """
     Close the SSH connection if there is a SSH connection
