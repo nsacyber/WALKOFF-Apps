@@ -1,4 +1,4 @@
-from server.appdevice import App
+from apps import App
 import os, subprocess, signal
 
 

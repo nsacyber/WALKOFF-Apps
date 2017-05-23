@@ -1,14 +1,14 @@
-from server import appdevice
+from apps import App
 import requests
 
 
-class Main(appdevice.App):
+class Main(App):
     """
     Controls the Phillips Hue Light
     """
     def __init__(self, name=None, device=None):
-        appdevice.App.__init__(self, name, device)
-        device = self.devices[device] if device in self.devices else None
+        App.__init__(self, name, device)
+        device = self.get_device()
         if device is None:
             self.ip = ""
             self.username = ""
