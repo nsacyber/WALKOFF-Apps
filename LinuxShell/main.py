@@ -1,20 +1,20 @@
-from server import appdevice
+from apps import App
 import paramiko, socket, os
 
 
-class Main(appdevice.App):
+class Main(App):
     """
     Initialize the Linux Shell App, which includes initializing the SSH client given the IP address, port, username, and
     password for the remote server
     """
 
     def __init__(self, name='', device=''):
-        appdevice.App.__init__(self, name, device)
+        App.__init__(self, name, device)
 
         self.ssh = paramiko.SSHClient()
         self.ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
-        device = self.devices[device] if device in self.devices else None
+        device = self.get_device()
         if device is None:
             self.ip = ""
             self.port = 22

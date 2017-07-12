@@ -1,39 +1,52 @@
-from server import appDevice
+from apps import App
 import requests
 
-# Controls the Phillips Hue Light
 
-class Main(appDevice.App):
+class Main(App):
+    """
+    Controls the Phillips Hue Light
+    """
     def __init__(self, name=None, device=None):
-        appDevice.App.__init__(self, name, device)
-        self.ip = ""
-        self.username = ""
+        App.__init__(self, name, device)
+        device = self.get_device()
+        if device is None:
+            self.ip = ""
+            self.username = ""
+        else:
+            self.ip = device.ip
+            self.username = device.username
         self.baseURL = "http://" + self.ip + "/api/" + self.username
+        self.headers = {'content-type': 'application/json'}
 
-    #Gets all the connected lights
     def getLights(self, *args, **kwargs):
+        """ Gets all the connected lights
+        """
         url = self.baseURL + "/lights"
         r = requests.get(url)
         return r.text
 
-    #Gets specific light information
     def getLightInfo(self, *args, **kwargs):
+        """ Gets specific light information
+        """
         url = self.baseURL + "/lights/" + kwargs["light"]
         r = requests.get(url)
         return r.text
 
     def turnLightOn(self, *args, **kwargs):
+        """ Turns a light on
+        """
         url = self.baseURL + "/lights/" + kwargs["light"] + "/state"
-        body =  {"on":"true"}
-        r = requests.put(url)
+        body = {"on": "true"}
+        r = requests.put(url, json=body)
         return r.text
 
     def turnLightOff(self, *args, **kwargs):
+        """ Turns a light off
+        """
         url = self.baseURL + "/lights/" + kwargs["light"] + "/state"
         body = {"on": "false"}
-        r = requests.put(url)
+        r = requests.put(url, json=body)
         return r.text
 
     def shutdown(self):
-        # print("SHUTTING DOWN")
         return

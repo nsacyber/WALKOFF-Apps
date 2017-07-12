@@ -1,0 +1,40 @@
+{
+  "getLights": {
+    "description":"Gets all the connected lights",
+    "output_type":"str",
+    "args": []
+  },
+
+  "getLightInfo": {
+    "description":"Gets specific light information",
+    "output_type":"str",
+    "args": [
+      {
+        "name": "light",
+        "type": "str"
+      }
+    ]
+  },
+
+  "turnLightOn": {
+    "description":"Turns a light on",
+    "output_type":"str",
+    "args": [
+      {
+        "name": "light",
+        "type": "str"
+      }
+    ]
+  },
+
+  "turnLightOff": {
+    "description":"Turns a light on",
+    "output_type":"str",
+    "args": [
+      {
+        "name": "light",
+        "type": "str"
+      }
+    ]
+  }
+}
