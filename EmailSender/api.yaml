@@ -1,0 +1,46 @@
+walkoff: '0.1'
+info:
+  version: 1.0.0
+  title: EmailSender
+  description: A simple SMTP email sender
+  contact:
+    name: Walkoff Team
+  license:
+    name: Creative Commons
+actions:
+  send email:
+    run: send_email
+    description: Sends an email
+    parameters:
+      - name: sender
+        description: The sender's email address
+        required: true
+        type: string
+      - name: receivers
+        description: The receivers' email addresses
+        required: true
+        type: array
+        items:
+          type: string
+      - name: subject
+        description: The email's subject
+        required: true
+        type: string
+      - name: message
+        description: The email's message
+        required: true
+        type: string
+      - name: html
+        description: 'Is the message in HTML?'
+        type: boolean
+        default: false
+      - name: sender_name
+        description: Displayed name of the sender
+        type: string
+        default: WALKOFF
+    returns:
+      Success:
+        description: status message
+        schema:
+          type: string
+          enum: [success]
