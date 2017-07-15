@@ -3,22 +3,21 @@ import smtplib
 import email.utils
 from email.mime.text import MIMEText
 
+
 class Main(App):
     def __init__(self, name=None, device=None):
         App.__init__(self, name, device)
         self._device = self.get_device()
-        self.server = smtplib.SMTP_SSL('{0}:{1}'.format(self._device.ip, self._device.port))
+        self.server = smtplib.SMTP('{0}:{1}'.format(self._device.ip, self._device.port))
 
         try:
-            self.server.set_debuglevel(True)
+            self.server.set_debuglevel(False)
             self.server.ehlo()
             if self.server.has_extn('STARTTLS'):
                 self.server.starttls()
                 self.server.ehlo()  # re-identify ourselves over TLS connection
             self.server.login(self._device.username, self._device.get_password())
         except Exception as e:
-            print(e)
-            print('shutting down')
             self.shutdown()
 
     @action

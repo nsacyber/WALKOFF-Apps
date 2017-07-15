@@ -1,6 +1,60 @@
 <html>
+    <style>
+            table {
+                border-collapse: collapse;
+            }
+
+            th, td {
+                padding: 10px 3px 10px 3px;
+            }
+
+            th {
+                background-color: #3c8dbc;
+                color: #f2f2f2;
+                text-align: center;
+                vertical-align: bottom;
+            }
+
+            td {
+                text-align: left;
+                vertical-align: center;
+                border-bottom: 1px solid #ddd;
+            }
+
+            tr:nth-child(even) {
+                background-color: #cfd4d6;
+            }
+
+            tr:hover {
+                background-color: #99c7e3;
+            }
+    </style>
     <body>
-        <h3>Splunk App</h3>
+        <h1>Last Nmap Scan Results</h1>
+        <table style="width:50%;border-collapse:collapse">
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Port</th>
+                    <th>Protocol</th>
+                    <th>State</th>
+                    <th>Service</th>
+                    <th>Banner</th>
+                </tr>
+                {% for host in results %}
+                    {% for service in host['services'] %}
+                        <tr>
+                            <td>{{ host['name'] }}</td>
+                            <td>{{ host['address'] }}</td>
+                            <td>{{ service['port'] }}</td>
+                            <td>{{ service['protocol'] }}</td>
+                            <td>{{ service['state'] }}</td>
+                            <td>{{ service['service'] }}</td>
+                            <td>{{ service['banner'] }}</td>
+                        </tr>
+                    {% endfor %}
+              {% endfor %}
+            </table>
     </body>
 </html>
 

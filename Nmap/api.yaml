@@ -28,7 +28,7 @@ actions:
   clear_blacklist:
     run: clear_blacklist
     description: Clears the blacklist
-  run_scan:
+  run scan:
     run: run_scan
     description: Runs an nmap scan and returns the results in XML
     parameters:
@@ -41,7 +41,47 @@ actions:
     returns:
       Success:
         schema:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                description: name of the host
+                type: string
+              address:
+                description: address of the host
+                type: string
+              services:
+                description: services on the host
+                type: array
+                items:
+                  type: object
+                  properties:
+                    port:
+                      type: string
+                    protocol:
+                      type: string
+                    state:
+                      type: string
+                    service:
+                      type: string
+                    banner:
+                      type: string
+  scan results as HTML:
+    run: scan_results_as_html
+    description: Returns the scan results from 'run scan' as an HTML table
+    parameters:
+      - name: results
+        required: true
+        schema:
+          type: array
+          items:
+            type: object
+    returns:
+      Success:
+        schema:
           type: string
+
   get active hosts:
     run: get_hosts_from_scan
     description: Gets the list of active hosts on a network from an nmap scan
