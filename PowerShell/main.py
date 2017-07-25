@@ -1,6 +1,6 @@
-from apps import App
+from apps import App, action
 import winrm
-
+import subprocess
 
 class Main(App):
     def __init__(self, name=None, device=None):
@@ -9,34 +9,55 @@ class Main(App):
 
         device = self.get_device()
         if device is None:
-            self.ip = ""
+            self.ip = "127.0.0.1"
             self.port = 22
             self.username = ""
             password = ""
+
         else:
             self.ip = device.ip
             self.port = device.port
             self.username = device.username
             password = device.password
 
-        self.winrm = winrm.Session(self.ip, auth=(self.username, password))
 
-    def execCommand(self, args={}):
+
+    @action
+    def execLocalCommand(self, command):
         """
         Use Powershell client to execute commands on the remote server and produce an array of command outputs
         Input:
-            args: A dictionary with the key of 'command' and the value being a String array of commands
+            args: A String array of commands
         Output:
             result: A String array of the command outputs
         """
         result = []
-        if "command" in args:
-            for cmd in args["command"]:
-                rs = self.winrm.run_cmd(cmd)
-                result.append(rs.std_out)
+        for cmd in command:
+            output = subprocess.check_output(["powershell.exe", cmd], shell=True)
+            result.append(output)
+
         return str(result)
 
-    def runLocalScriptRemotely(self, args={}):
+    @action
+    def execRemoteCommand(self, command):
+
+        """
+        Use Powershell client to execute commands on the remote server and produce an array of command outputs
+        Input:
+            args: A String array of commands
+        Output:
+            result: A String array of the command outputs
+        """
+        self.winrm = winrm.Session(self.ip, auth=(self.username, password))
+        result = []
+        for cmd in command:
+            rs = self.winrm.run_cmd(cmd)
+            result.append(rs.std_out)
+
+        return str(result)
+
+    @action
+    def runLocalScriptRemotely(self, localPath):
         """
         Use Powershell client to execute a script on the remote server and produce an array of command outputs
         Input:
@@ -44,10 +65,11 @@ class Main(App):
         Output:
             result: A String array of the command outputs
         """
+        self.winrm = winrm.Session(self.ip, auth=(self.username, password))
         result = []
-        if "localPath" in args:
-            script = open(args["localPath"], "r").read()
-            cmd = "Powershell -Command " + script
-            rs = self.winrm.run_ps(cmd)
-            result.append(rs.std_out)
+        script = open(localPath, "r").read()
+        cmd = "Powershell -Command " + script
+        rs = self.winrm.run_ps(cmd)
+        result.append(rs.std_out)
+
         return str(result)

@@ -9,7 +9,7 @@ class TestMain(TestCase):
 
     def test_execCommand(self):
         args = {'command': ['Powershell -Command Write-Host Hello World']}
-        cmdRes = self.app.execCommand(args)
+        cmdRes = self.app.execCommand(**args)
         self.assertEqual(cmdRes, [b'Hello World\n'])
 
     def test_runLocalScriptRemotely(self):
@@ -17,7 +17,7 @@ class TestMain(TestCase):
         localPath = os.path.abspath(os.path.join(dir_path, os.pardir)) + "\scripts\\test.ps1"
 
         args = {'localPath': localPath}
-        cmdRes = self.app.runLocalScriptRemotely(args)
+        cmdRes = self.app.runLocalScriptRemotely(**args)
         self.assertEqual(cmdRes, [b'Hello World\n'])
 
     def test_shutdown(self):

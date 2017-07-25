@@ -1,0 +1,51 @@
+walkoff: '0.1'
+info:
+  version: 1.0.0
+  title: Skeleton App
+  description: An app template.
+  contact:
+    name: Walkoff Team
+  license:
+    name: Creative Commons
+actions:
+  'execLocalCommand':
+      run: execLocalCommand
+      description: Basic function which takes in parameter and returns it
+      parameters:
+      - name: command
+        description: The test parameter
+        required: true
+        type: array
+      returns:
+        Success:
+          description: repeated method
+          schema:
+            type: string
+
+  'execRemoteCommand':
+    run: execRemoteCommand
+    description: Basic function which takes in parameter and returns it
+    parameters:
+    - name: command
+      description: The test parameter
+      required: true
+      type: string
+    returns:
+      Success:
+        description: repeated method
+        schema:
+          type: string
+
+  'runLocalScriptRemotely':
+    run: runLocalScriptRemotely
+    description: Basic function which takes in parameter and returns it
+    parameters:
+    - name: localPath
+      description: The test parameter
+      required: true
+      type: string
+    returns:
+      Success:
+        description: repeated method
+        schema:
+          type: string
