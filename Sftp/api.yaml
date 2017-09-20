@@ -1,0 +1,63 @@
+walkoff: '0.1'
+info:
+  version: 1.0.0
+  title: File Utilities App
+  description: Some utility functions for files
+  contact:
+    name: Walkoff Team
+  license:
+    name: Creative Commons
+actions:
+  connect:
+    run: connect
+    description: Connect to the client
+    returns:
+      Success:
+        schema:
+          type: string
+          enum: [Success]
+      ConnectedError:
+        schema:
+          type: string
+  get:
+    run: get
+    description: Gets a file from the remote
+    parameters:
+      - name: remote_filepath
+        type: string
+        description: The filename to get from the remote
+        minLength: 1
+        required: true
+      - name: local_filepath
+        type: string
+        description: The path and filename to store the file on the local
+    returns:
+      Success:
+        schema:
+          type: string
+          enum: [Success]
+      NotConnected:
+        schema:
+          type: string
+          enum: [Not connected]
+  put:
+    run: put
+    description: Puts a local file into the remote
+    parameters:
+      - name: remote_filepath
+        type: string
+        description: The filename to store on the remote
+        minLength: 1
+        required: true
+      - name: local_filepath
+        type: string
+        description: The filename to get on the local
+    returns:
+      Success:
+        schema:
+          type: string
+          enum: [Success]
+      NotConnected:
+        schema:
+          type: string
+          enum: [Not connected]
