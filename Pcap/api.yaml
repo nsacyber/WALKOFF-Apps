@@ -1,0 +1,46 @@
+walkoff: '0.1'
+info:
+  version: 1.0.0
+  title: Pcap App
+  description: Some utilities to do pcap analysis
+  contact:
+    name: Walkoff Team
+  license:
+    name: Creative Commons
+actions:
+  capture:
+    run: capture
+    description: Starts a PCAP capture session. Either timeout or count (or both) must be specified
+    parameters:
+      - name: filename
+        description: the relative path of the filename to store the packets. Defaults to ./apps/Pcap/data/<timestamp>.pcap
+        type: string
+        minLength: 3
+      - name: timeout
+        description: the amount to capture the packets. 0.0 defaults to infinite
+        type: number
+        minimum: 0.0
+      - name: count
+        description: the maximum number of packets to capture. 0 means infinite
+        type: integer
+        minimum: 0
+        default: 0
+      - name: interface
+        description: the interface to capture packets on. With none specified, it captures on all interfaces
+        type: array
+        items:
+          type: string
+      - name: packet_filter
+        description: BPF filter to apply
+        type: string
+      - name: gz
+        description: Output the file as a compressed gz?
+        type: boolean
+        default: True
+    returns:
+      Success:
+        schema:
+          type: array
+          items:
+            type: integer
+            minimum: 1

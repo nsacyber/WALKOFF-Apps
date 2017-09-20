@@ -1,0 +1,464 @@
+walkoff: '0.1'
+info:
+  version: 1.0.0
+  title: Process Utilities App
+  description: Some utilities to grab information about processes
+  contact:
+    name: Walkoff Team
+  license:
+    name: Creative Commons
+actions:
+  get all pids:
+    run: get_all_pids
+    description: Get all process IDs
+    returns:
+      Success:
+        schema:
+          type: array
+          items:
+            type: integer
+            minimum: 1
+  is pid running:
+    run: is_pid_running
+    description: Is the process ID running?
+    parameters:
+      - name: pid
+        description: Process ID
+        type: integer
+        minimum: 1
+        required: true
+    returns:
+      Success:
+        schema:
+          type: boolean
+  kill process:
+    run: kill_process
+    description: Kills the given process
+    parameters:
+      - name: pid
+        description: Process ID
+        type: integer
+        minimum: 1
+        required: true
+    returns:
+      Success:
+        schema:
+          type: string
+  get children:
+    run: get_children
+    description: Get the children for a given process ID
+    parameters:
+      - name: pid
+        description: Process ID
+        type: integer
+        minimum: 1
+        required: true
+      - name: with_grandchildren
+        description: Get the children's childrens?
+        type: boolean
+        default: false
+    returns:
+      Success:
+        schema:
+          type: array
+          items:
+            type: integer
+            minimum: 1
+  copy and reverse exe:
+    run: copy_and_reverse_exe
+    description: Copy and endian-reverses the bytes of the executable of the process
+    parameters:
+      - name: pid
+        description: Process ID
+        type: integer
+        minimum: 1
+        required: true
+      - name: filename
+        description: the filename to write to. defaults to './apps/ProcessUtilities/data/<process id>-quarantine.bin'
+        type: string
+        minLength: 3
+    returns:
+      Success:
+        schema:
+          type: string
+          description: the filename written to
+          items:
+            type: integer
+            minimum: 1
+      ExeNotFound:
+        schema:
+          type: string
+          description: Thrown when process does not have an associated exe
+
+  get process info:
+    run: get_process_info
+    description: Get info about a process
+    parameters:
+      - name: pid
+        description: Process ID
+        type: integer
+        minimum: 1
+        required: true
+    returns:
+      Success:
+        schema:
+          type: object
+          required:
+            - cmd_line
+            - connections
+            - cpu_affinity
+            - cpu_percent
+            - cpu_times
+            - create_time
+            - cwd
+            - environ
+            - exe
+            - io_counters
+            - ionice
+            - memory_maps
+            - memory_info
+            - memory_percent
+            - name
+            - nice
+            - num_ctx_switches
+            - num_threads
+            - open_files
+            - pid
+            - ppid
+            - status
+            - threads
+            - username
+          properties:
+            pid:
+              type: integer
+              description: process id
+              minimum: 1
+            ppid:
+              type: integer
+              description: parent process id
+              minimum: 1
+            name:
+              type: string
+              description: name of the process
+            exe:
+              type: string
+              description: process executable as an absolute path. May be an empty string
+            cmdline:
+              type: array
+              items:
+                type: string
+              description: The command line this process was called from with a list fo args
+            environ:
+              type: object
+              description: Teh environment variables of the process as key-value pairs
+            create_time:
+              type: number
+              description: The process creation time. expressed in seconds since the epoch in UTC
+            status:
+              type: string
+              description: status of the process
+              enum: [running, sleeping, disk-sleep, stopped, tracing-stop, zombie, dead, wake-kill, waking]
+            cwd:
+              type: string
+              description: The process current working directory as an absolute path
+            username:
+              type: string
+              description: The name of the user that owns this process
+            uids:
+              type: object
+              description: The real, effective, and saved user ids of this process. UNIX only
+              required: [real, effective, saved]
+              properties:
+                real:
+                  type: integer
+                effective:
+                  type: integer
+                saved:
+                  type: integer
+            gids:
+              type: object
+              description: The real, effective, and saved group ids of this process. UNIX only
+              required: [real, effective, saved]
+              properties:
+                real:
+                  type: integer
+                effective:
+                  type: integer
+                saved:
+                  type: integer
+            terminal:
+              type: string
+              description: The terminal associated with this process, if any (else None). UNIX only
+            nice:
+              type: integer
+              description: The niceness of the process
+            ionice:
+              type: integer
+              description: The process I/O niceness
+            io_counters:
+              description: Process I/O statistics
+              type: object
+              required: [read_count, write_count, read_bytes, write_bytes]
+              properties:
+                read_count:
+                  type: integer
+                  description: The cumulative number of read operations performed
+                write_count:
+                  type: integer
+                  description: The cumulative number of write operations performed
+                read_bytes:
+                  type: integer
+                  description: The cumulative number of bytes read
+                write_bytes:
+                  type: integer
+                  description: The cumulative number of bytes written
+                read_chars:
+                  type: integer
+                  description: The cumulative number of bytes this process passed to the read() and pread() sycalls. Linux only
+                write_chars:
+                  type: integer
+                  description: The cumulative number of bytes this process passed to the write() and pwrite() sycalls. Linux only
+                other_count:
+                  type: integer
+                  description: The cumulative number of I/O operations performaned other than read and write operations. Windows only
+                other_bytes:
+                  type: integer
+                  description: The cumulative number of bytes transfered duing I/O operations performaned other than read and write operations. Windows only
+            num_ctx_switches:
+              type: object
+              description: The number of context switches performed by this process
+              required: [voluntary, involuntary]
+              properties:
+                voluntary:
+                  type: integer
+                involuntary:
+                  type: integer
+            num_fds:
+              type: integer
+              description: The number of file descriptors currently opened by this process. UNIX only
+            num_handles:
+              type: integer
+              description: The number of handles currently used by the process. Windows only
+            num_threads:
+              type: integer
+              description: The number of threads currently used by the process
+            threads:
+              description: threads opened by this process
+              type: array
+              items:
+                type: object
+                required: [id, user_time, system_time]
+                properties:
+                  id:
+                    type: integer
+                  user_time:
+                    type: number
+                  system_time:
+                    type: number
+            cpu_times:
+              description: Accumulated process time in seconds
+              type: object
+              properties:
+                user:
+                  type: number
+                system:
+                  type: number
+                children_user:
+                  type: number
+                  description: On Windows this is set to 0 always
+                children_system:
+                  type: number
+                  description: On Windows this is set to 0 always
+            cpu_percent:
+              description: current cpu percentage useage. This can be >100.0 in the case of a process running multiple threads on different cpu cores
+              type: number
+              minimum: 0.0
+            cpu_affinity:
+              type: array
+              items:
+                type: integer
+            cpu_num:
+              description: The CPU this process is currently running on. Linux only
+              type: integer
+              minimum: 0
+            memory_info:
+              description: Memory information about the process
+              type: object
+              required: [rss, vms]
+              properties:
+                rss:
+                  type: integer
+                  description: Resident Set Size. non-swapped physical memory
+                vms:
+                  type: integer
+                  description: Virtual memory size
+                shared:
+                  type: integer
+                  description: Memory that could potentially be shared with other processes. Linux only. Called 'num_page_faults' in Windows
+                text:
+                  type: integer
+                  description: Text resident set. Linux only. Called 'peak_wset' in Windows
+                data:
+                  type: integer
+                  description: Data resident set. Linux only. Caled 'peak_paged_pool' in Windows
+                lib:
+                  type: integer
+                  description: The memory used by chared libraries. Linux only. Called 'wset' in Windows
+                dirty:
+                  type: integer
+                  description: The number of dirty pages. Linux only. Called 'paged_pool' in Windows
+                num_page_faults:
+                  type: integer
+                  description: Windows only. See 'shared'
+                peak_wset:
+                  type: integer
+                  description: Windows only. See 'text'
+                wset:
+                  type: integer
+                  description: Windows only. See 'lib'
+                peak_paged_pool:
+                  type: integer
+                  description: Windows only. See 'data'
+                paged_pool:
+                  type: integer
+                  description: Windows only. See 'dirty'
+                peak_nonpaged_pool:
+                  type: integer
+                  description: Windows only
+                nonpaged_pool:
+                  type: integer
+                  description: Windows only
+                pagefile:
+                  type: integer
+                  description: Windows only
+                peak_pagefile:
+                  type: integer
+                  description: Windows only
+                private:
+                  type: integer
+                  description: Windows only
+                uss:
+                  type: integer
+                  description: Unique Set size
+                pss:
+                  type: integer
+                  description: Proportional set size. Linux only
+                swap:
+                  type: integer
+                  description: Amount of memory taht has been swapped out to disk
+            memory_percent:
+              description: Process memory as percentage of total system memory
+              type: number
+              minimum: 0.0
+              maximum: 100.0
+            memory_maps:
+              description: Mapps memory regions
+              type: array
+              items:
+                type: object
+                required: [rss]
+                properties:
+                  rss:
+                    type: integer
+                  size:
+                    type: integer
+                    description: Linux only
+                  path:
+                    type: string
+                    description: Linux only
+                  pss:
+                    type: integer
+                    description: Linux only
+                  shared_clean:
+                    type: integer
+                    description: Linux only
+                  shared_dirty:
+                    type: integer
+                    description: Linux only
+                  private_clean:
+                    type: integer
+                    description: Linux only
+                  private_dirty:
+                    type: integer
+                    description: Linux only
+                  referenced:
+                    type: integer
+                    description: Linux only
+                  anonymous:
+                    type: integer
+                    description: Linux only
+                  swap:
+                    type: integer
+                    description: Linux only
+            open_files:
+              type: object
+              required: [path, fd]
+              properties:
+                path:
+                  type: string
+                  description: The absolute file name
+                fd:
+                  type: integer
+                  description: The file descriptor number. On windows this is always -1
+                position:
+                  type: integer
+                  description: The file offset position. Linux only
+                mode:
+                  type: string
+                  description: String indicating how teh file was opened. Linux only
+                  enum: [r, w, a, r+, a+]
+                flags:
+                  type: integer
+                  description: The flags which were passed to the underlying os.open C call. Linux only
+            connections:
+              type: array
+              items:
+                type: object
+                properties:
+                  fd:
+                    type: integer
+                    description: The socket file descriptor. On Windows this is always -1
+                  family:
+                    type: string
+                    description: The address family
+                    enum: [inet, inet6, unix]
+                  type:
+                    type: string
+                    description: The type of sockey connection
+                    enum: [stream, dgram]
+                  laddr:
+                    type: object
+                    description: The local address. either port and ip or path (in the case of UNIX sockets) will be described
+                    properties:
+                      ip:
+                        type: string
+                      port:
+                        type: integer
+                      path:
+                        type: string
+                  raddr:
+                    type: object
+                    description: The remote address. either port and ip or path (in the case of UNIX sockets) will be described
+                    properties:
+                      ip:
+                        type: string
+                      port:
+                        type: integer
+                      path:
+                        type: string
+                  status:
+                    type: string
+                    description: The status of the connection
+                    enum: [ESTABLISHED, SYN_SENT, SYN_RECV, FIN_WAIT1, FIN_WAIT2, TIME_WAIT, CLOSE, CLOSE_WAIT, LAST_ACK, LISTEN, CLOSING, NONE]
+
+
+
+
+
+
+
+
+
+
+
+

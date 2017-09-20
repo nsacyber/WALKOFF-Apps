@@ -1,0 +1,163 @@
+walkoff: '0.1'
+info:
+  version: 1.0.0
+  title: Uncomplicated Firewall App
+  description: An interface to Linux's UFW
+  contact:
+    name: Walkoff Team
+  license:
+    name: Creative Commons
+actions:
+  enable:
+    run: enable
+    description: Enable the UFW firewall
+    returns:
+      Success:
+        schema:
+          type: string
+      Failure:
+        schema:
+          type: object
+          properties:
+            error:
+              type: string
+            return_code:
+              type: integer
+  disable:
+    run: disable
+    description: Disable the UFW firewall
+    returns:
+      Success:
+        schema:
+          type: string
+      Failure:
+        schema:
+          type: object
+          properties:
+            error:
+              type: string
+            return_code:
+              type: integer
+  status:
+    run: status
+    description: Get the status of the firewall
+    parameters:
+      - name: verbose
+        description: Output more info?
+        type: boolean
+        default: false
+    returns:
+      Success:
+        schema:
+          type: string
+      Failure:
+        schema:
+          type: object
+          properties:
+            error:
+              type: string
+            return_code:
+              type: integer
+  allow:
+    run: allow
+    description: Add a rule to allow something to a firewall
+    parameters:
+      - name: port
+        description: Port to allow
+        required: true
+        type: integer
+        minimum: 1
+        maximum: 65535
+        example: 433
+      - name: from_address
+        description: Address to allow connections from.
+        type: string
+        default: any
+        minLength: 3
+        example: '207.43.232.182'
+      - name: to_address
+        description: Address to allow connections from.
+        type: string
+        default: any
+        minLength: 3
+      - name: protocol
+        description: protocol(s) specified for this rule
+        type: string
+        default: any
+        enum: [any, tcp, udp]
+      - name: comment
+        description: A comment to add to this rule
+        type: string
+        example: this rule helps do a thing
+    returns:
+      Success:
+        schema:
+          type: string
+      Failure:
+        schema:
+          type: object
+          properties:
+            error:
+              type: string
+            return_code:
+              type: integer
+  allow_service:
+    run: allow_service
+    description: Add a rule to allow a service through the firewall
+    parameters:
+      - name: service
+        description: Service to allow
+        required: true
+        type: string
+        minLength: 1
+        example: ssh
+    returns:
+      Success:
+        schema:
+          type: string
+      Failure:
+        schema:
+          type: object
+          properties:
+            error:
+              type: string
+            return_code:
+              type: integer
+  deny:
+    run: deny
+    description: Add a rule to deny something to a firewall
+    parameters:
+      - name: from_address
+        description: Address to allow connections from.
+        type: string
+        required: true
+        default: any
+        minLength: 3
+        example: '207.43.232.182'
+      - name: protocol
+        description: protocol(s) specified for this rule
+        type: string
+        default: any
+        enum: [any, tcp, udp]
+      - name: port
+        description: Port to allow
+        type: integer
+        minimum: 1
+        maximum: 65535
+        example: 433
+      - name: comment
+        description: A comment to add to this rule
+        type: string
+        example: this rule helps do a thing
+    returns:
+      Success:
+        schema:
+          type: string
+      Failure:
+        schema:
+          type: object
+          properties:
+            error:
+              type: string
+            return_code:
+              type: integer

@@ -1,0 +1,129 @@
+walkoff: '0.1'
+info:
+  version: 1.0.0
+  title: File Utilities App
+  description: Some utility functions for files
+  contact:
+    name: Walkoff Team
+  license:
+    name: Creative Commons
+actions:
+  remove:
+    run: remove
+    description: Remove a file
+    parameters:
+      - name: filename
+        type: string
+        description: The filename to remove
+        minLength: 1
+        required: true
+    returns:
+      Success:
+        schema:
+          type: string
+          enum: [Success]
+      FileDoesNotExist:
+        schema:
+          type: string
+          enum: [File does not exist]
+  read json:
+    run: read_json
+    description: Reads JSON from file
+    parameters:
+      - name: filename
+        type: string
+        description: The filename to read
+        minLength: 1
+        required: true
+    returns:
+      Success:
+        schema:
+          type: object
+          description: The JSON object
+      FileDoesNotExist:
+        schema:
+          type: object
+          properties:
+            error:
+              type: string
+              enum: [Could not read file]
+            reason:
+              type: string
+              description: The reason the file could not be read
+      InvalidJson:
+        schema:
+          type: string
+          enum: [Could not read file as json. Invalid JSON]
+  write json:
+    run: write_json
+    description: Reads JSON from file
+    parameters:
+      - name: filename
+        type: string
+        description: The filename to read
+        minLength: 1
+        required: true
+      - name: data
+        type: object
+        description: The JSON to write to teh file
+        required: true
+    returns:
+      Success:
+        schema:
+          type: string
+          enum: [Success]
+  stats:
+    run: stats
+    description: Gets information about a file
+    parameters:
+      - name: filename
+        description: the relative path of the filename
+        type: string
+        required: true
+    returns:
+      Success:
+        schema:
+          type: object
+          properties:
+            mode:
+              type: integer
+              description: protection bits
+            inode:
+              type: integer
+              description: inode number
+            device:
+              type: integer
+              description: device
+            num_links:
+              type: integer
+              description: number of hard links
+            uid:
+              type: integer
+              description: user id of owner
+            gid:
+              type: integer
+              description: group id of owner
+            size:
+              type: integer
+              description: Size of file in bytes
+            blocks:
+              type: integer
+              description: Number of 512-byte blocks allocated. Linux only
+            block_size:
+              type: integer
+              description: Filesystem blocksize for efficient file system I/O. Linux only
+            device_type:
+              type: integer
+              description: Type of device if an inode device
+            flags:
+              type: integer
+              description: user defined flags
+            access_time:
+              type: string
+              description: time of most recent access
+            modificiation_time:
+              type: string
+              description: time of most recent content modification
+            metadata_time:
+              type: string
+              description: Platform dependent. On Unix - time of most recent change to metadata. On Windows - time of creation
