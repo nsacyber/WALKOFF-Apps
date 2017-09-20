@@ -4,6 +4,7 @@ import requests
 from requests.exceptions import Timeout
 import json
 from core.config.paths import certificate_path
+import time
 
 logger = logging.getLogger(__name__)
 
@@ -47,7 +48,7 @@ class Main(App):
 
         status_code = response.status_code
         if status_code == 404:
-            return 'Could not locate Walkoff Instance', 'WalkoffNotFound'
+            return 'Could not locate Walkoff instance', 'WalkoffNotFound'
         elif status_code == 401:
             return 'Invalid login', 'AuthenticationError'
         elif status_code == 201:
@@ -58,6 +59,50 @@ class Main(App):
             return 'Success'
         else:
             return 'Unknown response {}'.format(status_code), 'UnknownResponse'
+
+    @action
+    def disconnect(self, timeout=DEFAULT_TIMEOUT):
+        if self.is_connected:
+            try:
+                self._request('post', '/api/auth/logout', timeout, headers=self.headers,
+                              data=dict(refresh_token=self.refresh_token),
+                              content_type="application/json")
+                return 'Success'
+            except Timeout:
+                return 'Connection timed out', 'TimedOut'
+        else:
+            return 'Not connected to Walkoff', 'NotConnected'
+
+    @action
+    def is_connected(self):
+        return self.is_connected
+
+    @action
+    def get_all_workflows(self, timeout=DEFAULT_TIMEOUT):
+        return self.standard_request('get', '/api/playbooks', timeout, headers=self.headers)
+
+    @action
+    def get_workflow_uid(self, playbook_name, workflow_name, timeout=DEFAULT_TIMEOUT):
+        try:
+            response = self.request_with_refresh('get', '/api/playbooks', timeout, headers=self.headers)
+        except Timeout:
+            return 'Connection timed out', 'TimedOut'
+        except Unauthorized:
+            return 'Unauthorized credentials', 'Unauthorized'
+        except NotConnected:
+            return 'Not connected to Walkoff', 'NotConnected'
+        except UnknownResponse:
+            return 'Unknown error occurred', 'UnknownResponse'
+        else:
+            response = json.loads(response.get_data(as_text=True))
+            playbook = next((playbook for playbook in response if playbook['name'] == playbook_name), None)
+            if playbook is None:
+                return 'Playbook not found', 'WorkflowNotFound'
+            workflow = next((workflow for workflow in playbook['workflows'] if workflow['name'] == workflow_name), None)
+            if workflow is None:
+                return 'Workflow not found', 'WorkflowNotFound'
+            else:
+                return workflow['uid']
 
     @action
     def trigger(self, names=None, inputs=None, data=None, tags=None, timeout=DEFAULT_TIMEOUT):
@@ -75,7 +120,31 @@ class Main(App):
 
     @action
     def get_workflow_results(self, timeout=DEFAULT_TIMEOUT):
-        return self.standard_request('get', '/workflowresults/all', timeout, headers=self.headers)
+        return self.standard_request('get', '/api/workflowresults', timeout, headers=self.headers)
+
+    @action
+    def wait_for_workflow_completion(self, execution_uid, timeout=60*5, request_timeout=DEFAULT_TIMEOUT, wait_between_requests=0.1):
+        if timeout < request_timeout:
+            return 'Function timeout must be greater than request timeout', 'InvalidInput'
+        elif timeout < wait_between_requests:
+            return 'Function timeout must be greater than wait between requests', 'InvalidInput'
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                response = self.request_with_refresh('get', '/api/workflowresults/{}'.format(execution_uid), timeout, headers=self.headers)
+                if response.status_code == 200:
+                    response = json.loads(response.get_data(as_text=True))
+                    if response['status'] == 'completed':
+                        return response
+                time.sleep(wait_between_requests)
+            except Timeout:
+                return 'Connection timed out', 'TimedOut'
+            except Unauthorized:
+                return 'Unauthorized credentials', 'Unauthorized'
+            except NotConnected:
+                return 'Not connected to Walkoff', 'NotConnected'
+            except UnknownResponse:
+                return 'Unknown error occurred', 'UnknownResponse'
 
     def standard_request(self, method, address, timeout, headers=None, data=None, **kwargs):
         try:
@@ -83,9 +152,9 @@ class Main(App):
         except Timeout:
             return 'Connection timed out', 'TimedOut'
         except Unauthorized:
-            return 'Unauthorized Credentials', 'Unauthorized'
+            return 'Unauthorized credentials', 'Unauthorized'
         except NotConnected:
-            return 'Not connected to walkoff', 'NotConnected'
+            return 'Not connected to Walkoff', 'NotConnected'
         except UnknownResponse:
             return 'Unknown error occurred', 'UnknownResponse'
 
@@ -143,5 +212,9 @@ class Main(App):
         self.headers = {'Authorization': 'Bearer {}'.format(token)}
 
     def shutdown(self):
-        # logout
-        pass
+        try:
+            self._request('post', '/api/auth/logout', DEFAULT_TIMEOUT, headers=self.headers,
+                          data=json.dumps(dict(refresh_token=self.refresh_token)),
+                          content_type="application/json")
+        except Timeout:
+            logger.warning('Could not log out. Connection timed out')

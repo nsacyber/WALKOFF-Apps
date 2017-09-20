@@ -62,7 +62,7 @@ class Main(App):
     def get_process_info(self, pid):
         process = psutil.Process(pid)
         res = {}
-        for key, value in process.as_dict():
+        for key, value in process.as_dict().items():
             try:
                 res[key] = dict(value.__dict__)
             except AttributeError:
@@ -109,4 +109,5 @@ class Main(App):
             connections_jsons.append(connection_json)
         res['connections'] = connections_jsons
         return res
+
 

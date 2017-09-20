@@ -19,7 +19,7 @@ class Main(App):
         """
         if timeout is None and count == 0:
             return 'Either timeout or count must be specified', 'InvalidInput'
-        if filename is None:
+        if not filename:
             filename = str(datetime.datetime.utcnow())
             filename = filename.replace(':', '-')
             filename = filename.replace('.', '-')
@@ -32,8 +32,20 @@ class Main(App):
             dirname = os.path.dirname(filename)
             if dirname and not os.path.exists(dirname):
                 os.mkdir(dirname)
-        interface = interface if interface else None
-        packets = sniff(iface=interface, timeout=timeout, count=count, filter=packet_filter)
+            if not filename.endswith('.pcap'):
+                filename += '.pcap'
+        args = {}
+        if timeout is not None:
+            args['timeout'] = timeout
+        if count is not None:
+            args['count'] = count
+        if interface:
+            args['iface'] = interface
+        if packet_filter:
+            args['filter'] = packet_filter
+        print(args)
+        packets = sniff(**args)
+        print(filename)
 
         wrpcap(filename, packets, gz=gz)
         return filename

@@ -15,7 +15,6 @@ actions:
       - name: filename
         description: the relative path of the filename to store the packets. Defaults to ./apps/Pcap/data/<timestamp>.pcap
         type: string
-        minLength: 3
       - name: timeout
         description: the amount to capture the packets. 0.0 defaults to infinite
         type: number
