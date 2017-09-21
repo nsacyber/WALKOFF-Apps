@@ -8,6 +8,33 @@ info:
   license:
     name: Creative Commons
 actions:
+  join path elements:
+    run: join_path_elements
+    description: joins an array of strings into a path using proper path specifiers
+    parameters:
+      - name: elements
+        description: path elements
+        type: array
+        items:
+          type: string
+        required: true
+    returns:
+      Success:
+        schema:
+          type: string
+          description: the joined path
+  exists in directory:
+    run: exists_in_directory
+    description: does the file or directory exist?
+    parameters:
+      - name: path
+        description: the path of the filename to check
+        type: string
+        required: true
+    returns:
+      Success:
+        schema:
+          type: boolean
   remove:
     run: remove
     description: Remove a file

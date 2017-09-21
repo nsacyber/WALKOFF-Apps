@@ -21,6 +21,15 @@ class Main(App):
             return 'File does not exist', 'FileDoesNotExist'
 
     @action
+    def join_path_elements(self, elements):
+        print(elements)
+        return os.path.join(*elements)
+
+    @action
+    def exists_in_directory(self, path):
+        return os.path.exists(path)
+
+    @action
     def read_json(self, filename):
         if not os.path.exists(filename) or not os.path.isfile(filename):
             return 'File does not exist', 'FileDoesNotExist'

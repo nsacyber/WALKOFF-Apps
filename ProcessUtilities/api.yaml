@@ -64,6 +64,229 @@ actions:
           items:
             type: integer
             minimum: 1
+  get executable:
+    run: get_exe
+    description: gets the executable running the process
+    parameters:
+      - name: pid
+        description: Process ID
+        type: integer
+        minimum: 1
+        required: true
+    returns:
+      Success:
+        schema:
+          type: string
+      ExecutableNotFound:
+        schema:
+          type: string
+          enum: [Executable not found]
+  get command line:
+    run: get_command_line
+    description: gets the command line used to execute the process, if any
+    parameters:
+      - name: pid
+        description: Process ID
+        type: integer
+        minimum: 1
+        required: true
+    returns:
+      Success:
+        schema:
+          type: array
+          items:
+            type: string
+      CommandLineNotFound:
+        schema:
+          type: string
+          enum: [Command line not found]
+  get file arg to cmd line script:
+    run: get_file_argument_to_script_command_line
+    description: If the process used to launch the process was python, ruby, perl, or OCaml, get teh file executed
+    parameters:
+      - name: pid
+        description: Process ID
+        type: integer
+        minimum: 1
+        required: true
+    returns:
+      Success:
+        schema:
+          type: string
+      CommandLineNotFound:
+        schema:
+          type: string
+          enum: [Command line not found]
+      UnknownOrNoScript:
+        schema:
+          type: string
+      FileNotFound:
+        schema:
+          type: string
+          enum: [Unable to find file in command line]
+  get current working directory:
+    run: get_current_working_directory
+    description: get the absolute path of the current working directory of the process
+    parameters:
+      - name: pid
+        description: Process ID
+        type: integer
+        minimum: 1
+        required: true
+    returns:
+      Success:
+        schema:
+          type: string
+          description: The absolute path of the current working directory of the process
+  get all connections:
+    run: get_all_connections
+    description: get all network connections
+    parameters:
+      - name: connection_type
+        type: string
+        description: type of connection to query
+        enum: [inet, inet4, inet6, tcp, tcp4, tcp6, udp, udp4, udp6, unix, all]
+        default: all
+      - name: only_not_localhost
+        type: boolean
+        description: only get connections which are not to localhost
+        default: False
+      - name: only_with_pids
+        type: boolean
+        description: only get connections with a known pid
+        default: false
+    returns:
+      Success:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              fd:
+                type: integer
+                description: The socket file descriptor. On Windows this is always -1
+              family:
+                type: string
+                description: The address family
+                enum: [inet, inet6, unix]
+              type:
+                type: string
+                description: The type of sockey connection
+                enum: [stream, dgram]
+              laddr:
+                type: object
+                description: The local address. either port and ip or path (in the case of UNIX sockets) will be described
+                properties:
+                  ip:
+                    type: string
+                  port:
+                    type: integer
+                  path:
+                    type: string
+              raddr:
+                type: object
+                description: The remote address. either port and ip or path (in the case of UNIX sockets) will be described
+                properties:
+                  ip:
+                    type: string
+                  port:
+                    type: integer
+                  path:
+                    type: string
+              status:
+                type: string
+                description: The status of the connection
+                enum: [ESTABLISHED, SYN_SENT, SYN_RECV, FIN_WAIT1, FIN_WAIT2, TIME_WAIT, CLOSE, CLOSE_WAIT, LAST_ACK, LISTEN, CLOSING, NONE]
+              pid:
+                type: integer
+  watch all connections:
+    run: watch_all_connections
+    description: watch all network connections for a given amount of time
+    parameters:
+      - name: watch_time
+        type: number
+        description: time to watch connections (in seconds)
+        default: 10
+      - name: connection_type
+        type: string
+        description: type of connection to query
+        enum: [inet, inet4, inet6, tcp, tcp4, tcp6, udp, udp4, udp6, unix, all]
+        default: all
+      - name: only_not_localhost
+        type: boolean
+        description: only get connections which are not to localhost
+        default: False
+      - name: only_with_pids
+        type: boolean
+        description: only get connections with a known pid
+        default: false
+    returns:
+      Success:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              fd:
+                type: integer
+                description: The socket file descriptor. On Windows this is always -1
+              family:
+                type: string
+                description: The address family
+                enum: [inet, inet6, unix]
+              type:
+                type: string
+                description: The type of sockey connection
+                enum: [stream, dgram]
+              laddr:
+                type: object
+                description: The local address. either port and ip or path (in the case of UNIX sockets) will be described
+                properties:
+                  ip:
+                    type: string
+                  port:
+                    type: integer
+                  path:
+                    type: string
+              raddr:
+                type: object
+                description: The remote address. either port and ip or path (in the case of UNIX sockets) will be described
+                properties:
+                  ip:
+                    type: string
+                  port:
+                    type: integer
+                  path:
+                    type: string
+              status:
+                type: string
+                description: The status of the connection
+                enum: [ESTABLISHED, SYN_SENT, SYN_RECV, FIN_WAIT1, FIN_WAIT2, TIME_WAIT, CLOSE, CLOSE_WAIT, LAST_ACK, LISTEN, CLOSING, NONE]
+              pid:
+                type: integer
+  blame processes for ip connection:
+    run: blame_processes_for_ip_connection
+    description: find processes which have connections to specific ip
+    parameters:
+      - name: ip
+        type: string
+        description: ip address to look for
+      - name: watch_time
+        type: number
+        description: time to watch connections (in seconds)
+        default: 10
+      - name: connection_type
+        type: string
+        description: type of connection to query
+        enum: [inet, inet4, inet6, tcp, tcp4, tcp6, udp, udp4, udp6, unix, all]
+        default: all
+    returns:
+      Success:
+        schema:
+          type: array
+          items:
+            type: string
+
   copy and reverse exe:
     run: copy_and_reverse_exe
     description: Copy and endian-reverses the bytes of the executable of the process

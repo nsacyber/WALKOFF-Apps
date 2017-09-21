@@ -160,7 +160,10 @@ actions:
           type: string
       - name: inputs
         description: Inputs into the starting step as key-value pairs
-        type: object
+        schema:
+          type: object
+          additionalProperties: true
+
       - name: data
         description: Data to send to the trigger
       - name: tags
