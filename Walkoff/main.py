@@ -41,8 +41,7 @@ class Main(App):
         username = self.get_device().username
         try:
             response = self._request('post', '/api/auth', timeout,
-                                     data=dict(username=username, password=self.get_device().get_password()),
-                                     follow_redirects=True)
+                                     data=dict(username=username, password=self.get_device().get_password()))
         except Timeout:
             return 'Connection timed out', 'TimedOut'
 
@@ -52,7 +51,7 @@ class Main(App):
         elif status_code == 401:
             return 'Invalid login', 'AuthenticationError'
         elif status_code == 201:
-            response = json.loads(response.get_data(as_text=True))
+            response = response.json()
             self.refresh_token = response['refresh_token']
             self.reset_authorization(response['access_token'])
             self.is_connected = True
@@ -65,8 +64,7 @@ class Main(App):
         if self.is_connected:
             try:
                 self._request('post', '/api/auth/logout', timeout, headers=self.headers,
-                              data=dict(refresh_token=self.refresh_token),
-                              content_type="application/json")
+                              data=dict(refresh_token=self.refresh_token))
                 return 'Success'
             except Timeout:
                 return 'Connection timed out', 'TimedOut'
@@ -94,7 +92,7 @@ class Main(App):
         except UnknownResponse:
             return 'Unknown error occurred', 'UnknownResponse'
         else:
-            response = json.loads(response.get_data(as_text=True))
+            response = response.json()
             playbook = next((playbook for playbook in response if playbook['name'] == playbook_name), None)
             if playbook is None:
                 return 'Playbook not found', 'WorkflowNotFound'
@@ -133,7 +131,7 @@ class Main(App):
             try:
                 response = self.request_with_refresh('get', '/api/workflowresults/{}'.format(execution_uid), timeout, headers=self.headers)
                 if response.status_code == 200:
-                    response = json.loads(response.get_data(as_text=True))
+                    response = response.json()
                     if response['status'] == 'completed':
                         return response
                 time.sleep(wait_between_requests)
@@ -148,7 +146,10 @@ class Main(App):
 
     def standard_request(self, method, address, timeout, headers=None, data=None, **kwargs):
         try:
-            return self.request_with_refresh(method, address, timeout, headers=headers, data=data, **kwargs)
+            response = self.request_with_refresh(method, address, timeout, headers=headers, data=data, **kwargs)
+            if response.status_code == 400:
+                return 'Bad Request', 'BadRequest'
+            return response.json()
         except Timeout:
             return 'Connection timed out', 'TimedOut'
         except Unauthorized:
@@ -165,7 +166,7 @@ class Main(App):
         if not (self.headers is None and headers is None):
             args['headers'] = headers if headers is not None else self.headers
         if data is not None:
-            args['data'] = json.dumps(data)
+            args['json'] = data
         if self.is_https:
             args['verify'] = certificate_path
         return address, args
@@ -203,7 +204,7 @@ class Main(App):
         if response.status_code == 401:
             raise Unauthorized
         elif response.status_code == 201:
-            key = json.loads(response.get_data(as_text=True))
+            key = response.json()
             self.reset_authorization(key['access_token'])
         else:
             raise UnknownResponse
@@ -214,7 +215,6 @@ class Main(App):
     def shutdown(self):
         try:
             self._request('post', '/api/auth/logout', DEFAULT_TIMEOUT, headers=self.headers,
-                          data=json.dumps(dict(refresh_token=self.refresh_token)),
-                          content_type="application/json")
+                          data=dict(refresh_token=self.refresh_token))
         except Timeout:
             logger.warning('Could not log out. Connection timed out')

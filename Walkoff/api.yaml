@@ -163,9 +163,9 @@ actions:
         schema:
           type: object
           additionalProperties: true
-
       - name: data
         description: Data to send to the trigger
+        type: string
       - name: tags
         description: names of trigger tags to execute
         type: array
