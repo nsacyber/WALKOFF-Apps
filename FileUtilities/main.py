@@ -4,6 +4,7 @@ import os
 from datetime import datetime
 import json
 from core.helpers import format_exception_message
+from array import array
 
 logger = logging.getLogger(__name__)
 
@@ -28,6 +29,34 @@ class Main(App):
     @action
     def exists_in_directory(self, path):
         return os.path.exists(path)
+
+    @action
+    def copy_and_bitswap(self, path_from, path_to=None):
+        if not os.path.exists(path_from) or not os.path.isfile(path_from):
+            return 'File not found', 'FileNotFound'
+
+        with open(path_from, 'rb') as file_in:
+            exe_bytes = array('B', file_in.read())
+
+        exe_bytes.byteswap()
+
+        if not path_to:
+            path = os.path.join('.', 'apps', 'FileUtilities', 'data')
+            filename = '{}-quarantine.bin'.format(os.path.basename(path_from).split('.')[0])
+            if not os.path.exists(path):
+                os.mkdir(path)
+            filename = os.path.join(path, filename)
+        else:
+            dirname = os.path.dirname(path_to)
+            if dirname and not os.path.exists(dirname):
+                os.mkdir(dirname)
+            filename = path_to
+
+        with open(filename, 'wb') as file_out:
+            exe_bytes.tofile(file_out)
+
+        return filename
+
 
     @action
     def read_json(self, filename):
@@ -59,7 +88,7 @@ class Main(App):
 
         def add_time_if_exists(stat, attr, name, results):
             if hasattr(stat, attr):
-                results[name] = str(datetime.fromtimestamp(getattr(stat, attr) / 1e3))
+                results[name] = str(datetime.fromtimestamp(getattr(stat, attr)))
 
         if os.path.exists(filename):
             stats = os.stat(filename)

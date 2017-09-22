@@ -35,6 +35,17 @@ actions:
       Success:
         schema:
           type: boolean
+  copy and bitswap:
+    run: copy_and_bitswap
+    description: copy a file as a binary and swap the bits
+    parameters:
+      - name: path_from
+        type: string
+        required: true
+        description: Path to the file to copy
+      - name: path_to
+        type: string
+        description: Path to copy the file to defaults to apps/FileUtilities/data/<base filename of path_to>-quarnatine.bin
   remove:
     run: remove
     description: Remove a file
