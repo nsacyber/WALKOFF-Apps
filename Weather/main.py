@@ -5,7 +5,7 @@ from apps import App, action
 class Main(App):
     def __init__(self, name=None, device=None):
         App.__init__(self, name, device)
-        self.owm = pyowm.OWM(self.get_device().get_password())
+        self.owm = pyowm.OWM(self.device.get_encrypted_field('key'))
 
     @action
     def get_current_weather(self, city):

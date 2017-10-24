@@ -32,3 +32,11 @@ actions:
       Success:
         schema:
           type: number
+devices:
+  OWM:
+    - name: key
+      type: string
+      description: API key for OWM
+      encrypted: true
+      placeholder: API key
+      required: true

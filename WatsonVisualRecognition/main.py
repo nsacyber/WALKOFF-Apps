@@ -6,7 +6,7 @@ import json
 class Main(App):
     def __init__(self, name=None, device=None):
         App.__init__(self, name, device)
-        self.engine = vr('2016-05-20', api_key=self.get_device().get_password())
+        self.engine = vr('2016-05-20', api_key=self.device.get_encrypted_field('key'))
 
     @action
     def recognize_text_from_remote_url(self, url):

@@ -13,7 +13,7 @@ except ImportError:
 class Main(App):
     def __init__(self, name=None, device=None):
         App.__init__(self, name, device)
-        self.plug = SmartPlug(self.get_device().ip)
+        self.plug = SmartPlug(self.device_fields['ip'])
 
     @action
     def get_state(self):
@@ -32,5 +32,4 @@ class Main(App):
         return self.plug.on_since
 
     def shutdown(self):
-        print("SmartPlug Shutting Down")
         return

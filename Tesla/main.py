@@ -8,9 +8,9 @@ logger = logging.getLogger(__name__)
 class Main(App):
     def __init__(self, name=None, device=None):
         App.__init__(self, name, device)
-        device = self.get_device()
 
-        self.connection = teslajson.Connection(device.username, device.get_password())
+        self.connection = teslajson.Connection(self.device_fields['username'],
+                                               self.device.get_encrypted_field('password'))
 
         try:
             self.vehicle = self.connection.vehicles[0]
@@ -333,4 +333,4 @@ class Main(App):
     def remote_start(self):
         # Args: password to the account
         return bool(self.vehicle.command('remote_start_drive',
-                                         data={"password": self.get_device().get_password()})['result'])
+                                         data={"password": self.device.get_encrypted_field('password')})['result'])

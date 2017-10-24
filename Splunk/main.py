@@ -5,11 +5,11 @@ import splunklib.client as client
 class Main(App):
     def __init__(self, name=None, device=None):
         App.__init__(self, name, device)
-        self.device = self.get_device()
-        self.service = client.connect(host=self.device.ip, port=self.device.port, username=self.device.username,
-                                      password=self.device.get_password())
+        self.service = client.connect(host=self.device_fields['ip'], port=self.device_fields['port'],
+                                      username=self.device_fields['username'],
+                                      password=self.device.get_encrypted_field('password'))
         self.kwargs_create = {}
-        self.kwargs_results = {"output_mode":"json"}
+        self.kwargs_results = {"output_mode": "json"}
 
     @action
     def set_create_args(self, key, value):
@@ -50,5 +50,4 @@ class Main(App):
         return results
 
     def shutdown(self):
-        print("Splunk Shutting Down")
         return

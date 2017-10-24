@@ -30,18 +30,19 @@ class Main(App):
         self.is_connected = False
         self.headers = None
         self.refresh_token = None
-        self.walkoff_address = self.get_device().ip
-        port = self.get_device().port
+        self.username = self.device_fields['username']
+        self.walkoff_address = self.device_fields['ip']
+        port = self.device_fields['port']
         if port:
             self.walkoff_address += ':{}'.format(port)
         self.is_https = self.walkoff_address.startswith('https')
 
     @action
     def connect(self, timeout=DEFAULT_TIMEOUT):
-        username = self.get_device().username
         try:
             response = self._request('post', '/api/auth', timeout,
-                                     data=dict(username=username, password=self.get_device().get_password()))
+                                     data=dict(username=self.username,
+                                               password=self.device.get_encrypted_field('password')))
         except Timeout:
             return 'Connection timed out', 'TimedOut'
 

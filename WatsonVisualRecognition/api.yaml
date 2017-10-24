@@ -80,3 +80,11 @@ actions:
       Success:
         schema:
           type: string
+devices:
+  Watson:
+    - name: key
+      type: string
+      description: API key for Watson
+      encrypted: true
+      placeholder: API key
+      required: true

@@ -16,10 +16,9 @@ class Main(App):
 
     @action
     def connect(self):
-        device = self.get_device()
         try:
-            self.transport = paramiko.Transport((device.ip, device.port))
-            transport.connect(username=device.username, password=device.get_passwrord())
+            self.transport = paramiko.Transport((self.device_fields['ip'], self.device_fields['port']))
+            self.transport.connect(username=self.device_fields['username'], password=self.device.get_encrypted_field('password'))
             self.sftp_client = paramiko.SFTPClient.from_transport(self.transport)
             self.is_connected = True
             return 'Success'

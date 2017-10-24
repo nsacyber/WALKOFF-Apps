@@ -7,8 +7,7 @@ from email.mime.text import MIMEText
 class Main(App):
     def __init__(self, name=None, device=None):
         App.__init__(self, name, device)
-        self._device = self.get_device()
-        self.server = smtplib.SMTP('{0}:{1}'.format(self._device.ip, self._device.port))
+        self.server = smtplib.SMTP('{0}:{1}'.format(self.device_fields['ip'], self.device_fields['port']))
 
         try:
             self.server.set_debuglevel(False)
@@ -16,7 +15,7 @@ class Main(App):
             if self.server.has_extn('STARTTLS'):
                 self.server.starttls()
                 self.server.ehlo()  # re-identify ourselves over TLS connection
-            self.server.login(self._device.username, self._device.get_password())
+            self.server.login(self.device_fields['username'], self.device.get_encrypted_field('password'))
         except Exception as e:
             self.shutdown()
 

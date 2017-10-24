@@ -44,3 +44,27 @@ actions:
         schema:
           type: string
           enum: [success]
+devices:
+  SMTP:
+    - name: username
+      type: string
+      description: Username for the SMTP server
+      placeholder: username
+      required: true
+    - name: password
+      type: string
+      description: Password for the SMTP server
+      encrypted: true
+      placeholder: password
+      required: true
+    - name: ip
+      description: IP address of the SMTP server
+      type: string
+      placehold: ip address
+      required: true
+    - name: port
+      description: Port of the SMTP server
+      type: integer
+      minimum: 1
+      maximum: 65355
+      required: true

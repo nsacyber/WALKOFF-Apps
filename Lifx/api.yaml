@@ -189,3 +189,16 @@ actions:
               type: string
               description: The status of the operation
               enum: [ok, offline, timed_out]
+devices:
+  default:
+    - name: name
+      type: string
+      description: name for this bulb
+      placeholder: username
+      required: true
+    - name: token
+      type: string
+      description: Access token for this bulb
+      encrypted: true
+      placeholder: token
+      required: true

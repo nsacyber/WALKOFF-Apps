@@ -28,3 +28,10 @@ actions:
       Success:
         schema:
           type: string
+devices:
+  Plug:
+    - name: ip
+      description: IP address of the plug
+      type: string
+      placehold: ip address
+      required: true
