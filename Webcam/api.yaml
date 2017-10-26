@@ -9,14 +9,14 @@ info:
     name: Creative Commons
 actions:
   start:
-    run: start
+    run: main.Main.start
     description: Starts the webcam
     returns:
       Success:
         schema:
           type: string
   stop:
-    run: stop
+    run: main.Main.stop
     description: Stops the camera
     returns:
       Success:
@@ -24,7 +24,7 @@ actions:
         schema:
           type: string
   'save screenshot':
-    run: save_screenshot
+    run: main.Main.save_screenshot
     description: Saves a screenshot to a given path
     parameters:
         - name: path

@@ -9,7 +9,7 @@ info:
     name: Creative Commons
 actions:
   join path elements:
-    run: join_path_elements
+    run: actions.join_path_elements
     description: joins an array of strings into a path using proper path specifiers
     parameters:
       - name: elements
@@ -24,7 +24,7 @@ actions:
           type: string
           description: the joined path
   exists in directory:
-    run: exists_in_directory
+    run: actions.exists_in_directory
     description: does the file or directory exist?
     parameters:
       - name: path
@@ -36,7 +36,7 @@ actions:
         schema:
           type: boolean
   copy and bitswap:
-    run: copy_and_bitswap
+    run: actions.copy_and_bitswap
     description: copy a file as a binary and swap the bits
     parameters:
       - name: path_from
@@ -47,7 +47,7 @@ actions:
         type: string
         description: Path to copy the file to defaults to apps/FileUtilities/data/<base filename of path_to>-quarnatine.bin
   remove:
-    run: remove
+    run: actions.remove
     description: Remove a file
     parameters:
       - name: filename
@@ -65,7 +65,7 @@ actions:
           type: string
           enum: [File does not exist]
   read json:
-    run: read_json
+    run: actions.read_json
     description: Reads JSON from file
     parameters:
       - name: filename
@@ -93,7 +93,7 @@ actions:
           type: string
           enum: [Could not read file as json. Invalid JSON]
   write json:
-    run: write_json
+    run: actions.write_json
     description: Reads JSON from file
     parameters:
       - name: filename
@@ -111,7 +111,7 @@ actions:
           type: string
           enum: [Success]
   stats:
-    run: stats
+    run: actions.stats
     description: Gets information about a file
     parameters:
       - name: filename

@@ -9,7 +9,7 @@ info:
     name: Creative Commons
 actions:
   set_create_args:
-    run: set_create_args
+    run: main.Main.set_create_args
     description: Sets a kwarg for creating a new search. These kwargs are persistent across searches.
     parameters:
       - name: key
@@ -23,7 +23,7 @@ actions:
         required: true
         type: string
   set_results_args:
-    run: set_results_args
+    run: main.Main.set_results_args
     description: Sets a kwarg for getting the results from the search. These kwargs are persistent across searches.
     parameters:
       - name: key
@@ -35,13 +35,13 @@ actions:
         required: true
         type: string
   clear_create_args:
-    run: clear_create_args
+    run: main.Main.clear_create_args
     description: Resets the kwargs for creating a new search
   clear_results_args:
-    run: clear_results_args
+    run: main.Main.clear_results_args
     description: Resets the kwargs for getting the results from the search
   search:
-    run: search
+    run: main.Main.search
     description: Conducts the search and waits for it to complete. Returns the specified type in kwargs_results
     parameters:
         - name: query

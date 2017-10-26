@@ -9,14 +9,14 @@ info:
     name: Creative Commons
 actions:
   list lights:
-    run: list_lights
+    run: main.Main.list_lights
     description: gets the status of all lights
     returns:
       Success:
         schema:
           type: object
   set state:
-    run: set_state
+    run: main.Main.set_state
     description: Sets the state of the light
     parameters:
       - name: power
@@ -57,7 +57,7 @@ actions:
               type: string
               description: The status of the operation
   toggle power:
-    run: toggle_power
+    run: main.Main.toggle_power
     description: Turns the light on and off
     parameters:
       - name: duration
@@ -86,7 +86,7 @@ actions:
               description: The status of the operation
               enum: [ok, offline, timed_out]
   breathe:
-    run: breathe_effect
+    run: main.Main.breathe_effect
     description: Slowly transitions between two colors
     parameters:
       - name: color
@@ -141,7 +141,7 @@ actions:
               description: The status of the operation
               enum: [ok, offline, timed_out]
   pulse:
-    run: pulse_effect
+    run: main.Main.pulse_effect
     description: Swicthes between two colors
     parameters:
       - name: color

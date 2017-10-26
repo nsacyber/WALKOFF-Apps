@@ -9,7 +9,7 @@ info:
     name: Creative Commons
 actions:
   'get current weather':
-    run: get_current_weather
+    run: main.Main.get_current_weather
     description: Gets the current weather
     parameters:
         - name: city
@@ -21,7 +21,7 @@ actions:
         schema:
           type: object
   'get current temperature':
-    run: get_current_temperature
+    run: main.Main.get_current_temperature
     description: Gets the current temperature
     parameters:
         - name: city

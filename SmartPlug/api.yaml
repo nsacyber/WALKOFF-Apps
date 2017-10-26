@@ -9,20 +9,20 @@ info:
     name: Creative Commons
 actions:
   get_state:
-    run: get_state
+    run: main.Main.get_state
     description: Gets the state of the SmartPlug ("ON", "OFF", "UNKNOWN")
     returns:
       Success:
         schema:
           type: string
   turn_on:
-    run: turn_on
+    run: main.Main.turn_on
     description: Turns on the SmartPlug
   turn_off:
-    run: turn_off
+    run: main.Main.turn_off
     description: Turns off the SmartPlug
   on_since:
-    run: on_since
+    run: main.Main.on_since
     description: Get the time that the SmartPlug last turned on
     returns:
       Success:

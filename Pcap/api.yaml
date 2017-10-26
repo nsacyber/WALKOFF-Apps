@@ -9,7 +9,7 @@ info:
     name: Creative Commons
 actions:
   capture:
-    run: capture
+    run: actions.capture
     description: Starts a PCAP capture session. Either timeout or count (or both) must be specified
     parameters:
       - name: filename

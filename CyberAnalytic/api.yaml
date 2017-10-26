@@ -9,7 +9,7 @@ info:
     name: Creative Commons
 actions:
   begin_monitoring:
-    run: begin_monitoring
+    run: main.Main.begin_monitoring
     description: Begins monitoring
     returns:
       Success:
@@ -17,7 +17,7 @@ actions:
         schema:
           type: string
   get_exe_pids:
-    run: get_exe_pids
+    run: main.Main.get_exe_pids
     description: Gets the PIDs of the executables running on the machine
     returns:
       Success:
@@ -27,7 +27,7 @@ actions:
           items:
             type: string
   get_exe_pids_by_name:
-    run: get_exe_pids_by_name
+    run: main.Main.get_exe_pids_by_name
     description: Get a list of executable PIDs by process name
     parameters:
         - name: name

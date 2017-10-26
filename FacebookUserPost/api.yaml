@@ -9,7 +9,7 @@ info:
     name: Creative Commons
 actions:
   post to wall:
-    run: post_to_user_wall
+    run: main.Main.post_to_user_wall
     description: Posts a message to a user's wall
     parameters:
       - name: message
@@ -20,3 +20,18 @@ actions:
       Success:
         schema:
           type: string
+devices:
+  Account:
+    description: Facebook user account
+    fields:
+      - name: username
+        type: string
+        description: Username for this account
+        placeholder: username
+        required: true
+      - name: token
+        type: string
+        description: Access token for this account
+        encrypted: true
+        placeholder: access token
+        required: true

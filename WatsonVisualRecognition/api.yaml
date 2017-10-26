@@ -9,7 +9,7 @@ info:
     name: Creative Commons
 actions:
   'recognize text from url':
-    run: recognize_text_from_remote_url
+    run: main.Main.recognize_text_from_remote_url
     description: Gets the text from an image hosted remotely
     parameters:
         - name: url
@@ -21,7 +21,7 @@ actions:
         schema:
           type: string
   'recognize text from file':
-    run: recognize_text_from_local_file
+    run: main.Main.recognize_text_from_local_file
     description: Gets the text from a local file
     parameters:
         - name: path
@@ -33,7 +33,7 @@ actions:
         schema:
           type: string
   'detect faces from url':
-    run: detect_faces_from_remote_url
+    run: main.Main.detect_faces_from_remote_url
     description: Detects faces from an image hosted remotely
     parameters:
         - name: url
@@ -45,7 +45,7 @@ actions:
         schema:
           type: string
   'detect faces from file':
-    run: detect_faces_from_local_file
+    run: main.Main.detect_faces_from_local_file
     description: Detects faces from a local file
     parameters:
         - name: path
@@ -57,7 +57,7 @@ actions:
         schema:
           type: string
   'classify image from url':
-    run: classify_from_remote_url
+    run: main.Main.classify_from_remote_url
     description: Classify a remotely-hosted image
     parameters:
         - name: url
@@ -69,7 +69,7 @@ actions:
         schema:
           type: string
   'classify image from file':
-    run: classify_from_local_file
+    run: main.Main.classify_from_local_file
     description: Classify an image from a local file
     parameters:
         - name: path

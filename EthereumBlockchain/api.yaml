@@ -9,7 +9,7 @@ info:
     name: Creative Commons
 actions:
   create_accounts:
-    run: create_accounts
+    run: main.Main.create_accounts
     description: Creates accounts for the blockchain
     parameters:
     - name: total_nodes
@@ -22,7 +22,7 @@ actions:
         schema:
           type: integer
   set_up_network:
-    run: set_up_network
+    run: main.Main.set_up_network
     description: Sets up the network
     returns:
       Success:
@@ -30,7 +30,7 @@ actions:
         schema:
           type: integer
   submit_greeting:
-    run: submit_greeting
+    run: main.Main.submit_greeting
     description: Submits a greeting to the blockchain
     parameters:
         - name: greeting
@@ -43,7 +43,7 @@ actions:
         schema:
           type: integer
   terminate_geth_processes:
-    run: terminate_geth_processes
+    run: main.Main.terminate_geth_processes
     description: Terminates the ethereum processes
     returns:
       Success:

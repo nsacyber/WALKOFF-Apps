@@ -9,27 +9,27 @@ info:
     name: Creative Commons
 actions:
   add_host_to_whitelist:
-    run: add_host_to_whitelist
+    run: main.Main.add_host_to_whitelist
     description: Adds a single host to the whitelist of connected hosts
     parameters:
       - name: host
         required: true
         type: string
   add_host_to_blacklist:
-    run: add_host_to_blacklist
+    run: main.Main.add_host_to_blacklist
     description: Adds a single host to the blacklist of connected hosts
     parameters:
       - name: host
         required: true
         type: string
   clear_whitelist:
-    run: clear_whitelist
+    run: main.Main.clear_whitelist
     description: Clears the whitelist
   clear_blacklist:
-    run: clear_blacklist
+    run: main.Main.clear_blacklist
     description: Clears the blacklist
   run scan:
-    run: run_scan
+    run: main.Main.run_scan
     description: Runs an nmap scan and returns the results in XML
     parameters:
       - name: target
@@ -68,7 +68,7 @@ actions:
                     banner:
                       type: string
   scan results as HTML:
-    run: scan_results_as_html
+    run: main.Main.scan_results_as_html
     description: Returns the scan results from 'run scan' as an HTML table
     parameters:
       - name: results
@@ -83,7 +83,7 @@ actions:
           type: string
 
   get active hosts:
-    run: get_hosts_from_scan
+    run: main.Main.get_hosts_from_scan
     description: Gets the list of active hosts on a network from an nmap scan
     parameters:
       - name: target
@@ -100,7 +100,7 @@ actions:
             host:
               type: string
   run_scan_check_whitelist:
-    run: run_scan_check_whitelist
+    run: main.Main.run_scan_check_whitelist
     description: Runs a scan and then parses the output for the hosts on the network. It returns the number of hosts
                  found that were not in the whitelist, or 0 if none.
     parameters:
@@ -115,7 +115,7 @@ actions:
         schema:
           type: integer
   run_scan_check_blacklist:
-    run: run_scan_check_blacklist
+    run: main.Main.run_scan_check_blacklist
     description: Runs a scan and then parses the output for the hosts on the network. It returns the number of hosts
                  found that were in the blacklist, or 0 if none.
     parameters:

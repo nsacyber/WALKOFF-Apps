@@ -9,7 +9,7 @@ info:
     name: Creative Commons
 actions:
   enable:
-    run: enable
+    run: actions.enable
     description: Enable the UFW firewall
     returns:
       Success:
@@ -24,7 +24,7 @@ actions:
             return_code:
               type: integer
   disable:
-    run: disable
+    run: actions.disable
     description: Disable the UFW firewall
     returns:
       Success:
@@ -39,7 +39,7 @@ actions:
             return_code:
               type: integer
   status:
-    run: status
+    run: actions.status
     description: Get the status of the firewall
     parameters:
       - name: verbose
@@ -59,7 +59,7 @@ actions:
             return_code:
               type: integer
   allow:
-    run: allow
+    run: actions.allow
     description: Add a rule to allow something to a firewall
     parameters:
       - name: port
@@ -102,7 +102,7 @@ actions:
             return_code:
               type: integer
   allow_service:
-    run: allow_service
+    run: actions.allow_service
     description: Add a rule to allow a service through the firewall
     parameters:
       - name: service
@@ -124,7 +124,7 @@ actions:
             return_code:
               type: integer
   deny:
-    run: deny
+    run: actions.deny
     description: Add a rule to deny something to a firewall
     parameters:
       - name: from_address

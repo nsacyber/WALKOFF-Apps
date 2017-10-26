@@ -9,7 +9,7 @@ info:
     name: Creative Commons
 actions:
   connect:
-    run: connect
+    run: main.Main.connect
     description: Connect to the client
     returns:
       Success:
@@ -20,7 +20,7 @@ actions:
         schema:
           type: string
   get:
-    run: get
+    run: main.Main.get
     description: Gets a file from the remote
     parameters:
       - name: remote_filepath
@@ -41,7 +41,7 @@ actions:
           type: string
           enum: [Not connected]
   put:
-    run: put
+    run: main.Main.put
     description: Puts a local file into the remote
     parameters:
       - name: remote_filepath

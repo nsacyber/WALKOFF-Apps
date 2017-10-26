@@ -9,7 +9,7 @@ info:
     name: Creative Commons
 actions:
   get all pids:
-    run: get_all_pids
+    run: actions.get_all_pids
     description: Get all process IDs
     returns:
       Success:
@@ -19,7 +19,7 @@ actions:
             type: integer
             minimum: 1
   is pid running:
-    run: is_pid_running
+    run: actions.is_pid_running
     description: Is the process ID running?
     parameters:
       - name: pid
@@ -32,7 +32,7 @@ actions:
         schema:
           type: boolean
   kill process:
-    run: kill_process
+    run: actions.kill_process
     description: Kills the given process
     parameters:
       - name: pid
@@ -45,7 +45,7 @@ actions:
         schema:
           type: string
   get children:
-    run: get_children
+    run: actions.get_children
     description: Get the children for a given process ID
     parameters:
       - name: pid
@@ -65,7 +65,7 @@ actions:
             type: integer
             minimum: 1
   get executable:
-    run: get_exe
+    run: actions.get_exe
     description: gets the executable running the process
     parameters:
       - name: pid
@@ -82,7 +82,7 @@ actions:
           type: string
           enum: [Executable not found]
   get command line:
-    run: get_command_line
+    run: actions.get_command_line
     description: gets the command line used to execute the process, if any
     parameters:
       - name: pid
@@ -101,7 +101,7 @@ actions:
           type: string
           enum: [Command line not found]
   get file arg to cmd line script:
-    run: get_file_argument_to_script_command_line
+    run: actions.get_file_argument_to_script_command_line
     description: If the process used to launch the process was python, ruby, perl, or OCaml, get teh file executed
     parameters:
       - name: pid
@@ -125,7 +125,7 @@ actions:
           type: string
           enum: [Unable to find file in command line]
   get current working directory:
-    run: get_current_working_directory
+    run: actions.get_current_working_directory
     description: get the absolute path of the current working directory of the process
     parameters:
       - name: pid
@@ -139,7 +139,7 @@ actions:
           type: string
           description: The absolute path of the current working directory of the process
   get all connections:
-    run: get_all_connections
+    run: actions.get_all_connections
     description: get all network connections
     parameters:
       - name: connection_type
@@ -200,7 +200,7 @@ actions:
               pid:
                 type: integer
   watch all connections:
-    run: watch_all_connections
+    run: actions.watch_all_connections
     description: watch all network connections for a given amount of time
     parameters:
       - name: watch_time
@@ -265,7 +265,7 @@ actions:
               pid:
                 type: integer
   blame processes for ip connection:
-    run: blame_processes_for_ip_connection
+    run: actions.blame_processes_for_ip_connection
     description: find processes which have connections to specific ip
     parameters:
       - name: ip
@@ -288,7 +288,7 @@ actions:
             type: string
 
   copy and reverse exe:
-    run: copy_and_reverse_exe
+    run: actions.copy_and_reverse_exe
     description: Copy and endian-reverses the bytes of the executable of the process
     parameters:
       - name: pid
@@ -314,7 +314,7 @@ actions:
           description: Thrown when process does not have an associated exe
 
   get process info:
-    run: get_process_info
+    run: actions.get_process_info
     description: Get info about a process
     parameters:
       - name: pid
