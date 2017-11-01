@@ -83,7 +83,6 @@ def get_all_connections(self, connection_type='all', only_not_localhost=False, o
         self.get_filtered_connections(connection_type, only_not_localhost, only_with_pids))
 
 
-@staticmethod
 def get_filtered_connections(connection_type='all', only_not_localhost=False, only_with_pids=False):
     if not connection_type:
         connection_type = 'all'
@@ -127,7 +126,6 @@ def get_current_working_directory(pid):
     return process.cwd()
 
 
-@staticmethod
 def convert_address(address):
     if address is None:
         return {'unknown': 'none'}
@@ -139,7 +137,6 @@ def convert_address(address):
         return {'unknown': str(address)}
 
 
-@staticmethod
 def connection_as_json(connection):
     connection_json = {'fd': connection.fd, 'status': connection.status}
     family = connection.family
@@ -161,7 +158,6 @@ def connection_as_json(connection):
     return connection_json
 
 
-@staticmethod
 def all_connections_as_json(connections):
     return [Main.connection_as_json(connection) for connection in connections if connection is not None]
 
