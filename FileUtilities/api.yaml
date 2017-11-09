@@ -32,7 +32,10 @@ actions:
         type: string
         required: true
     returns:
-      Success:
+      Exists:
+        schema:
+          type: boolean
+      NotExists:
         schema:
           type: boolean
   copy and bitswap:
@@ -46,9 +49,57 @@ actions:
       - name: path_to
         type: string
         description: Path to copy the file to defaults to apps/FileUtilities/data/<base filename of path_to>-quarnatine.bin
+  create file:
+    run: actions.create
+    description: create or overwrite a file with optional contents
+    parameters:
+      - name: filename
+        description: filename to create
+        type: string
+        required: true
+      - name: contents
+        description: contents of the file to create
+        type: string
+      - name: overwrite
+        description: whether or not to overwrite the file, if it exists
+        type: boolean
+        default: false
+    returns:
+      AlreadyExists:
+        schema:
+          type: boolean
+      FileCreated:
+        schema:
+          type: boolean
+      Error:
+        schema:
+          type: boolean
+  append file:
+    run: actions.append
+    description: appends contents to a file
+    parameters:
+      - name: filename
+        description: filename to append to
+        type: string
+        required: true
+      - name: contents
+        description: contents to append to file
+        type: string
+        required: true
+      - name: newline
+        description: whether or not to append to a newline
+        type: boolean
+        default: false
+    returns:
+      FileWritten:
+        schema:
+          type: boolean
+      Error:
+        schema:
+          type: boolean
   remove:
     run: actions.remove
-    description: Remove a file
+    description: remove a file
     parameters:
       - name: filename
         type: string
@@ -60,10 +111,40 @@ actions:
         schema:
           type: string
           enum: [Success]
-      FileDoesNotExist:
+      Error:
         schema:
           type: string
           enum: [File does not exist]
+  make read only:
+    run: actions.make_read_only
+    description: disables all write permissions on file
+    parameters:
+      - name: filename
+        description: filename to make read only
+        type: string
+        required: true
+    returns:
+      Error:
+        schema:
+          type: boolean
+      Success:
+        schema:
+          type: boolean       
+  make writable:
+    run: actions.make_writable
+    description: enables user and group write permissions on file
+    parameters:
+      - name: filename
+        description: filename to make writable
+        type: string
+        required: true
+    returns:
+      Error:
+        schema:
+          type: boolean
+      Success:
+        schema:
+          type: boolean 
   read json:
     run: actions.read_json
     description: Reads JSON from file

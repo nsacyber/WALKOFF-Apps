@@ -1,6 +1,7 @@
 import logging
 from apps import App, action
 import os
+import stat
 from datetime import datetime
 import json
 from core.helpers import format_exception_message
@@ -10,24 +11,78 @@ logger = logging.getLogger(__name__)
 
 
 @action
-def remove(filename):
-    if os.path.exists(filename):
-        os.remove(filename)
-        return 'Success'
+def exists_in_directory(path):
+    if os.path.exists(path):
+        return True, 'Exists'
     else:
-        return 'File does not exist', 'FileDoesNotExist'
+        return False, 'NotExists'
+
+
+@action
+def create(filename, contents=None, overwrite=False):
+    if (not overwrite) and os.path.exists(filename):
+        return False, 'AlreadyExists'
+    else:
+        try:
+            with open(filename, 'w') as new_file:
+                new_file.write(contents)
+            return True, 'FileCreated'
+        except IOError:
+            print("Error writing or creating file.")
+            return False, 'Error'
+
+
+@action
+def append(filename, contents, newline=False):
+    try:
+        with open(filename, 'a') as f:
+            if newline:
+                f.write("\n")
+            f.write(contents)
+        return True, 'FileWritten'
+    except IOError:
+        print("Error writing file.")
+        return False, 'Error'
+        
+                
+@action
+def remove(filename):
+    try:
+        os.remove(filename)
+        return True, 'Success'
+    except IOError:
+        print("Error deleting file")
+        return False, 'Error'
+
+
+@action
+def make_read_only(filename):
+    try:
+        READ_ONLY = ~stat.S_IWUSR & ~stat.S_IWGRP & ~stat.S_IWOTH
+        cur_perms = stat.S_IMODE(os.lstat(filename).st_mode)
+        os.chmod(filename, cur_perms & READ_ONLY)
+        return True, 'Success'
+    except IOError:
+        print("Error making file read only")
+        return False, 'Error'
+
+
+@action
+def make_writable(filename):
+    try:
+        WRITE_ALLOWED = stat.S_IWUSR | stat.S_IWGRP
+        cur_perms = stat.S_IMODE(os.lstat(filename).st_mode)
+        os.chmod(filename, cur_perms | WRITE_ALLOWED)
+        return True, 'Success'
+    except IOError:
+        print("Error making file writable")
+        return False, 'Error'
 
 
 @action
 def join_path_elements(elements):
     print(elements)
     return os.path.join(*elements)
-
-
-@action
-def exists_in_directory(path):
-    return os.path.exists(path)
-
 
 @action
 def copy_and_bitswap(path_from, path_to=None):
@@ -64,7 +119,7 @@ def read_json(filename):
     try:
         with open(filename, 'r') as file_in:
             return json.loads(file_in.read())
-    except (IOError, OSError) as e:
+    except (IOError, IOError) as e:
         return {'error': 'Could not read file', 'reason': format_exception_message(e)}, 'FileDoesNotExist'
     except ValueError:
         return 'Could not read file as json. Invalid JSON', 'InvalidJson'
