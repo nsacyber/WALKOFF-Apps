@@ -1,0 +1,344 @@
+walkoff: '0.1'
+info:
+  version: 0.0.1
+  title: OpenVAS OMP Client
+  description: OpenVAS Management Protocol (OMP) Client
+  contact:
+    name: Walkoff Team
+  license:
+    name: Creative Commons
+actions:
+  'Create Port List':
+    run: app.OpenVAS.app_create_port_list
+    description: Create a port list
+    parameters:
+        - name: name
+          description: name of the port list
+          required: true
+          type: string
+        - name: port_range
+          description: range of ports, e.g. "T:10-20,T:30-40,U:50-60"
+          required: true
+          type: string
+        - name: comment
+          description: comments to add to port list
+          type: string
+    returns:
+      Success:
+        schema:
+          type: string
+      BadPorts:
+        schema:
+          type: boolean
+      AlreadyExists:
+        schema:
+          type: boolean
+      AuthError:
+        schema:
+          type: boolean
+      ConnectError:
+        schema:
+          type: boolean
+  'List Port Lists':
+    run: app.OpenVAS.app_list_port_lists
+    description: Lists port lists
+    parameters:
+        - name: name
+          description: name of the port lists to search for
+          type: string
+    returns:
+      Success:
+        schema:
+          type: object
+      AuthError:
+        schema:
+          type: boolean
+      ConnectError:
+        schema:
+          type: boolean
+  'Create Target':
+    run: app.OpenVAS.app_create_target
+    description: Create a target
+    parameters:
+        - name: name
+          description: name of the target
+          required: true
+          type: string
+        - name: hosts
+          description: hosts to scan (e.g. "localhost,192.168.1.1")
+          required: true
+          type: string
+        - name: port_list
+          description: uuid of port list to use
+          type: string
+        - name: comment
+          description: comments to add to target
+          type: string
+    returns:
+      Success:
+        schema:
+          type: string
+      InvalidUUID:
+        schema:
+          type: boolean
+      AlreadyExists:
+        schema:
+          type: boolean
+      AuthError:
+        schema:
+          type: boolean
+      ConnectError:
+        schema:
+          type: boolean
+  'List Targets':
+    run: app.OpenVAS.app_list_targets
+    description: Lists targets
+    parameters:
+        - name: name
+          description: name of the targets to search for
+          type: string
+    returns:
+      Success:
+        schema:
+          type: object
+      AuthError:
+        schema:
+          type: boolean
+      ConnectError:
+        schema:
+          type: boolean
+  List Configs:
+    run: app.OpenVAS.app_list_configs
+    description: Lists configs
+    parameters:
+        - name: name
+          description: name of the configs to search for
+          type: string
+    returns:
+      Success:
+        schema:
+          type: object
+      AuthError:
+        schema:
+          type: boolean
+      ConnectError:
+        schema:
+          type: boolean
+  'List Scanners':
+    run: app.OpenVAS.app_list_scanners
+    description: Lists scanners
+    parameters:
+        - name: name
+          description: name of the scanners to search for
+          type: string
+    returns:
+      Success:
+        schema:
+          type: object
+      AuthError:
+        schema:
+          type: boolean
+      ConnectError:
+        schema:
+          type: boolean
+  'Create Task':
+    run: app.OpenVAS.app_create_task
+    description: Create a target
+    parameters:
+        - name: name
+          description: name of the target
+          required: true
+          type: string
+        - name: config_uuid
+          description: uuid of the config to use
+          required: true
+          type: string
+        - name: target_uuid
+          description: uuid of the target to scan
+          required: true
+          type: string
+        - name: scanner_uuid
+          description: uuid of the scanner to use
+          type: string
+        - name: comment
+          description: comments to add to target
+          type: string
+        - name: schedule_uuid
+          description: uuid of the schedule to use
+          type: string
+    returns:
+      Success:
+        schema:
+          type: string
+      InvalidUUID:
+        schema:
+          type: boolean
+      AlreadyExists:
+        schema:
+          type: boolean
+      AuthError:
+        schema:
+          type: boolean
+      ConnectError:
+        schema:
+          type: boolean
+  'List Tasks':
+    run: app.OpenVAS.app_list_tasks
+    description: Lists tasks
+    parameters:
+        - name: name
+          description: name of the tasks to search for
+          type: string
+    returns:
+      Success:
+        schema:
+          type: object
+      AuthError:
+        schema:
+          type: boolean
+      ConnectError:
+        schema:
+          type: boolean
+  'Start Task':
+    run: app.OpenVAS.app_start_task
+    description: Start a task
+    parameters:
+        - name: uuid
+          description: uuid of the task to start
+          required: true
+          type: string
+    returns:
+      Success:
+        schema:
+          type: string
+      InvalidUUID:
+        schema:
+          type: boolean
+      AuthError:
+        schema:
+          type: boolean
+      ConnectError:
+        schema:
+          type: boolean
+  'Create Schedule':
+    run: app.OpenVAS.app_create_schedule
+    description: Create a schedule
+    parameters:
+        - name: name
+          description: name of the schedule
+          required: true
+          type: string
+        - name: comment
+          description: comments to add to schedule
+          type: string
+        - name: first_time
+          description: when to run this for the first time; use format "MM/DD/YYYY HH:MM _M" (12h)
+          type: string
+        - name: duration
+          description: how long this task can run for before aborting, units specified below (e.g. 3)
+          type: string
+        - name: duration_unit
+          description: units for duration ("second", "minute", "hour", "day", "week", "month", "year", "decade")
+          type: string
+        - name: period
+          description: how often to run this schedule, units specified below (e.g. 1)
+          type: string
+        - name: period_unit
+          description: units for period ("second", "minute", "hour", "day", "week", "month", "year", "decade")
+          type: string
+    returns:
+      Success:
+        schema:
+          type: string
+      BadTime:
+        schema:
+          type: boolean
+      AlreadyExists:
+        schema:
+          type: boolean
+      AuthError:
+        schema:
+          type: boolean
+      ConnectError:
+        schema:
+          type: boolean
+  'List Schedules':
+    run: app.OpenVAS.app_list_schedules
+    description: Lists schedules
+    parameters:
+        - name: name
+          description: name of the schedule to search for
+          type: string
+    returns:
+      Success:
+        schema:
+          type: object
+      AuthError:
+        schema:
+          type: boolean
+      ConnectError:
+        schema:
+          type: boolean
+  'List Reports':
+    run: app.OpenVAS.app_list_reports
+    description: Lists reports
+    parameters:
+        - name: name
+          description: name of the reports to search for
+          type: string
+    returns:
+      Success:
+        schema:
+          type: object
+      AuthError:
+        schema:
+          type: boolean
+      ConnectError:
+        schema:
+          type: boolean
+  'Download XML Report':
+    run: app.OpenVAS.app_download_report_as_xml
+    description: Downloads report to file
+    parameters:
+        - name: uuid
+          description: uuid of the report to download
+          required: true
+          type: string
+        - name: filename
+          description: filename to write to
+          required: true
+          type: string
+    returns:
+      Success:
+        schema:
+          type: boolean
+      InvalidUUID:
+        schema:
+          type: boolean
+      AuthError:
+        schema:
+          type: boolean
+      ConnectError:
+        schema:
+          type: boolean
+devices:
+  OpenVASManager:
+    description: an instance of an OpenVAS manager
+    fields:
+      - name: username
+        type: string
+        required: true
+        placeholder: enter a username
+      - name: password
+        type: string
+        required: true
+        encrypted: true
+        placeholder: enter a password
+      - name: host
+        type: string
+        required: true
+        placeholder: enter a hostname or ip
+      - name: port
+        type: integer
+        required: true
+        placeholder: enter a port number
