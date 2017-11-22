@@ -39,23 +39,6 @@ actions:
       ConnectError:
         schema:
           type: boolean
-  'List Port Lists':
-    run: app.OpenVAS.app_list_port_lists
-    description: Lists port lists
-    parameters:
-        - name: name
-          description: name of the port lists to search for
-          type: string
-    returns:
-      Success:
-        schema:
-          type: object
-      AuthError:
-        schema:
-          type: boolean
-      ConnectError:
-        schema:
-          type: boolean
   'Create Target':
     run: app.OpenVAS.app_create_target
     description: Create a target
@@ -84,6 +67,163 @@ actions:
       AlreadyExists:
         schema:
           type: boolean
+      AuthError:
+        schema:
+          type: boolean
+      ConnectError:
+        schema:
+          type: boolean
+  'Create Schedule':
+    run: app.OpenVAS.app_create_schedule
+    description: Create a schedule
+    parameters:
+        - name: name
+          description: name of the schedule
+          required: true
+          type: string
+        - name: comment
+          description: comments to add to schedule
+          type: string
+        - name: first_time
+          description: when to run this for the first time; use format "MM/DD/YYYY HH:MM _M" (12h)
+          type: string
+        - name: duration
+          description: how long this task can run for before aborting, units specified below (e.g. 3)
+          type: string
+        - name: duration_unit
+          description: units for duration ("second", "minute", "hour", "day", "week", "month", "year", "decade")
+          type: string
+        - name: period
+          description: how often to run this schedule, units specified below (e.g. 1)
+          type: string
+        - name: period_unit
+          description: units for period ("second", "minute", "hour", "day", "week", "month", "year", "decade")
+          type: string
+        - name: utc_offset
+          description: utc offset of local time in the format "-1:00" or "+0:00"
+          type: string
+    returns:
+      Success:
+        schema:
+          type: string
+      BadTime:
+        schema:
+          type: boolean
+      AlreadyExists:
+        schema:
+          type: boolean
+      AuthError:
+        schema:
+          type: boolean
+      ConnectError:
+        schema:
+          type: boolean
+  'Create HTTP Alert on Finish':
+    run: app.OpenVAS.app_create_http_alert_on_finish
+    description: Create an HTTP GET alert that fires when a task finishes
+    parameters:
+        - name: name
+          description: name of the alert
+          required: true
+          type: string
+        - name: url
+          description: url to send HTTP GET to
+          required: true
+          type: string
+        - name: comment
+          description: comments to add to target
+          type: string
+    returns:
+      Success:
+        schema:
+          type: string
+      AlreadyExists:
+        schema:
+          type: boolean
+      AuthError:
+        schema:
+          type: boolean
+      ConnectError:
+        schema:
+          type: boolean
+  'Create Task':
+    run: app.OpenVAS.app_create_task
+    description: Create a target
+    parameters:
+        - name: name
+          description: name of the target
+          required: true
+          type: string
+        - name: config_uuid
+          description: uuid of the config to use
+          required: true
+          type: string
+          default: 'daba56c8-73ec-11df-a475-002264764cea'
+        - name: target_uuid
+          description: uuid of the target to scan
+          required: true
+          type: string
+        - name: scanner_uuid
+          description: uuid of the scanner to use
+          type: string
+          default: '08b69003-5fc2-4037-a479-93b440211c73'
+        - name: comment
+          description: comments to add to target
+          type: string
+        - name: schedule_uuid
+          description: uuid of the schedule to use
+          type: string
+        - name: alert_uuid
+          description: uuid of the schedule to use
+          type: string
+    returns:
+      Success:
+        schema:
+          type: string
+      InvalidUUID:
+        schema:
+          type: boolean
+      AlreadyExists:
+        schema:
+          type: boolean
+      AuthError:
+        schema:
+          type: boolean
+      ConnectError:
+        schema:
+          type: boolean
+  'Start Task':
+    run: app.OpenVAS.app_start_task
+    description: Start a task
+    parameters:
+        - name: uuid
+          description: uuid of the task to start
+          required: true
+          type: string
+    returns:
+      Success:
+        schema:
+          type: string
+      InvalidUUID:
+        schema:
+          type: boolean
+      AuthError:
+        schema:
+          type: boolean
+      ConnectError:
+        schema:
+          type: boolean
+  'List Port Lists':
+    run: app.OpenVAS.app_list_port_lists
+    description: Lists port lists
+    parameters:
+        - name: name
+          description: name of the port lists to search for
+          type: string
+    returns:
+      Success:
+        schema:
+          type: object
       AuthError:
         schema:
           type: boolean
@@ -141,41 +281,17 @@ actions:
       ConnectError:
         schema:
           type: boolean
-  'Create Task':
-    run: app.OpenVAS.app_create_task
-    description: Create a target
+  'List Schedules':
+    run: app.OpenVAS.app_list_schedules
+    description: Lists schedules
     parameters:
         - name: name
-          description: name of the target
-          required: true
-          type: string
-        - name: config_uuid
-          description: uuid of the config to use
-          required: true
-          type: string
-        - name: target_uuid
-          description: uuid of the target to scan
-          required: true
-          type: string
-        - name: scanner_uuid
-          description: uuid of the scanner to use
-          type: string
-        - name: comment
-          description: comments to add to target
-          type: string
-        - name: schedule_uuid
-          description: uuid of the schedule to use
+          description: name of the schedule to search for
           type: string
     returns:
       Success:
         schema:
-          type: string
-      InvalidUUID:
-        schema:
-          type: boolean
-      AlreadyExists:
-        schema:
-          type: boolean
+          type: object
       AuthError:
         schema:
           type: boolean
@@ -188,86 +304,6 @@ actions:
     parameters:
         - name: name
           description: name of the tasks to search for
-          type: string
-    returns:
-      Success:
-        schema:
-          type: object
-      AuthError:
-        schema:
-          type: boolean
-      ConnectError:
-        schema:
-          type: boolean
-  'Start Task':
-    run: app.OpenVAS.app_start_task
-    description: Start a task
-    parameters:
-        - name: uuid
-          description: uuid of the task to start
-          required: true
-          type: string
-    returns:
-      Success:
-        schema:
-          type: string
-      InvalidUUID:
-        schema:
-          type: boolean
-      AuthError:
-        schema:
-          type: boolean
-      ConnectError:
-        schema:
-          type: boolean
-  'Create Schedule':
-    run: app.OpenVAS.app_create_schedule
-    description: Create a schedule
-    parameters:
-        - name: name
-          description: name of the schedule
-          required: true
-          type: string
-        - name: comment
-          description: comments to add to schedule
-          type: string
-        - name: first_time
-          description: when to run this for the first time; use format "MM/DD/YYYY HH:MM _M" (12h)
-          type: string
-        - name: duration
-          description: how long this task can run for before aborting, units specified below (e.g. 3)
-          type: string
-        - name: duration_unit
-          description: units for duration ("second", "minute", "hour", "day", "week", "month", "year", "decade")
-          type: string
-        - name: period
-          description: how often to run this schedule, units specified below (e.g. 1)
-          type: string
-        - name: period_unit
-          description: units for period ("second", "minute", "hour", "day", "week", "month", "year", "decade")
-          type: string
-    returns:
-      Success:
-        schema:
-          type: string
-      BadTime:
-        schema:
-          type: boolean
-      AlreadyExists:
-        schema:
-          type: boolean
-      AuthError:
-        schema:
-          type: boolean
-      ConnectError:
-        schema:
-          type: boolean
-  'List Schedules':
-    run: app.OpenVAS.app_list_schedules
-    description: Lists schedules
-    parameters:
-        - name: name
-          description: name of the schedule to search for
           type: string
     returns:
       Success:
@@ -321,6 +357,61 @@ actions:
       ConnectError:
         schema:
           type: boolean
+  'Parse XML to CSV':
+    run: app.OpenVAS.parse_xml_to_csv
+    description: parses a downloaded xml report to csv
+    parameters:
+        - name: xml_filename
+          description: name of the xml report to parse
+          required: true
+          type: string
+        - name: csv_filename
+          description: name of the csv report to output
+          required: true
+          type: string
+        - name: ips_only
+          description: whether or not to only return the IPs scanned
+          type: boolean
+          default: false
+        - name: hostname
+          description: used to filter on a single hostname
+          type: string
+        - name: min_severity
+          description: minimum severity to show from 0 to 10
+          type: number
+#          minimum: 0.0
+#          maximum: 10.0
+        - name: max_severity
+          description: maximum severity to show from 0 to 10
+          type: number
+#          minimum: 0.0
+#          maximum: 10.0
+        - name: threat_level
+          description: show only the specified threat level
+          type: string
+          enum: ['Log', 'Low', 'Medium', 'High', 'Critical']
+        - name: matchfile
+          description: csv file with the lines "host,port1,port2,etc." to check results against
+          type: string
+    returns:
+      Success:
+        schema:
+          type: string
+#  'Test Event Action':
+#    run: app.OpenVAS.test_event_action
+#    event: pull_down
+#    description: Test an event action
+#    returns:
+#      Success:
+#        schema:
+#          type: object
+#  'Dummy Action':
+#    run: app.OpenVAS.dummy_action
+#    description: dummy
+#    returns:
+#      Success:
+#        schema:
+#          type: boolean
 devices:
   OpenVASManager:
     description: an instance of an OpenVAS manager

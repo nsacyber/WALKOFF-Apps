@@ -206,7 +206,7 @@ class Client(object):
         return self._create(request)
 
     def create_task(self, name, config_uuid, target_uuid,
-                    scanner_uuid=None, comment=None, schedule_uuid=None):
+                    scanner_uuid=None, comment=None, schedule_uuid=None, alert_uuid=None):
         """Create a task."""
 
         if scanner_uuid is None:
@@ -227,6 +227,9 @@ class Client(object):
 
         if schedule_uuid is not None:
             data.update({"schedule": {"@id": schedule_uuid}})
+
+        if alert_uuid is not None:
+            data.update({"alert": {"@id": alert_uuid}})
 
         if comment is not None:
             data.update({"comment": comment})
@@ -360,6 +363,39 @@ class Client(object):
     def delete_schedule(self, uuid):
         """Delete a schedule."""
         return self._delete('schedule', uuid=uuid)
+
+    def create_http_alert_when_finished(self, name, url, comment=None):
+
+        data = {
+            "name": name
+        }
+
+        if comment is not None:
+            data["comment"] = comment
+
+        data["condition"] = {
+            "#text": "Always"
+        }
+
+        data["event"] = {
+            "#text": "Task run status changed",
+            "data": {
+                "#text": "Stopped",
+                "name": "status"
+            }
+        }
+
+        data["method"] = {
+            "#text": "HTTP Get",
+            "data": {
+                "#text": url,
+                "name": "URL"
+            }
+        }
+
+        request = dict_to_lxml("create_alert", data)
+
+        return self._create(request)
 
     def _command(self, request, cb=None):
         """Send, build and validate response."""
