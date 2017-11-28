@@ -380,7 +380,7 @@ class Client(object):
         data["event"] = {
             "#text": "Task run status changed",
             "data": {
-                "#text": "Stopped",
+                "#text": "Done",
                 "name": "status"
             }
         }

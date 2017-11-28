@@ -87,21 +87,25 @@ actions:
         - name: first_time
           description: when to run this for the first time; use format "MM/DD/YYYY HH:MM _M" (12h)
           type: string
+        - name: local_server_time
+          description: whether to use the local server time or UTC
+          type: boolean
         - name: duration
           description: how long this task can run for before aborting, units specified below (e.g. 3)
-          type: string
+          type: number
+          minimum: 0
         - name: duration_unit
-          description: units for duration ("second", "minute", "hour", "day", "week", "month", "year", "decade")
+          description: units for duration
           type: string
+          enum: ["second", "minute", "hour", "day", "week", "month", "year", "decade"]
         - name: period
           description: how often to run this schedule, units specified below (e.g. 1)
-          type: string
+          type: number
+          minimum: 0
         - name: period_unit
-          description: units for period ("second", "minute", "hour", "day", "week", "month", "year", "decade")
+          description: units for period
           type: string
-        - name: utc_offset
-          description: utc offset of local time in the format "-1:00" or "+0:00"
-          type: string
+          enum: ["second", "minute", "hour", "day", "week", "month", "year", "decade"]
     returns:
       Success:
         schema:
@@ -118,34 +122,34 @@ actions:
       ConnectError:
         schema:
           type: boolean
-  'Create HTTP Alert on Finish':
-    run: app.OpenVAS.app_create_http_alert_on_finish
-    description: Create an HTTP GET alert that fires when a task finishes
-    parameters:
-        - name: name
-          description: name of the alert
-          required: true
-          type: string
-        - name: url
-          description: url to send HTTP GET to
-          required: true
-          type: string
-        - name: comment
-          description: comments to add to target
-          type: string
-    returns:
-      Success:
-        schema:
-          type: string
-      AlreadyExists:
-        schema:
-          type: boolean
-      AuthError:
-        schema:
-          type: boolean
-      ConnectError:
-        schema:
-          type: boolean
+#  'Create HTTP Alert on Finish':
+#    run: app.OpenVAS.app_create_http_alert_on_finish
+#    description: Create an HTTP GET alert that fires when a task finishes
+#    parameters:
+#        - name: name
+#          description: name of the alert
+#          required: true
+#          type: string
+#        - name: url
+#          description: url to send HTTP GET to
+#          required: true
+#          type: string
+#        - name: comment
+#          description: comments to add to target
+#          type: string
+#    returns:
+#      Success:
+#        schema:
+#          type: string
+#      AlreadyExists:
+#        schema:
+#          type: boolean
+#      AuthError:
+#        schema:
+#          type: boolean
+#      ConnectError:
+#        schema:
+#          type: boolean
   'Create Task':
     run: app.OpenVAS.app_create_task
     description: Create a target
@@ -379,13 +383,13 @@ actions:
         - name: min_severity
           description: minimum severity to show from 0 to 10
           type: number
-#          minimum: 0.0
-#          maximum: 10.0
+          minimum: 0.0
+          maximum: 10.0
         - name: max_severity
           description: maximum severity to show from 0 to 10
           type: number
-#          minimum: 0.0
-#          maximum: 10.0
+          minimum: 0.0
+          maximum: 10.0
         - name: threat_level
           description: show only the specified threat level
           type: string

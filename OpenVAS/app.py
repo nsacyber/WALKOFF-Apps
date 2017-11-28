@@ -2,6 +2,8 @@ import logging
 from apps import App, event, action
 from apps.OpenVAS.pvsl import Client, exceptions
 from datetime import datetime
+import pytz
+from tzlocal import get_localzone
 import subprocess
 
 # from apps.OpenVAS.events import pull_down
@@ -68,8 +70,9 @@ class OpenVAS(App):
             return False, "ConnectError"
 
     @action
-    def app_create_schedule(self, name, comment=None, first_time=None, duration=None, duration_unit=None, period=None,
-                            period_unit=None, utc_offset=None):
+    def app_create_schedule(self, name, comment=None, first_time=None, local_server_time=False, duration=None,
+                            duration_unit=None, period=None,
+                            period_unit=None):
         """
         Creates a new schedule
         :param name: Name of the schedule
@@ -79,27 +82,22 @@ class OpenVAS(App):
         :param duration_unit: (Optional) Units for duration
         :param period: (Optional) How often to run the task
         :param period_unit: (Optional) Units for period
-        :param utc_offset: (Optional) UTC offset for local time in the format "+1:00" or "-1:00"
+        :param local_server_time: (Optional) UTC offset for local time in the format "+1:00" or "-1:00"
         :return: uuid of created schedule
         """
 
+        time_json = None
+        local_zone = None
         if first_time is not None:
             try:
                 dt = datetime.strptime(first_time, '%m/%d/%Y %I:%M %p')
 
-                direction = 1
-                offset_h = 0
-                offset_m = 0
-                if utc_offset is not None:
-                    if utc_offset[:1] == "-":
-                        direction = -1
-                    tz = datetime.strptime(utc_offset[1:], '%I:%M')
-                    offset_h = direction * tz.hour
-                    offset_m = direction * tz.minute
+                if local_server_time is not False:
+                    local_zone = get_localzone().zone
 
                 time_json = {
-                    "minute": dt.minute + offset_m,
-                    "hour": dt.hour + offset_h,
+                    "minute": dt.minute,
+                    "hour": dt.hour,
                     "day_of_month": dt.day,
                     "month": dt.month,
                     "year": dt.year
@@ -114,14 +112,12 @@ class OpenVAS(App):
         if not self.valid_num(duration) or not self.valid_num(period):
             return False, "BadTime"
 
-        if not self.valid_timetype(duration_unit) or not self.valid_timetype(period_unit):
-            return False, "BadTime"
-
         try:
             with Client(self.h, username=self.u, password=self.device.get_encrypted_field('password'),
                         port=self.p) as cli:
                 r = cli.create_schedule(name, comment=comment, first_time=time_json, duration=duration,
-                                        duration_unit=duration_unit, period=period, period_unit=period_unit)
+                                        duration_unit=duration_unit, period=period, period_unit=period_unit,
+                                        timezone=local_zone)
                 return r.data['@id']
         except exceptions.ElementExists:
             return False, "AlreadyExists"
@@ -130,26 +126,26 @@ class OpenVAS(App):
         except IOError:
             return False, "ConnectError"
 
-    @action
-    def app_create_http_alert_on_finish(self, name, url, comment=None):
-        """
-        Creates an HTTP GET alert that fires when a task is finished
-        :param name: Name of the new alert
-        :param url: URL to send an HTTP GET request to
-        :param comment: (Optional) Comment to add
-        :return: uuid of the created alert
-        """
-        try:
-            with Client(self.h, username=self.u, password=self.device.get_encrypted_field('password'),
-                        port=self.p) as cli:
-                r = cli.create_http_alert_when_finished(name, url, comment=comment)
-                return r.data['@id']
-        except exceptions.ElementExists:
-            return False, "AlreadyExists"
-        except exceptions.AuthenticationError:
-            return False, "AuthError"
-        except IOError:
-            return False, "ConnectError"
+    # @action
+    # def app_create_http_alert_on_finish(self, name, url, comment=None):
+    #     """
+    #     Creates an HTTP GET alert that fires when a task is finished
+    #     :param name: Name of the new alert
+    #     :param url: URL to send an HTTP GET request to
+    #     :param comment: (Optional) Comment to add
+    #     :return: uuid of the created alert
+    #     """
+    #     try:
+    #         with Client(self.h, username=self.u, password=self.device.get_encrypted_field('password'),
+    #                     port=self.p) as cli:
+    #             r = cli.create_http_alert_when_finished(name, url, comment=comment)
+    #             return r.data['@id']
+    #     except exceptions.ElementExists:
+    #         return False, "AlreadyExists"
+    #     except exceptions.AuthenticationError:
+    #         return False, "AuthError"
+    #     except IOError:
+    #         return False, "ConnectError"
 
     @action
     def app_create_task(self, name, target_uuid, config_uuid='daba56c8-73ec-11df-a475-002264764cea', scanner_uuid=None,
