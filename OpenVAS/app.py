@@ -1,5 +1,5 @@
 import logging
-from apps import App, event, action
+from apps import App, action
 from apps.OpenVAS.pvsl import Client, exceptions
 from datetime import datetime
 import pytz
