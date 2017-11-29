@@ -400,7 +400,7 @@ actions:
     returns:
       Success:
         schema:
-          type: string
+          type: boolean
 #  'Test Event Action':
 #    run: app.OpenVAS.test_event_action
 #    event: pull_down
