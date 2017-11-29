@@ -29,7 +29,7 @@ actions:
     run: main.Main.clear_blacklist
     description: Clears the blacklist
   run scan:
-    run: main.Main.run_scan
+    run: main.run_scan
     description: Runs an nmap scan and returns the results in XML
     parameters:
       - name: target
@@ -68,7 +68,7 @@ actions:
                     banner:
                       type: string
   scan results as HTML:
-    run: main.Main.scan_results_as_html
+    run: main.scan_results_as_html
     description: Returns the scan results from 'run scan' as an HTML table
     parameters:
       - name: results
@@ -129,3 +129,69 @@ actions:
       Success:
         schema:
           type: integer
+  ports_and_hosts_from_json:
+    run: main.ports_and_hosts_from_json
+    description: returns an object with two csv strings 'hosts' and 'ports' from a nmap scan
+    parameters:
+      - name: string
+        required: true
+        description: json string or filename
+        type: string
+      - name: is_file
+        default: false
+        description: whether or not first input is a filename or not
+        type: boolean
+    returns:
+      Success:
+        schema:
+          type: string
+      NotExists:
+        schema:
+          type: boolean
+      JSONError:
+        schema:
+          type: boolean
+  hosts_from_json:
+    run: main.hosts_from_json
+    description: returns a csv string of hosts from an nmap scan
+    parameters:
+      - name: string
+        required: true
+        description: json string or filename
+        type: string
+      - name: is_file
+        default: false
+        description: whether or not first input is a filename or not
+        type: boolean
+    returns:
+      Success:
+        schema:
+          type: string
+      NotExists:
+        schema:
+          type: boolean
+      JSONError:
+        schema:
+          type: boolean
+  ports_from_json:
+    run: main.ports_from_json
+    description: returns a csv string of ports from an nmap scan
+    parameters:
+      - name: string
+        required: true
+        description: json string or filename
+        type: string
+      - name: is_file
+        default: false
+        description: whether or not first input is a filename or not
+        type: boolean
+    returns:
+      Success:
+        schema:
+          type: string
+      NotExists:
+        schema:
+          type: boolean
+      JSONError:
+        schema:
+          type: boolean
