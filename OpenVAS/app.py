@@ -361,19 +361,20 @@ class OpenVAS(App):
         goxargs = ["./apps/OpenVAS/goxparse/goxparse.py", xml_filename]
 
         if ips_only:
-            goxargs += "-ips"
+            goxargs += ["-ips"]
         if hostname is not None:
-            goxargs += "-host " + hostname
+            goxargs += ["-host", hostname]
         if min_severity is not None:
-            goxargs += "-cvssmin " + min_severity
+            goxargs += ["-cvssmin", str(min_severity)]
         if max_severity is not None:
-            goxargs += "-cvssmax " + max_severity
+            goxargs += ["-cvssmax", str(max_severity)]
         if threat_level is not None:
-            goxargs += "-threatlevel " + threat_level
+            goxargs += ["-threatlevel", threat_level]
         if matchfile is not None:
-            goxargs += "-matchfile " + matchfile
+            goxargs += ["-matchfile", matchfile]
 
         with open(csv_filename, 'w') as f:
+            print(goxargs)
             subprocess.Popen(goxargs, stdout=f)
             return True, 'Success'
 
