@@ -62,26 +62,28 @@ actions:
           type: string
           enum: [Not connected]
 devices:
-  SMTP:
-    - name: username
-      type: string
-      description: Username for the SFTP server
-      placeholder: username
-      required: true
-    - name: password
-      type: string
-      description: Password for the SFTP server
-      encrypted: true
-      placeholder: password
-      required: true
-    - name: ip
-      description: IP address of the SFTP server
-      type: string
-      placehold: ip address
-      required: true
-    - name: port
-      description: Port of the SFTP server
-      type: integer
-      minimum: 1
-      maximum: 65355
-      required: true
+  SFTP:
+    description: Secure File Transfer Protocol connection
+    fields:
+      - name: username
+        type: string
+        description: Username for the SFTP server
+        placeholder: username
+        required: true
+      - name: password
+        type: string
+        description: Password for the SFTP server
+        encrypted: true
+        placeholder: password
+        required: true
+      - name: ip
+        description: IP address of the SFTP server
+        type: string
+        placeholder: ip address
+        required: true
+      - name: port
+        description: Port of the SFTP server
+        type: integer
+        minimum: 1
+        maximum: 65355
+        required: true
