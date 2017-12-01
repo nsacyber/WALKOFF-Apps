@@ -1,0 +1,83 @@
+walkoff: '0.1'
+info:
+  version: 0.1.0
+  title: LinuxShell
+  description: An app providing SSH services.
+  contact:
+    name: Walkoff Team
+  license:
+    name: Creative Commons
+actions:
+  Execute Command:
+    run: app.LinuxShell.execCommand
+    description: Execute command on remote server with SSH client
+    parameters:
+      - name: args
+        required: true
+        type: string
+        description: json array of arguments
+    returns:
+      Success:
+        schema:
+          type: string
+  Secure Copy:
+    run: app.LinuxShell.secureCopy
+    description: Copy local file to remove serer
+    parameters:
+      - name: local_path
+        required: true
+        type: string
+        description: local path of the file to copy
+      - name: remote_path
+        required: true
+        type: string
+        description: remote path of the file destination
+    returns:
+      Success:
+        schema:
+          type: boolean
+      Failure:
+        schema:
+          type: boolean
+  Run Script Remotely:
+    run: app.LinuxShell.runLocalScriptRemotely
+    description: runs the specified script on the remote server
+    parameters:
+      - name: local_path
+        required: true
+        type: string
+        description: local path of the script to run
+    returns:
+      Success:
+        schema:
+          type: string
+  Shutdown:
+    run: app.LinuxShell.shutdown
+    description: closes the SSH connection
+    returns:
+      Success:
+        schema:
+          type: boolean
+devices:
+  remote server:
+    description: remote server to SSH to
+    fields:
+      - name: ip
+        type: string
+        description: ip or hostname of the remote server
+        required: true
+      - name: port
+        type: integer
+        description: port number
+        minimum: 1
+        maximum: 65535
+        required: true
+      - name: username
+        type: string
+        description: username to login with
+        required: true
+      - name: password
+        type: string
+        description: password to login with
+        required: true
+        encrypted: true
