@@ -401,6 +401,22 @@ actions:
       Success:
         schema:
           type: boolean
+  'Parse CSV to JSON':
+    run: app.OpenVAS.parse_csv_to_json
+    description: parses csv results to json
+    parameters:
+        - name: csv_filename
+          description: name of the csv report to parse
+          required: true
+          type: string
+        - name: json_filename
+          description: name of the json report to output
+          required: true
+          type: string
+    returns:
+      Success:
+        schema:
+          type: boolean
 #  'Test Event Action':
 #    run: app.OpenVAS.test_event_action
 #    event: pull_down

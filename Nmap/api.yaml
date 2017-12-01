@@ -28,6 +28,18 @@ actions:
   clear_blacklist:
     run: main.Main.clear_blacklist
     description: Clears the blacklist
+  graphs from results:
+    run: main.graph_from_results
+    description: creates json for d3
+    parameters:
+      - name: nmap_out
+        required: true
+        type: string
+        description: output of run_scan action
+    returns:
+      Success:
+        schema:
+          type: object
   run scan:
     run: main.run_scan
     description: Runs an nmap scan and returns the results in XML
@@ -38,6 +50,18 @@ actions:
         description: The target (or targets in CIDR notation) to scan
       - name: options
         type: string
+    returns:
+      Success:
+        schema:
+          type: object
+  scan results as json:
+    run: main.scan_results_as_json
+    description: transforms nmap results into json
+    parameters:
+      - name: nmap_out
+        required: true
+        type: string
+        description: output of run_scan action
     returns:
       Success:
         schema:
@@ -132,50 +156,6 @@ actions:
   ports_and_hosts_from_json:
     run: main.ports_and_hosts_from_json
     description: returns an object with two csv strings 'hosts' and 'ports' from a nmap scan
-    parameters:
-      - name: string
-        required: true
-        description: json string or filename
-        type: string
-      - name: is_file
-        default: false
-        description: whether or not first input is a filename or not
-        type: boolean
-    returns:
-      Success:
-        schema:
-          type: string
-      NotExists:
-        schema:
-          type: boolean
-      JSONError:
-        schema:
-          type: boolean
-  hosts_from_json:
-    run: main.hosts_from_json
-    description: returns a csv string of hosts from an nmap scan
-    parameters:
-      - name: string
-        required: true
-        description: json string or filename
-        type: string
-      - name: is_file
-        default: false
-        description: whether or not first input is a filename or not
-        type: boolean
-    returns:
-      Success:
-        schema:
-          type: string
-      NotExists:
-        schema:
-          type: boolean
-      JSONError:
-        schema:
-          type: boolean
-  ports_from_json:
-    run: main.ports_from_json
-    description: returns a csv string of ports from an nmap scan
     parameters:
       - name: string
         required: true

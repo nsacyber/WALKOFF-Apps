@@ -1,6 +1,8 @@
 from apps import App, action
 from libnmap.process import NmapProcess
 from libnmap.parser import NmapParser
+import networkx
+from networkx.readwrite import json_graph
 from jinja2 import Environment
 import json
 import sys
@@ -10,10 +12,14 @@ import sys
 def run_scan(target, options):
     nmap_proc = NmapProcess(target, options)
     nmap_proc.run()
-    xx = nmap_proc.stdout
+    return nmap_proc.stdout
+
+
+@action
+def scan_results_as_json(nmap_out):
     if sys.version_info[0] == 2:
-        xx = xx.encode('utf-8')
-    nmap_report = NmapParser.parse(nmap_data=xx, data_type='XML')
+        nmap_out = nmap_out.encode('utf-8')
+    nmap_report = NmapParser.parse(nmap_data=nmap_out, data_type='XML')
     ret = [{'name': host.hostnames.pop() if len(host.hostnames) else host.address,
             'address': host.address,
             'services': [{'port': service.port,
@@ -24,9 +30,21 @@ def run_scan(target, options):
            for host in nmap_report.hosts]
     return ret
 
+
+@action
+def graph_from_results(nmap_out):
+    graph = networkx.Graph()
+    my_ip = nmap_out.hosts[-1].address
+    for host in nmap_out.hosts:
+        if host.is_up():
+            graph.add_node(host.address)
+            graph.add_edge(host.address, my_ip)
+    j_graph = json_graph.node_link_data(graph)
+    return j_graph
+
+
 @action
 def ports_and_hosts_from_json(string, is_file=False):
-
     try:
         if is_file:
             with open(string) as j:
@@ -51,6 +69,7 @@ def ports_and_hosts_from_json(string, is_file=False):
     r["hosts"] = ",".join(r["hosts"])
 
     return r
+
 
 @action
 def scan_results_as_html(self, results):
@@ -91,50 +110,6 @@ def scan_results_as_html(self, results):
         </table>
     '''
     return Environment().from_string(html).render(results=results)
-
-@action
-def hosts_from_json(string, is_file=False):
-
-    try:
-        if is_file:
-            with open(string) as j:
-                obj = json.load(j)
-        else:
-            obj = json.loads(string)
-    except IOError:
-        return False, 'NotExists'
-    except (AttributeError, ValueError) as e:
-        return False, 'JSONError'
-
-    hosts = []
-    for host in obj:
-        hosts.append(host["address"])
-
-    return ",".join(hosts)
-
-@action
-def ports_from_json(string, is_file=False):
-
-    try:
-        if is_file:
-            with open(string) as j:
-                obj = json.load(j)
-        else:
-            obj = json.loads(string)
-    except IOError:
-        return False, 'NotExists'
-    except (AttributeError, ValueError) as e:
-        return False, 'JSONError'
-
-    ports = []
-    for host in obj:
-        for svc in host["services"]:
-            if svc["protocol"] == "tcp":
-                ports.append("T:" + str(svc["port"]))
-            elif svc["protocol"] == "udp":
-                ports.append("U:" + str(svc["port"]))
-
-    return ",".join(ports)
 
 
 class Main(App):

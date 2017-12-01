@@ -2,9 +2,10 @@ import logging
 from apps import App, action
 from apps.OpenVAS.pvsl import Client, exceptions
 from datetime import datetime
-import pytz
+import csv
 from tzlocal import get_localzone
 import subprocess
+import json
 
 # from apps.OpenVAS.events import pull_down
 
@@ -377,6 +378,17 @@ class OpenVAS(App):
             print(goxargs)
             subprocess.Popen(goxargs, stdout=f)
             return True, 'Success'
+
+    @action
+    def parse_csv_to_json(self, csv_filename, json_filename):
+        with open(csv_filename, 'r') as f:
+            reader = csv.reader(f)
+            header = next(reader)
+            header = tuple(header)
+            reader = csv.DictReader(f, header)
+            json.dump([row for row in reader], json_filename)
+            return True, 'Success'
+
 
     # @event(pull_down)
     # def test_event_action(self, data):
