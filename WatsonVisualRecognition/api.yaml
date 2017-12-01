@@ -82,9 +82,11 @@ actions:
           type: string
 devices:
   Watson:
-    - name: key
-      type: string
-      description: API key for Watson
-      encrypted: true
-      placeholder: API key
-      required: true
+    description: IBM Bluemix Watson App API key
+    fields:
+      - name: key
+        type: string
+        description: API key for Watson
+        encrypted: true
+        placeholder: API key
+        required: true

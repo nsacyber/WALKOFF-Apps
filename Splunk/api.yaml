@@ -53,25 +53,27 @@ actions:
           type: object
 devices:
   Splunk:
-    - name: username
-      type: string
-      description: Username for Splunk
-      placeholder: username
-      required: true
-    - name: password
-      type: string
-      description: Password for Splunk
-      encrypted: true
-      placeholder: password
-      required: true
-    - name: ip
-      description: IP address of Splunk
-      type: string
-      placehold: ip address
-      required: true
-    - name: port
-      description: Port of Splunk
-      type: integer
-      minimum: 1
-      maximum: 65355
-      required: true
+    description: Splunk instance
+    fields:
+      - name: username
+        type: string
+        description: Username for Splunk
+        placeholder: username
+        required: true
+      - name: password
+        type: string
+        description: Password for Splunk
+        encrypted: true
+        placeholder: password
+        required: true
+      - name: ip
+        description: IP address of Splunk
+        type: string
+        placeholder: ip address
+        required: true
+      - name: port
+        description: Port of Splunk
+        type: integer
+        minimum: 1
+        maximum: 65355
+        required: true

@@ -23,7 +23,7 @@ actions:
         description: repeated method
         schema:
           type: string
-  'save screenshot':
+  save screenshot:
     run: main.Main.save_screenshot
     description: Saves a screenshot to a given path
     parameters:

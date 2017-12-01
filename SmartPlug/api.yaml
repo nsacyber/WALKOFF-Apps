@@ -30,8 +30,10 @@ actions:
           type: string
 devices:
   Plug:
-    - name: ip
-      description: IP address of the plug
-      type: string
-      placehold: ip address
-      required: true
+    description: HS100 Smart plug
+    fields:
+      - name: ip
+        description: IP address of the plug
+        type: string
+        placehold: ip address
+        required: true
