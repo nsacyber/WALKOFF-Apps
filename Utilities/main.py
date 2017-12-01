@@ -1,9 +1,9 @@
-from apps import action, event
+from apps import action#, event
 import time
 import json
 import csv
 import sys
-from apps.Utilities.events import wait
+# from apps.Utilities.events import wait
 
 
 @action
@@ -76,7 +76,7 @@ def write_ips_to_csv(ips_reference, path):
                 else:
                     writer.writerow({'Host': ip})
 
-
-@event(wait)
-def wait_for_event(data):
-    return 'success'
+#
+# @event(wait)
+# def wait_for_event(data):
+#     return 'success'
