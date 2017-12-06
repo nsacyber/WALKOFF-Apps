@@ -1,0 +1,72 @@
+walkoff: '0.1'
+info:
+  version: 1.0.0
+  title: CyberChef App
+  description: Executes Cyberchef operations within WALKOFF
+  contact:
+    name: Walkoff Team
+  license:
+    name: Creative Commons
+actions:
+  'run cyberchef action':
+    run: app.CyberChefApp.run_cyberchef_function
+    description: Basic function which takes in parameter and returns it
+    parameters:
+    - name: input
+      description: Input to be evaluated
+      required: true
+      type: string
+    - name: action
+      description: Action to be taken
+      required: true
+      type: string
+      enum: ["To Hexdump", "From Hexdump", "To Hex", "From Hex", "To Charcode", "From Charcode", "To Decimal", "From Decimal", "To Binary", "From Binary", "To Octal", "From Octal",
+      "To Base64", "From Base64", "Show Base64 Offsets", "To Base32", "From Base32", "To Base58", "From Base58", "To Base", "From Base", "To BCD", "From BCD", "To HTML Entity", "From HTML Entity",
+      "URL Encode", "URL Decode", "Unescape Unicode Characters", "To Quoted Printable", "From Quoted Printable", "To Punycode", "From Punycode", "To Hex Content", "From Hex Content",
+      "Parse ASN1 hex string", "Change IP format", "Encode text", "Decode text", "Swap endianness", "AES Encrypt", "AES Decrypt", "Blowfish Encrypt", "Blowfish Decrypt", "DES Encrypt",
+      "DES Decrypt", "Triple DES Encrypt", "Triple DES Decrypt", "Rabbit Encrypt", "Rabbit Decrypt", "RC4", "RC4 Drop", "ROT13", "ROT47", "XOR", "XOR Brute Force", "Vigenere Encode", "Vigenere Decode",
+      "To Morse Code", "From Morse Code", "Bifid Cipher Encode", "Bifid Cipher Decode", "Affine Cipher Encode", "Affine Cipher Decode", "Atbash Cipher", "Substitute", "Derive PBKDF2 key",
+      "Derive EVP key", "Parse X509 certificate", "PEM to Hex", "Hex to PEM", "Hex to Object Identifier", "Object Identifier to Hex", "HTTP request", "Strip HTTP headers", "Parse User Agent",
+      "Parse IP range", "Parse IPv6 address", "Parse IPv4 header", "Parse URI", "Format MAC addresses", "Group IP addresses", "Encode NetBIOS Name",
+      "Decode NetBIOS Name", "Diff", "Remove Whitespace", "Remove null bytes", "To Upper Case", "To Lower Case", "Add line numbers",
+      "Remove line numbers", "Reverse", "Sort", "Unique", "Split", "Filter", "Head", "Tail", "Count Occurances", "Expand Alphabet Range", "Drop bytes", "Take bytes", "Pad lines", "Find Replace",
+      "Regular expression", "Offset checker", "Convert Distance", "Convert area", "Convert mass", "Convert speed", "Convert data units", "Parse UNIX file permissions",
+      "Parse colour code", "Escape string", "Unescape String", "Parse DateTime", "Translate DateTime Format", "From UNIX Timestamp", "To UNIX Timestamp", "Windows Filetime to UNIX Timestamp",
+      "UNIX Timestamp to Windows Filetime", "Extract dates", "Strings", "Extract IP addresses", "Extract email addresses", "Extract MAC addresses", "Extract URLs", "Extract domains",
+      "Extract file paths", "Regular Expression", "XPath expression", "JPath expression", "CSS selector", "Raw Deflate", "Raw Inflate", "Zlib Deflate", "Zlib Inflate",
+      "Gzip", "Gunzip", "Zip", "Unzip", "Bzip2 Decompress", "Tar", "Untar", "Analyse hash", "Generate all hashes", "MD2", "MD4", "MD5", "MD6", "SHA0", "SHA1", "SHA2", "SHA3", "Keccak", "Shake",
+      "RIPEMD", "HAS160", "Whirlpool", "Snefru", "HMAC", "Fletcher8 Checksum", "Fletcher16 Checksum", "Fletcher32 Checksum", "Fletcher64 Checksum", "Adler32 Checksum", "CRC16 Checksum", "CRC32 Checksum",
+      "TCPIP Checksum", "Syntax highlighter", "Generic Code Beautify", "JavaScript Parser", "JavaScript Beautify", "JavaScript Minify", "JSON Beautify", "JSON Minify", "XML Beautify", "XML Minify",
+      "SQL Beautify", "SQL Minify", "CSS Beautify", "CSS Minify", "PHP Deserialize", "Microsoft Script Decoder", "Strip HTML tags",
+      "To Snake case", "To Camel case", "To Kebab case", "Entropy", "Frequency distribution", "Detect File Type", "Scan for Embedded Files", "Disassemble x86", "Generate UUID", "Generate TOTP",
+      "Generate HOTP", "Render Image", "Remove EXIF", "Extract EXIF", "Numberwang",
+      ]
+    - name: args
+      description: Args for the function
+      required: true
+      type: array
+      default: []
+    returns:
+      Success:
+        description: output
+        schema:
+          type: string
+      SuccessNumber:
+        description: output is a number
+        schema:
+          type: number
+      Error:
+        description: cyberchef workflow failed
+        schema:
+          type: string
+
+devices:
+  CyberChefDevice:
+    description: a Cyberchef device
+    fields:
+      - name: CyberChefPath
+        type: string
+        required: true
+        placeholder: enter a path to CyberChef NodeJS Executable
+        default: ".//apps/CyberChef//CyberChef.js"
+

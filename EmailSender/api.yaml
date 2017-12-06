@@ -62,7 +62,7 @@ devices:
       - name: ip
         description: IP address of the SMTP server
         type: string
-        placehold: ip address
+        placeholder: ip address
         required: true
       - name: port
         description: Port of the SMTP server
