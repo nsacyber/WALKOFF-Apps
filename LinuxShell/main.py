@@ -1,8 +1,9 @@
-from apps import App
+from apps import App, action
 import paramiko, socket, os
+from scp import SCPClient
+import hashlib
 
-
-class Main(App):
+class LinuxShellApp(App):
     """
     Initialize the Linux Shell App, which includes initializing the SSH client given the IP address, port, username, and
     password for the remote server
@@ -14,99 +15,81 @@ class Main(App):
         self.ssh = paramiko.SSHClient()
         self.ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
-        device = self.get_device()
-        if device is None:
-            self.ip = ""
-            self.port = 22
-            self.username = ""
-            password = ""
-        else:
-            self.ip = device.ip
-            self.port = device.port
-            self.username = device.username
-            password = device.password
+        self.ip = self.device_fields["ip"]
+        self.port = self.device_fields["port"]
+        self.username = self.device_fields["username"]
 
-        self.ssh.connect(self.ip, self.port, self.username, password)
+        self.ssh.connect(self.ip, self.port, self.username, self.device.get_encrypted_field('password'))
 
-    def execCommand(self, args={}):
+    @action
+    def execCommand(self, command):
         """ Use SSH client to execute commands on the remote server and produce an array of command outputs
         Input:
-            args: A dictionary with the key of 'command' and the value being a String array of commands
+            command: An array of string commands
         Output:
             result: A String array of the command outputs
         """
         result = []
-        if "command" in args:
-            for cmd in args["command"]:
-                stdin, stdout, stderr = self.ssh.exec_command(cmd)
-                output = stdout.read()
-                result.append(output)
-        return str(result)
-
-    def secureCopy(self, args={}):
-        """
-        Use SSH client to execute a scp command to copy a local file to the remote server
-        Input:
-            args: A dictionary with one entry having a key of 'localPath' and the value being the local filepath and another
-                  entry having a key of 'remotePath' and the value being the remote filepath
-        Output:
-            result: A String message of 'SUCCESS' if the file gets copied to the remote server successfully, otherwise, a
-            message of 'UNSUCCESSFUL' if any error occurs while trying to copy the file to the remote server
-        """
-        try:
-            print(os.path.abspath(args['localPath']))
-
-            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            sock.connect((self.ip, self.port))
-            t = paramiko.Transport(sock)
-            t.start_client()
-            t.auth_password(self.username, self.password)
-
-            scp_channel = t.open_session()
-            lf = open(args["localPath"], 'rb')
-
-            scp_channel.exec_command("scp -v -t %s\n"
-                                     % args["remotePath"])
-            print(args["remotePath"])
-            scp_channel.send('C%s %d %s\n'
-                             % (oct(os.stat(args["localPath"]).st_mode)[-4:],
-                                os.stat(args["localPath"])[6],
-                                args["remotePath"].split('/')[-1]))
-
-            scp_channel.sendall(lf.read())
-
-            lf.close()
-            scp_channel.close()
-            t.close()
-            status = "SUCCESS"
-        except Exception as e:
-            print(e)
-            status = "UNSUCCESSFUL"
-        finally:
-            sock.close()
-            return status
-
-    def runLocalScriptRemotely(self, args={}):
-        """ Use SSH client to execute a script on the remote server and produce an array of command outputs
-        Input:
-            args: A dictionary with the key of 'localPath' and the value being the local filepath of the script
-        Output:
-            result: A String array of the command outputs
-        """
-        result = []
-        if "localPath" in args:
-            script = open(args["localPath"], "r").read()
-            cmd = "eval " + script
+        for cmd in command:
             stdin, stdout, stderr = self.ssh.exec_command(cmd)
             output = stdout.read()
             result.append(output)
-        return str(result)
+        return str(result), "Success"
+
+    def file_hash(self, filename):
+        m = hashlib.md5()
+        with open(filename, "rb") as f:
+            buf = f.read()
+            m.update(buf)
+        a = m.hexdigest()
+        return str(a)
+
+    def fileExists(self, localPath, remotePath):
+        cmd = '[[ -f {} ]] && echo "1" || echo "0"; '.format(remotePath + "/" + os.path.basename(localPath))
+        stdin, stdout, stderr = self.ssh.exec_command(cmd)
+        if stdout.read().decode("ascii").strip() == "0":
+            return False
+        return True
+
+    @action
+    def secureCopy(self, localPath, remotePath):
+        if not self.fileExists(localPath, remotePath):
+            localFileHash = self.file_hash(localPath)
+
+            with SCPClient(self.ssh.get_transport()) as scp:
+                scp.put(localPath, remotePath)
+
+
+            cmd = "md5sum {}".format(remotePath + "/" + os.path.basename(localPath))
+
+            stdin, stdout, stderr = self.ssh.exec_command(cmd)
+            if stdout.read().decode("utf-8").split(" ")[0] == localFileHash:
+                return "True", "Success"
+            else:
+                return "Destination file does not match source file", "Error"
+        else:
+            return "False", "FileExists"
+
+    @action
+    def runLocalScriptRemotely(self, localPath):
+        """ Use SSH client to execute a script on the remote server and produce an array of command outputs
+        Input:
+            localPath: the value being the local filepath of the script
+        Output:
+            result: A String array of the command outputs
+        """
+        result = []
+        script = open(localPath, "r").read()
+        cmd = "eval " + script
+        stdin, stdout, stderr = self.ssh.exec_command(cmd)
+        output = stdout.read()
+        result.append(output)
+        return str(result), "Success"
 
     def shutdown(self):
         """
         Close the SSH connection if there is a SSH connection
         """
         if self.ssh:
-            print("SSH Connection Closed")
             self.ssh.close()
         return

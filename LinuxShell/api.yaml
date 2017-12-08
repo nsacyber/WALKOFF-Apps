@@ -1,0 +1,85 @@
+walkoff: '0.1'
+info:
+  version: 1.0.0
+  title: LinuxShell App
+  description: Executes linux shell commands via SSH
+  contact:
+    name: Walkoff Team
+  license:
+    name: Creative Commons
+actions:
+  'Execute Command':
+    run: main.LinuxShellApp.execCommand
+    description: Executes commands via SSH on Linux Host
+    parameters:
+    - name: command
+      description: Array of Commands
+      required: true
+      type: array
+    returns:
+      Success:
+        description: repeated method
+        schema:
+          type: string
+
+  'Secure Copy':
+    run: main.LinuxShellApp.secureCopy
+    description: Use SSH client to execute a scp command to copy a local file to the remote server
+    parameters:
+    - name: localPath
+      description: local path to the file
+      required: true
+      type: string
+    - name: remotePath
+      description: remote path to send the file
+      required: true
+      type: string
+    returns:
+      Success:
+        description: repeated method
+        schema:
+          type: string
+      FileExists:
+        description: file already exists
+        schema:
+          type: string
+      Error:
+        description: could not copy file
+        schema:
+          type: string
+
+  'Execute local script remotely':
+    run: main.LinuxShellApp.runLocalScriptRemotely
+    description: Use SSH client to execute a script on the remote server and produce an array of command outputs
+    parameters:
+    - name: localPath
+      description: local path to the script
+      required: true
+      type: string
+    returns:
+      Success:
+        description: File transfered status
+        schema:
+          type: string
+
+devices:
+  LinuxHostDevice:
+    description: Basic information for host
+    fields:
+      - name: ip
+        type: string
+        required: true
+        placeholder: enter an ip
+      - name: port
+        type: integer
+        required: true
+        default: 22
+        placeholder: enter the port
+      - name: username
+        type: string
+        required: true
+        placeholder: enter a username
+      - name: password
+        type: string
+        encrypted: true
+        placeholder: enter a password
