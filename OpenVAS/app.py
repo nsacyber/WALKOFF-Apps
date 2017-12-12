@@ -103,7 +103,6 @@ class OpenVAS(App):
                     "month": dt.month,
                     "year": dt.year
                 }
-                print(time_json)
             except ValueError:
                 return False, "BadTime"
 
@@ -375,9 +374,9 @@ class OpenVAS(App):
             goxargs += ["-matchfile", matchfile]
 
         with open(csv_filename, 'w') as f:
-            print(goxargs)
-            subprocess.Popen(goxargs, stdout=f)
-            return True, 'Success'
+            subprocess.call(goxargs, stdout=f)
+
+        return True, 'Success'
 
     @action
     def parse_csv_to_json(self, csv_filename, json_filename):
@@ -386,8 +385,12 @@ class OpenVAS(App):
             header = next(reader)
             header = tuple(header)
             reader = csv.DictReader(f, header)
-            json.dump([row for row in reader], json_filename)
-            return True, 'Success'
+            r = []
+            with open(json_filename, 'w') as f2:
+                for row in reader:
+                    r.append(row)
+                json.dump(r, f2)
+        return True, 'Success'
 
 
     # @event(pull_down)
