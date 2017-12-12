@@ -23,9 +23,9 @@ class CyberChefApp(App):
         App.__init__(self, name, device)  # Required to call superconstructor
 
 
-    def setupTemporaryCopy(self, value, action, args):
+    def setupOpTemporaryCopy(self, value, action, args):
         operationsScript = """
-            p1 = module.exports.bake("{0}", [{{ "op":"{1}","args":{2} }}]);
+            p1 = module.exports.bake("{0}", [{{ "op":"{1}","args":{2} }}] );
             Promise.all([p1]).then(values => {{
                 console.log(JSON.stringify(values[0]));
             }});
@@ -40,14 +40,24 @@ class CyberChefApp(App):
         tf.seek(0)
         return tf
 
+    def setupWorkflowTemporaryCopy(self, value, workflow):
+        workflowScript = """
+            p1 = module.exports.bake("{0}", {1} );
+            Promise.all([p1]).then(values => {{
+                console.log(JSON.stringify(values[0]));
+            }});
+        """.format(value, workflow)
+        temppath = os.path.dirname(self.device_fields["CyberChefPath"])
+        tf = tempfile.NamedTemporaryFile(mode="r+b", dir=temppath, prefix="__", suffix=".tmp")
+        with open(self.device_fields["CyberChefPath"], "r+b") as f:
+            shutil.copyfileobj(f, tf)
 
-    @action
-    def run_cyberchef_function(self, input, action, args):
-        #Javascript that ties together the execution
+        tf.write(workflowScript.encode())
+        # Rewind to beginning, otherwise Windows errors
+        tf.seek(0)
+        return tf
 
-        with self.setupTemporaryCopy(input, action, args) as tf:
-            response = muterun_js(tf.name)
-
+    def handleOutput(self, response):
         if response.exitcode == 0:
             r = json.loads(response.stdout.decode())
             #If the script executed but the workflow failed
@@ -63,6 +73,22 @@ class CyberChefApp(App):
             #If the script failed to execute
             return response.stderr, "Error"
 
+    @action
+    def run_cyberchef_function(self, input, action, args):
+        #Javascript that ties together the execution
+
+        with self.setupOpTemporaryCopy(input, action, args) as tf:
+            response = muterun_js(tf.name)
+
+        return self.handleOutput(response)
+
+
+    @action
+    def run_cyberchef_workflow(self, input, workflow):
+        with self.setupWorkflowTemporaryCopy(input, workflow) as tf:
+            response = muterun_js(tf.name)
+
+        return self.handleOutput(response)
 
     def shutdown(self):
         pass

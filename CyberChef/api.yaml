@@ -10,7 +10,7 @@ info:
 actions:
   'run cyberchef action':
     run: app.CyberChefApp.run_cyberchef_function
-    description: Basic function which takes in parameter and returns it
+    description: Runs a single Cyberchef action
     parameters:
     - name: input
       description: Input to be evaluated
@@ -60,6 +60,32 @@ actions:
         schema:
           type: string
 
+  'run cyberchef workflow':
+    run: app.CyberChefApp.run_cyberchef_workflow
+    description: Runs and returns the results of a cyberchef workflow
+    parameters:
+    - name: input
+      description: Input to be evaluated
+      required: true
+      type: string
+    - name: workflow
+      description: The JSON workflow
+      required: true
+      type: string
+    returns:
+      Success:
+        description: output
+        schema:
+          type: string
+      SuccessNumber:
+        description: output is a number
+        schema:
+          type: number
+      Error:
+        description: cyberchef workflow failed
+        schema:
+          type: string
+
 devices:
   CyberChefDevice:
     description: a Cyberchef device
@@ -68,5 +94,5 @@ devices:
         type: string
         required: true
         placeholder: enter a path to CyberChef NodeJS Executable
-        default: ".//apps/CyberChef//CyberChef.js"
+        default: ".//apps/CyberChef//core//CyberChef.js"
 
