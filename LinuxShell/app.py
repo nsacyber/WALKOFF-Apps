@@ -22,7 +22,7 @@ class LinuxShell(App):
         self.ssh.connect(self.ip, self.port, self.username, self.device.get_encrypted_field('password'))
 
     @action
-    def execCommand(self, args):
+    def exec_command(self, args):
         """ Use SSH client to execute commands on the remote server and produce an array of command outputs
         Input:
             args: A string array of commands
@@ -30,15 +30,14 @@ class LinuxShell(App):
             result: A String array of the command outputs
         """
         result = []
-        args_a = json.loads(args)
-        for cmd in args_a:
+        for cmd in args:
             stdin, stdout, stderr = self.ssh.exec_command(cmd)
             output = stdout.read()
             result.append(output)
         return str(result), 'Success'
 
     @action
-    def secureCopy(self, local_path, remote_path):
+    def scp_get(self, local_path, remote_path):
         """
         Use SSH client to execute a scp command to copy a local file to the remote server
         Input:
@@ -53,7 +52,7 @@ class LinuxShell(App):
             sock.connect((self.ip, self.port))
             t = paramiko.Transport(sock)
             t.start_client()
-            t.auth_password(self.username, self.password)
+            t.auth_password(self.username, self.device.get_encrypted_field('password'))
 
             scp_channel = t.open_session()
             lf = open(local_path, 'rb')
@@ -80,10 +79,38 @@ class LinuxShell(App):
             return status
 
     @action
-    def runLocalScriptRemotely(self, local_path):
-        """ Use SSH client to execute a script on the remote server and produce an array of command outputs
+    def sftp_put(self, local_path, remote_path):
+        """
+        Use SSH client to copy a local file to the remote server using sftp
         Input:
-            args: local filepath of the script
+            args: local_path and remote_path of file
+        Output:
+            Success/Failure
+        """
+        sftp = self.ssh.open_sftp()
+        result = sftp.put(local_path, remote_path)
+        sftp.close()
+        return str(result), 'Success'
+
+    @action
+    def sftp_get(self, remote_path, local_path):
+        """
+        Use SSH client to copy a remote file to local using sftp
+        Input:
+            args: local_path and remote_path of file
+        Output:
+            Success/Failure
+        """
+        sftp = self.ssh.open_sftp()
+        result = sftp.get(remote_path, local_path)
+        sftp.close()
+        return str(result), 'Success'
+
+    @action
+    def run_shell_script_remotely(self, local_path):
+        """ Use SSH client to execute a shell script on the remote server and produce an array of command outputs
+        Input:
+            args: local filepath of the shell script
         Output:
             result: A String array of the command outputs
         """
@@ -93,7 +120,7 @@ class LinuxShell(App):
         stdin, stdout, stderr = self.ssh.exec_command(cmd)
         output = stdout.read()
         result.append(output)
-        return str(result)
+        return str(result), 'Success'
 
     @action
     def shutdown(self):

@@ -9,20 +9,22 @@ info:
     name: Creative Commons
 actions:
   Execute Command:
-    run: app.LinuxShell.execCommand
+    run: app.LinuxShell.exec_command
     description: Execute command on remote server with SSH client
     parameters:
       - name: args
         required: true
-        type: string
+        type: array
         description: json array of arguments
+        items:
+          type: string
     returns:
       Success:
         schema:
           type: string
-  Secure Copy:
-    run: app.LinuxShell.secureCopy
-    description: Copy local file to remove serer
+  SCP Get:
+    run: app.LinuxShell.scp_get
+    description: Copy local file to remove server using scp
     parameters:
       - name: local_path
         required: true
@@ -36,17 +38,46 @@ actions:
       Success:
         schema:
           type: boolean
-      Failure:
-        schema:
-          type: boolean
-  Run Script Remotely:
-    run: app.LinuxShell.runLocalScriptRemotely
-    description: runs the specified script on the remote server
+  SFTP Put:
+    run: app.LinuxShell.sftp_put
+    description: Copy local file to remove server using sftp
     parameters:
       - name: local_path
         required: true
         type: string
-        description: local path of the script to run
+        description: local path of the file to copy
+      - name: remote_path
+        required: true
+        type: string
+        description: remote path of the file destination
+    returns:
+      Success:
+        schema:
+          type: string
+  SFTP Get:
+    run: app.LinuxShell.sftp_get
+    description: Copy remote file to local using sftp
+    parameters:
+      - name: remote_path
+        required: true
+        type: string
+        description: remote path of the file to copy
+      - name: local_path
+        required: true
+        type: string
+        description: local path of the file destination
+    returns:
+      Success:
+        schema:
+          type: string
+  Run Shell Script Remotely:
+    run: app.LinuxShell.run_shell_script_remotely
+    description: runs the specified shell script on the remote server
+    parameters:
+      - name: local_path
+        required: true
+        type: string
+        description: local path of the shell script to run
     returns:
       Success:
         schema:
