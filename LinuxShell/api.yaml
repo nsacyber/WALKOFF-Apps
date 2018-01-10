@@ -1,8 +1,8 @@
 walkoff: '0.1'
 info:
-  version: 0.1.0
-  title: LinuxShell
-  description: An app providing SSH services.
+  version: 1.0.0
+  title: LinuxShell App
+  description: Executes linux shell commands via SSH
   contact:
     name: Walkoff Team
   license:

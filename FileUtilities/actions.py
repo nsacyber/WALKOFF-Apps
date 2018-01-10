@@ -4,7 +4,7 @@ import os
 import stat
 from datetime import datetime
 import json
-from core.helpers import format_exception_message
+from walkoff.helpers import format_exception_message
 from array import array
 
 logger = logging.getLogger(__name__)
