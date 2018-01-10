@@ -1,2 +1,2 @@
-#!/bin/bash
-echo Hello World
+#!/bin/sh
+echo "Hello World" | tee Remote1File.txt

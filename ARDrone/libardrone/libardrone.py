@@ -32,7 +32,7 @@ import sys
 import threading
 import multiprocessing
 
-from . import arnetwork
+import arnetwork
 
 
 __author__ = "Bastian Venthur"

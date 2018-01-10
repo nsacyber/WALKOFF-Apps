@@ -51,18 +51,15 @@ devices:
       - name: username
         type: string
         description: Username for the SMTP server
-        placeholder: username
         required: true
       - name: password
         type: string
         description: Password for the SMTP server
         encrypted: true
-        placeholder: password
         required: true
       - name: ip
         description: IP address of the SMTP server
         type: string
-        placeholder: ip address
         required: true
       - name: port
         description: Port of the SMTP server

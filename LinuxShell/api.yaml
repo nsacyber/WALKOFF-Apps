@@ -8,78 +8,107 @@ info:
   license:
     name: Creative Commons
 actions:
-  'Execute Command':
-    run: main.LinuxShellApp.execCommand
-    description: Executes commands via SSH on Linux Host
+  Execute Command:
+    run: app.LinuxShell.exec_command
+    description: Execute command on remote server with SSH client
     parameters:
-    - name: command
-      description: Array of Commands
-      required: true
-      type: array
+      - name: args
+        required: true
+        type: array
+        description: json array of arguments
+        items:
+          type: string
     returns:
       Success:
-        description: repeated method
         schema:
           type: string
-
-  'Secure Copy':
-    run: main.LinuxShellApp.secureCopy
-    description: Use SSH client to execute a scp command to copy a local file to the remote server
+  SCP Get:
+    run: app.LinuxShell.scp_get
+    description: Copy local file to remove server using scp
     parameters:
-    - name: localPath
-      description: local path to the file
-      required: true
-      type: string
-    - name: remotePath
-      description: remote path to send the file
-      required: true
-      type: string
+      - name: local_path
+        required: true
+        type: string
+        description: local path of the file to copy
+      - name: remote_path
+        required: true
+        type: string
+        description: remote path of the file destination
     returns:
       Success:
-        description: repeated method
         schema:
-          type: string
-      FileExists:
-        description: file already exists
-        schema:
-          type: string
-      Error:
-        description: could not copy file
-        schema:
-          type: string
-
-  'Execute local script remotely':
-    run: main.LinuxShellApp.runLocalScriptRemotely
-    description: Use SSH client to execute a script on the remote server and produce an array of command outputs
+          type: boolean
+  SFTP Put:
+    run: app.LinuxShell.sftp_put
+    description: Copy local file to remove server using sftp
     parameters:
-    - name: localPath
-      description: local path to the script
-      required: true
-      type: string
+      - name: local_path
+        required: true
+        type: string
+        description: local path of the file to copy
+      - name: remote_path
+        required: true
+        type: string
+        description: remote path of the file destination
     returns:
       Success:
-        description: File transfered status
         schema:
           type: string
-
+  SFTP Get:
+    run: app.LinuxShell.sftp_get
+    description: Copy remote file to local using sftp
+    parameters:
+      - name: remote_path
+        required: true
+        type: string
+        description: remote path of the file to copy
+      - name: local_path
+        required: true
+        type: string
+        description: local path of the file destination
+    returns:
+      Success:
+        schema:
+          type: string
+  Run Shell Script Remotely:
+    run: app.LinuxShell.run_shell_script_remotely
+    description: runs the specified shell script on the remote server
+    parameters:
+      - name: local_path
+        required: true
+        type: string
+        description: local path of the shell script to run
+    returns:
+      Success:
+        schema:
+          type: string
+  Shutdown:
+    run: app.LinuxShell.shutdown
+    description: closes the SSH connection
+    returns:
+      Success:
+        schema:
+          type: boolean
 devices:
-  LinuxHostDevice:
-    description: Basic information for host
+  remote server:
+    description: remote server to SSH to
     fields:
       - name: ip
         type: string
+        description: ip or hostname of the remote server
         required: true
-        placeholder: enter an ip
       - name: port
         type: integer
+        description: port number
+        minimum: 1
+        maximum: 65535
         required: true
-        default: 22
-        placeholder: enter the port
       - name: username
         type: string
+        description: username to login with
         required: true
-        placeholder: enter a username
       - name: password
         type: string
+        description: password to login with
+        required: true
         encrypted: true
-        placeholder: enter a password

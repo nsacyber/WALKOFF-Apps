@@ -34,9 +34,11 @@ actions:
           type: number
 devices:
   OWM:
-    - name: key
-      type: string
-      description: API key for OWM
-      encrypted: true
-      placeholder: API key
-      required: true
+    description: OWM weather api
+    fields:
+      - name: key
+        type: string
+        description: API key for OWM
+        encrypted: true
+        placeholder: API key
+        required: true
