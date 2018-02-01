@@ -1,0 +1,282 @@
+walkoff: '0.1'
+info:
+  version: 1.0.0
+  title: Nmap
+  description: A simple app to interact with Nmap
+  contact:
+    name: Walkoff Team
+  license:
+    name: Creative Commons
+actions:
+  run scan:
+    run: main.run_scan
+    description: Runs an nmap scan, returns results as string or filename
+    parameters:
+      - name: target
+        required: true
+        type: string
+        description: The target(s) to scan, comma separated values, CIDR supported
+      - name: options
+        required: true
+        type: string
+        description: see nmap manpage -- some options require root
+      - name: output_filename
+        type: string
+        description: if defined, writes xml to the specified file
+    returns:
+      Success:
+        schema:
+          type: string
+          description: xml string on nmap output
+      XMLError:
+        schema:
+          type: string
+          description: error details
+  scan results as json:
+    run: main.scan_results_as_json
+    description: transforms xml nmap results into json
+    parameters:
+      - name: nmap_out
+        required: true
+        type: string
+        description: nmap output either as xml filename or string
+      - name: is_file
+        type: boolean
+        default: false
+        description: whether the previous parameter is a filename or string
+      - name: output_filename
+        type: string
+        description: if defined, writes json to the specified file
+    returns:
+      Success:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                description: name of the host
+                type: string
+              address:
+                description: address of the host
+                type: string
+              services:
+                description: services on the host
+                type: array
+                items:
+                  type: object
+                  properties:
+                    port:
+                      type: string
+                    protocol:
+                      type: string
+                    state:
+                      type: string
+                    service:
+                      type: string
+                    banner:
+                      type: string
+      XMLError:
+        schema:
+          type: string
+      FileReadError:
+        schema:
+          type: string
+      FileWriteError:
+        schema:
+          type: string
+  graph from results:
+    run: main.graph_from_results
+    description: transforms nmap port scan, nmap traceroute scan, openvas vulnerability scan into a node-link graph for d3 visualization
+    parameters:
+      - name: port_scan_xml_filename
+        required: true
+        type: string
+        description: xml nmap port scan results (e.g. '-sV' option)
+      - name: traceroute_xml_filename
+        required: true
+        type: string
+        description: xml nmap traceroute results ('--traceroute' option)
+      - name: openvas_json_filename
+        required: true
+        type: string
+        description: json openvas scan results (from OpenVAS app)
+      - name: output_filename
+        required: true
+        type: string
+        description: file to output grapth to
+    returns:
+      Success:
+        schema:
+          type: object
+          properties:
+            directed:
+              type: boolean
+            graph:
+              type: object
+              description: for networkx use
+            nodes:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: IP of the node
+                  dist:
+                    type: integer
+                    description: number of hops from the scanning host
+                  scanned:
+                    type: boolean
+                    description: whether the host was port scanned
+                  hostnames:
+                    type: array
+                    description: list of hostnames
+                    items:
+                      type: string
+                  vulns:
+                    type: array
+                    description: list of vulnerabilities found on host
+                    items:
+                      type: object
+                      properties:
+                        IP:
+                          type: string
+                        Port:
+                          type: string
+                        Service:
+                          type: string
+                        Threat:
+                          type: string
+                          enum: ['Info', 'Low', 'Medium', 'High', 'Critical']
+                        CVSS:
+                          type: string
+                        Name:
+                          type: string
+                          description: name of vulnerability
+                        OID:
+                          type: string
+                          description: ID of vulnerability
+            links:
+              type: array
+              items:
+                type: object
+                properties:
+                  source:
+                    type: string
+                  target:
+                    type: string
+            multigraph:
+              type: boolean
+      XMLError:
+        schema:
+          type: string
+      FileReadError:
+        schema:
+          type: string
+      FileWriteError:
+        schema:
+          type: string
+  ports_and_hosts_from_json:
+    run: main.ports_and_hosts_from_json
+    description: retrieves the hosts and ports from an nmap scan for use with OpenVAS
+    parameters:
+      - name: nmap_json
+        required: true
+        description: json string or filename
+        type: string
+      - name: is_file
+        default: false
+        description: whether or not first input is a filename or not
+        type: boolean
+    returns:
+      Success:
+        schema:
+          type: string
+      FileReadError:
+        schema:
+          type: boolean
+      JSONError:
+        schema:
+          type: boolean
+  scan results as HTML:
+    run: main.scan_results_as_html
+    description: Returns the scan results from 'run scan' as an HTML table
+    parameters:
+      - name: nmap_json
+        required: true
+        schema:
+          type: array
+          items:
+            type: object
+    returns:
+      Success:
+        schema:
+          type: string
+  add_host_to_whitelist:
+    run: main.Main.add_host_to_whitelist
+    description: Adds a single host to the whitelist of connected hosts
+    parameters:
+      - name: host
+        required: true
+        type: string
+  add_host_to_blacklist:
+    run: main.Main.add_host_to_blacklist
+    description: Adds a single host to the blacklist of connected hosts
+    parameters:
+      - name: host
+        required: true
+        type: string
+  clear_whitelist:
+    run: main.Main.clear_whitelist
+    description: Clears the whitelist
+  clear_blacklist:
+    run: main.Main.clear_blacklist
+    description: Clears the blacklist
+  get active hosts:
+    run: main.Main.get_hosts_from_scan
+    description: Gets the list of active hosts on a network from an nmap scan
+    parameters:
+      - name: target
+        required: true
+        type: string
+        description: The target (or targets in CIDR notation) to scan
+      - name: options
+        type: string
+    returns:
+      Success:
+        schema:
+          type: object
+          properties:
+            host:
+              type: string
+  run_scan_check_whitelist:
+    run: main.Main.run_scan_check_whitelist
+    description: Runs a scan and then parses the output for the hosts on the network. It returns the number of hosts
+                 found that were not in the whitelist, or 0 if none.
+    parameters:
+      - name: target
+        required: true
+        type: string
+        description: The target (or targets in CIDR notation) to scan
+      - name: options
+        type: string
+    returns:
+      Success:
+        schema:
+          type: integer
+  run_scan_check_blacklist:
+    run: main.Main.run_scan_check_blacklist
+    description: Runs a scan and then parses the output for the hosts on the network. It returns the number of hosts
+                 found that were in the blacklist, or 0 if none.
+    parameters:
+      - name: target
+        required: true
+        type: string
+        description: The target (or targets in CIDR notation) to scan
+      - name: options
+        type: string
+    returns:
+      Success:
+        schema:
+          type: integer

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <title>Nmap/OpenVAS Scan Visualization</title>
+    <link rel="stylesheet" href="{{ url_for('custom_interface.static', interface=g.interface, filename='index.css') }}">
+    <script src="{{ url_for('custom_interface.static', interface=g.interface, filename='lib/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ url_for('custom_interface.static', interface=g.interface, filename='lib/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('custom_interface.static', interface=g.interface, filename='lib/bootstrap/dist/css/bootstrap.min.css' ) }}">    <link rel="stylesheet" href="{{ url_for('custom_interface.static', interface=g.interface, filename='lib/bootstrap-table/bootstrap-table.min.css') }}">
+    <script src="{{ url_for('custom_interface.static', interface=g.interface, filename='lib/bootstrap-table/bootstrap-table.min.js') }}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6" id="graphic">
+            <script src="{{ url_for('custom_interface.static', interface=g.interface, filename='lib/d3/build/d3.min.js') }}"></script>
+            <script src="{{ url_for('custom_interface.static', interface=g.interface, filename='visualize.js') }}"></script>
+        </div>
+        <div class="col-sm-6" id="info">
+            <h3 id="name">Click on a node to display found vulnerabilities.</h3>
+            <p id ="desc"></p>
+            <table class="table table-bordered"
+                   data-search="true"
+                   id="table"
+                   data-height="600"
+                   data-pagination="true"
+                   data-page-list="[10, 25, 50, 100, ALL]"
+                   data-sort-name="CVSS"
+                   data-sort-order="desc"
+                   data-show-columns="true">
+                <thead>
+                <tr>
+                    <th data-field="Threat">Threat</th>
+
+                    <th data-field="CVSS"
+                        data-sortable="true">CVSS</th>
+
+                    <th data-field="Protocol"
+                        data-sortable="true">Protocol</th>
+
+                    <th data-field="Port"
+                        data-sortable="true">Port</th>
+
+                    <!--<th data-field="Service"-->
+                        <!--data-sortable="true">-->
+                        <!--Service</th>-->
+
+                    <th data-field="Name"
+                        data-sortable="true">Name</th>
+
+                    <th data-field="OID">OID</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+</body>

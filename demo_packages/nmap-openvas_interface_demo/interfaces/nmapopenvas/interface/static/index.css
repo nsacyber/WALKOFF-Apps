@@ -1,0 +1,33 @@
+.node {
+    fill: #ccc;
+    stroke: #000;
+    stroke-width: 2px;
+}
+
+.node text {
+  pointer-events: none;
+  font: 12px sans-serif;
+  stroke: #000;
+  stroke-width: 1px;
+}
+
+.link {
+    stroke: #777;
+    stroke-width: 2px;
+}
+
+#graphic {
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+}
+
+#info {
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    background-color: #f7f7f9;
+}

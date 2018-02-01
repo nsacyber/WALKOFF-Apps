@@ -1,0 +1,1732 @@
+{
+  "directed": false,
+  "graph": {},
+  "nodes": [
+    {
+      "vulns": [
+        {
+          "Protocol": "tcp",
+          "Name": "/doc directory browsable",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.10056",
+          "CVSS": "5.0",
+          "Threat": "Medium",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Apache Tomcat Manager Remote Unauthorized Access Vulnerability",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.103550",
+          "CVSS": "7.5",
+          "Threat": "High",
+          "Port": "8180"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Apache Tomcat Server Administration Unauthorized Access Vulnerability",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.111013",
+          "CVSS": "7.5",
+          "Threat": "High",
+          "Port": "8180"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Apache Tomcat Version Detection",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.800371",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "8180"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Apache Web Server Version Detection",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.900498",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "awiki Multiple Local File Include Vulnerabilities",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.103210",
+          "CVSS": "5.0",
+          "Threat": "Medium",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "CGI Scanning Consolidation",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.111038",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "8180"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "CGI Scanning Consolidation",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.111038",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Check for Anonymous FTP Login",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.900600",
+          "CVSS": "6.4",
+          "Threat": "Medium",
+          "Port": "21"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Check for Backdoor in UnrealIRCd",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.80111",
+          "CVSS": "7.5",
+          "Threat": "High",
+          "Port": "6667"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Check for rexecd Service",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.100111",
+          "CVSS": "10.0",
+          "Threat": "High",
+          "Port": "512"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Check for Telnet Server",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.100074",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "1524"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Check if Mailserver answer to VRFY and EXPN requests",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.100072",
+          "CVSS": "5.0",
+          "Threat": "Medium",
+          "Port": "25"
+        },
+        {
+          "Protocol": "CPE-T",
+          "Name": "CPE Inventory",
+          "Service": "general",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.810002",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "N/A"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Database Open Access Vulnerability",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.902799",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "5432"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Database Open Access Vulnerability",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.902799",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "3306"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Determine which version of BIND name daemon is running",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.10028",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "53"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "DNS Server Detection (TCP)",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.108018",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "53"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Fingerprint web server with favicon.ico",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.20108",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "8180"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Fingerprint web server with favicon.ico",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.20108",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "FTP Banner Detection",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.10092",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "2121"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "FTP Banner Detection",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.10092",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "21"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "HTTP Security Headers Detection",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.112081",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "8180"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "HTTP Security Headers Detection",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.112081",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "HTTP Server type and version",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.10107",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "8180"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "HTTP Server type and version",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.10107",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "http TRACE XSS attack",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.11213",
+          "CVSS": "5.8",
+          "Threat": "Medium",
+          "Port": "80"
+        },
+        {
+          "Protocol": "icmp",
+          "Name": "ICMP Timestamp Detection",
+          "Service": "general",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.103190",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "N/A"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "IRC daemon identification",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.11156",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "6667"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Microsoft SMB Signing Disabled",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.802726",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "445"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Microsoft Windows SMB Accessible Shares",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.902425",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "445"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Multiple Vendors STARTTLS Implementation Plaintext Arbitrary Command Injection Vulnerability",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.103935",
+          "CVSS": "6.8",
+          "Threat": "Medium",
+          "Port": "25"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "MySQL / MariaDB weak password",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.103551",
+          "CVSS": "9.0",
+          "Threat": "High",
+          "Port": "3306"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "MySQL/MariaDB Detection",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.100152",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "3306"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Obtain list of all port mapper registered programs via RPC",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.11111",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "111"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "OS Detection Consolidation and Reporting",
+          "Service": "general",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.105937",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "N/A"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "OS End Of Life Detection",
+          "Service": "general",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.103674",
+          "CVSS": "10.0",
+          "Threat": "High",
+          "Port": "N/A"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "PHP Version Detection (Remote)",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.800109",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "PHP-CGI-based setups vulnerability when parsing query string parameters from php files.",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.103482",
+          "CVSS": "7.5",
+          "Threat": "High",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "phpinfo() output accessible",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.11229",
+          "CVSS": "7.5",
+          "Threat": "High",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "phpMyAdmin 'error.php' Cross Site Scripting Vulnerability",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.801660",
+          "CVSS": "4.3",
+          "Threat": "Medium",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "phpMyAdmin BLOB Streaming Multiple Input Validation Vulnerabilities",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.100078",
+          "CVSS": "7.5",
+          "Threat": "High",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "phpMyAdmin Bookmark Security Bypass Vulnerability",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.103076",
+          "CVSS": "6.5",
+          "Threat": "Medium",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "phpMyAdmin Code Injection and XSS Vulnerability",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.100077",
+          "CVSS": "7.5",
+          "Threat": "High",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "phpMyAdmin Configuration File PHP Code Injection Vulnerability",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.100144",
+          "CVSS": "7.5",
+          "Threat": "High",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "phpMyAdmin Database Search Cross Site Scripting Vulnerability",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.100939",
+          "CVSS": "4.3",
+          "Threat": "Medium",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "phpMyAdmin Debug Backtrace Cross Site Scripting Vulnerability",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.100775",
+          "CVSS": "4.3",
+          "Threat": "Medium",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "phpMyAdmin Detection",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.900129",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "phpMyAdmin Multiple Cross Site Scripting Vulnerabilities",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.100761",
+          "CVSS": "4.3",
+          "Threat": "Medium",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "phpMyAdmin Setup Script Request Cross Site Scripting Vulnerability",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.801286",
+          "CVSS": "4.3",
+          "Threat": "Medium",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "phpMyAdmin SQL bookmark XSS Vulnerability",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.800595",
+          "CVSS": "4.3",
+          "Threat": "Medium",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "phpMyAdmin Unspecified SQL Injection and Cross Site Scripting Vulnerabilities",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.100307",
+          "CVSS": "7.5",
+          "Threat": "High",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Possible Backdoor: Ingreslock",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.103549",
+          "CVSS": "10.0",
+          "Threat": "High",
+          "Port": "1524"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Postfix SMTP Server Detection",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.111086",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "25"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "PostgreSQL Detection",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.100151",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "5432"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "PostgreSQL TLS Detection",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.105013",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "5432"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "PostgreSQL weak password",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.103552",
+          "CVSS": "9.0",
+          "Threat": "High",
+          "Port": "5432"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "ProFTPD Server Version Detection (Remote)",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.900815",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "2121"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Report banner of unknown services",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.11154",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "6667"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Report banner of unknown services",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.11154",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "3306"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Report banner of unknown services",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.11154",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "1524"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Report banner of unknown services",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.11154",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "512"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Report Telnet Banner",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.10281",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "1524"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Report Telnet Banner",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.10281",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "23"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "RMI-Registry Detection",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.105839",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "1099"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "RPC portmapper (TCP)",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.108090",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "111"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Samba MS-RPC Remote Shell Command Execution Vulnerability (Active Check)",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.108011",
+          "CVSS": "6.0",
+          "Threat": "Medium",
+          "Port": "445"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Service Detection with 'BINARY' Request",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.108204",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "512"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Service Detection with 'HELP' Request'",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.11153",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "6667"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Service Detection with nmap",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.66286",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "514"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Service Detection with nmap",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.66286",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "513"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Services",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.10330",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "3306"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Services",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.10330",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "21"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Services",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.10330",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "2121"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Services",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.10330",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "25"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Services",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.10330",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "8180"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Services",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.10330",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "5432"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Services",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.10330",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "23"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Services",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.10330",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Services",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.10330",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "22"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SMB log in",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.10394",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "445"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SMB NativeLanMan",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.102011",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "445"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SMB NativeLanMan",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.102011",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "445"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SMB Remote Version Detection",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.807830",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "445"
+        },
+        {
+          "Protocol": "SMBClient",
+          "Name": "SMB Test with 'smbclient'",
+          "Service": "general",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.90011",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "N/A"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SMB/CIFS Server Detection",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.11011",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "445"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SMB/CIFS Server Detection",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.11011",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "139"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SMTP Server type and version",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.10263",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "25"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SMTP STARTTLS Detection",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.103118",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "25"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSH Brute Force Logins With Default Credentials Reporting",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.103239",
+          "CVSS": "9.0",
+          "Threat": "High",
+          "Port": "22"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSH Protocol Algorithms Supported",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.105565",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "22"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSH Protocol Versions Supported",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.100259",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "22"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSH Server type and version",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.10267",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "22"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSH Weak Encryption Algorithms Supported",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.105611",
+          "CVSS": "4.3",
+          "Threat": "Medium",
+          "Port": "22"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSH Weak MAC Algorithms Supported",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.105610",
+          "CVSS": "2.6",
+          "Threat": "Low",
+          "Port": "22"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: 'DHE_EXPORT' Man in the Middle Security Bypass Vulnerability (LogJam)",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.805188",
+          "CVSS": "4.3",
+          "Threat": "Medium",
+          "Port": "25"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: Certificate - Self-Signed Certificate Detection",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.103140",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "25"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: Certificate - Self-Signed Certificate Detection",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.103140",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "5432"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: Certificate Expired",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.103955",
+          "CVSS": "5.0",
+          "Threat": "Medium",
+          "Port": "25"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: Certificate Expired",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.103955",
+          "CVSS": "5.0",
+          "Threat": "Medium",
+          "Port": "5432"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: Certificate Signed Using A Weak Signature Algorithm",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.105880",
+          "CVSS": "4.0",
+          "Threat": "Medium",
+          "Port": "5432"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: Certificate Signed Using A Weak Signature Algorithm",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.105880",
+          "CVSS": "4.0",
+          "Threat": "Medium",
+          "Port": "25"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: Collect and Report Certificate Details",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.103692",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "25"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: Collect and Report Certificate Details",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.103692",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "5432"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: Deprecated SSLv2 and SSLv3 Protocol Detection",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.111012",
+          "CVSS": "4.3",
+          "Threat": "Medium",
+          "Port": "5432"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: Deprecated SSLv2 and SSLv3 Protocol Detection",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.111012",
+          "CVSS": "4.3",
+          "Threat": "Medium",
+          "Port": "25"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: Diffie-Hellman Key Exchange Insufficient DH Group Strength Vulnerability",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.106223",
+          "CVSS": "4.0",
+          "Threat": "Medium",
+          "Port": "5432"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: Diffie-Hellman Key Exchange Insufficient DH Group Strength Vulnerability",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.106223",
+          "CVSS": "4.0",
+          "Threat": "Medium",
+          "Port": "25"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: Hostname discovery from server certificate",
+          "Service": "general",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.111010",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "N/A"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: OpenSSL CCS Man in the Middle Security Bypass Vulnerability",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.105042",
+          "CVSS": "6.8",
+          "Threat": "Medium",
+          "Port": "5432"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: Report Medium Cipher Suites",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.902816",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "5432"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: Report Medium Cipher Suites",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.902816",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "25"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: Report Non Weak Cipher Suites",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.103441",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "5432"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: Report Non Weak Cipher Suites",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.103441",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "25"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: Report Perfect Forward Secrecy (PFS) Cipher Suites",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.105018",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "5432"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: Report Perfect Forward Secrecy (PFS) Cipher Suites",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.105018",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "25"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: Report Supported Cipher Suites",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.802067",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "5432"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: Report Supported Cipher Suites",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.802067",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "25"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: Report Weak Cipher Suites",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.103440",
+          "CVSS": "4.3",
+          "Threat": "Medium",
+          "Port": "5432"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: Report Weak Cipher Suites",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.103440",
+          "CVSS": "4.3",
+          "Threat": "Log",
+          "Port": "25"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: RSA Temporary Key Handling 'RSA_EXPORT' Downgrade Issue (FREAK)",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.805142",
+          "CVSS": "4.3",
+          "Threat": "Medium",
+          "Port": "25"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: SSLv3 Protocol CBC Cipher Suites Information Disclosure Vulnerability (POODLE)",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.802087",
+          "CVSS": "4.3",
+          "Threat": "Medium",
+          "Port": "5432"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: SSLv3 Protocol CBC Cipher Suites Information Disclosure Vulnerability (POODLE)",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.802087",
+          "CVSS": "4.3",
+          "Threat": "Medium",
+          "Port": "25"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "TCP timestamps",
+          "Service": "general",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.80091",
+          "CVSS": "2.6",
+          "Threat": "Low",
+          "Port": "N/A"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Test HTTP dangerous methods",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.10498",
+          "CVSS": "7.5",
+          "Threat": "High",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Tiki Wiki CMS Groupware 'fixedURLData' Local File Inclusion Vulnerability",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.108064",
+          "CVSS": "5.0",
+          "Threat": "Medium",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Tiki Wiki CMS Groupware < 4.2 Multiple Unspecified Vulnerabilities",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.100537",
+          "CVSS": "7.5",
+          "Threat": "High",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Tiki Wiki CMS Groupware Input Sanitation Weakness Vulnerability",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.800315",
+          "CVSS": "5.0",
+          "Threat": "Medium",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Tiki Wiki CMS Groupware Version Detection",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.901001",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Traceroute",
+          "Service": "general",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.51662",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "N/A"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "TWiki Cross-Site Request Forgery Vulnerability",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.800400",
+          "CVSS": "6.0",
+          "Threat": "Medium",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "TWiki Cross-Site Request Forgery Vulnerability - Sep10",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.801281",
+          "CVSS": "6.8",
+          "Threat": "Medium",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "TWiki Version Detection",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.800399",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "TWiki XSS and Command Execution Vulnerabilities",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.800320",
+          "CVSS": "10.0",
+          "Threat": "High",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "UnrealIRCd Authentication Spoofing Vulnerability",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.809883",
+          "CVSS": "6.8",
+          "Threat": "Medium",
+          "Port": "6667"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "UnrealIRCd Detection",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.809884",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "6667"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "VNC Brute Force Login",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.106056",
+          "CVSS": "9.0",
+          "Threat": "High",
+          "Port": "5900"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "VNC security types",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.19288",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "5900"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "VNC Server and Protocol Version Detection",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.10342",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "5900"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "vsftpd Compromised Source Packages Backdoor Vulnerability",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.103185",
+          "CVSS": "7.5",
+          "Threat": "High",
+          "Port": "6200"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "vsftpd Compromised Source Packages Backdoor Vulnerability",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.103185",
+          "CVSS": "7.5",
+          "Threat": "High",
+          "Port": "21"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "vsFTPd FTP Server Detection",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.111050",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "21"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "X Server Detection",
+          "Service": "",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.10407",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "6000"
+        }
+      ],
+      "hostnames": [
+        "metasploitable"
+      ],
+      "scanned": true,
+      "id": "10.0.2.4",
+      "dist": "1"
+    },
+    {
+      "vulns": [
+        {
+          "Protocol": "tcp",
+          "Name": "Traceroute",
+          "Service": "general",
+          "IP": "10.0.2.4",
+          "OID": "1.3.6.1.4.1.25623.1.0.51662",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "N/A"
+        }
+      ],
+      "scanned": true,
+      "dist": "1",
+      "id": "10.0.2.3",
+      "hostnames": null
+    },
+    {
+      "vulns": [
+        {
+          "Protocol": "tcp",
+          "Name": "Apache HTTP Server 'httpOnly' Cookie Information Disclosure Vulnerability",
+          "Service": "",
+          "IP": "10.0.2.2",
+          "OID": "1.3.6.1.4.1.25623.1.0.902830",
+          "CVSS": "4.3",
+          "Threat": "Medium",
+          "Port": "80"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Apache JServ Protocol v1.3 Detection",
+          "Service": "",
+          "IP": "10.0.2.2",
+          "OID": "1.3.6.1.4.1.25623.1.0.108082",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "8009"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Apache Struts Version Detection",
+          "Service": "",
+          "IP": "10.0.2.2",
+          "OID": "1.3.6.1.4.1.25623.1.0.800276",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "8180"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Apache Tomcat cal2.jsp Cross Site Scripting Vulnerability",
+          "Service": "",
+          "IP": "10.0.2.2",
+          "OID": "1.3.6.1.4.1.25623.1.0.800372",
+          "CVSS": "4.3",
+          "Threat": "Medium",
+          "Port": "8180"
+        }
+      ],
+      "scanned": true,
+      "dist": "1",
+      "id": "10.0.2.2",
+      "hostnames": [
+        "vulnapache"
+      ]
+    },
+    {
+      "vulns": [
+        {
+          "Protocol": "tcp",
+          "Name": "CGI Scanning Consolidation",
+          "Service": "",
+          "IP": "10.0.2.15",
+          "OID": "1.3.6.1.4.1.25623.1.0.111038",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "4000"
+        },
+        {
+          "Protocol": "CPE-T",
+          "Name": "CPE Inventory",
+          "Service": "general",
+          "IP": "10.0.2.15",
+          "OID": "1.3.6.1.4.1.25623.1.0.810002",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "N/A"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Greenbone Security Assistant Detection",
+          "Service": "",
+          "IP": "10.0.2.15",
+          "OID": "1.3.6.1.4.1.25623.1.0.103841",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "4000"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "HTTP Security Headers Detection",
+          "Service": "",
+          "IP": "10.0.2.15",
+          "OID": "1.3.6.1.4.1.25623.1.0.112081",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "4000"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "OS Detection Consolidation and Reporting",
+          "Service": "general",
+          "IP": "10.0.2.15",
+          "OID": "1.3.6.1.4.1.25623.1.0.105937",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "N/A"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Services",
+          "Service": "",
+          "IP": "10.0.2.15",
+          "OID": "1.3.6.1.4.1.25623.1.0.10330",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "4000"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Services",
+          "Service": "",
+          "IP": "10.0.2.15",
+          "OID": "1.3.6.1.4.1.25623.1.0.10330",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "4000"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: Collect and Report Certificate Details",
+          "Service": "",
+          "IP": "10.0.2.15",
+          "OID": "1.3.6.1.4.1.25623.1.0.103692",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "4000"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: HTTP Public Key Pinning (HPKP) Missing",
+          "Service": "",
+          "IP": "10.0.2.15",
+          "OID": "1.3.6.1.4.1.25623.1.0.108247",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "4000"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: HTTP Strict Transport Security (HSTS) Missing",
+          "Service": "",
+          "IP": "10.0.2.15",
+          "OID": "1.3.6.1.4.1.25623.1.0.105879",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "4000"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: Perfect Forward Secrecy Cipher Suites Missing",
+          "Service": "",
+          "IP": "10.0.2.15",
+          "OID": "1.3.6.1.4.1.25623.1.0.105092",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "4000"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: Report Medium Cipher Suites",
+          "Service": "",
+          "IP": "10.0.2.15",
+          "OID": "1.3.6.1.4.1.25623.1.0.902816",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "4000"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: Report Non Weak Cipher Suites",
+          "Service": "",
+          "IP": "10.0.2.15",
+          "OID": "1.3.6.1.4.1.25623.1.0.103441",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "4000"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: Report Supported Cipher Suites",
+          "Service": "",
+          "IP": "10.0.2.15",
+          "OID": "1.3.6.1.4.1.25623.1.0.802067",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "4000"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "SSL/TLS: Report Vulnerable Cipher Suites for HTTPS",
+          "Service": "",
+          "IP": "10.0.2.15",
+          "OID": "1.3.6.1.4.1.25623.1.0.108031",
+          "CVSS": "5.0",
+          "Threat": "Medium",
+          "Port": "4000"
+        },
+        {
+          "Protocol": "tcp",
+          "Name": "Traceroute",
+          "Service": "general",
+          "IP": "10.0.2.15",
+          "OID": "1.3.6.1.4.1.25623.1.0.51662",
+          "CVSS": "0.0",
+          "Threat": "Log",
+          "Port": "N/A"
+        }
+      ],
+      "hostnames": [],
+      "scanned": true,
+      "id": "10.0.2.15"
+    },
+    {
+      "vulns": [],
+      "hostnames": [],
+      "scanned": true,
+      "id": "10.0.2.1",
+      "dist": "1"
+    },
+    {
+      "vulns": [
+        {
+          "Protocol": "tcp",
+          "Name": "SSH Weak MAC Algorithms Supported",
+          "Service": "",
+          "IP": "10.0.2.55",
+          "OID": "1.3.6.1.4.1.25623.1.0.105610",
+          "CVSS": "2.6",
+          "Threat": "Low",
+          "Port": "22"
+        }
+      ],
+      "hostnames": [],
+      "scanned": true,
+      "id": "10.0.2.55",
+      "dist": "1"
+    },
+    {
+      "id": "localhost"
+    }
+  ],
+  "links": [
+    {
+      "source": "10.0.2.4",
+      "target": "localhost"
+    },
+    {
+      "source": "10.0.2.3",
+      "target": "localhost"
+    },
+    {
+      "source": "10.0.2.2",
+      "target": "localhost"
+    },
+    {
+      "source": "10.0.2.1",
+      "target": "localhost"
+    },
+    {
+      "source": "10.0.2.55",
+      "target": "localhost"
+    }
+  ],
+  "multigraph": false
+}

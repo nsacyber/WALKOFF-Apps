@@ -1,0 +1,97 @@
+walkoff: '0.1'
+info:
+  version: 0.1.0
+  title: Bro App
+  description: An app to interface with bro network monitoring.
+  contact:
+    name: Walkoff Team
+  license:
+    name: Creative Commons
+actions:
+  initialize interface:
+    run: app.Bro.initialize_interface
+    description: configures the interface wrt roles and users to notify
+    parameters:
+      - name: users_to_notify
+        description: users to notify when a threshold is breached
+        type: array
+        items:
+          type: user
+      - name: roles_to_notify
+        description: roles to notify when a threshold is breached
+        type: array
+        items:
+          type: role
+    returns:
+      Success:
+        schema:
+          type: object
+  load http log:
+    run: app.Bro.load_http_log
+    description: Loads the specified http log into memory
+    parameters:
+      - name: http_log_name
+        description: file path of the http log
+        required: true
+        type: string
+    returns:
+      Success:
+        schema:
+          type: boolean
+      FileError:
+        failure: true
+        schema:
+          type: boolean
+  load dns log:
+    run: app.Bro.load_dns_log
+    description: Loads the specified dns log into memory
+    parameters:
+      - name: dns_log_name
+        description: file path of the dns log
+        required: true
+        type: string
+    returns:
+      Success:
+        schema:
+          type: boolean
+      FileError:
+        failure: true
+        schema:
+          type: boolean
+  analyze log:
+    run: app.Bro.analyze_log
+    description: Runs timeseries and totals analysis of the specified stat in a log
+    parameters:
+      - name: log_type
+        description: name of the log to analyze
+        required: true
+        type: string
+        enum: ['dns', 'http']
+    returns:
+      Success:
+        description: Sends the results to the interface
+        schema:
+          type: object
+      StatNotSupported:
+        failure: true
+        description: The specified stat is not supported for the specified log.
+        schema:
+          type: boolean
+      LogNotLoaded:
+        failure: true
+        description: The specified log has not been loaded yet.
+        schema:
+          type: boolean
+devices:
+  bro device:
+    description: a listening bro instance
+    fields:
+      - name: address
+        type: string
+        required: true
+        placeholder: enter an ip or hostname
+      - name: port
+        type: integer
+        minimum: 1
+        maximum: 65535
+        placeholder: enter a port number

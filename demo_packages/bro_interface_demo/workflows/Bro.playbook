@@ -1,0 +1,146 @@
+{
+    "name": "Bro",
+    "uid": "08b368ef-d7dd-4b27-93c7-e12cba35c5f9",
+    "walkoff_version": "0.6.0",
+    "workflows": [
+        {
+            "actions": [
+                {
+                    "action_name": "load http log",
+                    "app_name": "Bro",
+                    "arguments": [
+                        {
+                            "name": "http_log_name",
+                            "value": "http.log"
+                        }
+                    ],
+                    "device_id": 1,
+                    "name": "load http log",
+                    "position": {
+                        "x": 450,
+                        "y": 410
+                    },
+                    "triggers": [],
+                    "uid": "545df516-22bb-d298-85c3-82e22228b636"
+                },
+                {
+                    "action_name": "analyze log",
+                    "app_name": "Bro",
+                    "arguments": [
+                        {
+                            "name": "log_type",
+                            "value": "http"
+                        }
+                    ],
+                    "device_id": 1,
+                    "name": "analyze log",
+                    "position": {
+                        "x": 450,
+                        "y": 490
+                    },
+                    "triggers": [],
+                    "uid": "61fb4a11-54b3-64cf-d863-c0f3d7288646"
+                },
+                {
+                    "action_name": "initialize interface",
+                    "app_name": "Bro",
+                    "arguments": [
+                        {
+                            "name": "roles_to_notify",
+                            "value": [
+                                1
+                            ]
+                        },
+                        {
+                            "name": "users_to_notify",
+                            "value": [
+                                1
+                            ]
+                        }
+                    ],
+                    "device_id": 1,
+                    "name": "initialize interface",
+                    "position": {
+                        "x": 450,
+                        "y": 330
+                    },
+                    "triggers": [],
+                    "uid": "5cda807a-a1f8-96ca-fe8f-0e5d34a4177a"
+                },
+                {
+                    "action_name": "load dns log",
+                    "app_name": "Bro",
+                    "arguments": [
+                        {
+                            "name": "dns_log_name",
+                            "value": "dns.log"
+                        }
+                    ],
+                    "device_id": 1,
+                    "name": "load dns log",
+                    "position": {
+                        "x": 450,
+                        "y": 570
+                    },
+                    "triggers": [],
+                    "uid": "16090954-63c4-d661-29fe-770fc5c29d09"
+                },
+                {
+                    "action_name": "analyze log",
+                    "app_name": "Bro",
+                    "arguments": [
+                        {
+                            "name": "log_type",
+                            "value": "dns"
+                        }
+                    ],
+                    "device_id": 1,
+                    "name": "analyze log 2",
+                    "position": {
+                        "x": 450,
+                        "y": 650
+                    },
+                    "triggers": [],
+                    "uid": "241bfc18-71f7-3d56-8fee-d31a9fe9c967"
+                }
+            ],
+            "branches": [
+                {
+                    "conditions": [],
+                    "destination_uid": "61fb4a11-54b3-64cf-d863-c0f3d7288646",
+                    "priority": 1,
+                    "source_uid": "545df516-22bb-d298-85c3-82e22228b636",
+                    "status": "Success",
+                    "uid": "2fdfe7b5-2a50-4a45-a74c-e564f76101d2"
+                },
+                {
+                    "conditions": [],
+                    "destination_uid": "16090954-63c4-d661-29fe-770fc5c29d09",
+                    "priority": 1,
+                    "source_uid": "61fb4a11-54b3-64cf-d863-c0f3d7288646",
+                    "status": "Success",
+                    "uid": "03777c14-7217-47b7-b229-a5e20477deba"
+                },
+                {
+                    "conditions": [],
+                    "destination_uid": "545df516-22bb-d298-85c3-82e22228b636",
+                    "priority": 1,
+                    "source_uid": "5cda807a-a1f8-96ca-fe8f-0e5d34a4177a",
+                    "status": "Success",
+                    "uid": "b4aabe18-a698-4f02-b8c0-95bae1a92235"
+                },
+                {
+                    "conditions": [],
+                    "destination_uid": "241bfc18-71f7-3d56-8fee-d31a9fe9c967",
+                    "priority": 1,
+                    "source_uid": "16090954-63c4-d661-29fe-770fc5c29d09",
+                    "status": "Success",
+                    "uid": "b099a582-7874-41c9-8d6a-801e7add7b2a"
+                }
+            ],
+            "name": "Test",
+            "start": "5cda807a-a1f8-96ca-fe8f-0e5d34a4177a",
+            "uid": "f2496a72-8365-42c0-a9e3-bfe0b93bbb5c"
+        }
+    ]
+}

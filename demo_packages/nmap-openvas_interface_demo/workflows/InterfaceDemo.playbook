@@ -1,0 +1,402 @@
+{
+    "name": "InterfaceDemo",
+    "uid": "a9752439-5534-4ec0-bd22-1247a6fa1e94",
+    "walkoff_version": "0.5.0",
+    "workflows": [
+        {
+            "actions": [
+                {
+                    "action_name": "graph from results",
+                    "app_name": "Nmap",
+                    "arguments": [
+                        {
+                            "name": "openvas_json_filename",
+                            "value": "WalkoffDemoReport.json"
+                        },
+                        {
+                            "name": "traceroute_xml_filename",
+                            "value": "WalkoffNmapTrace.xml"
+                        },
+                        {
+                            "name": "port_scan_xml_filename",
+                            "value": "WalkoffNmapScan.xml"
+                        },
+                        {
+                            "name": "output_filename",
+                            "value": "WalkoffDemoGraph.json"
+                        }
+                    ],
+                    "name": "graph from results",
+                    "position": {
+                        "x": 430,
+                        "y": 450
+                    },
+                    "triggers": [],
+                    "uid": "211888cf-e7ed-fc44-9498-563a7eee64fe"
+                },
+                {
+                    "action_name": "Parse CSV to JSON",
+                    "app_name": "OpenVAS",
+                    "arguments": [
+                        {
+                            "name": "json_filename",
+                            "value": "WalkoffDemoReport.json"
+                        },
+                        {
+                            "name": "csv_filename",
+                            "value": "WalkoffDemoReport.csv"
+                        }
+                    ],
+                    "device_id": 1,
+                    "name": "Parse CSV to JSON",
+                    "position": {
+                        "x": 430,
+                        "y": 370
+                    },
+                    "triggers": [],
+                    "uid": "b930bd90-9c31-300a-fba9-625b68827160"
+                },
+                {
+                    "action_name": "Parse XML to CSV",
+                    "app_name": "OpenVAS",
+                    "arguments": [
+                        {
+                            "name": "xml_filename",
+                            "value": "WalkoffDemoReport.xml"
+                        },
+                        {
+                            "name": "csv_filename",
+                            "value": "WalkoffDemoReport.csv"
+                        },
+                        {
+                            "name": "ips_only",
+                            "value": false
+                        }
+                    ],
+                    "device_id": 1,
+                    "name": "Parse XML to CSV",
+                    "position": {
+                        "x": 430,
+                        "y": 290
+                    },
+                    "triggers": [],
+                    "uid": "fcedf80f-82d8-196a-dd57-56960b64dcc6"
+                },
+                {
+                    "action_name": "Download XML Report",
+                    "app_name": "OpenVAS",
+                    "arguments": [
+                        {
+                            "name": "uuid",
+                            "value": "1356f9bf-8d90-42e6-a330-6a718d7c0cfe"
+                        },
+                        {
+                            "name": "filename",
+                            "value": "WalkoffDemoReport.xml"
+                        }
+                    ],
+                    "device_id": 1,
+                    "name": "Download XML Report",
+                    "position": {
+                        "x": 430,
+                        "y": 210
+                    },
+                    "triggers": [],
+                    "uid": "c44ad018-6284-1103-4026-ee12a86dd485"
+                }
+            ],
+            "branches": [
+                {
+                    "conditions": [],
+                    "destination_uid": "211888cf-e7ed-fc44-9498-563a7eee64fe",
+                    "priority": 1,
+                    "source_uid": "b930bd90-9c31-300a-fba9-625b68827160",
+                    "status": "Success",
+                    "uid": "6388fd1e-cb9f-402b-8f3a-74ca0a1d663a"
+                },
+                {
+                    "conditions": [],
+                    "destination_uid": "b930bd90-9c31-300a-fba9-625b68827160",
+                    "priority": 1,
+                    "source_uid": "fcedf80f-82d8-196a-dd57-56960b64dcc6",
+                    "status": "Success",
+                    "uid": "1e3f386f-8827-4b33-86b6-1a2b32115790"
+                },
+                {
+                    "conditions": [],
+                    "destination_uid": "fcedf80f-82d8-196a-dd57-56960b64dcc6",
+                    "priority": 1,
+                    "source_uid": "c44ad018-6284-1103-4026-ee12a86dd485",
+                    "status": "Success",
+                    "uid": "2b94b249-dc09-491f-8f25-4d6fda3b688c"
+                }
+            ],
+            "name": "InterfaceDemo2",
+            "start": "c44ad018-6284-1103-4026-ee12a86dd485",
+            "uid": "711b352c-66ca-4667-8bae-28eb29dfe90e"
+        },
+        {
+            "actions": [
+                {
+                    "action_name": "run scan",
+                    "app_name": "Nmap",
+                    "arguments": [
+                        {
+                            "name": "target",
+                            "value": "10.0.2.0/24"
+                        },
+                        {
+                            "name": "output_filename",
+                            "value": "WalkoffNmapTrace.xml"
+                        },
+                        {
+                            "name": "options",
+                            "value": "-sn --traceroute"
+                        }
+                    ],
+                    "name": "run scan trace",
+                    "position": {
+                        "x": 290,
+                        "y": 210
+                    },
+                    "triggers": [],
+                    "uid": "4c24a8f9-bf87-e389-eaa7-d87b0186baa7"
+                },
+                {
+                    "action_name": "Create Task",
+                    "app_name": "OpenVAS",
+                    "arguments": [
+                        {
+                            "name": "scanner_uuid",
+                            "value": "08b69003-5fc2-4037-a479-93b440211c73"
+                        },
+                        {
+                            "name": "config_uuid",
+                            "value": "daba56c8-73ec-11df-a475-002264764cea"
+                        },
+                        {
+                            "name": "target_uuid",
+                            "reference": "7e16c4cc-a5f8-b93c-0289-5119945cfce9"
+                        },
+                        {
+                            "name": "name",
+                            "value": "WalkoffDemoTask"
+                        }
+                    ],
+                    "device_id": 1,
+                    "name": "Create Task",
+                    "position": {
+                        "x": 290,
+                        "y": 610
+                    },
+                    "triggers": [],
+                    "uid": "91217179-c861-f889-17d2-1d1e06431b3b"
+                },
+                {
+                    "action_name": "Create Target",
+                    "app_name": "OpenVAS",
+                    "arguments": [
+                        {
+                            "name": "hosts",
+                            "reference": "a5007a52-9df4-be6c-f336-e8a617644ff7",
+                            "selection": [
+                                "hosts"
+                            ]
+                        },
+                        {
+                            "name": "name",
+                            "value": "WalkoffDemoTarget"
+                        },
+                        {
+                            "name": "port_list",
+                            "reference": "0d8aaa4c-a77c-9243-d16d-7ffda2b40190"
+                        }
+                    ],
+                    "device_id": 1,
+                    "name": "Create Target",
+                    "position": {
+                        "x": 290,
+                        "y": 530
+                    },
+                    "triggers": [],
+                    "uid": "7e16c4cc-a5f8-b93c-0289-5119945cfce9"
+                },
+                {
+                    "action_name": "run scan",
+                    "app_name": "Nmap",
+                    "arguments": [
+                        {
+                            "name": "target",
+                            "value": "10.0.2.0/24"
+                        },
+                        {
+                            "name": "output_filename",
+                            "value": "WalkoffNmapScan.xml"
+                        },
+                        {
+                            "name": "options",
+                            "value": "-sV"
+                        }
+                    ],
+                    "name": "run scan ports",
+                    "position": {
+                        "x": 290,
+                        "y": 130
+                    },
+                    "triggers": [],
+                    "uid": "4f70afb2-adca-84e9-65d9-6686aada4265"
+                },
+                {
+                    "action_name": "Create Port List",
+                    "app_name": "OpenVAS",
+                    "arguments": [
+                        {
+                            "name": "port_range",
+                            "reference": "a5007a52-9df4-be6c-f336-e8a617644ff7",
+                            "selection": [
+                                "ports"
+                            ]
+                        },
+                        {
+                            "name": "name",
+                            "value": "WalkoffDemoPortList"
+                        }
+                    ],
+                    "device_id": 1,
+                    "name": "Create Port List",
+                    "position": {
+                        "x": 290,
+                        "y": 450
+                    },
+                    "triggers": [],
+                    "uid": "0d8aaa4c-a77c-9243-d16d-7ffda2b40190"
+                },
+                {
+                    "action_name": "ports_and_hosts_from_json",
+                    "app_name": "Nmap",
+                    "arguments": [
+                        {
+                            "name": "nmap_json",
+                            "value": "WalkoffNmapScan.json"
+                        },
+                        {
+                            "name": "is_file",
+                            "value": true
+                        }
+                    ],
+                    "name": "ports_and_hosts_from_json",
+                    "position": {
+                        "x": 290,
+                        "y": 370
+                    },
+                    "triggers": [],
+                    "uid": "a5007a52-9df4-be6c-f336-e8a617644ff7"
+                },
+                {
+                    "action_name": "Start Task",
+                    "app_name": "OpenVAS",
+                    "arguments": [
+                        {
+                            "name": "uuid",
+                            "reference": "91217179-c861-f889-17d2-1d1e06431b3b"
+                        }
+                    ],
+                    "device_id": 1,
+                    "name": "Start Task",
+                    "position": {
+                        "x": 290,
+                        "y": 690
+                    },
+                    "triggers": [],
+                    "uid": "045b1e23-aa68-fd42-6457-cd1c989f330f"
+                },
+                {
+                    "action_name": "scan results as json",
+                    "app_name": "Nmap",
+                    "arguments": [
+                        {
+                            "name": "nmap_out",
+                            "value": "WalkoffNmapScan.xml"
+                        },
+                        {
+                            "name": "output_filename",
+                            "value": "WalkoffNmapScan.json"
+                        },
+                        {
+                            "name": "is_file",
+                            "value": true
+                        }
+                    ],
+                    "name": "scan results as json",
+                    "position": {
+                        "x": 290,
+                        "y": 290
+                    },
+                    "triggers": [],
+                    "uid": "4fb394f0-6098-09c3-a7a1-a903c1d32a3a"
+                }
+            ],
+            "branches": [
+                {
+                    "conditions": [],
+                    "destination_uid": "4fb394f0-6098-09c3-a7a1-a903c1d32a3a",
+                    "priority": 1,
+                    "source_uid": "4c24a8f9-bf87-e389-eaa7-d87b0186baa7",
+                    "status": "UnhandledException",
+                    "uid": "b9b83d17-8478-47ee-a79f-35612860e038"
+                },
+                {
+                    "conditions": [],
+                    "destination_uid": "045b1e23-aa68-fd42-6457-cd1c989f330f",
+                    "priority": 1,
+                    "source_uid": "91217179-c861-f889-17d2-1d1e06431b3b",
+                    "status": "Success",
+                    "uid": "f1257469-cdfb-42dd-a2e9-65d1b652b6ef"
+                },
+                {
+                    "conditions": [],
+                    "destination_uid": "91217179-c861-f889-17d2-1d1e06431b3b",
+                    "priority": 1,
+                    "source_uid": "7e16c4cc-a5f8-b93c-0289-5119945cfce9",
+                    "status": "Success",
+                    "uid": "e6bb2ca7-1f08-4d42-b0ac-c35d8b649792"
+                },
+                {
+                    "conditions": [],
+                    "destination_uid": "4c24a8f9-bf87-e389-eaa7-d87b0186baa7",
+                    "priority": 1,
+                    "source_uid": "4f70afb2-adca-84e9-65d9-6686aada4265",
+                    "status": "Success",
+                    "uid": "d2a4a835-c08e-4c70-9d31-f299e18c09ec"
+                },
+                {
+                    "conditions": [],
+                    "destination_uid": "7e16c4cc-a5f8-b93c-0289-5119945cfce9",
+                    "priority": 1,
+                    "source_uid": "0d8aaa4c-a77c-9243-d16d-7ffda2b40190",
+                    "status": "Success",
+                    "uid": "bcd310d6-038b-42ec-a0b8-54a9b8c78325"
+                },
+                {
+                    "conditions": [],
+                    "destination_uid": "0d8aaa4c-a77c-9243-d16d-7ffda2b40190",
+                    "priority": 1,
+                    "source_uid": "a5007a52-9df4-be6c-f336-e8a617644ff7",
+                    "status": "Success",
+                    "uid": "d5f6168a-6cec-4b1d-96f2-d562f47389bf"
+                },
+                {
+                    "conditions": [],
+                    "destination_uid": "a5007a52-9df4-be6c-f336-e8a617644ff7",
+                    "priority": 1,
+                    "source_uid": "4fb394f0-6098-09c3-a7a1-a903c1d32a3a",
+                    "status": "Success",
+                    "uid": "4102b7ed-0e7b-4f86-9ee4-79439d02c5f4"
+                }
+            ],
+            "name": "InterfaceDemo",
+            "start": "4c24a8f9-bf87-e389-eaa7-d87b0186baa7",
+            "uid": "189f959b-6de0-4828-b837-ebcb18698a58"
+        }
+    ]
+}
