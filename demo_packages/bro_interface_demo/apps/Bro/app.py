@@ -75,171 +75,184 @@ def split_dataframe_to_c3js(df_json):
 
     return r_columns
 
+#
+# class Bro(App):
+#     """
+#        Bro app to analyze bro logs
+#
+#        Args:
+#            name (str): Name of the app
+#            device (list[str]): List of associated device names
+#
+#     """
+#     def __init__(self, name=None, device=None):
+#         App.__init__(self, name, device)
+#         # self.address = self.device_fields['address']
+#         # self.port = self.device_fields['port']
+#         self.http_log_data = None
+#         self.http_stat_thresh = None
+#         self.dns_log_data = None
+#         self.dns_stat_thresh = None
+#         self.roles_to_notify = None
+#         self.users_to_notify = None
 
-class Bro(App):
-    """
-       Bro app to analyze bro logs
 
-       Args:
-           name (str): Name of the app
-           device (list[str]): List of associated device names
-
-    """
-    def __init__(self, name=None, device=None):
-        App.__init__(self, name, device)
-        self.address = self.device_fields['address']
-        self.port = self.device_fields['port']
+class BroData():
+    def __init__(self):
         self.http_log_data = None
-        self.http_stat_thresh = None
         self.dns_log_data = None
-        self.dns_stat_thresh = None
         self.roles_to_notify = None
         self.users_to_notify = None
 
-    @action
-    def initialize_interface(self, roles_to_notify, users_to_notify):
-        self.roles_to_notify = roles_to_notify
-        self.users_to_notify = users_to_notify
-        return {"roles": roles_to_notify,
-                "users": users_to_notify}
-    
-    @action
-    def load_http_log(self, http_log_name):
-        
-        try:
-            with open(http_log_name, 'r') as f:
-                http_file_data = f.read()
-        except IOError:
-            return False, 'FileError'
-        
-        file_data = http_file_data.split('\n')
 
-        self.http_log_data = []
-        for line in file_data:
-            if line and line[0] is not None and line[0] != "#":
-                self.http_log_data.append(line)
+store = BroData()
 
-        # self.http_stat_names = http_stat_names
 
-        return True, 'Success'
+@action
+def initialize_interface(roles_to_notify, users_to_notify):
+    store.roles_to_notify = roles_to_notify
+    store.users_to_notify = users_to_notify
+    return {"roles": roles_to_notify,
+            "users": users_to_notify}
 
-    def analyze_stat(self, log_data, stat_index):
-        # Lets analyze user agents
-        analysis = {}
-        totals = {}
-        for line in log_data:
-            splitted = line.split('\t')
+@action
+def load_http_log(http_log_name):
 
-            # Extract the timestamp
-            timestamp = datetime.fromtimestamp(float(splitted[0]))
-            # Strip second and microsecond from timestamp
-            timestamp = str(timestamp.replace(second=0, microsecond=0))
+    try:
+        with open(http_log_name, 'r') as f:
+            http_file_data = f.read()
+    except IOError:
+        return False, 'FileError'
 
-            # Extract the user agent
-            stat = splitted[stat_index]
+    file_data = http_file_data.split('\n')
 
-            # Update status code analysis variable
-            if stat not in analysis.keys():
-                analysis[stat] = {timestamp: 1}
-            else:
-                if timestamp not in analysis[stat].keys():
-                    analysis[stat][timestamp] = 1
-                else:
-                    analysis[stat][timestamp] += 1
+    store.http_log_data = []
+    for line in file_data:
+        if line and line[0] is not None and line[0] != "#":
+            store.http_log_data.append(line)
 
-            # Update overall user agent count
-            if stat not in totals.keys():
-                totals[stat] = 1
-            else:
-                totals[stat] += 1
+    # store.http_stat_names = http_stat_names
 
-        # maxi = max(totals.values())
-        # mean = np.mean(totals.values())
-        # median = np.median(totals.values())
-        # stdev = np.std(totals.values())
+    return True, 'Success'
 
-        return totals, analysis
 
-    def send_notif(self, contents):
-        text = Text(contents)
-        message = Message(subject="Stat over threshold.", body=[text])
-        send_message(message, users=self.users_to_notify, roles=self.roles_to_notify)
+def analyze_stat(log_data, stat_index):
+    # Adapted from https://dgunter.com/2017/09/17/threat-hunting-with-python-prologue-and-basic-http-hunting/
+    analysis = {}
+    totals = {}
+    for line in log_data:
+        splitted = line.split('\t')
 
-    def check_thresholds(self, r, log_type):
-        if log_type == 'http':
-            # HTTP 20X should be the majority?
-            status_totals = r['http']['status_code']['totals']
-            temp = {"success": 0, "other": 0}
-            for key, value in status_totals.items():
-                if key.startswith("2"):
-                    temp['success'] += value
-                else:
-                    temp['other'] += value
+        timestamp = datetime.fromtimestamp(float(splitted[0]))
+        timestamp = str(timestamp.replace(second=0, microsecond=0))
 
-            if temp['success'] < temp['other']:
-                self.send_notif("Unusually high volume of non-200 return codes in packet capture.")
+        stat = splitted[stat_index]
 
-    @action
-    def load_dns_log(self, dns_log_name):
-
-        try:
-            with open(dns_log_name, 'r') as f:
-                dns_file_data = f.read()
-        except IOError:
-            return False, 'FileError'
-
-        file_data = dns_file_data.split('\n')
-
-        self.dns_log_data = []
-        for line in file_data:
-            if line and line[0] is not None and line[0] != "#":
-                self.dns_log_data.append(line)
-
-        return True, 'Success'
-
-    @action
-    def analyze_log(self, log_type):
-
-        if log_type == "http":
-            stat_index = http_stat_index
-            log_data = self.http_log_data
-        elif log_type == "dns":
-            stat_index = dns_stat_index
-            log_data = self.dns_log_data
+        if stat not in analysis.keys():
+            analysis[stat] = {timestamp: 1}
         else:
-            return False, 'UnknownLog'
+            if timestamp not in analysis[stat].keys():
+                analysis[stat][timestamp] = 1
+            else:
+                analysis[stat][timestamp] += 1
 
-        r = {log_type: {}}
-        for stat, index in stat_index.items():
-            totals, analysis = self.analyze_stat(log_data, index)
-            analysis_json = pd.DataFrame.from_dict(analysis, orient='columns').fillna(0)
-            analysis_json = analysis_json.to_json(orient='split')
-            analysis_json = split_dataframe_to_c3js(analysis_json)
+        if stat not in totals.keys():
+            totals[stat] = 1
+        else:
+            totals[stat] += 1
 
-            max_cols = 50
-            if len(analysis_json) > max_cols:
-                totals = dict(Counter(totals).most_common(max_cols))
-                analysis_json = [col for col in analysis_json if col[0] in totals.keys() or col[0] == 'index']
+    # maxi = max(totals.values())
+    # mean = np.mean(totals.values())
+    # median = np.median(totals.values())
+    # stdev = np.std(totals.values())
 
-            totals_col = [[k, v] for k, v in totals.items()]
-            r[log_type][stat] = {"totals": totals, "columns": analysis_json, "totals_col": totals_col}
+    return totals, analysis
 
-        self.check_thresholds(r, log_type)
 
-        return r, 'Success'
-    #
-    # @action
-    # def pcap_to_bro_http_json_log(self, filename):
-    #     r = pcap_to_bro(filename, True)
-    #     if r is not (True, 'Success'):
-    #         return r
-    # 
-    #     return proper_json('http.log')
-    # 
-    # @action
-    # def pcap_to_bro_dns_json_log(self, filename):
-    #     r = pcap_to_bro(filename, True)
-    #     if r is not (True, 'Success'):
-    #         return r
-    # 
-    #     return proper_json('dns.log')
+def send_notif(contents):
+    text = Text(contents)
+    message = Message(subject="Stat over threshold.", body=[text])
+    send_message(message, users=store.users_to_notify, roles=store.roles_to_notify)
+
+
+def check_thresholds(r, log_type):
+    if log_type == 'http':
+        # HTTP 20X should be the majority?
+        status_totals = r['http']['status_code']['totals']
+        temp = {"success": 0, "other": 0}
+        for key, value in status_totals.items():
+            if key.startswith("2"):
+                temp['success'] += value
+            else:
+                temp['other'] += value
+
+        if temp['success'] < temp['other']:
+            send_notif("Unusually high volume of non-200 return codes in packet capture.")
+
+
+
+@action
+def load_dns_log(dns_log_name):
+
+    try:
+        with open(dns_log_name, 'r') as f:
+            dns_file_data = f.read()
+    except IOError:
+        return False, 'FileError'
+
+    file_data = dns_file_data.split('\n')
+
+    store.dns_log_data = []
+    for line in file_data:
+        if line and line[0] is not None and line[0] != "#":
+            store.dns_log_data.append(line)
+
+    return True, 'Success'
+
+
+@action
+def analyze_log(log_type):
+
+    if log_type == "http":
+        stat_index = http_stat_index
+        log_data = store.http_log_data
+    elif log_type == "dns":
+        stat_index = dns_stat_index
+        log_data = store.dns_log_data
+    else:
+        return False, 'UnknownLog'
+
+    r = {log_type: {}}
+    for stat, index in stat_index.items():
+        totals, analysis = analyze_stat(log_data, index)
+        analysis_json = pd.DataFrame.from_dict(analysis, orient='columns').fillna(0)
+        analysis_json = analysis_json.to_json(orient='split')
+        analysis_json = split_dataframe_to_c3js(analysis_json)
+
+        max_cols = 50
+        if len(analysis_json) > max_cols:
+            totals = dict(Counter(totals).most_common(max_cols))
+            analysis_json = [col for col in analysis_json if col[0] in totals.keys() or col[0] == 'index']
+
+        totals_col = [[k, v] for k, v in totals.items()]
+        r[log_type][stat] = {"totals": totals, "columns": analysis_json, "totals_col": totals_col}
+
+    check_thresholds(r, log_type)
+
+    return r, 'Success'
+#
+# @action
+# def pcap_to_bro_http_json_log(self, filename):
+#     r = pcap_to_bro(filename, True)
+#     if r is not (True, 'Success'):
+#         return r
+#
+#     return proper_json('http.log')
+#
+# @action
+# def pcap_to_bro_dns_json_log(self, filename):
+#     r = pcap_to_bro(filename, True)
+#     if r is not (True, 'Success'):
+#         return r
+#
+#     return proper_json('dns.log')
