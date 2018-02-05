@@ -14,7 +14,6 @@
                             "value": "http.log"
                         }
                     ],
-                    "device_id": 1,
                     "name": "load http log",
                     "position": {
                         "x": 450,
@@ -32,7 +31,6 @@
                             "value": "http"
                         }
                     ],
-                    "device_id": 1,
                     "name": "analyze log",
                     "position": {
                         "x": 450,
@@ -58,7 +56,6 @@
                             ]
                         }
                     ],
-                    "device_id": 1,
                     "name": "initialize interface",
                     "position": {
                         "x": 450,
@@ -76,7 +73,6 @@
                             "value": "dns.log"
                         }
                     ],
-                    "device_id": 1,
                     "name": "load dns log",
                     "position": {
                         "x": 450,
@@ -94,7 +90,6 @@
                             "value": "dns"
                         }
                     ],
-                    "device_id": 1,
                     "name": "analyze log 2",
                     "position": {
                         "x": 450,
