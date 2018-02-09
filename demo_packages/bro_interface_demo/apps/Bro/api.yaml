@@ -9,7 +9,7 @@ info:
     name: Creative Commons
 actions:
   initialize interface:
-    run: app.Bro.initialize_interface
+    run: app.initialize_interface
     description: configures the interface wrt roles and users to notify
     parameters:
       - name: users_to_notify
@@ -27,7 +27,7 @@ actions:
         schema:
           type: object
   load http log:
-    run: app.Bro.load_http_log
+    run: app.load_http_log
     description: Loads the specified http log into memory
     parameters:
       - name: http_log_name
@@ -43,7 +43,7 @@ actions:
         schema:
           type: boolean
   load dns log:
-    run: app.Bro.load_dns_log
+    run: app.load_dns_log
     description: Loads the specified dns log into memory
     parameters:
       - name: dns_log_name
@@ -59,7 +59,7 @@ actions:
         schema:
           type: boolean
   analyze log:
-    run: app.Bro.analyze_log
+    run: app.analyze_log
     description: Runs timeseries and totals analysis of the specified stat in a log
     parameters:
       - name: log_type

@@ -4,7 +4,7 @@ from apps import App, action
 import subprocess
 import json
 import pandas as pd
-import numpy as np
+# import numpy as np
 from datetime import datetime
 from apps.messaging import Text, Message, send_message, Url, AcceptDecline
 from collections import Counter
