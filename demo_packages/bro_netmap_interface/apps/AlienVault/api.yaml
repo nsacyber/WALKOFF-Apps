@@ -1,0 +1,47 @@
+walkoff: '0.1'
+info:
+  version: 0.1.0
+  title: AlienVault
+  description: An app to download indicators from AlienVault OTX
+  contact:
+    name: Walkoff Team
+  license:
+    name: Creative Commons
+actions:
+  download indicators:
+    run: app.AlienVault.download_indicators
+    description: downloads
+    parameters:
+      - name: directory
+        description: directory to place indicators in
+        type: string
+      - name: proxy
+        description: url of proxy server to route request through
+        type: string
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          type: boolean
+      FileError:
+        failure: true
+        schema:
+          type: string
+      InvalidKey:
+        failure: true
+        schema:
+          type: string
+      URLError:
+        failure: true
+        schema:
+          type: string
+devices:
+  AlienVault OTX Key:
+    description: Input your AlienVault OTX API key here
+    fields:
+      - name: key
+        type: string
+        minLength: 64
+        maxLength: 64
+        required: true
+        placeholder: enter a 64-char key

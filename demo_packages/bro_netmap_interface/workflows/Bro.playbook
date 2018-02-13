@@ -1,0 +1,257 @@
+{
+    "name": "Bro",
+    "uid": "08b368ef-d7dd-4b27-93c7-e12cba35c5f9",
+    "walkoff_version": "0.6.0",
+    "workflows": [
+        {
+            "actions": [
+                {
+                    "action_name": "make http netmap",
+                    "app_name": "Bro",
+                    "arguments": [],
+                    "name": "make http netmap",
+                    "position": {
+                        "x": 510,
+                        "y": 750
+                    },
+                    "triggers": [],
+                    "uid": "5e2bc562-3327-b8f7-3733-3a3c754b71e1"
+                },
+                {
+                    "action_name": "download indicators",
+                    "app_name": "AlienVault",
+                    "arguments": [],
+                    "device_id": 1,
+                    "name": "download indicators",
+                    "position": {
+                        "x": 310,
+                        "y": 330
+                    },
+                    "triggers": [],
+                    "uid": "a891918d-0c44-ac95-3072-8996b7aa4979"
+                },
+                {
+                    "action_name": "load conn log",
+                    "app_name": "Bro",
+                    "arguments": [
+                        {
+                            "name": "conn_log_name",
+                            "value": "pcaps/4SICS-GeekLounge-151021/conn.log"
+                        }
+                    ],
+                    "name": "load conn log",
+                    "position": {
+                        "x": 510,
+                        "y": 630
+                    },
+                    "triggers": [],
+                    "uid": "9019360b-8ec9-e6ed-8b8c-b21400ed3f1c"
+                },
+                {
+                    "action_name": "load http log",
+                    "app_name": "Bro",
+                    "arguments": [
+                        {
+                            "name": "http_log_name",
+                            "value": "pcaps/4SICS-GeekLounge-151021/http.log"
+                        }
+                    ],
+                    "name": "load http log",
+                    "position": {
+                        "x": 510,
+                        "y": 390
+                    },
+                    "triggers": [],
+                    "uid": "545df516-22bb-d298-85c3-82e22228b636"
+                },
+                {
+                    "action_name": "analyze log",
+                    "app_name": "Bro",
+                    "arguments": [
+                        {
+                            "name": "log_type",
+                            "value": "dns"
+                        }
+                    ],
+                    "name": "analyze log 2",
+                    "position": {
+                        "x": 450,
+                        "y": 570
+                    },
+                    "triggers": [],
+                    "uid": "241bfc18-71f7-3d56-8fee-d31a9fe9c967"
+                },
+                {
+                    "action_name": "load indicators",
+                    "app_name": "Bro",
+                    "arguments": [
+                        {
+                            "name": "directory",
+                            "value": "./apps/AlienVault/signature-base/iocs/"
+                        },
+                        {
+                            "name": "domains_filename",
+                            "value": "otx-c2-iocs.txt"
+                        },
+                        {
+                            "name": "ipv4_filename",
+                            "value": "otx-c2-iocs-ipv4.txt"
+                        }
+                    ],
+                    "name": "load indicators",
+                    "position": {
+                        "x": 450,
+                        "y": 690
+                    },
+                    "triggers": [],
+                    "uid": "a9b3aa43-937b-2233-2885-8f1d75b4585e"
+                },
+                {
+                    "action_name": "load whitelist",
+                    "app_name": "Bro",
+                    "arguments": [
+                        {
+                            "name": "filename",
+                            "value": "walkoffBroWhitelist.txt"
+                        }
+                    ],
+                    "name": "load whitelist",
+                    "position": {
+                        "x": 450,
+                        "y": 330
+                    },
+                    "triggers": [],
+                    "uid": "f97c2b0b-73a0-23fa-9c96-892d73ba7f7b"
+                },
+                {
+                    "action_name": "load dns log",
+                    "app_name": "Bro",
+                    "arguments": [
+                        {
+                            "name": "dns_log_name",
+                            "value": "pcaps/4SICS-GeekLounge-151021/dns.log"
+                        }
+                    ],
+                    "name": "load dns log",
+                    "position": {
+                        "x": 510,
+                        "y": 510
+                    },
+                    "triggers": [],
+                    "uid": "16090954-63c4-d661-29fe-770fc5c29d09"
+                },
+                {
+                    "action_name": "initialize interface",
+                    "app_name": "Bro",
+                    "arguments": [
+                        {
+                            "name": "roles_to_notify",
+                            "value": [
+                                1
+                            ]
+                        },
+                        {
+                            "name": "users_to_notify",
+                            "value": [
+                                1
+                            ]
+                        }
+                    ],
+                    "name": "initialize interface",
+                    "position": {
+                        "x": 510,
+                        "y": 270
+                    },
+                    "triggers": [],
+                    "uid": "290b52f8-64ab-898d-cbf2-bd8aefa212dd"
+                },
+                {
+                    "action_name": "analyze log",
+                    "app_name": "Bro",
+                    "arguments": [
+                        {
+                            "name": "log_type",
+                            "value": "http"
+                        }
+                    ],
+                    "name": "analyze log",
+                    "position": {
+                        "x": 450,
+                        "y": 450
+                    },
+                    "triggers": [],
+                    "uid": "61fb4a11-54b3-64cf-d863-c0f3d7288646"
+                }
+            ],
+            "branches": [
+                {
+                    "conditions": [],
+                    "destination_uid": "a9b3aa43-937b-2233-2885-8f1d75b4585e",
+                    "priority": 1,
+                    "source_uid": "9019360b-8ec9-e6ed-8b8c-b21400ed3f1c",
+                    "status": "Success",
+                    "uid": "8b0eba4c-c712-47d5-a7df-b23364431b0c"
+                },
+                {
+                    "conditions": [],
+                    "destination_uid": "61fb4a11-54b3-64cf-d863-c0f3d7288646",
+                    "priority": 1,
+                    "source_uid": "545df516-22bb-d298-85c3-82e22228b636",
+                    "status": "Success",
+                    "uid": "2fdfe7b5-2a50-4a45-a74c-e564f76101d2"
+                },
+                {
+                    "conditions": [],
+                    "destination_uid": "9019360b-8ec9-e6ed-8b8c-b21400ed3f1c",
+                    "priority": 1,
+                    "source_uid": "241bfc18-71f7-3d56-8fee-d31a9fe9c967",
+                    "status": "Success",
+                    "uid": "a2f29e4a-3e82-46a9-a021-ac24edb84dcd"
+                },
+                {
+                    "conditions": [],
+                    "destination_uid": "5e2bc562-3327-b8f7-3733-3a3c754b71e1",
+                    "priority": 1,
+                    "source_uid": "a9b3aa43-937b-2233-2885-8f1d75b4585e",
+                    "status": "Success",
+                    "uid": "a19e0fec-b1e3-427d-9ca1-2c03838d1a38"
+                },
+                {
+                    "conditions": [],
+                    "destination_uid": "545df516-22bb-d298-85c3-82e22228b636",
+                    "priority": 1,
+                    "source_uid": "f97c2b0b-73a0-23fa-9c96-892d73ba7f7b",
+                    "status": "Success",
+                    "uid": "54c4ceb8-d511-4c7a-8598-037a04ee42de"
+                },
+                {
+                    "conditions": [],
+                    "destination_uid": "241bfc18-71f7-3d56-8fee-d31a9fe9c967",
+                    "priority": 1,
+                    "source_uid": "16090954-63c4-d661-29fe-770fc5c29d09",
+                    "status": "Success",
+                    "uid": "b099a582-7874-41c9-8d6a-801e7add7b2a"
+                },
+                {
+                    "conditions": [],
+                    "destination_uid": "f97c2b0b-73a0-23fa-9c96-892d73ba7f7b",
+                    "priority": 1,
+                    "source_uid": "290b52f8-64ab-898d-cbf2-bd8aefa212dd",
+                    "status": "Success",
+                    "uid": "fb18e948-f350-4c5b-a585-4fc8d2c932bb"
+                },
+                {
+                    "conditions": [],
+                    "destination_uid": "16090954-63c4-d661-29fe-770fc5c29d09",
+                    "priority": 1,
+                    "source_uid": "61fb4a11-54b3-64cf-d863-c0f3d7288646",
+                    "status": "Success",
+                    "uid": "03777c14-7217-47b7-b229-a5e20477deba"
+                }
+            ],
+            "name": "Test",
+            "start": "290b52f8-64ab-898d-cbf2-bd8aefa212dd",
+            "uid": "f2496a72-8365-42c0-a9e3-bfe0b93bbb5c"
+        }
+    ]
+}

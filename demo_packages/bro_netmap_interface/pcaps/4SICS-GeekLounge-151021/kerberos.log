@@ -1,0 +1,24 @@
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	kerberos
+#open	2018-02-08-11-13-56
+#fields	ts	uid	id.orig_h	id.orig_p	id.resp_h	id.resp_p	request_type	client	service	success	error_msg	from	till	cipher	forwardable	renewable	client_cert_subject	client_cert_fuid	server_cert_subject	server_cert_fuid
+#types	time	string	addr	port	addr	port	string	string	string	bool	string	time	time	string	bool	bool	string	string	string	string
+1445422181.461286	CrEGn115l8gnHC8Sa9	192.168.2.64	51952	192.168.88.25	80	AS	/NM	krbtgt/NM	-	-	-	0.000000	-	T	T	-	-	-	-
+1445422207.022683	CPWJnp4uAqmU9c7O79	192.168.2.64	52009	192.168.88.60	4001	AS	/NM	krbtgt/NM	-	-	-	0.000000	-	T	T	-	-	-	-
+1445422208.039677	CV4sUIJN2F0XzzjR1	192.168.2.64	52011	192.168.88.60	4000	AS	/NM	krbtgt/NM	-	-	-	0.000000	-	T	T	-	-	-	-
+1445422208.484681	CtNkk82iv4mi2IeDUa	192.168.2.64	52013	192.168.88.60	23	AS	/NM	krbtgt/NM	-	-	-	0.000000	-	T	T	-	-	-	-
+1445422208.478645	C3v0NEMLArxp7SUQi	192.168.2.64	52012	192.168.88.51	1234	AS	/NM	krbtgt/NM	-	-	-	0.000000	-	T	T	-	-	-	-
+1445422208.518259	CchoFa3uFLodrsgBec	192.168.2.64	52014	192.168.88.95	23	AS	/NM	krbtgt/NM	-	-	-	0.000000	-	T	T	-	-	-	-
+1445422209.512212	C0plhu3KN5VdxO1gCf	192.168.2.64	52016	192.168.88.61	23	AS	/NM	krbtgt/NM	-	-	-	0.000000	-	T	T	-	-	-	-
+1445422216.498830	CISMxl3mGJc0q6UW1	192.168.2.64	52029	192.168.88.95	20000	AS	/NM	krbtgt/NM	-	-	-	0.000000	-	T	T	-	-	-	-
+1445422216.743124	Cs9ZO94wpEZ3lkrZ8j	192.168.2.64	52031	192.168.88.100	80	AS	/NM	krbtgt/NM	-	-	-	0.000000	-	T	T	-	-	-	-
+1445422213.596930	CSFRMe2OpDNlLx5Qug	192.168.2.64	52027	192.168.88.25	81	AS	/NM	krbtgt/NM	-	-	-	0.000000	-	T	T	-	-	-	-
+1445426162.174390	CzF3XtPrzu0KuZMK3	192.168.2.42	56943	192.168.88.30	5001	AS	/NM	krbtgt/NM	-	-	-	0.000000	-	T	T	-	-	-	-
+1445444421.646111	C2H2P827rsYnOWbIk2	192.168.2.88	58067	192.168.88.51	1234	AS	/NM	krbtgt/NM	-	-	-	0.000000	-	T	T	-	-	-	-
+1445445409.393521	CisVuG2zNIZkdSsyQg	192.168.2.88	51326	192.168.88.95	23	AS	/NM	krbtgt/NM	-	-	-	0.000000	-	T	T	-	-	-	-
+1445445414.399457	CkyWRZ3epIpVaRYi7c	192.168.2.88	39679	192.168.88.100	80	AS	/NM	krbtgt/NM	-	-	-	0.000000	-	T	T	-	-	-	-
+1445445414.403504	CA0X2k1mjhmcUCbMI2	192.168.2.88	42580	192.168.88.95	20000	AS	/NM	krbtgt/NM	-	-	-	0.000000	-	T	T	-	-	-	-
+#close	2018-02-08-11-14-15

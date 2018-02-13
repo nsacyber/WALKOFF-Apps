@@ -1,0 +1,163 @@
+walkoff: '0.1'
+info:
+  version: 0.1.0
+  title: Bro App
+  description: An app to interface with bro network monitoring.
+  contact:
+    name: Walkoff Team
+  license:
+    name: Creative Commons
+actions:
+  initialize interface:
+    run: app.initialize_interface
+    description: configures the interface wrt roles and users to notify
+    parameters:
+      - name: users_to_notify
+        description: users to notify when a threshold is breached
+        type: array
+        items:
+          type: user
+      - name: roles_to_notify
+        description: roles to notify when a threshold is breached
+        type: array
+        items:
+          type: role
+    returns:
+      Success:
+        schema:
+          type: object
+  load whitelist:
+    run: app.load_whitelist
+    description: configures the interface wrt roles and users to notify
+    parameters:
+      - name: filename
+        description: list of IPs and hostnames to whitelist (exclude) in HTTP log
+        type: string
+        required: true
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          type: boolean
+      FileError:
+        failure: true
+        schema:
+          type: boolean
+  load indicators:
+    run: app.load_indicators
+    description: loads indicators downloaded via AlienVault OTX API (or app)
+    parameters:
+      - name: directory
+        description: directory to look in (defaults use AlienVault app defaults)
+        type: string
+        default: "./apps/AlienVault/signature-base/iocs/"
+        required: true
+      - name: domains_filename
+        description: name of domains indicators file (defaults use AlienVault app defaults)
+        type: string
+        default: "otx-c2-iocs.txt"
+        required: true
+      - name: ipv4_filename
+        description: name of ipv4 indicators file (defaults use AlienVault app defaults)
+        type: string
+        default: "otx-c2-iocs-ipv4.txt"
+        required: true
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          type: boolean
+      FileError:
+        failure: true
+        schema:
+          type: string
+  load http log:
+    run: app.load_http_log
+    description: Loads the specified http log into memory
+    parameters:
+      - name: http_log_name
+        description: file path of the http log
+        required: true
+        type: string
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          type: boolean
+      FileError:
+        failure: true
+        schema:
+          type: boolean
+  load dns log:
+    run: app.load_dns_log
+    description: Loads the specified dns log into memory
+    parameters:
+      - name: dns_log_name
+        description: file path of the dns log
+        required: true
+        type: string
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          type: boolean
+      FileError:
+        failure: true
+        schema:
+          type: boolean
+  load conn log:
+    run: app.load_conn_log
+    description: Loads the specified conn log into memory with only http connections
+    parameters:
+      - name: conn_log_name
+        description: file path of the conn log
+        required: true
+        type: string
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          type: boolean
+      FileError:
+        failure: true
+        schema:
+          type: boolean
+  analyze log:
+    run: app.analyze_log
+    description: Runs timeseries and totals analysis of the specified stat in a log
+    parameters:
+      - name: log_type
+        description: name of the log to analyze
+        required: true
+        type: string
+        enum: ['dns', 'http']
+    default_return: Success
+    returns:
+      Success:
+        description: Sends the results to the interface
+        schema:
+          type: object
+      UnknownLog:
+        failure: true
+        description: Only supports dns and http logs currently
+        schema:
+          type: boolean
+      LogNotLoaded:
+        failure: true
+        description: The specified log has not been loaded yet.
+        schema:
+          type: boolean
+  make http netmap:
+    run: app.make_http_netmap
+    description: creates a map of source and destination IPs
+    default_return: Success
+    returns:
+      Success:
+        description: Sends the results to the interface
+        schema:
+          type: object
+      NoData:
+        description: log data has not been loaded yet
+        failure: true
+        schema:
+          type: boolean

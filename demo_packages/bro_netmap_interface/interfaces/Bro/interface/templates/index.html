@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <title>Bro Log Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('custom_interface.static', interface=g.interface, filename='lib/bootstrap/dist/css/bootstrap.min.css' ) }}">
+    <link rel="stylesheet" href="{{ url_for('custom_interface.static', interface=g.interface, filename='lib/c3/c3.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('custom_interface.static', interface=g.interface, filename='index.css') }}">
+
+    <script src="{{ url_for('custom_interface.static', interface=g.interface, filename='lib/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ url_for('custom_interface.static', interface=g.interface, filename='lib/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('custom_interface.static', interface=g.interface, filename='lib/d3/d3.min.js') }}"></script>
+    <script src="{{ url_for('custom_interface.static', interface=g.interface, filename='lib/d3v4/build/d3.min.js') }}"></script>
+    <script src="{{ url_for('custom_interface.static', interface=g.interface, filename='lib/d3-hive/d3.hive.min.js') }}"></script>
+    <script src="{{ url_for('custom_interface.static', interface=g.interface, filename='lib/c3/c3.min.js') }}"></script>
+    <script src="{{ url_for('custom_interface.static', interface=g.interface, filename='lib/svgpanzoom/svg-pan-zoom.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('custom_interface.static', interface=g.interface, filename='lib/bootstrap-table/bootstrap-table.min.css') }}">
+    <script src="{{ url_for('custom_interface.static', interface=g.interface, filename='lib/bootstrap-table/bootstrap-table.min.js') }}"></script>
+    <script src="{{ url_for('custom_interface.static', interface=g.interface, filename='visualize.js') }}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="main" class="container-fluid">
+    <h3>Bro Log Dashboard</h3>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item active">
+            <a onClick="location.reload(true)" class="nav-link active" data-toggle="tab" role="tab">Home</a>
+        </li>
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown">
+                HTTP Log <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a data-toggle="tab" onClick="getChart('http', 'status_code')">Status Codes</a></li>
+                <li><a data-toggle="tab" onClick="getChart('http', 'method')">Methods</a></li>
+                <li><a data-toggle="tab" onClick="getChart('http', 'user_agent')">User Agents</a></li>
+                <li><a data-toggle="tab" onClick="getChart('http', 'id.orig_h')">Origin IPs</a></li>
+                <li><a data-toggle="tab" onClick="getChart('http', 'id.resp_h')">Destination IPs</a></li>
+                <li><a data-toggle="tab" onClick="getChart('http', 'host')">Hostnames</a></li>
+                <li><a data-toggle="tab" onClick="getChart('http', 'uri')">URIs</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown">
+                DNS Log <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a data-toggle="tab" onClick="getChart('dns', 'query')">Queries</a></li>
+                <li><a data-toggle="tab" onClick="getChart('dns', 'qtype_name')">Query Types</a></li>
+                <li><a data-toggle="tab" onClick="getChart('dns', 'rcode_name')">Request Codes</a></li>
+                <li><a data-toggle="tab" onClick="getChart('dns', 'qclass_name')">Query Classes</a></li>
+                <li><a data-toggle="tab" onClick="getChart('dns', 'id.orig_h')">Origin IPs</a></li>
+                <li><a data-toggle="tab" onClick="getChart('dns', 'id.resp_h')">Response IPs</a></li>
+            </ul>
+        </li>
+
+        <li class="nav-item">
+            <a onClick="getMap('all')" class="nav-link" data-toggle="tab" role="tab">HTTP Requests Map</a>
+        </li>
+    </ul>
+    <div class="row">
+        <div id="leftchart" class="col-sm-8">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="c1title">Requests over time</div>
+                <div class="panel-body">
+                    <p id="c1text">Click one of the stats in the dropdown menus to analyze the submitted
+                        packet capture.<br>A line chart showing requests over time on one-minute intervals will be
+                        displayed here.<br>If there are more than 50 keys, the results will be truncated to the top 50 most seen keys for performance reasons. (e.g. top DNS queries)</p>
+                    <div class="chart" id="chart1">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="rightchart" class="col-sm-4">
+            <div class="panel panel-info">
+                <div class="panel-heading" id="c2title">Total requests</div>
+                <div class="panel-body">
+                    <p id="c2text">A pie chart showing the total number of requests of each  type will be displayed here.</p>
+
+                    <div class="chart" id="chart2">                    <table id="statsTable" class="table table-bordered"
+                           data-search="true"
+                           data-height="600"
+                           data-pagination="true"
+                           data-page-list="[10, 25, 50, 100, ALL]"
+                           data-sort-name="# Reqs"
+                           data-sort-order="desc"
+                           data-show-columns="true"
+                           data-detail-view="true"
+                           data-detail-formatter="malList">
+                        <thead>
+                        <tr>
+                            <th id="IP" data-field="IP"
+                                data-sortable="true">IP</th>
+
+                            <th data-field="Hostname"
+                                data-sortable="true">Hostname</th>
+
+                            <th data-field="# Reqs"
+                                data-sortable="true"># Reqs</th>
+
+                            <th data-field="# Mal"
+                                data-sortable="true"># Mal</th>
+
+                            <th data-field="Sent Bytes"
+                                data-sortable="true">Sent Bytes</th>
+
+                            <th data-field="Recv Bytes"
+                                data-sortable="true">Recv Bytes</th>
+                        </tr>
+                        </thead>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>

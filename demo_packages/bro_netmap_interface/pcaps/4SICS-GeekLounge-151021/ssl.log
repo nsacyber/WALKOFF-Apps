@@ -1,0 +1,358 @@
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	ssl
+#open	2018-02-08-11-13-56
+#fields	ts	uid	id.orig_h	id.orig_p	id.resp_h	id.resp_p	version	cipher	curve	server_name	resumed	last_alert	next_protocol	established	cert_chain_fuids	client_cert_chain_fuids	subject	issuer	client_subject	client_issuer
+#types	time	string	addr	port	addr	port	string	string	string	string	bool	string	string	bool	vector[string]	vector[string]	string	string	string	string
+1445422160.986219	Cs4mzB29dm8vegBlPa	192.168.2.64	51864	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	FmzuZp11HVJDC3cEPi	(empty)	CN=EagleSDV,emailAddress=EagleSDV@hirschmann.de,CN=EagleSDV,OU=EagleSDV,O=Hirschmann Automation and Control GmbH,L=Neckartenzlingen,ST=BW,C=DE	emailAddress=hac-support@hirschmann.de,OU=Competence Center,O=Hirschmann Automation and Control GmbH,ST=Germany,L=Neckartenzlingen,C=DE	-	-
+1445422161.992717	C8T4hKKicYZYCH9p6	192.168.2.64	51873	192.168.88.61	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FKzXMB3hawQK4O9aRg	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.61	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422162.001201	CkCH7o4iG2shtowp5d	192.168.2.64	51874	192.168.88.60	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FTUSbM3oJSekmv6DR9	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.60	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422160.968436	CCUE2K3iQiHsA5hz52	192.168.2.64	51859	192.168.88.75	443	SSLv3	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	F	-	-	F	FHkVmhCjkM5cFLi1	(empty)	-	-	-	-
+1445422161.982094	CaMAv33qbtKR4uLAg1	192.168.2.64	51872	192.168.88.61	443	SSLv3	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	F	-	-	F	FGWPjA15Zam9xSOjSe	(empty)	-	-	-	-
+1445422161.982359	CEXdS44A98n6fpeny2	192.168.2.64	51871	192.168.88.60	443	SSLv3	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	F	-	-	F	Ffb9ku4nBgzWaxfUO5	(empty)	-	-	-	-
+1445422166.581810	CHPlYx2tp8sSJVWPSg	192.168.2.64	51895	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FbUyB82Hv4ND0dwOei	(empty)	CN=Digi CM,O=Digi International,ST=Minnesota,C=US	CN=Digi International,O=Digi International,L=Minneapois,ST=Minnesota,C=US	-	-
+1445422167.101325	CsuyA9hPN7yXd6jt9	192.168.2.64	51898	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445422167.134710	CC9eSM3WSMlXR7dXr8	192.168.2.64	51899	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445422167.171777	Ctebcg2s5O18G0K8u7	192.168.2.64	51900	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445422167.209470	CZUkVGenTnaHtot3a	192.168.2.64	51901	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445422162.921616	CQ6oFz1shnc50B5ea7	192.168.2.64	51879	192.168.88.95	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	FuBx4h2LorO1Levu47	(empty)	CN=ruggedcom.com,OU=Engineering,O=Ruggedcom Inc.,L=Concord,ST=Ontario,C=Canada	CN=ruggedcom.com,OU=Engineering,O=Ruggedcom Inc.,L=Concord,ST=Ontario,C=Canada	-	-
+1445422162.343387	CVIhOo2SzT0JJpMRSk	192.168.2.64	51878	192.168.88.95	443	SSLv3	TLS_RSA_WITH_RC4_128_MD5	-	-	F	-	-	F	F9tqYiuoJfGtyRjf1	(empty)	-	-	-	-
+1445422166.535968	CQHZQk1vYGDMVqkli1	192.168.2.64	51894	192.168.88.115	443	SSLv3	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	F	-	-	F	FEZLIh4i0SRH0MmBn	(empty)	-	-	-	-
+1445422172.228525	CtEU7e2YMWPUTpwrWi	192.168.2.64	51925	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445422177.246559	CUxfRzeDYGfSEBPBd	192.168.2.64	51937	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445422182.270874	C2PqdC4rgFostY633e	192.168.2.64	51956	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445422182.303866	CCLo6L8BlcZkTH5rh	192.168.2.64	51957	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445422187.325958	CquAGG1H4FUCMrLjEe	192.168.2.64	51970	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445422192.345572	Cf1PaQ1yO9W4RospPl	192.168.2.64	51982	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445422197.367641	C5nuML2O5amo9XNdLl	192.168.2.64	51993	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445422202.386980	CLD3YY3zGLLFNMZKvd	192.168.2.64	51999	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445422202.425000	C4MIt33F26OMRPs6R8	192.168.2.64	52000	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445422207.443460	CL9r9i4fit2JzcsWc5	192.168.2.64	52010	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445422212.465678	CihOTa4Ft7u8Fx4vsl	192.168.2.64	52021	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445422212.502093	CmVZWG2RVKaQolGYMi	192.168.2.64	52022	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445422217.525616	C1Ft9G4D49ueVMDnNd	192.168.2.64	52033	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445422222.545274	Cpz3jbDooTSxUqNJ9	192.168.2.64	52044	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445422227.569223	C8w5353O1NEnZUcbdd	192.168.2.64	52055	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445422232.592860	CUts1j4Hn7zHR6HFua	192.168.2.64	52065	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445422237.616857	C88aif2lS4nLrOL8Zh	192.168.2.64	52075	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445422242.638564	CWWyez3yRPNkm6Oc9	192.168.2.64	52084	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445422247.662974	Cdll3H3nuRjbN5fGck	192.168.2.64	52094	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445422289.327931	CfN1Ki22HW0dH6ojse	192.168.2.64	52171	192.168.88.61	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FitlwO3inBjgikun2h	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.61	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422289.327798	CMlPrS1Fd33myMKeWc	192.168.2.64	52165	192.168.88.60	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FMIYet3KNgb77uJfP2	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.60	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422289.537345	C0zXZ62T7a4oW5gBul	192.168.2.64	52185	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	F3JabO3nCZ0lGWU4k3	(empty)	CN=EagleSDV,emailAddress=EagleSDV@hirschmann.de,CN=EagleSDV,OU=EagleSDV,O=Hirschmann Automation and Control GmbH,L=Neckartenzlingen,ST=BW,C=DE	emailAddress=hac-support@hirschmann.de,OU=Competence Center,O=Hirschmann Automation and Control GmbH,ST=Germany,L=Neckartenzlingen,C=DE	-	-
+1445422289.328201	CjlL6w1PrQqoLUz2xd	192.168.2.64	52177	192.168.88.61	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FQ66sI2rrXoCtvxEB4	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.61	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422289.606537	C3KAKCrKDzsgXQHDa	192.168.2.64	52188	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	FL5OGq4zROYP6onrI1	(empty)	CN=EagleSDV,emailAddress=EagleSDV@hirschmann.de,CN=EagleSDV,OU=EagleSDV,O=Hirschmann Automation and Control GmbH,L=Neckartenzlingen,ST=BW,C=DE	emailAddress=hac-support@hirschmann.de,OU=Competence Center,O=Hirschmann Automation and Control GmbH,ST=Germany,L=Neckartenzlingen,C=DE	-	-
+1445422289.647241	CFZ7md2OGaCKLRPb8d	192.168.2.64	52189	192.168.88.61	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FfJhzg337lNMjYwX02	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.61	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422289.647767	CFP6RT18pLwWCQ9kS5	192.168.2.64	52190	192.168.88.61	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FZ5ZQs4jhrVuRlglW9	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.61	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422289.755522	Cb8ufaiYOAAmczzjf	192.168.2.64	52193	192.168.88.60	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FJ4Crf1xr2BYN6FhE9	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.60	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422289.970184	COwmSw3PWAVEeNWbKf	192.168.2.64	52205	192.168.88.61	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FVigDHqMneSvEMGgd	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.61	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422290.127023	CNqJZD3iPJY2sm3Zwb	192.168.2.64	52212	192.168.88.61	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FSvuxe1jGrYtFHFcI2	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.61	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422290.183742	CoOl1z3hKILDFxuhi5	192.168.2.64	52216	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	FajDOr1sGnoXd2ZV85	(empty)	CN=EagleSDV,emailAddress=EagleSDV@hirschmann.de,CN=EagleSDV,OU=EagleSDV,O=Hirschmann Automation and Control GmbH,L=Neckartenzlingen,ST=BW,C=DE	emailAddress=hac-support@hirschmann.de,OU=Competence Center,O=Hirschmann Automation and Control GmbH,ST=Germany,L=Neckartenzlingen,C=DE	-	-
+1445422289.866463	CxLIcSjcI7mPwzp59	192.168.2.64	52202	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FFcARL3OdXRZAQwgWb	(empty)	CN=Digi CM,O=Digi International,ST=Minnesota,C=US	CN=Digi International,O=Digi International,L=Minneapois,ST=Minnesota,C=US	-	-
+1445422289.810436	COo4Lr1erOnac7vSql	192.168.2.64	52197	192.168.88.60	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FCahGZ3459uV9IK4ra	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.60	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422290.292253	CmH7wH44rbCTmClR4	192.168.2.64	52217	192.168.88.61	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	Fu5WFj3DvkrR7CQN3h	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.61	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422290.515089	CpovtQ3XQNk37UsdV4	192.168.2.64	52229	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	FenjYKEyHaocu4xYd	(empty)	CN=EagleSDV,emailAddress=EagleSDV@hirschmann.de,CN=EagleSDV,OU=EagleSDV,O=Hirschmann Automation and Control GmbH,L=Neckartenzlingen,ST=BW,C=DE	emailAddress=hac-support@hirschmann.de,OU=Competence Center,O=Hirschmann Automation and Control GmbH,ST=Germany,L=Neckartenzlingen,C=DE	-	-
+1445422290.514391	CRTO8z4tmmzgVuxx19	192.168.2.64	52226	192.168.88.60	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	Fn2e7swq7FDHccCsg	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.60	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422290.623299	C7TFaU2P0FPetUwbDa	192.168.2.64	52231	192.168.88.61	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FTu4zT7aGtuMCEIQ2	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.61	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422290.514673	CFsaZxcuGvJLMCsK7	192.168.2.64	52228	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FdO6tmO5XfajZ0297	(empty)	CN=Digi CM,O=Digi International,ST=Minnesota,C=US	CN=Digi International,O=Digi International,L=Minneapois,ST=Minnesota,C=US	-	-
+1445422290.968747	C31oFV2zm9MMlbbeN	192.168.2.64	52242	192.168.88.61	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FQDJT53Q1EKk5qciqb	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.61	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422291.185754	CVp9GFY85fT0bOW29	192.168.2.64	52248	192.168.88.61	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	F0RPrV1pzYjomhMAy	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.61	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422291.292117	ChPx111Dj0JzWIWmvd	192.168.2.64	52249	192.168.88.61	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FMaVEg25AptL1W3cFh	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.61	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422291.399559	CUFXHM2bfc0m4F8tLj	192.168.2.64	52252	192.168.88.60	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FH7PA23PXa64jcY8ch	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.60	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422291.019841	CsdR6w3rfTaFdCgpA	192.168.2.64	52244	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FOTK803ar8qJdWuLma	(empty)	CN=Digi CM,O=Digi International,ST=Minnesota,C=US	CN=Digi International,O=Digi International,L=Minneapois,ST=Minnesota,C=US	-	-
+1445422291.671266	CYftmJt93go2xacA	192.168.2.64	52256	192.168.88.61	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FdvmMm1yLaVqb7XsSj	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.61	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422291.776484	CvHqML1dkbeLr5OH0c	192.168.2.64	52259	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	FuhIq93V9FYG5rUeA7	(empty)	CN=EagleSDV,emailAddress=EagleSDV@hirschmann.de,CN=EagleSDV,OU=EagleSDV,O=Hirschmann Automation and Control GmbH,L=Neckartenzlingen,ST=BW,C=DE	emailAddress=hac-support@hirschmann.de,OU=Competence Center,O=Hirschmann Automation and Control GmbH,ST=Germany,L=Neckartenzlingen,C=DE	-	-
+1445422291.991970	CvzYCq4jKUahh9Yj7h	192.168.2.64	52264	192.168.88.61	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FDv3MC3v3Hbpmi8o42	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.61	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422291.455315	Chd9Aw4jpuXEw8KHDb	192.168.2.64	52253	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FI8n1I1ATFqC65jtQa	(empty)	CN=Digi CM,O=Digi International,ST=Minnesota,C=US	CN=Digi International,O=Digi International,L=Minneapois,ST=Minnesota,C=US	-	-
+1445422292.264988	Cf0FZmCDu1UOn7ih2	192.168.2.64	52273	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	FYH1Ma4D6ZftLOiqT5	(empty)	CN=EagleSDV,emailAddress=EagleSDV@hirschmann.de,CN=EagleSDV,OU=EagleSDV,O=Hirschmann Automation and Control GmbH,L=Neckartenzlingen,ST=BW,C=DE	emailAddress=hac-support@hirschmann.de,OU=Competence Center,O=Hirschmann Automation and Control GmbH,ST=Germany,L=Neckartenzlingen,C=DE	-	-
+1445422292.582642	Cp6ODl9e1PUyjJft8	192.168.2.64	52283	192.168.88.60	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FT1LYs7DD82kpCdee	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.60	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422289.326883	CMycoc2NtcbuXBuJkk	192.168.2.64	52157	192.168.88.95	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	FUDkii3xlc5XM6FFLh	(empty)	CN=ruggedcom.com,OU=Engineering,O=Ruggedcom Inc.,L=Concord,ST=Ontario,C=Canada	CN=ruggedcom.com,OU=Engineering,O=Ruggedcom Inc.,L=Concord,ST=Ontario,C=Canada	-	-
+1445422293.015487	Ch0KMT3N8xeJj10qc8	192.168.2.64	52299	192.168.88.60	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	Ft0jRZ1NQGzrqryHF1	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.60	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422293.439683	CzG3N93bJfMjnrX0l7	192.168.2.64	52310	192.168.88.60	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FtxDFg3aC9mx9d5Zhl	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.60	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422293.952663	Ci6VTPaJqVuTCf511	192.168.2.64	52319	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	FrCKKH3NUtS89Hj1Th	(empty)	CN=EagleSDV,emailAddress=EagleSDV@hirschmann.de,CN=EagleSDV,OU=EagleSDV,O=Hirschmann Automation and Control GmbH,L=Neckartenzlingen,ST=BW,C=DE	emailAddress=hac-support@hirschmann.de,OU=Competence Center,O=Hirschmann Automation and Control GmbH,ST=Germany,L=Neckartenzlingen,C=DE	-	-
+1445422294.009295	CVGlme1JvYgs0Yqdth	192.168.2.64	52322	192.168.88.60	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	Fmjz6a1sc8Fwl4asrl	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.60	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422294.224425	C6YBtz1pnJCP1SafCk	192.168.2.64	52326	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	FZuxbl1tT7K3JqIZKj	(empty)	CN=EagleSDV,emailAddress=EagleSDV@hirschmann.de,CN=EagleSDV,OU=EagleSDV,O=Hirschmann Automation and Control GmbH,L=Neckartenzlingen,ST=BW,C=DE	emailAddress=hac-support@hirschmann.de,OU=Competence Center,O=Hirschmann Automation and Control GmbH,ST=Germany,L=Neckartenzlingen,C=DE	-	-
+1445422289.327025	CKF3xV1KYibOuyLFgi	192.168.2.64	52164	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422289.328929	C5h1pempdrxTNXJD3	192.168.2.64	52178	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422289.483524	C3iKlK9GDAkb70QPh	192.168.2.64	52180	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422289.487278	CS8iZh1JmzSrKTS2Pj	192.168.2.64	52181	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422294.485069	C0GBfK16iaISTkHff6	192.168.2.64	52330	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	FFNBRJ2wcZoKyN1O9	(empty)	CN=EagleSDV,emailAddress=EagleSDV@hirschmann.de,CN=EagleSDV,OU=EagleSDV,O=Hirschmann Automation and Control GmbH,L=Neckartenzlingen,ST=BW,C=DE	emailAddress=hac-support@hirschmann.de,OU=Competence Center,O=Hirschmann Automation and Control GmbH,ST=Germany,L=Neckartenzlingen,C=DE	-	-
+1445422289.379586	CWfXQu3tdpoT7rKPa4	192.168.2.64	52158	192.168.88.60	443	SSLv2	SSLv20_CK_DES_192_EDE3_CBC_WITH_MD5	-	-	F	-	-	F	FyRkJi16SInZEqUBAk	(empty)	-	-	-	-
+1445422294.431631	CgqWBL2and9xRl3J68	192.168.2.64	52329	192.168.88.60	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FIimow2uiAtnabsLuj	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.60	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422289.754934	CMf8VH3uvSGqrwE89j	192.168.2.64	52195	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422294.746952	CEZh3T25fdaqRDy8J2	192.168.2.64	52332	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	F50gXY3kJeQ18bnyd6	(empty)	CN=EagleSDV,emailAddress=EagleSDV@hirschmann.de,CN=EagleSDV,OU=EagleSDV,O=Hirschmann Automation and Control GmbH,L=Neckartenzlingen,ST=BW,C=DE	emailAddress=hac-support@hirschmann.de,OU=Competence Center,O=Hirschmann Automation and Control GmbH,ST=Germany,L=Neckartenzlingen,C=DE	-	-
+1445422290.008013	CfEwfz71cJOvbB1Yi	192.168.2.64	52207	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422295.004392	CcFUW318QdPCh5jxng	192.168.2.64	52339	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	FWFoY62N98Zp63elBc	(empty)	CN=EagleSDV,emailAddress=EagleSDV@hirschmann.de,CN=EagleSDV,OU=EagleSDV,O=Hirschmann Automation and Control GmbH,L=Neckartenzlingen,ST=BW,C=DE	emailAddress=hac-support@hirschmann.de,OU=Competence Center,O=Hirschmann Automation and Control GmbH,ST=Germany,L=Neckartenzlingen,C=DE	-	-
+1445422290.074790	CxUQtR17Tv8VwyuKb8	192.168.2.64	52208	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422290.078152	CUdmQW3V7CUOLllnL5	192.168.2.64	52211	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422294.901425	CjR9bU3vf8jZO5gVik	192.168.2.64	52337	192.168.88.60	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FD8FvD2qwXU8oIMNQ	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.60	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422290.126326	CFEiIr3EE5PZv6D7Dj	192.168.2.64	52209	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422295.261075	C63sAw18C2hMQqpoAi	192.168.2.64	52341	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	FYjwud2X8YVdXab8Pi	(empty)	CN=EagleSDV,emailAddress=EagleSDV@hirschmann.de,CN=EagleSDV,OU=EagleSDV,O=Hirschmann Automation and Control GmbH,L=Neckartenzlingen,ST=BW,C=DE	emailAddress=hac-support@hirschmann.de,OU=Competence Center,O=Hirschmann Automation and Control GmbH,ST=Germany,L=Neckartenzlingen,C=DE	-	-
+1445422290.460055	CysDOz1ZUY8ikzPHE5	192.168.2.64	52222	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422295.316699	CllZItNZwZdf4NsB7	192.168.2.64	52342	192.168.88.60	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FCq6cB4sF8rIA9Ztqc	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.60	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422295.556878	CCck642VkKMjWm2dQ8	192.168.2.64	52345	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	FfMZZY12HPZ8hJKUh7	(empty)	CN=EagleSDV,emailAddress=EagleSDV@hirschmann.de,CN=EagleSDV,OU=EagleSDV,O=Hirschmann Automation and Control GmbH,L=Neckartenzlingen,ST=BW,C=DE	emailAddress=hac-support@hirschmann.de,OU=Competence Center,O=Hirschmann Automation and Control GmbH,ST=Germany,L=Neckartenzlingen,C=DE	-	-
+1445422290.713717	C2rVzcyNru9BRud1i	192.168.2.64	52234	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422290.565980	C3SdMF2A3yajlUovt1	192.168.2.64	52230	192.168.88.60	443	TLSv10	TLS_RSA_WITH_RC4_128_MD5	-	-	F	-	-	F	FPOEGr3TkgL8f3ZIwk	(empty)	-	-	-	-
+1445422295.820493	CQRMN1reS8Vyc4421	192.168.2.64	52348	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	Fja21x2P2305h3yOgc	(empty)	CN=EagleSDV,emailAddress=EagleSDV@hirschmann.de,CN=EagleSDV,OU=EagleSDV,O=Hirschmann Automation and Control GmbH,L=Neckartenzlingen,ST=BW,C=DE	emailAddress=hac-support@hirschmann.de,OU=Competence Center,O=Hirschmann Automation and Control GmbH,ST=Germany,L=Neckartenzlingen,C=DE	-	-
+1445422290.916420	CPRNSVXfh74Suk2a4	192.168.2.64	52239	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422295.767897	Cc7Voo4PLbyVhm1gd	192.168.2.64	52347	192.168.88.60	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FLZLlj1MDKSyOMZJGe	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.60	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422296.080701	CvZWMn2r09lr2LeoVc	192.168.2.64	52351	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	FLwzFY2JqPImUR4uC5	(empty)	CN=EagleSDV,emailAddress=EagleSDV@hirschmann.de,CN=EagleSDV,OU=EagleSDV,O=Hirschmann Automation and Control GmbH,L=Neckartenzlingen,ST=BW,C=DE	emailAddress=hac-support@hirschmann.de,OU=Competence Center,O=Hirschmann Automation and Control GmbH,ST=Germany,L=Neckartenzlingen,C=DE	-	-
+1445422296.296659	Cr8ve02R0QyeBsU0r1	192.168.2.64	52353	192.168.88.60	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FP3ygE42a8uEePvije	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.60	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422296.403557	CZ5vm31NNZelYIcSz1	192.168.2.64	52355	192.168.88.60	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FQxZstpRWmcOSjyxg	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.60	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422291.832900	CNBPQu1N0W8udGS1T	192.168.2.64	52258	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422292.100960	CWuJEj1wYW04t4rq8j	192.168.2.64	52268	192.168.88.75	443	-	-	-	-	F	handshake_failure	-	F	-	-	-	-	-	-
+1445422297.034873	C5aXsG37TnHviP5xI1	192.168.2.64	52365	192.168.88.60	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FRHShBhdk7ZS5FPE8	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.60	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422297.191709	C0MlSz2E6tht63X6R5	192.168.2.64	52368	192.168.88.61	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FlcgtXp84lRZykOB1	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.61	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422292.211774	Cj9fjgEQ6thVLYiGi	192.168.2.64	52271	192.168.88.60	443	TLSv10	TLS_RSA_WITH_RC4_128_MD5	-	-	F	-	-	F	FS5vmfV3xh6ItZuef	(empty)	-	-	-	-
+1445422292.423861	CZtqUE3RIap9iXkNR9	192.168.2.64	52278	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422292.528659	Ccb6ZI1gNoqrUw1CXf	192.168.2.64	52280	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_MD5	-	-	F	-	-	F	FiI2w12A4QliU2PRk	(empty)	-	-	-	-
+1445422297.559461	CJ9SJl3cvEPcDn19Ng	192.168.2.64	52372	192.168.88.61	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	Foy0Nhkza30f95egi	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.61	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422292.669405	CgdbEil6nMRtBKqf8	192.168.2.64	52286	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422292.746318	CZvPMu9TZKDxfJLkd	192.168.2.64	52288	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422292.855548	Cj5Hk73McN3Ru4PAzj	192.168.2.64	52294	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422292.861021	C41EY52ZR4V1RxVIMh	192.168.2.64	52295	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422297.829815	CUW2cv2EotRdM8t2T4	192.168.2.64	52376	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FkQ3Zw3DgxXZWl85C6	(empty)	CN=Digi CM,O=Digi International,ST=Minnesota,C=US	CN=Digi International,O=Digi International,L=Minneapois,ST=Minnesota,C=US	-	-
+1445422293.277508	CMMJF543vlMdmFSY1b	192.168.2.64	52304	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422293.280450	C1Se9e2Qt2fnl6lAt	192.168.2.64	52305	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422293.380691	CT7TPz2npGOnGQpHD9	192.168.2.64	52308	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422293.383697	C21E6m2q4Hiq6giBme	192.168.2.64	52309	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422293.486391	Cs4ovi1cb317tgVUA9	192.168.2.64	52311	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422293.495159	Cq0xMU3n8zJeHHZ5qc	192.168.2.64	52313	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422293.699726	CJIiql1vwGjz03pMl3	192.168.2.64	52315	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422293.702803	C7OlM028FYX8KEKObg	192.168.2.64	52316	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422290.919808	Cno4RRacXth8tDrk7	192.168.2.64	52241	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422298.472643	CkFyH74cx7sQ8GmRA1	192.168.2.64	52382	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	F0Vzn62R6HlsQP6Gja	(empty)	CN=Digi CM,O=Digi International,ST=Minnesota,C=US	CN=Digi International,O=Digi International,L=Minneapois,ST=Minnesota,C=US	-	-
+1445422293.951934	CbQJJp4T6ZKfuAgqag	192.168.2.64	52318	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422293.955013	CWOlR03ShCqbjd4Et1	192.168.2.64	52320	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422294.168898	CKk3DN3CNPuF16VwJb	192.168.2.64	52323	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422294.172024	Cfbq303qvwljLsYJi2	192.168.2.64	52324	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422294.376356	CRTlXQV3QA5mq1TMd	192.168.2.64	52327	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422294.399686	CnUfRR1JuM2whnSk71	192.168.2.64	52328	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422299.098344	Cumbue3tN6kCuXDNB2	192.168.2.64	52400	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FvSxki1fi51M0cwZKj	(empty)	CN=Digi CM,O=Digi International,ST=Minnesota,C=US	CN=Digi International,O=Digi International,L=Minneapois,ST=Minnesota,C=US	-	-
+1445422299.519065	Cno8ov3gzl0NACx9p7	192.168.2.64	52411	192.168.88.61	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FLBlvB1RpMFwrSXmo1	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.61	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422294.796838	CHKsEv4o2kaRWb7KC7	192.168.2.64	52334	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422294.801313	CoEXb7NMUzNyVPOll	192.168.2.64	52335	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422299.732685	CofLgM32wTrJGP7ki3	192.168.2.64	52417	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	F7K4e92NhsvekCe3id	(empty)	CN=Digi CM,O=Digi International,ST=Minnesota,C=US	CN=Digi International,O=Digi International,L=Minneapois,ST=Minnesota,C=US	-	-
+1445422300.341008	CCdsB23wwUAtCv3p22	192.168.2.64	52432	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FiLlqk1ATpvHZhiV92	(empty)	CN=Digi CM,O=Digi International,ST=Minnesota,C=US	CN=Digi International,O=Digi International,L=Minneapois,ST=Minnesota,C=US	-	-
+1445422300.934105	C3nACk2y7FPYw6vbf2	192.168.2.64	52446	192.168.88.60	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FwNoOeLPcz0ctJIG7	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.60	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422301.040944	CGP4fwY7kbACHyDJj	192.168.2.64	52450	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FcsL8G4cUX45rz5vt6	(empty)	CN=Digi CM,O=Digi International,ST=Minnesota,C=US	CN=Digi International,O=Digi International,L=Minneapois,ST=Minnesota,C=US	-	-
+1445422301.041633	CLW0wx35TRQLv3ii7j	192.168.2.64	52451	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FUWRBz1k9KYEjzIR5k	(empty)	CN=Digi CM,O=Digi International,ST=Minnesota,C=US	CN=Digi International,O=Digi International,L=Minneapois,ST=Minnesota,C=US	-	-
+1445422297.032430	CK9ktI2C8IKo5LV1Sg	192.168.2.64	52364	192.168.88.61	443	TLSv10	TLS_RSA_WITH_RC4_128_MD5	-	-	F	-	-	F	FPaCuu3f7zvjxYltD6	(empty)	-	-	-	-
+1445422301.412698	CiJ9EOHUXqGmlijz2	192.168.2.64	52457	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	Fxdg0pJzN5dpNpH2j	(empty)	CN=Digi CM,O=Digi International,ST=Minnesota,C=US	CN=Digi International,O=Digi International,L=Minneapois,ST=Minnesota,C=US	-	-
+1445422301.636793	CGLt1j4pCIdBCANRuc	192.168.2.64	52462	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FpILAooGSGDOVkvd3	(empty)	CN=Digi CM,O=Digi International,ST=Minnesota,C=US	CN=Digi International,O=Digi International,L=Minneapois,ST=Minnesota,C=US	-	-
+1445422303.543114	CuR5sf19kx7NtHwqSi	192.168.2.64	52481	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	FQdvk82Ag54WfT22al	(empty)	CN=EagleSDV,emailAddress=EagleSDV@hirschmann.de,CN=EagleSDV,OU=EagleSDV,O=Hirschmann Automation and Control GmbH,L=Neckartenzlingen,ST=BW,C=DE	emailAddress=hac-support@hirschmann.de,OU=Competence Center,O=Hirschmann Automation and Control GmbH,ST=Germany,L=Neckartenzlingen,C=DE	-	-
+1445422301.901951	C08Cq43taX3tqhxZUl	192.168.2.64	52464	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	F3JbVP2YWROsJjGuXb	(empty)	CN=Digi CM,O=Digi International,ST=Minnesota,C=US	CN=Digi International,O=Digi International,L=Minneapois,ST=Minnesota,C=US	-	-
+1445422298.830049	CTm6AhaNFbop0Ycwl	192.168.2.64	52393	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422298.833209	CTsnan2mOgFTNkUEo4	192.168.2.64	52394	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422304.089748	Ca8ZKSr5EzGLYHrtl	192.168.2.64	52488	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	FG6M6j44sFtlmdtWY9	(empty)	CN=EagleSDV,emailAddress=EagleSDV@hirschmann.de,CN=EagleSDV,OU=EagleSDV,O=Hirschmann Automation and Control GmbH,L=Neckartenzlingen,ST=BW,C=DE	emailAddress=hac-support@hirschmann.de,OU=Competence Center,O=Hirschmann Automation and Control GmbH,ST=Germany,L=Neckartenzlingen,C=DE	-	-
+1445422303.875371	CTHoCc2cJo5ranw983	192.168.2.64	52484	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FJ8W1OyLMtEWtigLf	(empty)	CN=Digi CM,O=Digi International,ST=Minnesota,C=US	CN=Digi International,O=Digi International,L=Minneapois,ST=Minnesota,C=US	-	-
+1445422304.363792	CRmfxt3hQvTHteLGB9	192.168.2.64	52490	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FT5DtS3RBN0baeFoDh	(empty)	CN=Digi CM,O=Digi International,ST=Minnesota,C=US	CN=Digi International,O=Digi International,L=Minneapois,ST=Minnesota,C=US	-	-
+1445422300.549976	CJrA9sQDGU2LGjXr	192.168.2.64	52437	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422300.553100	CQJxyB1ABRh7aCdqN5	192.168.2.64	52438	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422304.527460	C2W8CD2ZwzSAtJCtx3	192.168.2.64	52492	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FFBWTj1VyDAUVwhjN7	(empty)	CN=Digi CM,O=Digi International,ST=Minnesota,C=US	CN=Digi International,O=Digi International,L=Minneapois,ST=Minnesota,C=US	-	-
+1445422305.828532	CkHsDc3jlohh3fnZPi	192.168.2.64	52499	192.168.88.60	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FjdAVf3pd36ErEq64	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.60	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422301.092864	CREZv51OATtDhuXnu1	192.168.2.64	52452	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422301.122610	CC0ZN81Px52VRCdyg8	192.168.2.64	52453	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422293.537961	CdFenK3UuXQ9NbqQ5i	192.168.2.64	52312	192.168.88.95	443	TLSv10	TLS_RSA_WITH_RC4_128_MD5	-	-	F	-	-	F	FsJtpM1krzxGvxjiUb	(empty)	-	-	-	-
+1445422306.523628	CCADCT2KRePvr3UyNf	192.168.2.64	52506	192.168.88.61	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	F3Omry4u2kBpDsKLQh	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.61	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422306.866678	CvTpNf3HImA2HoS1c7	192.168.2.64	52508	192.168.88.61	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FgSPhrE2ogldqFhme	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.61	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422301.252608	CmrZ2O3ljVFynKT9z2	192.168.2.64	52455	192.168.88.115	443	SSLv2	SSLv20_CK_DES_192_EDE3_CBC_WITH_MD5	-	-	F	-	-	F	FpngaA2KTjmsxVWGJb	(empty)	-	-	-	-
+1445422301.635208	CmeqTfrMuwgpgecO2	192.168.2.64	52460	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_MD5	-	-	F	-	-	F	FUr15F6LTvRfAwyic	(empty)	-	-	-	-
+1445422303.926755	CJH6p8oFshm08pQ85	192.168.2.64	52485	192.168.88.61	443	TLSv10	TLS_RSA_WITH_RC4_128_MD5	-	-	F	-	-	F	FTI07Z3rixswRevG19	(empty)	-	-	-	-
+1445422304.580052	Cu8E6v1RFU80afVgHe	192.168.2.64	52493	192.168.88.75	443	-	-	-	-	F	handshake_failure	-	F	-	-	-	-	-	-
+1445422307.399386	CYAKwQ3maE4AfkvjKe	192.168.2.64	52514	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422307.402460	CadXOz4Z87cvhH73kj	192.168.2.64	52515	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422304.090951	CrWtVBlXgdW1rvA61	192.168.2.64	52489	192.168.88.95	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	F0z7Jf1kaXeb5LwuU	(empty)	CN=ruggedcom.com,OU=Engineering,O=Ruggedcom Inc.,L=Concord,ST=Ontario,C=Canada	CN=ruggedcom.com,OU=Engineering,O=Ruggedcom Inc.,L=Concord,ST=Ontario,C=Canada	-	-
+1445422313.276609	CugfMW1kTR3sq2XYO8	192.168.2.64	52568	192.168.88.60	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FKaa0H25gkiIGYnl9	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.60	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422298.887064	CvTSj83A0L6r6OeTH	192.168.2.64	52395	192.168.88.95	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	F	F1Himz4htA8xwjVVQ6	(empty)	-	-	-	-
+1445422315.185554	Cr2pBt4T7LRby4m4W6	192.168.2.64	52581	192.168.88.95	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	Fojvzd19h3qSJy8rCj	(empty)	CN=ruggedcom.com,OU=Engineering,O=Ruggedcom Inc.,L=Concord,ST=Ontario,C=Canada	CN=ruggedcom.com,OU=Engineering,O=Ruggedcom Inc.,L=Concord,ST=Ontario,C=Canada	-	-
+1445422320.759448	CzsbRi4MYvAu4IiNcf	192.168.2.64	52612	192.168.88.61	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FiJcvZ33wYogUR3aUd	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.61	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445422320.596662	CGZuUB38lUi5zwVFJk	192.168.2.64	52607	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422320.601452	CGmsmm2rZ3fV6Bf5ik	192.168.2.64	52609	192.168.88.51	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422322.627348	CeKsB73CpSUKiWaRP7	192.168.2.64	52628	192.168.88.61	443	SSLv2	SSLv20_CK_DES_192_EDE3_CBC_WITH_MD5	-	-	F	-	-	F	FbfUEI3sCdWXPyc5Fi	(empty)	-	-	-	-
+1445422323.475877	CQ1I4J1YvVSVxHK8C7	192.168.2.64	52632	192.168.88.75	443	SSLv2	TLS_NULL_WITH_NULL_NULL	-	-	F	-	-	F	FzNJNe3bHFC0q2HY44	(empty)	-	-	-	-
+1445422314.339777	CGura63ThxcCTDtEy2	192.168.2.64	52579	192.168.88.95	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	F	FxxDwJEPE3WVGnHhc	(empty)	-	-	-	-
+1445422322.410820	CLu17p4hTtZzi66y2h	192.168.2.64	52627	192.168.88.95	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	F	FzSHmc39e0as6EPAPb	(empty)	-	-	-	-
+1445422330.504372	CBvONw2UftRllvolsk	192.168.2.64	52639	192.168.88.95	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	FxZujH18b70MahtTK9	(empty)	CN=ruggedcom.com,OU=Engineering,O=Ruggedcom Inc.,L=Concord,ST=Ontario,C=Canada	CN=ruggedcom.com,OU=Engineering,O=Ruggedcom Inc.,L=Concord,ST=Ontario,C=Canada	-	-
+1445422336.623663	CPn8gi21iUhrz05Sug	192.168.2.64	52643	192.168.88.95	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	FdV6CQ31vTgIEybRY	(empty)	CN=ruggedcom.com,OU=Engineering,O=Ruggedcom Inc.,L=Concord,ST=Ontario,C=Canada	CN=ruggedcom.com,OU=Engineering,O=Ruggedcom Inc.,L=Concord,ST=Ontario,C=Canada	-	-
+1445422348.651059	Cknzpq2GgEduzeS5Ca	192.168.2.64	52648	192.168.88.95	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	Fv7NzK1NfJpev32rhb	(empty)	CN=ruggedcom.com,OU=Engineering,O=Ruggedcom Inc.,L=Concord,ST=Ontario,C=Canada	CN=ruggedcom.com,OU=Engineering,O=Ruggedcom Inc.,L=Concord,ST=Ontario,C=Canada	-	-
+1445422337.720888	CCtbs24WYXf8hFLbq5	192.168.2.64	52644	192.168.88.95	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	F	FTJxwr2D1H6T8Nbksd	(empty)	-	-	-	-
+1445422352.802812	CbrR1t1jORoQ2AJa6	192.168.2.64	52651	192.168.88.95	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	FvnEA7tuKkZqPklSl	(empty)	CN=ruggedcom.com,OU=Engineering,O=Ruggedcom Inc.,L=Concord,ST=Ontario,C=Canada	CN=ruggedcom.com,OU=Engineering,O=Ruggedcom Inc.,L=Concord,ST=Ontario,C=Canada	-	-
+1445422320.391786	CxcG1I17DgQRQwPzs2	192.168.2.64	52602	192.168.88.95	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	F	FAKg0Z2RV8T2SrT6oi	(empty)	-	-	-	-
+1445422313.640605	CkLTvGu6P4dZtlzfe	192.168.2.64	52573	192.168.88.95	443	-	-	-	-	F	-	-	F	-	-	-	-	-	-
+1445422309.693983	C8ONrM1xlTpGUW3Di7	192.168.2.64	52533	192.168.88.95	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	F	FzrxiQ3otD7hij3St	(empty)	-	-	-	-
+1445422356.930173	Cv9tgd2F5Z3KT5wQAj	192.168.2.64	52653	192.168.88.95	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	Frg4frDDuucGDfLcl	(empty)	CN=ruggedcom.com,OU=Engineering,O=Ruggedcom Inc.,L=Concord,ST=Ontario,C=Canada	CN=ruggedcom.com,OU=Engineering,O=Ruggedcom Inc.,L=Concord,ST=Ontario,C=Canada	-	-
+1445422309.488326	C8unGm42xLg5vr5963	192.168.2.64	52531	192.168.88.95	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	F	F0GfrM1Fnj2kfJ4Ipg	(empty)	-	-	-	-
+1445422309.482607	CwOv8d35x1c07gRLHc	192.168.2.64	52528	192.168.88.95	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	F	FWqVmq4rHYO3IeLuJ1	(empty)	-	-	-	-
+1445422298.680069	CIfUfo2ZqhsJUeB2Dl	192.168.2.64	52384	192.168.88.95	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	F	FpKRgN2l07y14UUX15	(empty)	-	-	-	-
+1445422361.061706	C2eQAB2pTf9bsXbYmd	192.168.2.64	52654	192.168.88.95	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	FTzTMM2ea4UgGlM3c7	(empty)	CN=ruggedcom.com,OU=Engineering,O=Ruggedcom Inc.,L=Concord,ST=Ontario,C=Canada	CN=ruggedcom.com,OU=Engineering,O=Ruggedcom Inc.,L=Concord,ST=Ontario,C=Canada	-	-
+1445422365.659649	CC3X1k1yeWumvO2BSd	192.168.2.64	52655	192.168.88.95	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	FMWnFN1vJlCWP1V6lh	(empty)	CN=ruggedcom.com,OU=Engineering,O=Ruggedcom Inc.,L=Concord,ST=Ontario,C=Canada	CN=ruggedcom.com,OU=Engineering,O=Ruggedcom Inc.,L=Concord,ST=Ontario,C=Canada	-	-
+1445422370.186098	C7RTfT2ojIVeaIR2Ea	192.168.2.64	52656	192.168.88.95	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	FaYoKD4n24Ooci7u1h	(empty)	CN=ruggedcom.com,OU=Engineering,O=Ruggedcom Inc.,L=Concord,ST=Ontario,C=Canada	CN=ruggedcom.com,OU=Engineering,O=Ruggedcom Inc.,L=Concord,ST=Ontario,C=Canada	-	-
+1445422292.047566	CbAHBg1cQEHlaIAPhe	192.168.2.64	52265	192.168.88.95	443	TLSv10	TLS_RSA_WITH_RC4_128_MD5	-	-	F	-	-	F	FoOnvi4NzWTFX02tUj	(empty)	-	-	-	-
+1445422291.887719	CQd1gBguDAwL5hzmb	192.168.2.64	52263	192.168.88.95	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	F	FmA3mX1bWg70riUSB5	(empty)	-	-	-	-
+1445425434.747102	CDh8jv3nmGlLlQ184	192.168.2.42	48162	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FIqH2z3z1VNII5YrEg	(empty)	CN=Digi CM,O=Digi International,ST=Minnesota,C=US	CN=Digi International,O=Digi International,L=Minneapois,ST=Minnesota,C=US	-	-
+1445425434.729087	C6ED7l4HlBHWogozNh	192.168.2.42	48154	192.168.88.115	443	SSLv3	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	F	-	-	F	FEw70c2o6jbBSs9df4	(empty)	-	-	-	-
+1445425456.234109	CVNkKrxy8cMbbIzK4	192.168.2.42	48168	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FHhvWH1OvFSc7bk4tf	(empty)	CN=Digi CM,O=Digi International,ST=Minnesota,C=US	CN=Digi International,O=Digi International,L=Minneapois,ST=Minnesota,C=US	-	-
+1445425456.234252	CW1qrw2x0xZau5FBpl	192.168.2.42	48170	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	F	F2m7Rz15xf66IxIwjh	(empty)	-	-	-	-
+1445425456.234393	CVWfU52WClx6JgD8Vg	192.168.2.42	48171	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	F	Fl9vna3hqAKhjjudGj	(empty)	-	-	-	-
+1445425456.234529	C6WNfa3fQPDYQkyzD3	192.168.2.42	48175	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	F	FvlJDi3ZBqvBRmj737	(empty)	-	-	-	-
+1445425456.234664	C2vOWf3Lp2lpYWK5mi	192.168.2.42	48176	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	F	F2VuTp4NLh3sn6Lbx5	(empty)	-	-	-	-
+1445425456.234801	CWifZf85dNn1hMIJ6	192.168.2.42	48178	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	F	FfpAop4e2PsO0Pnyqi	(empty)	-	-	-	-
+1445425456.234937	CzrtLr34WQdKgCIfXk	192.168.2.42	48179	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	F	FWgMqs1oQ8q3DNKOgj	(empty)	-	-	-	-
+1445425456.492404	Cx9Mbk4APZS84cStJa	192.168.2.42	48166	192.168.88.115	443	SSLv2	SSLv20_CK_DES_192_EDE3_CBC_WITH_MD5	-	-	F	-	-	F	FTzrHm40gVNigN68Jb	(empty)	-	-	-	-
+1445425456.492273	CQgkVecHV6gQvGC7	192.168.2.42	48167	192.168.88.115	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	F	-	-	F	FmP8z44jTkGwDE5ZW6	(empty)	-	-	-	-
+1445425456.492701	CrmFIa2U7g97ZsZEw4	192.168.2.42	48174	192.168.88.115	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	F	-	-	F	Fu6UR8bTZONpW1wi1	(empty)	-	-	-	-
+1445425456.235538	Cc0s253DTa9ZxmoQhj	192.168.2.42	48181	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	F	FHApocCCee1j4xVog	(empty)	-	-	-	-
+1445425464.036846	C6h5guf4obxDcwbx4	192.168.2.42	48202	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	F	FU9WFZ1ymsj2avGhU6	(empty)	-	-	-	-
+1445425464.037635	CVtiFb40QPs0KyG6ig	192.168.2.42	48203	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	F	FvooPs3ibMn36BVPci	(empty)	-	-	-	-
+1445425472.198500	CzhOoQ2wZeHEgQ5RI5	192.168.2.42	48212	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	F	FQ8ALB1Pdi6Yg4YFxe	(empty)	-	-	-	-
+1445425472.248345	Cl4cnsBm6zOLAJwRb	192.168.2.42	48213	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	F	FAlcG54WcPQvE1Kcv3	(empty)	-	-	-	-
+1445425480.359830	Cj8T6h2LqNwSaipcWc	192.168.2.42	48220	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	F	F2vC5b11nG77A42Us5	(empty)	-	-	-	-
+1445425480.460131	CVRNVF385yFtjA9C3b	192.168.2.42	48221	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	F	FJjyuT3WnEDirGVQvg	(empty)	-	-	-	-
+1445425486.065685	CrszIk3jqoKGJ2cnNi	192.168.2.42	48226	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	F	Fyi027Shc1jPrQCT8	(empty)	-	-	-	-
+1445425488.518593	CcDs694rM7PuOrhVEd	192.168.2.42	48229	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	F	FBJUhf3GtYcLVFI17j	(empty)	-	-	-	-
+1445425488.668992	CwUAvf23BphgYcpYx5	192.168.2.42	48230	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	F	FF6MQk4tp49FjxN6N	(empty)	-	-	-	-
+1445425496.674087	C3dFpC4bNXR9grvxPl	192.168.2.42	48241	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	F	FEtL4Z2DsjwJh0FGX8	(empty)	-	-	-	-
+1445425496.823344	CjfTPTxPJH4J0uCZk	192.168.2.42	48242	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	F	FHGqZVAvSSccCZ7qd	(empty)	-	-	-	-
+1445425496.873343	Cvc905cNWE0EesuA7	192.168.2.42	48243	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	F	F6ljy82amg4nHmBiZ9	(empty)	-	-	-	-
+1445425504.831704	CB65q93uxqcXVvr018	192.168.2.42	48249	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	F	Fopdvr1fvpkq0jkjZj	(empty)	-	-	-	-
+1445425505.031419	CZQpXl78rWv5RE792	192.168.2.42	48250	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	F	FFO5z73t7nYLJ4KWVf	(empty)	-	-	-	-
+1445425512.990397	C6Cj3A3bBb9ZdYSwih	192.168.2.42	48256	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	F	Fd8P0V2LOdsbyujKY	(empty)	-	-	-	-
+1445425521.152150	CCCJ0c34cnszF4hFo8	192.168.2.42	48268	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	F	FzqHxt1E1LXpzdCWEi	(empty)	-	-	-	-
+1445428872.668573	CUFsg8CvlXEBOFsE2	192.168.2.113	3295	192.168.88.60	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FhHN7fs9cyRQe05X6	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.60	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445428874.205463	Cq2Iec4EbIjaV7Xdg7	192.168.2.113	3304	192.168.88.61	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FRtKWG3A6zQk7Len7g	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.61	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445428872.638773	CW77bU3YAw8ES5SHt4	192.168.2.113	3291	192.168.88.60	443	SSLv3	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	F	-	-	F	F9Ieu13XKmUqtlWyk6	(empty)	-	-	-	-
+1445428878.619836	C9sAlh2ZhHz1zZXdo2	192.168.2.113	3309	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	FaMjAf3yazDwjQ8ixd	(empty)	CN=EagleSDV,emailAddress=EagleSDV@hirschmann.de,CN=EagleSDV,OU=EagleSDV,O=Hirschmann Automation and Control GmbH,L=Neckartenzlingen,ST=BW,C=DE	emailAddress=hac-support@hirschmann.de,OU=Competence Center,O=Hirschmann Automation and Control GmbH,ST=Germany,L=Neckartenzlingen,C=DE	-	-
+1445428874.186296	CNIL5i25tafPhuF929	192.168.2.113	3303	192.168.88.61	443	SSLv3	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	F	-	-	F	FKsDzd4NzHoU6YjX5h	(empty)	-	-	-	-
+1445428879.218903	CurPfMjR8iHHmGlnc	192.168.2.113	3316	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	F5S6wI4IfwllfSJuj	(empty)	CN=Digi CM,O=Digi International,ST=Minnesota,C=US	CN=Digi International,O=Digi International,L=Minneapois,ST=Minnesota,C=US	-	-
+1445428878.600073	CkCXyj1W4FPapNqzj3	192.168.2.113	3308	192.168.88.75	443	SSLv3	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	F	-	-	F	F8aKBwfiAkMU0JAef	(empty)	-	-	-	-
+1445428879.292141	C13kau2e8HCyc4Xvih	192.168.2.113	3317	192.168.88.95	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	FKVZYcn7poMkYF4l	(empty)	CN=ruggedcom.com,OU=Engineering,O=Ruggedcom Inc.,L=Concord,ST=Ontario,C=Canada	CN=ruggedcom.com,OU=Engineering,O=Ruggedcom Inc.,L=Concord,ST=Ontario,C=Canada	-	-
+1445428879.197325	CW1BFX32qM5NxwA1Jl	192.168.2.113	3315	192.168.88.115	443	SSLv3	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	F	-	-	F	FNkjWH15gbuXlQUG4d	(empty)	-	-	-	-
+1445428878.697336	C9UI1v2wSy4ENNvcSj	192.168.2.113	3310	192.168.88.95	443	SSLv3	TLS_RSA_WITH_RC4_128_MD5	-	-	F	-	-	F	FyK1b92FcfDqGdPj8b	(empty)	-	-	-	-
+1445428884.750513	CTJ99YyCy4u6METVl	192.168.2.113	3323	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445431931.389565	Cq5fLu2SP8gHABZsXi	192.168.2.111	56220	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_128_CBC_SHA	-	-	F	-	-	T	Fmvsoe4PKmoULzsyf	(empty)	CN=EagleSDV,emailAddress=EagleSDV@hirschmann.de,CN=EagleSDV,OU=EagleSDV,O=Hirschmann Automation and Control GmbH,L=Neckartenzlingen,ST=BW,C=DE	emailAddress=hac-support@hirschmann.de,OU=Competence Center,O=Hirschmann Automation and Control GmbH,ST=Germany,L=Neckartenzlingen,C=DE	-	-
+1445431938.707267	C7qhTe3I9TDtl8Shg	192.168.2.111	56291	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_128_CBC_SHA	-	-	F	-	-	T	Fn6u4qfphWk4139bh	(empty)	CN=EagleSDV,emailAddress=EagleSDV@hirschmann.de,CN=EagleSDV,OU=EagleSDV,O=Hirschmann Automation and Control GmbH,L=Neckartenzlingen,ST=BW,C=DE	emailAddress=hac-support@hirschmann.de,OU=Competence Center,O=Hirschmann Automation and Control GmbH,ST=Germany,L=Neckartenzlingen,C=DE	-	-
+1445431939.003367	CaQHD4ZoE87ydmvGl	192.168.2.111	56292	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_128_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445431939.035727	CqenEDKtxJ5USLXt7	192.168.2.111	56293	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_128_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445431994.926129	ChxUJIRe3gtFSduJf	192.168.2.111	39858	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	F	-	-	T	F3X2q02b1UJsthfKWh	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.60	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445432000.956011	Cp6ohR17ZhRb7xTGKk	192.168.2.111	39859	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	F	-	-	T	FzitZf3Prszz5Jifoe	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.60	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445432001.222594	Cvs8RA2j6eLVpwGOG	192.168.2.111	39860	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432001.518072	CuD3kXsCiHMpKTHQd	192.168.2.111	39861	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432001.543744	CM6fmW13EaFyqpZt9l	192.168.2.111	39862	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432001.544794	C2UuJH3DBwEkfeMJa4	192.168.2.111	39863	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432001.546149	COgpJl1yNMDxuoQ5Ig	192.168.2.111	39864	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432001.727296	CjVKfg4jgXO0TsTX	192.168.2.111	39865	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432001.728157	CNBYbE2FRzEqAAlK7e	192.168.2.111	39866	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432001.729126	CqFkOf3YVjiolev2Qa	192.168.2.111	39867	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432002.004226	CcXqEx24aAJHZcCyFf	192.168.2.111	39868	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432002.136727	CZTvVY2x7EJMWatNY1	192.168.2.111	39869	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432002.370929	CSKzJt2KIUZs2RFs9c	192.168.2.111	39870	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432002.408633	CKW3Hc2rZrzV00vCRj	192.168.2.111	39871	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432002.453817	CyRbwu4MAHOsDBagw	192.168.2.111	39872	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432010.690761	CIqItY2jenxVbnass2	192.168.2.111	39873	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432010.765905	C8Um4i34gg3WAWspDb	192.168.2.111	39874	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432011.028669	CQNvFRx66gFJW1Fxa	192.168.2.111	39875	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432011.029578	CNfZCy1Dyb35pllbBg	192.168.2.111	39876	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432011.030823	ChFMaS2VZeG1yLTAs7	192.168.2.111	39877	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432011.033031	CLWrUW3ZtY5yuMXWPb	192.168.2.111	39878	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432011.187192	CJ99UZ3Dpoq6QJwSMa	192.168.2.111	39879	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432011.213816	CihHan2XYJcduVVLRj	192.168.2.111	39880	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432011.214096	Cb3RRo3q1HAFUsaJ7e	192.168.2.111	39881	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432011.464648	CU9mpq4IFF57zXhQs2	192.168.2.111	39882	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432011.705884	CdMrjOy2eqdDFjGT3	192.168.2.111	39883	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432022.598150	CHY7g21KQNtNtKd6Zd	192.168.2.111	39884	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432022.681932	C6HwtC46kM81dMlS26	192.168.2.111	39885	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432022.929359	Caq07M5AG5cVhAdah	192.168.2.111	39886	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432022.930201	CAltVfYyt8BH5SQz7	192.168.2.111	39887	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432022.932014	CClb1I2h5JmPQvl8g6	192.168.2.111	39888	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432022.934004	CZO7Le4wjGWhWeN7Y6	192.168.2.111	39889	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432023.080959	CmAKdf4L5voOVeVsn7	192.168.2.111	39890	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432023.092162	Cvw1Mq1aUat8FScegi	192.168.2.111	39891	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432023.092743	C926hX1aOfrneKiL63	192.168.2.111	39892	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432023.346204	CF77p62awVceMBuf5a	192.168.2.111	39893	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432023.469097	Cw8acXzJxmW2QCSil	192.168.2.111	39894	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432039.043577	C5biCf1smb4ZN8bDN9	192.168.2.111	39895	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432039.117250	CpLRncBr9J3cESnmi	192.168.2.111	39896	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432039.363019	CVTwe62dxDw8E0I0P	192.168.2.111	39897	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432039.364002	CKPkQx2di1xaZg9Qt9	192.168.2.111	39898	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432039.365630	C7gmzn2N75jvZNtew	192.168.2.111	39899	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432039.367455	CZLiS631nLD60uMLa	192.168.2.111	39900	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432039.535188	C81vOy4xCu2bRJ0R3f	192.168.2.111	39901	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432039.546847	C4n6vM3iiSFGj3o1N3	192.168.2.111	39902	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432039.547113	CzuaPq3c2zIr4Jrzk5	192.168.2.111	39903	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432039.796901	Cm9pH816m6BrZIZlue	192.168.2.111	39904	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445432040.060730	Chnfz12j6viQSWOwr1	192.168.2.111	39905	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442491.777262	CVaqis3aFWyGaAEMrf	192.168.2.88	54423	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	F	-	-	T	FvzyZn1kauECpuW0m2	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.60	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445442497.930425	CLE5Q31tK9XXdRxRG8	192.168.2.88	54424	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	F	-	-	T	FtXv2x10eRLKc7PHrj	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.60	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445442498.316826	CoTPMQwNUn5upEL3e	192.168.2.88	54425	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442498.612057	CfNWbn20QPoQkyjr2f	192.168.2.88	54426	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442498.613991	CJwKaj2GAY7JBsxSCh	192.168.2.88	54427	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442498.618654	CyVXSE3yRNHuxfEpY	192.168.2.88	54428	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442498.619669	C4KoHM3DkM3MHXEBG	192.168.2.88	54429	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442498.765798	Cs9Tdq28ZGb9utXewi	192.168.2.88	54430	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442498.767440	ConBbw4ra3XLcLfG8f	192.168.2.88	54431	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442498.772295	CB3kpG2N5BTPTsqmXl	192.168.2.88	54432	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442499.334131	CZZUwb44s7ZJ4kdAmj	192.168.2.88	54433	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442499.627567	Ce6IsBzbgtPWHWH9h	192.168.2.88	54434	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442499.883905	Ckbtpk1JtO0llnnlMg	192.168.2.88	54435	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442500.287647	CVd6Rh3DbNNKlvAU6e	192.168.2.88	54436	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442500.364066	Cm3rJ3496jpFSZqEoe	192.168.2.88	54437	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442505.064246	Co8rQh2lINLUnSkD0f	192.168.2.88	54438	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442505.187309	CoASUU26YFHBJjXJTb	192.168.2.88	54439	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442505.467267	CuOVkc4L3STqIPSAGk	192.168.2.88	54440	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442505.470059	CXIOpX34ep3IALVnf9	192.168.2.88	54441	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442505.474041	CdLrAq1pPmawxJpJB4	192.168.2.88	54442	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442505.477751	CTBJrY1gpNAW5ztYXi	192.168.2.88	54443	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442505.701591	CDafGwKyZ57yEnUGl	192.168.2.88	54444	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442505.705432	Cpo0IA3uK9qDO16N6c	192.168.2.88	54445	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442505.707289	CsczPl2btZ63YfCrO2	192.168.2.88	54446	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442505.850208	CMb6J52saEjiIAf9cb	192.168.2.88	54447	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442506.416049	ChUlBn4wx9YfeTeZAi	192.168.2.88	54448	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442914.877723	COWwmD3TAGPCEYquyg	192.168.2.88	54451	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	F	-	-	T	FrVLYD1c5d9IOwfoH5	(empty)	L=Taipei,SN=Taiwan,C=TW,OU=IEI,O=Moxa Networking Co.\\, Ltd.,CN=192.168.88.60	emailAddress=support@moxanet.com,CN=Moxa Networking Co.\\, Ltd.,OU=Moxa Networking,O=Moxa Networking Co.\\, Ltd.,L=Taipei,ST=Taiwan,C=TW	-	-
+1445442915.232222	Ch3ORxA2advhSPMz4	192.168.2.88	54452	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442915.553289	Cf2zhU1PKJZlLZ5I2	192.168.2.88	54453	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442915.556303	CGVRTJ362I63B5VGJ3	192.168.2.88	54454	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442915.558929	C1Ddz03ZhornYCqCcg	192.168.2.88	54455	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442915.562874	Cxa5vd1HgH4ytPWMHh	192.168.2.88	54456	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442915.755724	CXQxWw3OQGoHhY9Vm9	192.168.2.88	54457	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442915.758914	CBXQto4oRHFIUsxIif	192.168.2.88	54458	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442915.761966	Cn9FRL25GvTioDJ6r7	192.168.2.88	54459	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442915.966451	CxRQrv4h5Hfuj16xbh	192.168.2.88	54460	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445442916.718153	CATgeARBFk1QzccE	192.168.2.88	54461	192.168.88.60	443	TLSv10	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445445023.878460	CssR7BTsj61deMcna	192.168.2.88	37253	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	T	F0WNJU3XP9bwYETy6e	(empty)	CN=EagleSDV,emailAddress=EagleSDV@hirschmann.de,CN=EagleSDV,OU=EagleSDV,O=Hirschmann Automation and Control GmbH,L=Neckartenzlingen,ST=BW,C=DE	emailAddress=hac-support@hirschmann.de,OU=Competence Center,O=Hirschmann Automation and Control GmbH,ST=Germany,L=Neckartenzlingen,C=DE	-	-
+1445445023.866173	CoXfnC1i9x6AP3Zp46	192.168.2.88	37252	192.168.88.75	443	SSLv3	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	F	-	-	F	FBIudi3qieD1ZYVcPb	(empty)	-	-	-	-
+1445445030.031768	CHtqG32vN9ThoKeLS	192.168.2.88	37254	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445445030.072927	C1WifX9CTCZAnQaJd	192.168.2.88	37255	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445445030.119127	CvFfBe1aI9ZH3zaNWc	192.168.2.88	37256	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445445030.166132	CszMEiHJ44YhS2Tr9	192.168.2.88	37257	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445445035.190536	CAxxIS35ePJEHxF6jk	192.168.2.88	37258	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445445040.214216	CGlkjh2j5rljYsb2Ea	192.168.2.88	37259	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445445045.238642	CShzaWt67ty8GdqG5	192.168.2.88	37260	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445445045.276000	CQMAoG4TtC3D4FC0O9	192.168.2.88	37261	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445445050.310479	CrVIZD19S21uLUGlub	192.168.2.88	37262	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445445055.335048	CFvBC71tFiR0PET8P4	192.168.2.88	37263	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445445060.360340	CBrKKz1c6BXQzTcowe	192.168.2.88	37264	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445445065.383825	CV5f4yYuTXFItUThh	192.168.2.88	37265	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445445065.432547	Cumf0717Xv4wrbAQAg	192.168.2.88	37266	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445445070.454149	CbombG1iOlSIBlVrja	192.168.2.88	37267	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445445075.477927	CwUJWM2w03rr0q59z5	192.168.2.88	37268	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445445075.522226	CqtNND2VwTT5umycra	192.168.2.88	37269	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445445080.547620	Cq1M3M2hWOALjwnhFh	192.168.2.88	37270	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445445085.568811	CLooaA35byEUdM8yei	192.168.2.88	37271	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445445090.593880	CEjwJR19anwXFT9bx6	192.168.2.88	37272	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445445095.615450	CeMa1r1bXNhRVnUlrf	192.168.2.88	37273	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445445100.636974	C51aqgMXtNkGl8aU6	192.168.2.88	37274	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445445105.661484	CF9IopcWMJyWVqVSg	192.168.2.88	37275	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445445110.687384	CpcUQP1sw0Tk1EAz4b	192.168.2.88	37276	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445445170.004651	CpjDyG4jGOBwGecCKb	192.168.2.88	37278	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_128_CBC_SHA	-	-	F	-	-	T	FQ6Lk12eQKULdbYO6d	(empty)	CN=EagleSDV,emailAddress=EagleSDV@hirschmann.de,CN=EagleSDV,OU=EagleSDV,O=Hirschmann Automation and Control GmbH,L=Neckartenzlingen,ST=BW,C=DE	emailAddress=hac-support@hirschmann.de,OU=Competence Center,O=Hirschmann Automation and Control GmbH,ST=Germany,L=Neckartenzlingen,C=DE	-	-
+1445445176.456850	CddDXg4xKowovi4Ri1	192.168.2.88	37279	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_128_CBC_SHA	-	-	F	-	-	T	FIJByz4cPBOW5o3Fj6	(empty)	CN=EagleSDV,emailAddress=EagleSDV@hirschmann.de,CN=EagleSDV,OU=EagleSDV,O=Hirschmann Automation and Control GmbH,L=Neckartenzlingen,ST=BW,C=DE	emailAddress=hac-support@hirschmann.de,OU=Competence Center,O=Hirschmann Automation and Control GmbH,ST=Germany,L=Neckartenzlingen,C=DE	-	-
+1445445176.825235	Ctuu0bKda7ar8NI3	192.168.2.88	37280	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_128_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445445176.941463	CLSY661Yp5ApymNucg	192.168.2.88	37281	192.168.88.75	443	TLSv10	TLS_RSA_WITH_AES_128_CBC_SHA	-	-	T	-	-	T	-	-	-	-	-	-
+1445445361.876662	CvRWfi4s5HYrjRWSK3	192.168.2.88	60493	192.168.88.115	443	TLSv10	TLS_RSA_WITH_RC4_128_SHA	-	-	F	-	-	T	FyD1SZ2P1ydmqcas3g	(empty)	CN=Digi CM,O=Digi International,ST=Minnesota,C=US	CN=Digi International,O=Digi International,L=Minneapois,ST=Minnesota,C=US	-	-
+1445445361.852485	CYT2yp1TY8T6zFKLCb	192.168.2.88	60492	192.168.88.115	443	SSLv3	TLS_RSA_WITH_3DES_EDE_CBC_SHA	-	-	F	-	-	F	FFOVhy2s24ymYDmMf5	(empty)	-	-	-	-
+1445445362.773415	C1f3qC4aRHhEymiw3h	192.168.2.88	41853	192.168.88.95	443	SSLv3	TLS_RSA_WITH_RC4_128_MD5	-	-	F	-	-	F	FqWt9R1EMGwSz7OxIg	(empty)	-	-	-	-
+1445445363.353471	CYZTQK3oHpZidQHoMk	192.168.2.88	41854	192.168.88.95	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	F	-	-	F	FIiYob2uomcfHgamI7	(empty)	-	-	-	-
+1445445367.946169	CGc5gx4KdXe6ZEAcC4	192.168.2.88	41858	192.168.88.95	443	TLSv10	TLS_RSA_WITH_AES_256_CBC_SHA	-	-	T	bad_record_mac	-	F	-	-	-	-	-	-
+#close	2018-02-08-11-14-15

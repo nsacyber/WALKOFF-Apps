@@ -1,0 +1,68 @@
+#svg-pan-zoom-controls {
+    transform: translate(0, 0);
+}
+
+#statsTable {
+}
+
+.myTooltip {
+  position: absolute;
+  text-align: center;
+  padding: 8px;
+  font: 10px sans-serif;
+  background: #ddd;
+  pointer-events: none;
+}
+
+path.link.malicious {
+    stroke: red;
+}
+
+.link {
+  stroke: grey;
+  fill: none;
+}
+
+.axis, .node {
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+.link.active {
+  stroke: blue;
+  stroke-opacity: 1;
+}
+
+.link.hidden {
+  stroke-opacity: 0;
+}
+
+.node.active {
+  stroke: blue;
+  stroke-width: 3px;
+}
+
+.node circle.active {
+  stroke: red;
+  stroke-width: 3px;
+}
+
+.svg-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+.svg-content-responsive {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    text-align: center;
+}
+
+hr {
+    height: 2px;
+    background-color: #ccc;
+}

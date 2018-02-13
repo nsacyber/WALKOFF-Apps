@@ -1,0 +1,21 @@
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	dpd
+#open	2018-02-08-11-13-56
+#fields	ts	uid	id.orig_h	id.orig_p	id.resp_h	id.resp_p	proto	analyzer	failure_reason
+#types	time	string	addr	port	addr	port	enum	string	string
+1445422184.210383	CjITxG3vicZPL5ToNf	192.168.2.64	51959	192.168.88.100	80	tcp	HTTP	not a http reply line
+1445422208.487620	CtNkk82iv4mi2IeDUa	192.168.2.64	52013	192.168.88.60	23	tcp	KRB_TCP	binpac exception: out_of_bound: ASN1EncodingMeta:len: 2 > 0
+1445422209.229872	CchoFa3uFLodrsgBec	192.168.2.64	52014	192.168.88.95	23	tcp	KRB_TCP	binpac exception: out_of_bound: ASN1EncodingMeta:len: 2 > 0
+1445422209.512463	C0plhu3KN5VdxO1gCf	192.168.2.64	52016	192.168.88.61	23	tcp	KRB_TCP	binpac exception: out_of_bound: ASN1EncodingMeta:len: 2 > 0
+1445422289.381463	C9IMnH1NninGZfsIOa	192.168.2.64	52161	192.168.88.100	80	tcp	HTTP	not a http reply line
+1445422291.036709	CsQPDI3rZsLZGvf924	192.168.2.64	52237	192.168.88.100	80	tcp	HTTP	not a http reply line
+1445422297.140259	C65v2338sEV1G1Xxe	192.168.2.64	52366	192.168.88.100	80	tcp	HTTP	not a http reply line
+1445422611.165183	CqVFqc29c2alf8X5Gk	192.168.2.64	51822	192.168.88.25	81	tcp	HTTP	not a http reply line
+1445425461.729023	CCfPho3unegyO1llkf	192.168.2.42	33929	192.168.88.100	80	tcp	HTTP	not a http reply line
+1445428898.653847	CdW826BCt4EFR1XS5	192.168.2.113	3326	192.168.88.100	80	tcp	HTTP	not a http reply line
+1445445381.858859	CeSQ3x3dgSN9MCD1E8	192.168.2.88	39659	192.168.88.100	80	tcp	HTTP	not a http reply line
+1445445410.104030	CisVuG2zNIZkdSsyQg	192.168.2.88	51326	192.168.88.95	23	tcp	KRB_TCP	binpac exception: out_of_bound: ASN1EncodingMeta:len: 2 > 0
+#close	2018-02-08-11-14-15
