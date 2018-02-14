@@ -1,0 +1,17 @@
+language: python
+python:
+  - 2.7
+cache: pip
+install:
+  - pip install yara-python
+
+script:
+  - python ./build-rules.py
+  - make all
+
+notifications:
+  email:
+    recipients:
+      - venom14@gmail.com
+    on_success: always
+    on_failure: always

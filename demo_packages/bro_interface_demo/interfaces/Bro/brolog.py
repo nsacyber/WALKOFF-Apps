@@ -7,6 +7,17 @@ import json
 blueprint = AppBlueprint(blueprint=Blueprint('Bro_Demo', __name__))
 
 analysis_data = {'dns': None, 'http': None}
+analysis_filenames = {'dns': "dnsWalkoffBroAnalysis.json", 'http': "httpWalkoffBroAnalysis.json"}
+
+
+@dispatcher.on_app_actions('Bro', actions=['make http netmap'],
+                           events=WalkoffEvent.ActionExecutionSuccess)
+def get_netmap(data):
+    global netmap
+    global netmap_filename
+    netmap_filename = data['data']['result']
+    with open(netmap_filename, 'r') as f:
+        netmap = json.load(f)
 
 
 @dispatcher.on_app_actions('Bro', actions=['analyze log'],
@@ -16,13 +27,17 @@ def get_analysis(data):
     log_type = data['arguments'][0]['value']
     if log_type in ('dns', 'http'):
         global analysis_data
-        analysis_data[log_type] = data['data']['result'][log_type]
+        global analysis_filenames
+        analysis_filenames[log_type] = data['data']['result']
+
+        with open(analysis_filenames[log_type], 'r') as f:
+            analysis_data[log_type] = json.load(f)[log_type]
     else:
         print(log_type + " log type not supported")
 
 
 @blueprint.blueprint.route('/demo', methods=['GET'])
-@jwt_required
+# @jwt_required
 def data_endpoint():
     log = request.args.get("log")
     stat = request.args.get("stat")
@@ -31,11 +46,20 @@ def data_endpoint():
         return '{"error": "You must specify both a log and stat."}', 400
 
     global analysis_data
-    if analysis_data:
+    if analysis_data[log] is not None:
         try:
             r = analysis_data[log][stat]
             return json.dumps(r), 200
         except KeyError:
             return '{"error": "The requested log or stat was not found in the submitted data."}', 400
     else:
-        return '{"error": "No data has been submitted yet. Run the \'analyze log\' action from the Bro app."}', 400
+        try:
+            global analysis_filenames
+            with open(analysis_filenames[log], 'r') as f:
+                analysis_data[log] = json.load(f)[log]
+
+            r = analysis_data[log][stat]
+            return json.dumps(r), 200
+        except IOError:
+            return '{"error": "No data has been submitted yet and the default demo logs were not found. ' \
+                   'Run the \'analyze log\' action from the Bro app."}', 400
