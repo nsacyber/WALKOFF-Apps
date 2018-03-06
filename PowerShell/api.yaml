@@ -1,51 +1,69 @@
 walkoff: '0.1'
 info:
-  version: 1.0.0
-  title: Skeleton App
-  description: An app template.
+  version: 0.1.0
+  title: PowerShell app
+  description: An app to execute PowerShell commands and scripts locally or remotely
   contact:
     name: Walkoff Team
   license:
     name: Creative Commons
 actions:
-  'execLocalCommand':
-      run: execLocalCommand
-      description: Basic function which takes in parameter and returns it
+  Execute Local Command:
+      run: app.exec_local_command
+      description: Executes the powershell command locally.
       parameters:
       - name: command
-        description: The test parameter
+        description: list of commands
         required: true
         type: array
       returns:
         Success:
-          description: repeated method
           schema:
             type: string
-
-  'execRemoteCommand':
-    run: execRemoteCommand
-    description: Basic function which takes in parameter and returns it
+  Execute Remote Command:
+    run: app.PowerShell.exec_remote_command
+    description: Executes the powershell command on the remote device.
     parameters:
     - name: command
-      description: The test parameter
+      description: list of commands
       required: true
       type: string
     returns:
       Success:
-        description: repeated method
         schema:
           type: string
-
-  'runLocalScriptRemotely':
-    run: runLocalScriptRemotely
-    description: Basic function which takes in parameter and returns it
+  Execute Script Remotely:
+    run: app.PowerShell.exec_script_remotely
+    description: Executes a local script on the remote device
     parameters:
-    - name: localPath
-      description: The test parameter
+    - name: local_path
+      description: path to the script on the local filesystem
       required: true
       type: string
     returns:
       Success:
-        description: repeated method
         schema:
           type: string
+devices:
+  Remote PowerShell Host:
+    description: Remote host to run PowerShell scripts/commands on
+    fields:
+      - name: username
+        type: string
+        description: Username for remote host
+        required: true
+      - name: password
+        type: string
+        description: Password for remote host user
+        encrypted: true
+        required: true
+      - name: ip
+        description: IP address or hostname of remote host
+        type: string
+        required: true
+      - name: port
+        description: Port of remote host
+        type: integer
+        minimum: 1
+        maximum: 65355
+        required: true
