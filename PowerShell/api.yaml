@@ -9,17 +9,28 @@ info:
     name: Creative Commons
 actions:
   Execute Local Command:
-      run: app.exec_local_command
-      description: Executes the powershell command locally.
-      parameters:
-      - name: command
-        description: list of commands
-        required: true
-        type: array
-      returns:
-        Success:
-          schema:
-            type: string
+    run: app.exec_local_command
+    description: Executes the powershell command locally.
+    parameters:
+    - name: command
+      description: list of commands
+      required: true
+      type: array
+    - name: output_filename
+      description: file to pipe output to
+      type: string
+    returns:
+      Success:
+        schema:
+          type: string
+      ScriptError:
+        failure: true
+        schema:
+          type: string
+      FileError:
+        failure: true
+        schema:
+          type: string
   Execute Remote Command:
     run: app.PowerShell.exec_remote_command
     description: Executes the powershell command on the remote device.
@@ -28,8 +39,19 @@ actions:
       description: list of commands
       required: true
       type: string
+    - name: output_filename
+      description: file to pipe output to
+      type: string
     returns:
       Success:
+        schema:
+          type: string
+      ScriptError:
+        failure: true
+        schema:
+          type: string
+      FileError:
+        failure: true
         schema:
           type: string
   Execute Script Remotely:
@@ -40,8 +62,19 @@ actions:
       description: path to the script on the local filesystem
       required: true
       type: string
+    - name: output_filename
+      description: file to pipe output to
+      type: string
     returns:
       Success:
+        schema:
+          type: string
+      ScriptError:
+        failure: true
+        schema:
+          type: string
+      FileError:
+        failure: true
         schema:
           type: string
 devices:
@@ -57,13 +90,17 @@ devices:
         description: Password for remote host user
         encrypted: true
         required: true
-      - name: ip
+      - name: host
         description: IP address or hostname of remote host
         type: string
         required: true
       - name: port
-        description: Port of remote host
+        description: WinRM port of remote host
         type: integer
+        default: 5986
         minimum: 1
         maximum: 65355
         required: true
+      - name: very_insecure_mode_testing_only
+        description: disable certificate checking and don't check trust relationship
+        type: boolean
