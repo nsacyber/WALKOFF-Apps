@@ -12,13 +12,16 @@ actions:
     run: app.exec_local_command
     description: Executes the powershell command locally.
     parameters:
-    - name: command
+    - name: commands
       description: list of commands
       required: true
       type: array
+      items:
+        type: string
     - name: output_filename
       description: file to pipe output to
       type: string
+    default_return: Success
     returns:
       Success:
         schema:
@@ -35,13 +38,16 @@ actions:
     run: app.PowerShell.exec_remote_command
     description: Executes the powershell command on the remote device.
     parameters:
-    - name: command
+    - name: commands
       description: list of commands
       required: true
-      type: string
+      type: array
+      items:
+        type: string
     - name: output_filename
       description: file to pipe output to
       type: string
+    default_return: Success
     returns:
       Success:
         schema:
@@ -65,6 +71,10 @@ actions:
     - name: output_filename
       description: file to pipe output to
       type: string
+    - name: tab_separated_values
+      description: whether the output should be tab separated or left as-is
+      type: boolean
+    default_return: Success
     returns:
       Success:
         schema:
@@ -101,6 +111,9 @@ devices:
         minimum: 1
         maximum: 65355
         required: true
+      - name: https
+        description: whether or not to use HTTPS
+        type: boolean
       - name: very_insecure_mode_testing_only
         description: disable certificate checking and don't check trust relationship
         type: boolean
