@@ -10,37 +10,40 @@ info:
 actions:
   Execute Local Command:
     run: app.exec_local_command
-    description: Executes the powershell command locally.
+    description: Execute PowerShell command locally, using either Windows PowerShell or cross-platform PowerShell Core if it is installed.
     parameters:
     - name: platform
-      description: whether to execute using Windows PowerShell or PowerShell Core.
+      description: Whether to execute using Windows PowerShell or PowerShell Core
       required: true
       type: string
       enum: ["PowerShell.exe (Windows)", "PowerShell Core (Cross-Platform)"]
     - name: mode
-      description: whether to execute a command or a script filename
+      description: Whether to execute the following commands as cmdlets or script files
       required: true
       type: string
       enum: ["-Command", "-File"]
     - name: commands
-      description: list of commands
+      description: List of commands or scripts to execute
       required: true
       type: array
       items:
         type: string
     - name: output_filename
-      description: file to pipe output to
+      description: local path to output results into
       type: string
     default_return: Success
     returns:
       Success:
+        description: List of result outputs
         schema:
           type: string
       ScriptError:
+        description: The script encountered an error while running.
         failure: true
         schema:
           type: string
       FileError:
+        description: The specified script could not be read, or output file could not be written.
         failure: true
         schema:
           type: string
@@ -49,51 +52,57 @@ actions:
     description: Executes the powershell command on the remote device.
     parameters:
     - name: commands
-      description: list of commands
+      description: list of commands to execute
       required: true
       type: array
       items:
         type: string
     - name: output_filename
-      description: file to pipe output to
+      description: local path to output results into
       type: string
     default_return: Success
     returns:
       Success:
+        description: List of result outputs
         schema:
           type: string
       ScriptError:
+        description: The script encountered an error while running.
         failure: true
         schema:
           type: string
       FileError:
+        description: The specified script could not be read, or output file could not be written.
         failure: true
         schema:
           type: string
   Execute Script Remotely:
     run: app.PowerShell.exec_script_remotely
-    description: Executes a local script on the remote device
+    description: Execute the local script on the remote host. Only needed if the local system does not have Windows PowerShell or PowerShell Core
     parameters:
     - name: local_path
       description: path to the script on the local filesystem
       required: true
       type: string
     - name: output_filename
-      description: file to pipe output to
+      description: local path to output results into
       type: string
     - name: tab_separated_values
-      description: whether the output should be tab separated or left as-is
+      description: whether to pipe results into a tsv format. PowerShell script being ran must support this.
       type: boolean
     default_return: Success
     returns:
       Success:
+        description: List of result outputs
         schema:
           type: string
       ScriptError:
+        description: The script encountered an error while running.
         failure: true
         schema:
           type: string
       FileError:
+        description: The specified script could not be read, or output file could not be written.
         failure: true
         schema:
           type: string

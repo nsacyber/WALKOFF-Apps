@@ -7,11 +7,12 @@ import chardet
 @action
 def exec_local_command(platform, mode, commands, output_filename=None):
     """
-    Use Powershell client to execute commands on the remote server and produce an array of command outputs
-    Input:
-        args: A String array of commands
-    Output:
-        result: A String array of the command outputs
+    Execute PowerShell command locally, using either Windows PowerShell or cross-platform PowerShell Core if it is installed.
+    :param platform: Whether to execute using Windows PowerShell or PowerShell Core
+    :param mode: Whether to execute the following commands as cmdlets or script files
+    :param commands: List of commands or scripts to execute
+    :param output_filename: local path to output results into
+    :return: list of results
     """
     results = []
     status = "Success"
@@ -60,13 +61,12 @@ class PowerShell(App):
 
     @action
     def exec_remote_command(self, commands, output_filename=None):
-
         """
-        Use Powershell client to execute commands on the remote server and produce an array of command outputs
-        Input:
-            args: A String array of commands
-        Output:
-            result: A String array of the command outputs
+        Execute the command on the remote host. Only needed if the local system does not have Windows PowerShell or PowerShell Core
+
+        :param commands: list of commands to execute
+        :param output_filename: local path to output results into
+        :return: list of results
         """
         results = []
         status = "Success"
@@ -92,11 +92,12 @@ class PowerShell(App):
     @action
     def exec_script_remotely(self, local_path, output_filename=None, tab_separated_values=False):
         """
-        Use Powershell client to execute a script on the remote server and produce an array of command outputs
-        Input:
-            args: A dictionary with the key of 'localPath' and the value being the local filepath of the script
-        Output:
-            result: A String array of the command outputs
+        Execute the local script on the remote host. Only needed if the local system does not have Windows PowerShell or PowerShell Core
+
+        :param local_path: path to the script on the local filesystem
+        :param output_filename: local path to output results into
+        :param tab_separated_values: whether to pipe results into a tsv format. PowerShell script being ran must support this.
+        :return: list of results
         """
         results = []
         try:
