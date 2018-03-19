@@ -28,12 +28,10 @@ def exec_local_command(platform, mode, commands, output_filename=None):
                 args = [executable, mode, command]
             elif mode == "-File":
                 args = [executable, mode] + command.split(" ")
-
             results.append(subprocess.check_output(args))
         except subprocess.CalledProcessError as e:
             results.append(e.output)
             status = "ScriptError"
-    print(str(results))
     if output_filename is not None:
         try:
             with open(output_filename, 'w') as f:
