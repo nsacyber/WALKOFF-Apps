@@ -3,8 +3,9 @@ import winrm
 import subprocess
 import chardet
 
+
 @action
-def exec_local_command(commands, output_filename=None):
+def exec_local_command(platform, commands, output_filename=None):
     """
     Use Powershell client to execute commands on the remote server and produce an array of command outputs
     Input:
@@ -14,9 +15,16 @@ def exec_local_command(commands, output_filename=None):
     """
     results = []
     status = "Success"
+    if platform == "PowerShell.exe (Windows)":
+        executable = "powershell.exe"
+    elif platform == "PowerShell Core (Cross-Platform)":
+        executable = "pwsh"
+    else:
+        return "Unknown Platform", "ScriptError"
+
     for command in commands:
         try:
-            output = subprocess.check_output(["powershell.exe", command], shell=True)
+            output = subprocess.check_output([executable, command], shell=True)
             results.append(output)
         except subprocess.CalledProcessError as e:
             results.append(e)

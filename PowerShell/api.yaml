@@ -12,6 +12,11 @@ actions:
     run: app.exec_local_command
     description: Executes the powershell command locally.
     parameters:
+    - name: platform
+      description: whether to execute using Windows PowerShell or PowerShell Core.
+      required: true
+      type: string
+      enum: ["PowerShell.exe (Windows)", "PowerShell Core (Cross-Platform)"]
     - name: commands
       description: list of commands
       required: true
