@@ -17,6 +17,11 @@ actions:
       required: true
       type: string
       enum: ["PowerShell.exe (Windows)", "PowerShell Core (Cross-Platform)"]
+    - name: mode
+      description: whether to execute a command or a script filename
+      required: true
+      type: string
+      enum: ["-Command", "-File"]
     - name: commands
       description: list of commands
       required: true

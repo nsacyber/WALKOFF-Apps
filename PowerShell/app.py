@@ -5,7 +5,7 @@ import chardet
 
 
 @action
-def exec_local_command(platform, commands, output_filename=None):
+def exec_local_command(platform, mode, commands, output_filename=None):
     """
     Use Powershell client to execute commands on the remote server and produce an array of command outputs
     Input:
@@ -24,12 +24,16 @@ def exec_local_command(platform, commands, output_filename=None):
 
     for command in commands:
         try:
-            output = subprocess.check_output([executable, command], shell=True)
-            results.append(output)
-        except subprocess.CalledProcessError as e:
-            results.append(e)
-            status = "ScriptError"
+            if mode == "-Command":
+                args = [executable, mode, command]
+            elif mode == "-File":
+                args = [executable, mode] + command.split(" ")
 
+            results.append(subprocess.check_output(args))
+        except subprocess.CalledProcessError as e:
+            results.append(e.output)
+            status = "ScriptError"
+    print(str(results))
     if output_filename is not None:
         try:
             with open(output_filename, 'w') as f:
