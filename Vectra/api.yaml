@@ -1,0 +1,518 @@
+walkoff: '0.1'
+info:
+  version: 1.0.0
+  title: Vectra App
+  description: An app to communicate with a Vectra instance using the V2 API
+  contact:
+    name: Walkoff Team
+  license:
+    name: Creative Commons
+actions:
+  get all detections:
+    run: app.Vectra.get_all_detections
+    description: Get all the detections found by Vectra
+    parameters:
+      - name: ordering
+        description: Orders the results by a value. Defaults to a combination of threat score and certainty score
+        type: string
+        enum: [last_timestamp, threat, certainty]
+      - name: reverse_order
+        description: Reverse the ordering if ordering is provided
+        type: boolean
+        default: false
+      - name: min_id
+        description: Get only those detections whose id is greater than or equal to the provided id
+        type: integer
+        minimum: 0
+      - name: max_id
+        description: Get only those detections whose id is less than or equal to the provided id
+        type: integer
+        minimum: 0
+      - name: state
+        description: Filter results by state
+        type: string
+        enum: [active, inactive]
+      - name: category
+        description: Filter results by detection category
+        type: string
+        enum: [COMMAND AND CONTROL, BOTNET, RECONNAISSANCE, LATERAL MOVEMENT, EXFILTRATION]
+      - name: source_ip
+        description: Filter by source IP address
+        type: string
+      - name: threat_equals
+        description: Filter by threat score
+        type: integer
+      - name: min_threat
+        description: Returns all detections with threat scores greater than or equal to the provided threat score
+        type: integer
+      - name: certainty_equals
+        description: Filter by certainty score
+        type: integer
+      - name: min_certainty
+        description: Returns all detections with certainty scores greater than or equal to the provided certainty score
+        type: integer
+      - name: last_timestamp
+        description: Filter by last timestamp
+        type: string
+      - name: host_id
+        description: Returns all detections attributed to the provided host ID
+        type: integer
+      - name: tags
+        description: Returns all detections tagged with the provided tags
+        type: array
+        items:
+          type: string
+      - name: destination
+        description: Returns all detections with the provided destination IP address
+        type: string
+      - name: proto
+        description: Returns all detections with the provided protocol
+        type: string
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: Detection object ID
+                minimum: 0
+              detection:
+                type: string
+                description: The name of the threat detected
+              category:
+                type: string
+                enum: [COMMAND AND CONTROL, BOTNET, RECONNAISSANCE, LATERAL MOVEMENT, EXFILTRATION]
+                description: The category of the attack detected
+              src_ip:
+                type: string
+                description: The source IP address of the host attributed to the security event
+              state:
+                type: string
+                description: The state of the detection. If the detection has aged out the state will transition to "inactive" from "active"
+                enum: [inactive, active]
+              t_score:
+                type: integer
+                description: The threat score attributed to the detection
+              c_score:
+                type: integer
+                description: The certainty score attributed to the detection
+              first_timestamp:
+                type: string
+                description: The timestamp when the event was first detected. Format of YYYY-MM-DD HH-MM-SS GMT
+              last_timestamp:
+                type: string
+                description: The timestamp when the event was last detected. Format of YYYY-MM-DD HH-MM-SS GMT
+              description:
+                type: string
+                description: System generated description of the event
+              destination:
+                type: string
+                description: The IP address of the destination host involved in the security event
+              count:
+                type: integer
+                description: Detection detail count
+              dst_port:
+                type: integer
+                description: The destination port in the communication
+              dst_geo:
+                type: string
+                description: geolocation of the destination IP address
+              proto:
+                type: string
+                description: The protocol used in the communications
+              total_bytes_sent:
+                type: integer
+                description: The total bytes sent by the client
+                minimum: 0
+              total_bytes_rcvd:
+                type: integer
+                description: The total bytes received by the client
+                minimum: 0
+              url:
+                type: string
+                format: uri
+                description: The URL that links directly to this record
+              host:
+                type: string
+                format: uri
+                description: The URL that links directly to the host record
+              summary:
+                description: The summary information for the detection
+                type: object
+              grouped_details:
+                description: The detection details for the detection
+                type: object
+              tags:
+                description: User defined tags added to the detection
+                type: array
+                items:
+                  type: string
+              targets_key_asset:
+                description: indicates whether the detection targets a key asset
+                type: boolean
+  get detection:
+    run: app.Vectra.get_detection
+    description: Gets a detection found by Vectra
+    parameters:
+      - name: id
+        description: The id of the detection to get
+        type: integer
+        minimum: 0
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: Detection object ID
+              minimum: 0
+            detection:
+              type: string
+              description: The name of the threat detected
+            category:
+              type: string
+              enum: [COMMAND AND CONTROL, BOTNET, RECONNAISSANCE, LATERAL MOVEMENT, EXFILTRATION]
+              description: The category of the attack detected
+            src_ip:
+              type: string
+              description: The source IP address of the host attributed to the security event
+            state:
+              type: string
+              description: The state of the detection. If the detection has aged out the state will transition to "inactive" from "active"
+              enum: [inactive, active]
+            t_score:
+              type: integer
+              description: The threat score attributed to the detection
+            c_score:
+              type: integer
+              description: The certainty score attributed to the detection
+            first_timestamp:
+              type: string
+              description: The timestamp when the event was first detected. Format of YYYY-MM-DD HH-MM-SS GMT
+            last_timestamp:
+              type: string
+              description: The timestamp when the event was last detected. Format of YYYY-MM-DD HH-MM-SS GMT
+            description:
+              type: string
+              description: System generated description of the event
+            destination:
+              type: string
+              description: The IP addess of the destination host involved in the security event
+            count:
+              type: integer
+              description: Detection detail count
+            dst_port:
+              type: integer
+              description: The destination port in the communication
+            dst_geo:
+              type: string
+              description: geolocation of the destination IP address
+            proto:
+              type: string
+              description: The protocol used in the communications
+            total_bytes_sent:
+              type: integer
+              description: The total bytes sent by the client
+              minimum: 0
+            total_bytes_rcvd:
+              type: integer
+              description: The total bytes received by the client
+              minimum: 0
+            url:
+              type: string
+              format: uri
+              description: The URL that links directly to this record
+            host:
+              type: string
+              format: uri
+              description: The URL that links directly to the host record
+            summary:
+              description: The summary information for the detection
+              type: object
+            grouped_details:
+              description: The detection details for the detection
+              type: object
+            tags:
+              description: User defined tags added to the detection
+              type: array
+              items:
+                type: string
+            targets_key_asset:
+              description: indicates whether the detection targets a key asset
+              type: boolean
+      Error:
+        schema:
+          type: object
+  get all hosts:
+    run: app.Vectra.get_all_hosts
+    description: Get all the hosts found by Vectra
+    parameters:
+      - name: ordering
+        description: Orders the results by a value. Defaults to a combination of threat score and certainty score
+        type: string
+        enum: [last_timestamp, threat, certainty]
+      - name: reverse_order
+        description: Reverse the ordering if ordering is provided
+        type: boolean
+        default: false
+      - name: min_id
+        description: Get only those detections whose id is greater than or equal to the provided id
+        type: integer
+        minimum: 0
+      - name: max_id
+        description: Get only those detections whose id is less than or equal to the provided id
+        type: integer
+        minimum: 0
+      - name: state
+        description: Filter results by state
+        type: string
+        enum: [active, inactive]
+      - name: last_source_ip
+        description: Filter by last source IP address
+        type: string
+      - name: threat_equals
+        description: Filter by threat score
+        type: integer
+      - name: min_threat
+        description: Returns all detections with threat scores greater than or equal to the provided threat score
+        type: integer
+      - name: certainty_equals
+        description: Filter by certainty score
+        type: integer
+      - name: min_certainty
+        description: Returns all detections with certainty scores greater than or equal to the provided certainty score
+        type: integer
+      - name: last_detection_timestamp
+        description: Filter by last timestamp detected
+        type: string
+      - name: tags
+        description: Returns all detections tagged with the provided tags
+        type: array
+        items:
+          type: string
+      - name: key_asset
+        type: boolean
+        description: Filter by key asset hosts
+      - name: targets_key_asset
+        type: boolean
+        description: Filter by hosts targeting key asset
+      - name: active_traffic
+        type: boolean
+        description: Filter by hosts which have generated traffic within the last 2 hours
+      - name: mac_address
+        type: string
+        description: Filter by mac address
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: Host object ID
+                minimum: 0
+              name:
+                type: string
+                description: The learned hostname
+              state:
+                description: The state of this host. Active hosts are those with active detections
+                type: string
+                enum: [active, inactive]
+              active_traffic:
+                description: Flag indicating if the host is exhibiting traffic
+                type: boolean
+              t_score:
+                description: The current threat score correlated to this host
+                type: integer
+              c_score:
+                description: The current certainty score correlated to this host
+                type: integer
+              last_source:
+                description: The last source IP address associated with this host
+                type: string
+              previous_ips:
+                description: The previous ips observed for this host
+                type: array
+                items:
+                  type: string
+              last_detection_timestamp:
+                description: The timestamp of the last detection activity from this host. Format of YYYY-MM-DD HH-MM-SS GMT
+                type: string
+              key_asset:
+                description: Flag indicating if the host is a key asset
+                type: boolean
+              targets_key_asset:
+                description: Flag indicating if the host has a detection targeting a key asset
+                type: boolean
+              owner_name:
+                description: Probable owner of the host
+                type: string
+              tags:
+                description: List of user defined tags added to the host
+                type: array
+                items:
+                  type: string
+              note:
+                description: User defined note added to the host
+                type: string
+              host_artifact_set:
+                description: List of host artifacts observed for the host
+                type: array
+                items:
+                  type: object
+              sensor:
+                type: string
+                description: Sensor that reported seeing activity for this host
+              detection_set:
+                description: List of the URLS to detections for the host
+                type: array
+                items:
+                  type: string
+              url:
+                description: The URL link directly to this host record
+                type: string
+                format: uri
+  get host:
+    run: app.Vectra.get_host
+    description: Gets a host found by Vectra
+    parameters:
+      - name: id
+        description: The id of the host to get
+        type: integer
+        minimum: 0
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: Host object ID
+                minimum: 0
+              name:
+                type: string
+                description: The learned hostname
+              state:
+                description: The state of this host. Active hosts are those with active detections
+                type: string
+                enum: [active, inactive]
+              active_traffic:
+                description: Flag indicating if the host is exhibiting traffic
+                type: boolean
+              t_score:
+                description: The current threat score correlated to this host
+                type: integer
+              c_score:
+                description: The current certainty score correlated to this host
+                type: integer
+              last_source:
+                description: The last source IP address associated with this host
+                type: string
+              previous_ips:
+                description: The previous ips observed for this host
+                type: array
+                items:
+                  type: string
+              last_detection_timestamp:
+                description: The timestamp of the last detection activity from this host. Format of YYYY-MM-DD HH-MM-SS GMT
+                type: string
+              key_asset:
+                description: Flag indicating if the host is a key asset
+                type: boolean
+              targets_key_asset:
+                description: Flag indicating if the host has a detection targeting a key asset
+                type: boolean
+              owner_name:
+                description: Probable owner of the host
+                type: string
+              tags:
+                description: List of user defined tags added to the host
+                type: array
+                items:
+                  type: string
+              note:
+                description: User defined note added to the host
+                type: string
+              host_artifact_set:
+                description: List of host artifacts observed for the host
+                type: array
+                items:
+                  type: object
+              sensor:
+                type: string
+                description: Sensor that reported seeing activity for this host
+              detection_set:
+                description: List of the URLS to detections for the host
+                type: array
+                items:
+                  type: string
+              url:
+                description: The URL link directly to this host record
+                type: string
+                format: uri
+      Error:
+        failure: true
+        schema:
+          type: object
+  set key asset:
+    run: app.Vectra.set_key_asset
+    description: Sets a host  as a key asset
+    parameters:
+      - name: id
+        description: The id of the host to mark as a key asset
+        type: integer
+        minimum: 0
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          type: string
+          enum: [success]
+      Error:
+        schema:
+          type: string
+          enum: [error]
+  unset key asset:
+    run: app.Vectra.unset_key_asset
+    description: Unsets a host  as a key asset
+    parameters:
+      - name: id
+        description: The id of the host to mark as a non-key asset
+        type: integer
+        minimum: 0
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          type: string
+          enum: [success]
+      Error:
+        schema:
+          type: string
+          enum: [error]
+        failure: true
+devices:
+  Vectra:
+    description: Vectra instance
+    fields:
+      - name: url
+        type: string
+        description: URL for the Vectra instance
+        required: true
+      - name: token
+        type: string
+        description: API token for the Vectra instance
+        encrypted: true
+        required: true

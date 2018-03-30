@@ -1,0 +1,829 @@
+walkoff: '0.1'
+info:
+  version: 1.0.0
+  title: Cylance App
+  description: An app to communicate with a CylancePROTECT instance
+  contact:
+    name: Walkoff Team
+  license:
+    name: Creative Commons
+actions:
+  get all threats:
+    run: app.Cylance.get_all_threats
+    description: Get all the threats found by Cylance
+    default_return: Success
+    returns:
+      ConnectionError:
+        failure: true
+        schema:
+          type: string
+          enum: [Could not reauthenticate]
+      Error:
+        failure: true
+        schema:
+          type: object
+      Success:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              threat_name:
+                description: Name or UUID of the threat
+                type: string
+              priority:
+                description: Priority of the threat. Helps identify the urgency of the threat
+                type: string
+                enum: [Low, Medium, High]
+              auto_run:
+                description: Flag that tells whether or not the threat was set to autostart (ex. Windows Services)
+                type: boolean
+              running:
+                description: Flag that tells whether or not the threat was running when detected
+                type: boolean
+              detected_by:
+                description: Which product detected the thread (Execution Control, Background Threat Detection, etc.)
+                type: string
+              signed:
+                description: A flag that tells whether or not the file has been signed
+                type: boolean
+              cylance_score:
+                description: The score represents the confidence the file is malware. The higher the number the greater the confidence
+                type: integer
+              av_industry:
+                description: The Anti-Virus industry score
+                type: integer
+              classification:
+                description: Current threat classification
+                type: string
+              sub_classification:
+                description: Current threat sub-classification
+                type: string
+              cert_publisher:
+                description: The name of teh certificate publisher (typically the company ther certificate represents)
+                type: string
+              unsafe:
+                description: The threat is considered unsafe
+                type: integer
+              quarantined:
+                description: The threat is quarantied
+                type: integer
+              abnormal:
+                description: The threat is considered abnormal
+                type: integer
+              global_quarantined:
+                description: Flag that tells whether nor not the file is on the Global Quarantine list
+                type: boolean
+              safelisted:
+                description: Flag that tells whether or not the file is on the Safe List
+                type: boolean
+              cert_timestamp:
+                description: The date and time the certificate was created
+                type: string
+              cert_issuer:
+                description: The name of the certificate issuer (typically the certificate authority)
+                type: string
+              first_found:
+                description: The date and time the threat was first found on the device
+                type: string
+              last_found:
+                description: The date and time the threat was last found on the device
+                type: string
+              sha256:
+                description: The SHA256 hash of the file
+                type: string
+              md5:
+                description: The MD5 hash of the file
+                type: string
+              file_size:
+                description: The size of the file
+                type: string
+              unique_to_cylance:
+                description: Falg that tells if then threat was identified by Cylance but not by other anti-virus sources
+                type: boolean
+  get threat details:
+    run: app.Cylance.get_threat_details
+    description: Get the details for a threat
+    parameters:
+      - name: sha256
+        type: string
+        required: true
+    default_return: Success
+    returns:
+      ConnectionError:
+        failure: true
+        schema:
+          type: string
+          enum: [Could not reauthenticate]
+      Error:
+        failure: true
+        schema:
+          type: object
+      Success:
+        schema:
+          type: object
+          properties:
+            threat_name:
+              description: Name or UUID of the threat
+              type: string
+            cylance_score:
+              description: The score represents the confidence the file is malware. The higher the number the greater the confidence
+              type: integer
+            percentage_file_status_tenant:
+              type: object
+              properties:
+                quarantined:
+                  description: The percentage quarantined
+                  type: integer
+                  minimum: 0
+                  maximum: 100
+                waived:
+                  description: The percentage waived
+                  type: integer
+                  minimum: 0
+                  maximum: 100
+            percentage_file_status_everyone:
+              type: object
+              properties:
+                quarantined:
+                  description: The percentage quarantined
+                  type: integer
+                  minimum: 0
+                  maximum: 100
+                waived:
+                  description: The percentage waived
+                  type: integer
+                  minimum: 0
+                  maximum: 100
+            classification:
+              description: Current threat classification
+              type: string
+            sub_classification:
+              description: Current threat sub-classification
+              type: string
+            first_found:
+              description: The date and time the threat was first found on the device
+              type: string
+            last_found:
+              description: The date and time the threat was last found on the device
+              type: string
+            product_name:
+              description: Name of the product
+              type: string
+            description:
+              description: Description of the product
+              type: string
+            version:
+              description: Version of the product
+              type: string
+            company_name:
+              description: Name of the company that owns the product
+              type: string
+            copyright:
+              description: Available copyright information
+              type: string
+            file_size:
+              description: The size of the file
+              type: string
+            signed:
+              description: A flag that tells whether or not the file has been signed
+              type: boolean
+            signature_status:
+              type: string
+            cert_issuer:
+              description: The name of the certificate issuer
+              type: string
+            cert_publisher:
+              description: The name of teh certificate publisher (typically the company ther certificate represents)
+              type: string
+            cert_timestamp:
+              description: The date and time the certificate was created
+              type: string
+            cert_thumbprint:
+              description: The thumbprint of the certificate
+              type: string
+            global_quarantine:
+              description: Flag that tells whether nor not the file is on the Global Quarantine list
+              type: boolean
+            safelisted:
+              description: Flag that tells whether or not the file is on the Safe List
+              type: boolean
+            sha256:
+              description: The SHA256 hash of the file
+              type: string
+            md5:
+              description: The MD5 hash of the file
+              type: string
+  get all devices:
+    run: app.Cylance.get_all_devices
+    description: Get all the devices connected to Cylance
+    default_return: Success
+    returns:
+      ConnectionError:
+        failure: true
+        schema:
+          type: string
+          enum: [Could not reauthenticate]
+      Error:
+        failure: true
+        schema:
+          type: object
+      Success:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              serial_number:
+                description: UUID that uniquely identifies the device
+                type: string
+              device_name:
+                description: The name of the device
+                type: string
+                maxLength: 255
+              dns_name:
+                description: The DNS name for the device
+                type: object
+              added:
+                description: When the device was first registered
+                type: string
+                format: date-time
+              is_offline:
+                description: True if the device is not communicating with the Console for more than 5 minutes
+                type: boolean
+              offline_date:
+                description: If the device is offline, the time the device last communicated.
+                type: string
+                format: date-time
+              policy_name:
+                description: The name of the policy assigned to the device
+                type: string
+                maxLength: 255
+              agent_version:
+                example: '1.2.1350.12'
+                type: string
+              files_analyzed:
+                description: The number of files analyzed on the device
+                type: integer
+                minimum: 0
+              unsafe:
+                description: Number of unsafe files on the device
+                type: integer
+                minimum: 0
+              quarantined:
+                description: Number of quarantined files on the device
+                type: integer
+                minimum: 0
+              waived:
+                description: Number of waived files on the device
+                type: integer
+                minimum: 0
+              abnormal:
+                description: Number of abnormal files on the device
+                type: integer
+                minimum: 0
+              exploit_attempts:
+                description: Number of memory exploit attempts on the device
+                type: integer
+                minimum: 0
+              update_type:
+                description: Which Agent update type this device uses
+                type: string
+                enum: [Production, Test, Pilot]
+              last_user:
+                description: The last user to log on to the device
+                type: string
+                maxLength: 50
+              mac_addresses:
+                description: The MAC addresses for the device
+                type: array
+                items:
+                  type: string
+              os_version:
+                description: The operating system and version used by the device
+                type: string
+                maxLength: 255
+              zones:
+                description: The list of zones the device belongs to
+                type: array
+                items:
+                  type: object
+                  properties:
+                    zone_id:
+                      type: string
+                    zone_name:
+                      type: string
+                      maxLength: 255
+                    zone_update_type:
+                      type: string
+                      enum: [Production, Test, Pilot]
+              ip_addresses:
+                description: The IP addresses (IPV4 and/or IPV6)
+                type: array
+                items:
+                  type: string
+              requires_update:
+                description: Is the device eligible for an agent update?
+                type: boolean
+              is_safe:
+                type: boolean
+              background_detection:
+                description: True if the agent is running and is currently performing a scan (as opposed to just watching for new threats)
+                type: boolean
+  delete device:
+    run: app.Cylance.delete_device
+    description: Deletes a devices connected to Cylance
+    parameters:
+      - name: serial_number
+        type: string
+        description: serial number UUID of the device to delete
+        required: true
+    default_return: Success
+    returns:
+      ConnectionError:
+        failure: true
+        schema:
+          type: string
+          enum: [Could not reauthenticate]
+      Error:
+        failure: true
+        schema:
+          type: object
+      Success:
+        schema:
+          type: string
+          enum: [success]
+  get threats for device:
+    run: app.Cylance.get_threats_for_device
+    description: Gets all threats identified by Cylance for a device
+    parameters:
+      - name: serial_number
+        type: string
+        description: serial number UUID of the device
+        required: true
+    default_return: Success
+    returns:
+      ConnectionError:
+        failure: true
+        schema:
+          type: string
+          enum: [Could not reauthenticate]
+      Error:
+        failure: true
+        schema:
+          type: object
+      Success:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              sha256:
+                description: The SHA256 hash of the file. Also serves as the unique identifier
+                type: string
+              threat_name:
+                description: Name of the threat
+                type: string
+              file_paths:
+                description: All the paths in the target device where this threat is located
+                type: array
+                items:
+                  type: string
+              cylance_score:
+                description: The confidence that the file is malware. The higher the number the greater the confidence
+                type: integer
+              status:
+                description: Current status of the threat (Quarantined, Unsafe, etc.)
+                type: string
+              classification:
+                description: Current threat classification
+                type: string
+              first_found:
+                description: Date when the threat was first found on the device
+                type: string
+              running:
+                description: Was the threat running when detected?
+                type: boolean
+              auto_run:
+                description: Was the threat set to autostart (ex. Windows Service)
+                type: boolean
+              detected_by:
+                description: Which product feature detected the threat (Execution Control, Background Threat Detected, etc.)
+                type: string
+              subclassification:
+                type: string
+  update threat for device:
+    run: app.Cylance.update_threat_for_device
+    description: Updates a threat identified by Cylance for a device
+    parameters:
+      - name: serial_number
+        type: string
+        description: serial number UUID of the device
+        required: true
+      - name: sha256
+        type: string
+        description: The file hash
+        required: true
+      - name: quarantine_status
+        type: string
+        enum: [Quarantined, Waived]
+        required: true
+    default_return: Success
+    returns:
+      ConnectionError:
+        failure: true
+        schema:
+          type: string
+          enum: [Could not reauthenticate]
+      Error:
+        failure: true
+        schema:
+          type: object
+      Success:
+        schema:
+          type: object
+          properties:
+            serial_number:
+              type: string
+            sha256:
+              type: string
+            quarantine_status:
+              type: string
+              enum: [Quarantined, Waived]
+  get devices for threat:
+    run: app.Cylance.get_devices_for_threat
+    description: Gets all devices on which a threat was found
+    parameters:
+      - name: sha256
+        type: string
+        description: The file hash
+        required: true
+    default_return: Success
+    returns:
+      ConnectionError:
+        failure: true
+        schema:
+          type: string
+          enum: [Could not reauthenticate]
+      Error:
+        failure: true
+        schema:
+          type: object
+      Success:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              serial_number:
+                description: UUID that uniquely identifies the device
+                type: string
+              device_name:
+                description: The name of the device
+                type: string
+                maxLength: 255
+              agent_version:
+                example: '1.2.1350.12'
+                type: string
+              file_quarantine_status:
+                description: The quarantine status of the file
+                type: string
+              file_paths:
+                description: All the paths in the target device where this threat is located
+                type: array
+                items:
+                  type: string
+              zones:
+                description: The list of zones the device belongs to
+                type: array
+                items:
+                  type: object
+                  properties:
+                    zone_id:
+                      type: string
+                    zone_name:
+                      type: string
+                      maxLength: 255
+              policy:
+                description: The policy name applied to the device
+                type: string
+              first_found:
+                description: When the threat was first found on the device
+                type: string
+                format: date-time
+              is_offline:
+                description: True if the device is not communicating with the Console for more than 5 minutes
+                type: boolean
+              offline_date:
+                description: If the device is offline, the time the device last communicated.
+                type: string
+                format: date-time
+              added:
+                description: When the device was first registered
+                type: string
+                format: date-time
+              files_analyzed:
+                description: The number of files analyzed on the device
+                type: integer
+                minimum: 0
+              unsafe:
+                description: Number of unsafe files on the device
+                type: integer
+                minimum: 0
+              quarantined:
+                description: Number of quarantined files on the device
+                type: integer
+                minimum: 0
+              waived:
+                description: Number of waived files on the device
+                type: integer
+                minimum: 0
+              abnormal:
+                description: Number of abnormal files on the device
+                type: integer
+                minimum: 0
+              exploit_attempts:
+                description: Number of memory exploit attempts on the device
+                type: integer
+                minimum: 0
+              ip_addresses:
+                description: The IP addresses (IPV4 and/or IPV6)
+                type: array
+                items:
+                  type: string
+              mac_addresses:
+                description: The MAC addresses for the device
+                type: array
+                items:
+                  type: string
+              os_version:
+                description: The operating system and version used by the device
+                type: string
+                maxLength: 255
+              last_reported_users:
+                description: List of users last reported accessing the device
+                type: array
+                items:
+                  type: string
+              background_detection:
+                description: True if the agent is running and is currently performing a scan (as opposed to just watching for new threats)
+                type: boolean
+              running:
+                description: Was the threat running when detected?
+                type: boolean
+              auto_run:
+                description: Was the threat set to autostart (ex. Windows Service)
+                type: boolean
+              detected_by:
+                description: Which product feature detected the threat (Execution Control, Background Threat Detected, etc.)
+                type: string
+  get all zones:
+    run: app.Cylance.get_all_zones
+    description: Gets all zones defined
+    default_return: Success
+    returns:
+      ConnectionError:
+        failure: true
+        schema:
+          type: string
+          enum: [Could not reauthenticate]
+      Error:
+        failure: true
+        schema:
+          type: object
+      Success:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              zone_id:
+                type: string
+              zone_name:
+                type: string
+              device_count:
+                description: Number of devices in this zone
+                type: integer
+                minimum: 0
+              threat_count:
+                description: Number of threats in this zone
+                type: integer
+                minimum: 0
+              policy_id:
+                description: The policy id associated with this zone
+                type: string
+              policy_name:
+                description: The name of the policy associated with this zone
+                type: string
+  create zone:
+    run: app.Cylance.create_zone
+    description: Creates a new zone
+    parameters:
+      - name: zone_name
+        description: The name of the zone. Cannot be "Unzoned" or an existing zone name
+        type: string
+        required: true
+        maxLength: 32
+      - name: policy_id
+        description: The policy id associated with this zone. If omitted, it will default to DefaultPolicy
+        type: string
+      - name: zone_criticality
+        description: The name of the Zone criticality.
+        type: string
+        enum: [Low, Normal, High]
+        default: Normal
+    default_return: Success
+    returns:
+      ConnectionError:
+        failure: true
+        schema:
+          type: string
+          enum: [Could not reauthenticate]
+      Error:
+        failure: true
+        schema:
+          type: object
+      Success:
+        schema:
+          type: string
+          description: The ID of the zone
+  update zone:
+    run: app.Cylance.update_zone
+    description: Updates a zone
+    parameters:
+      - name: zone_id
+        description: The id of the zone to update
+        type: integer
+        required: true
+      - name: zone_name
+        description: The name of the zone. Cannot be "Unzoned" or an existing zone name
+        type: string
+        required: true
+        maxLength: 32
+      - name: policy_id
+        description: The policy id associated with this zone. If omitted, it will default to DefaultPolicy
+        type: string
+      - name: zone_criticality
+        description: The name of the Zone criticality.
+        type: string
+        enum: [Low, Normal, High]
+      - name: apply_policy_change_to_devices
+        description: Tells whether or not to update the Zone Devices to use the new policy.
+        type: boolean
+        default: false
+    default_return: Success
+    returns:
+      ConnectionError:
+        failure: true
+        schema:
+          type: string
+          enum: [Could not reauthenticate]
+      Error:
+        failure: true
+        schema:
+          type: object
+      Success:
+        schema:
+          type: string
+          description: The ID of the zone
+  get all policies:
+    run: app.Cylance.get_all_policies
+    description: Gets all policies
+    default_return: Success
+    returns:
+      ConnectionError:
+        failure: true
+        schema:
+          type: string
+          enum: [Could not reauthenticate]
+      Error:
+        failure: true
+        schema:
+          type: object
+      Success:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              policy_id:
+                type: string
+              policy_name:
+                description: The name of the policy associated with this zone
+                type: string
+  get policy detail:
+    run: app.Cylance.get_policy_detail
+    description: Gets the details for a policy
+    default_return: Success
+    parameters:
+      - name: policy_id
+        type: string
+        description: The Policy id. This information supersedes the policy name if both are included. If both are included and the id is invalid, the name will be used
+      - name: policy_name
+        type: string
+    returns:
+      ConnectionError:
+        failure: true
+        schema:
+          type: string
+          enum: [Could not reauthenticate]
+      Error:
+        failure: true
+        schema:
+          type: object
+      Success:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              policy_id:
+                type: string
+              policy_name:
+                type: string
+              number_of_devices:
+                description: The number of devices under this policy
+                type: integer
+                minimum: 0
+              added:
+                description: The date and time when the policy was created
+                type: string
+                format: date-time
+              modified:
+                description: The date and time when the policy was modified
+                type: string
+                format: date-time
+              file_actions:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    file_type:
+                      type: string
+                    unsafe:
+                      type: object
+                      properties:
+                        auto_quarantine:
+                          type: boolean
+                        auto_upload:
+                          type: boolean
+                    abnormal:
+                      type: object
+                      properties:
+                        auto_quarantine:
+                          type: boolean
+                        auto_upload:
+                          type: boolean
+              memory_actions:
+                type: object
+                properties:
+                  memory_protection:
+                    type: boolean
+                  exclude_files:
+                    type: boolean
+                  violation_types:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        violation_type_name:
+                          type: string
+                        category:
+                          type: string
+                        violation_action_type:
+                          type: string
+              protection_settings:
+                type: object
+                properties:
+                  execution_control:
+                    type: object
+                    properties:
+                      background_detection:
+                        type: string
+                      watch_new_files:
+                        type: boolean
+                      exclude_folders:
+                        type: boolean
+              agent_logs:
+                type: object
+                properties:
+                  enable_auto_upload:
+                    type: boolean
+devices:
+  Cylance:
+    description: CylancePROTECT instance
+    fields:
+      - name: url
+        type: string
+        description: URL for the Cylance instance
+        required: true
+      - name: api_key
+        type: string
+        description: API token for the Cylance instance
+        encrypted: true
+        required: true
+      - name: password
+        type: string
+        description: Password for the Cylance instance
+        encrypted: true
+        required: true
