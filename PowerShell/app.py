@@ -2,6 +2,9 @@ from apps import App, action
 import winrm
 import subprocess
 import chardet
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 @action
@@ -47,9 +50,15 @@ def exec_local_command(platform, mode, commands, output_filename=None):
 class PowerShell(App):
     def __init__(self, name=None, device=None):
         App.__init__(self, name, device)
-        self.host = "{}:{}".format(self.device_fields["host"], self.device_fields["port"])
+        self.host = self.device_fields["host"]
+        if self.device_fields["port"] is not None:
+            self.host += ":" + self.device_fields["port"]
+
         if self.device_fields["https"]:
             self.host = "https://" + self.host
+        else:
+            self.host = "http://" + self.host
+
         self.username = self.device_fields["username"]
         self.insecure_mode = {}
         if self.device_fields["very_insecure_mode_testing_only"]:
@@ -58,6 +67,7 @@ class PowerShell(App):
                                    auth=(self.username,
                                          self.device.get_encrypted_field("password")),
                                    **self.insecure_mode)
+
 
     @action
     def exec_remote_command(self, commands, output_filename=None):
@@ -71,11 +81,11 @@ class PowerShell(App):
         results = []
         status = "Success"
         for command in commands:
-            rs = self.winrm.run_cmd(command)
+            rs = self.winrm.run_ps(command)
             if rs.status_code == 0:
-                results.append(rs.std_out)
+                results.append(rs.std_out.replace("\r\n", "\n"))
             else:
-                results.append(rs.std_err)
+                results.append(rs.std_err.replace("\r\n", "\n"))
                 status = "ScriptError"
                 break
 
@@ -124,9 +134,9 @@ class PowerShell(App):
         status = "Success"
 
         if rs.status_code == 0:
-            results.append(rs.std_out)
+            results.append(rs.std_out.replace("\r\n", "\n"))
         else:
-            results.append(rs.std_err)
+            results.append(rs.std_err.replace("\r\n", "\n"))
             status = "ScriptError"
 
         if output_filename is not None:
