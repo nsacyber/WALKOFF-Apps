@@ -1,6 +1,10 @@
-from apps import App, action
+from copy import deepcopy
+
 from elasticsearch import Elasticsearch as ElasticsearchClient
 from elasticsearch_dsl import Search
+
+
+from apps import App, action
 
 
 @action
@@ -78,8 +82,10 @@ def add_completion_suggestion_to_search(search, suggestion_name, suggestor_text,
 class Elasticsearch(App):
     def __init__(self, app_name=None, device_id=None):
         super(Elasticsearch, self).__init__(app_name, device_id)
-        # get device params here
-        self.es = ElasticsearchClient()
+        connection = deepcopy(self.device_fields)
+        if 'url_prefix' in connection and not connection['url_prefix']:
+            connection.pop('url_prefix')
+        self.es = ElasticsearchClient([connection])
 
     @action
     def create(self, index, doc_type, body, entry_id=None):

@@ -461,3 +461,20 @@ actions:
         failure: true
         schema:
           type: object
+devices:
+  Elasticsearch:
+    description: Elastic search cluster
+    fields:
+      - name: host
+        type: string
+        description: Host of the cluster. If not provided
+        default: 'localhost'
+      - name: port
+        type: integer
+        description: Port of the cluster.
+        default: 9200
+        minimum: 1
+        maximum: 65355
+      - name: url_prefix
+        description: URL prefix for Elasticsearch
+        type: string
