@@ -1,0 +1,463 @@
+walkoff: '0.1'
+info:
+  version: 1.0.0
+  title: Walkoff App
+  description: An app to communicate with another Walkoff instance
+  contact:
+    name: Walkoff Team
+  license:
+    name: Creative Commons
+actions:
+  create search:
+    run: app.create_search
+    description: Create an empty search query
+    parameters:
+      - name: index
+        description: The index of the created entry
+        type: string
+      - name: doc_type
+        description: The document type of the created entry
+        type: string
+        required: true
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          description: The created search object
+          type: object
+  add query to search:
+    run: app.add_query_to_search
+    description: Adds a query to a search
+    parameters:
+      - name: search
+        description: The existing search object
+        type: object
+        required: true
+      - name: terms
+        description: The terms of the search query
+        type: object
+        required: true
+      - name: query_type
+        type: string
+        description: The type of query to execute
+        required: true
+        default: match
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          description: The created search object
+          type: object
+  add filter to search:
+    run: app.add_filter_to_search
+    description: Adds a filter to a search
+    parameters:
+      - name: search
+        description: The existing search object
+        type: object
+        required: true
+      - name: terms
+        description: The terms of the search query
+        type: object
+        required: true
+      - name: filter_type
+        type: string
+        description: The type of filter to execute
+        required: true
+        default: term
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          description: The created search object
+          type: object
+  add exclusion to search:
+    run: app.add_exclusion_to_search
+    description: Adds an exclusion to a search
+    parameters:
+      - name: search
+        description: The existing search object
+        type: object
+        required: true
+      - name: terms
+        description: The terms of the search query
+        type: object
+        required: true
+      - name: exclude_type
+        type: string
+        description: The type of element to exclude
+        required: true
+        default: terms
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          description: The created search object
+          type: object
+  add bucket to search:
+    run: app.add_bucket_to_search
+    description: Adds a bucket aggregation to a search
+    parameters:
+      - name: search
+        description: The existing search object
+        type: object
+        required: true
+      - name: aggregation_name
+        description: The name of the bucket aggregation
+        type: string
+        required: true
+      - name: aggregation_type
+        type: string
+        description: The type of bucket aggregation to use
+        required: true
+      - name: terms
+        description: The terms of the bucket aggregation
+        type: object
+        required: true
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          description: The created search object
+          type: object
+  add metric to search:
+    run: app.add_metric_to_search
+    description: Adds a metric aggregation to a search
+    parameters:
+      - name: search
+        description: The existing search object
+        type: object
+        required: true
+      - name: metric_name
+        description: The name of the metric
+        type: string
+        required: true
+      - name: metric_type
+        type: string
+        description: The type of metric to use
+        required: true
+      - name: terms
+        description: The terms of the metric aggregation
+        type: object
+        required: true
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          description: The created search object
+          type: object
+  add pipeline to search:
+    run: app.add_pipeline_to_search
+    description: Adds a pipeline aggregation to a search
+    parameters:
+      - name: search
+        description: The existing search object
+        type: object
+        required: true
+      - name: pipeline_name
+        description: The name of the pipeline aggregation
+        type: string
+        required: true
+      - name: pipeline_type
+        type: string
+        description: The type of pipeline aggregation to use
+        required: true
+      - name: buckets_path
+        description: The name of the bucket aggregation to use
+        type: string
+        required: true
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          description: The created search object
+          type: object
+  add sort to search:
+    run: app.add_sort_to_search
+    description: Adds a sorting to a search
+    parameters:
+      - name: search
+        description: The existing search object
+        type: object
+        required: true
+      - name: sort_field
+        description: The name of the field to sort. Prefixing the name witha  - will reverse the order
+        type: string
+        required: true
+      - name: sort_type
+        type: string
+        description: The type of sorting to use
+        required: true
+        default: category
+      - name: terms
+        description: The terms of the sorting
+        type: object
+        required: true
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          description: The created search object
+          type: object
+  add pagination to search:
+    run: app.add_pagination_to_search
+    description: Adds pagination to a search
+    parameters:
+      - name: search
+        description: The existing search object
+        type: object
+        required: true
+      - name: start_result
+        description: The number of the first result
+        type: integer
+        minimum: 0
+        required: true
+      - name: end_result
+        description: The number of the last result
+        type: integer
+        minimum: 1
+        required: true
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          description: The created search object
+          type: object
+  add term suggestion to search:
+    run: app.add_term_suggestion_to_search
+    description: Adds a term suggestion to a search
+    parameters:
+      - name: search
+        description: The existing search object
+        type: object
+        required: true
+      - name: suggestion_name
+        description: The name of the suggestion
+        type: string
+        required: true
+      - name: suggestor_text
+        type: string
+        description: The text you wish the suggestor to work on
+        required: true
+      - name: term
+        description: The term of the suggestor
+        type: object
+        required: true
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          description: The created search object
+          type: object
+  add phrase suggestion to search:
+    run: app.add_phrase_suggestion_to_search
+    description: Adds a phrase suggestion to a search
+    parameters:
+      - name: search
+        description: The existing search object
+        type: object
+        required: true
+      - name: suggestion_name
+        description: The name of the suggestion
+        type: string
+        required: true
+      - name: suggestor_text
+        type: string
+        description: The text you wish the suggestor to work on
+        required: true
+      - name: phrase
+        description: The phrase of the suggestor
+        type: object
+        required: true
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          description: The created search object
+          type: object
+  add completion suggestion to search:
+    run: app.add_completion_suggestion_to_search
+    description: Adds a completion suggestion to a search
+    parameters:
+      - name: search
+        description: The existing search object
+        type: object
+        required: true
+      - name: suggestion_name
+        description: The name of the suggestion
+        type: string
+        required: true
+      - name: suggestor_text
+        type: string
+        description: The text you wish the suggestor to work on
+        required: true
+      - name: completion
+        description: The completion of the suggestor
+        type: object
+        required: true
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          description: The created search object
+          type: object
+  create:
+    run: app.Elasticsearch.create
+    description: Create an entry in Elasticsearch
+    parameters:
+      - name: index
+        description: The index of the created entry
+        type: string
+        required: true
+      - name: doc_type
+        description: The document type of the created entry
+        type: string
+        required: true
+      - name: body
+        description: The data you wish to store
+        type: object
+        required: true
+      - name: entry_id
+        description: The id of the created entry. A unique id will be provided if not specified
+        type: string
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          type: object
+  create many:
+    run: app.Elasticsearch.create_many
+    description: Create multiple entry in Elasticsearch
+    parameters:
+      - name: index
+        description: The index of the created entry
+        type: string
+        required: true
+      - name: doc_type
+        description: The document type of the created entry
+        type: string
+        required: true
+      - name: data
+        description: The data you wish to store
+        type: array
+        required: true
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          type: array
+          items:
+            type: object
+  delete:
+    run: app.Elasticsearch.delete
+    description: Delete an entry in Elasticsearch
+    parameters:
+      - name: index
+        description: The index of the entry to delete
+        type: string
+        required: true
+      - name: doc_type
+        description: The document type of the entry to delete
+        type: string
+        required: true
+      - name: entry_id
+        description: The id of the entry to delete
+        type: string
+        required: true
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          type: object
+  delete many:
+    run: app.Elasticsearch.delete_many
+    description: Delete multiple entries in Elasticsearch
+    parameters:
+      - name: index
+        description: The index of the entries to delete
+        type: string
+        required: true
+      - name: doc_type
+        description: The document type of the entries to delete
+        type: string
+        required: true
+      - name: entry_ids
+        description: The ids of the entries to delete
+        type: array
+        items:
+          type: string
+        required: true
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          type: array
+          items:
+            type: object
+  get:
+    run: app.Elasticsearch.get
+    description: Get an entry in Elasticsearch
+    parameters:
+      - name: index
+        description: The index of the entry to get
+        type: string
+        required: true
+      - name: doc_type
+        description: The document type of entry to get
+        type: string
+      - name: entry_id
+        description: The id of the entries to get
+        type: string
+        required: true
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          type: object
+  ping:
+    run: app.Elasticsearch.ping
+    description: Is the Elasticsearch cluster up?
+    default_return: Up
+    returns:
+      Up:
+        schema:
+          type: string
+          enum: [Cluster is up]
+      Down:
+        schema:
+          type: string
+          enum: [Cluster is down]
+  search:
+    run: app.Elasticsearch.search
+    description: Search for entries in Elsasticsearch
+    parameters:
+      - name: search
+        description: The search term speciofied using Query DSL
+        type: object
+        required: true
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          type: object
+      SearchError:
+        failure: true
+        schema:
+          type: object
+  delete by search:
+    run: app.Elasticsearch.delete_by_search
+    description: delete entries matching a search
+    parameters:
+      - name: search
+        description: The search term speciofied using Query DSL
+        type: object
+        required: true
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          type: object
+      SearchError:
+        failure: true
+        schema:
+          type: object
