@@ -2,25 +2,31 @@ from apps import App, action
 import requests
 from requests.exceptions import HTTPError
 from copy import deepcopy
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class Vectra(App):
     def __init__(self, name=None, device=None):
         App.__init__(self, name, device)
-        self.url = '{}/api/v2'.format(self.device_fields['url'])
-        self.headers = self.device.get_encrypted_field('token')
+        self.url = 'http://{}/api/v2'.format(self.device_fields['url'])
+        self.headers = {'Authorization': 'Token {}'.format(self.device.get_encrypted_field('token'))}
 
     def get_all_results(self, resource, params=None):
         params = params or {}
         response = requests.get('{}/{}'.format(self.url, resource), params=params, headers=self.headers, verify=False).json()
+        logger.info('Got Vectra response {}'.format(response))
         results = response['results']
         while response.get('next', False):
             url = response['next']
             response = requests.get(url, headers=self.headers, params=params, verify=False).json()
             results.extend(response.get('results', []))
+        return results
 
     def get_individual_result(self, resource, id):
         response = requests.get('{}/detections/{}'.format(self.url, id), headers=self.headers, verify=False)
+        logger.info('Got Vectra response {}'.format(response))
         try:
             response.raise_for_status()
             return response.json(), 'Success'
