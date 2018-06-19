@@ -64,14 +64,17 @@ actions:
         description: whether or not to overwrite the file, if it exists
         type: boolean
         default: false
+    default_return: FileCreated
     returns:
       AlreadyExists:
+        failure: true
         schema:
           type: boolean
       FileCreated:
         schema:
           type: boolean
       Error:
+        failure: true
         schema:
           type: boolean
   append file:
@@ -90,11 +93,13 @@ actions:
         description: whether or not to append to a newline
         type: boolean
         default: false
+    default_return: FileWritten
     returns:
       FileWritten:
         schema:
           type: boolean
       Error:
+        failure: true
         schema:
           type: boolean
   remove:
@@ -106,12 +111,14 @@ actions:
         description: The filename to remove
         minLength: 1
         required: true
+    default_return: Success
     returns:
       Success:
         schema:
           type: string
           enum: [Success]
       Error:
+        failure: true
         schema:
           type: string
           enum: [File does not exist]
@@ -123,8 +130,10 @@ actions:
         description: filename to make read only
         type: string
         required: true
+    default_return: Success
     returns:
       Error:
+        failure: true
         schema:
           type: boolean
       Success:
@@ -138,8 +147,10 @@ actions:
         description: filename to make writable
         type: string
         required: true
+    default_return: Success
     returns:
       Error:
+        failure: true
         schema:
           type: boolean
       Success:
@@ -154,12 +165,14 @@ actions:
         description: The filename to read
         minLength: 1
         required: true
+    default_return: Success
     returns:
       Success:
         schema:
           type: object
           description: The JSON object
       FileDoesNotExist:
+        failure: true
         schema:
           type: object
           properties:
@@ -170,6 +183,7 @@ actions:
               type: string
               description: The reason the file could not be read
       InvalidJson:
+        failure: true
         schema:
           type: string
           enum: [Could not read file as json. Invalid JSON]
