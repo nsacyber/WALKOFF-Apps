@@ -37,6 +37,13 @@ class LinuxShell(App):
         return str(result), 'Success'
 
     @action
+    def block_ips(self, ips):
+        for ip in ips:
+            self.ssh.exec_command("iptables -A INPUT -s {} -j DROP".format(ip))
+            print("Blocking IP {}".format(ip))
+        return True, 'Success'
+
+    @action
     def scp_get(self, local_path, remote_path):
         """
         Use SSH client to execute a scp command to copy a local file to the remote server

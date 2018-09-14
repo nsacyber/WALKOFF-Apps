@@ -4,6 +4,9 @@ from scapy.sendrecv import sniff
 from scapy.utils import wrpcap
 import datetime
 import os
+import pyshark
+import OpenSSL.crypto
+import pickle
 
 logger = logging.getLogger(__name__)
 
@@ -47,4 +50,31 @@ def capture(filename=None, timeout=None, count=0, interface=None, packet_filter=
     return filename
 
 
+@action
+def pyshark_filter_packets(input_filename, display_filter):
+    packets = pyshark.FileCapture(input_filename, display_filter=display_filter)
+    # dump_packets = []
+    for packet in packets:
+        print(packet)
+        # dump_packets.append(packet)
+    return "Success"
 
+
+@action
+def check_cert_fingerprint(packets, bad_certs_file):
+    packets = pickle.loads(packets)
+
+    with open(bad_certs_file, 'r') as f:
+        bad_certs = f.readlines()
+    bad_certs = [f.strip() for f in bad_certs]
+
+    ips = []
+    for packet in packets:
+        cert = OpenSSL.crypto.load_certificate(OpenSSL.crypto.FILETYPE_ASN1,
+                                               packet.ssl.handshake_certificate.binary_value)
+        fingerprint = cert.digest("sha1").decode("utf-8").replace(":", "").lower()
+
+        if fingerprint in bad_certs:
+            ips.append(packet.ip.src)
+
+    return "Success", ips
