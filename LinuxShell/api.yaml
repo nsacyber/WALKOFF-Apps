@@ -22,6 +22,16 @@ actions:
       Success:
         schema:
           type: string
+  Block IPs:
+    run: app.LinuxShell.block_ips
+    description: Block IPs using iptables
+    parameters:
+      - name: ips
+        description: The list of IPs to block
+        required: true
+        type: array
+        items:
+          type: string
   SCP Get:
     run: app.LinuxShell.scp_get
     description: Copy local file to remove server using scp

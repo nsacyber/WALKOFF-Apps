@@ -9,8 +9,8 @@ class LinuxShell(App):
     password for the remote server
     """
 
-    def __init__(self, name=None, device=None):
-        App.__init__(self, name, device)
+    def __init__(self, name, device, context):
+        App.__init__(self, name, device, context)
 
         self.ssh = paramiko.SSHClient()
         self.ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -35,6 +35,13 @@ class LinuxShell(App):
             output = stdout.read()
             result.append(output)
         return str(result), 'Success'
+
+    @action
+    def block_ips(self, ips):
+        for ip in ips:
+            self.ssh.exec_command("iptables -A INPUT -s {} -j DROP".format(ip))
+            print("Blocking IP {}".format(ip))
+        return True, 'Success'
 
     @action
     def scp_get(self, local_path, remote_path):

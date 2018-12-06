@@ -19,8 +19,8 @@ class Main(App):
            device (list[str]): List of associated device names
            
     """
-    def __init__(self, name=None, device=None):
-        App.__init__(self, name, device)    #Required to call superconstructor
+    def __init__(self, name, device, context):
+        App.__init__(self, name, device, context)    #Required to call superconstructor
 
     @action
     def test_function(self):

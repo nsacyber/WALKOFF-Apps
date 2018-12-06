@@ -463,15 +463,18 @@ actions:
           type: object
 devices:
   Elasticsearch:
-    description: Elasticsearch cluster
+    description: Elastic search cluster
     fields:
       - name: host
         type: string
-        description: Host location of Elasticsearch cluster
-        default: localhost
+        description: Host of the cluster. If not provided
+        default: 'localhost'
       - name: port
-        description: Port of Elasticsearch cluster
         type: integer
+        description: Port of the cluster.
+        default: 9200
         minimum: 1
         maximum: 65355
-        default: 9200
+      - name: url_prefix
+        description: URL prefix for Elasticsearch
+        type: string

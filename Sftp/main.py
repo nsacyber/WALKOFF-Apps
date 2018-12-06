@@ -8,8 +8,8 @@ logger = logging.getLogger(__name__)
 
 
 class Main(App):
-    def __init__(self, name=None, device=None):
-        App.__init__(self, name, device)
+    def __init__(self, name, device, context):
+        App.__init__(self, name, device, context)
         self.transport = None
         self.sftp_client = None
         self.is_connected = False

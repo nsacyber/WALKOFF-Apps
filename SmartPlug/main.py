@@ -11,8 +11,8 @@ except ImportError:
 
 
 class Main(App):
-    def __init__(self, name=None, device=None):
-        App.__init__(self, name, device)
+    def __init__(self, name, device, context):
+        App.__init__(self, name, device, context)
         self.plug = SmartPlug(self.device_fields['ip'])
 
     @action

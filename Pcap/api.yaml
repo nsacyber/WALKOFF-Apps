@@ -43,3 +43,35 @@ actions:
           items:
             type: integer
             minimum: 1
+  filter_packets:
+    run: actions.pyshark_filter_packets
+    description: Filters packets from a pcap based on a filter
+    parameters:
+      - name: input_filename
+        description: The pcap file
+        type: string
+        required: true
+      - name: display_filter
+        description: The pyshark filter
+        type: string
+        required: true
+    returns:
+      Success:
+        schema:
+          type: array
+  fingerprint_certs:
+    run: actions.check_cert_fingerprint
+    description: Takes in a list of pyshark packets, calculates the fingerprint of each cert and compares to list of bad certs, and returns a list of IPs that used bad certs
+    parameters:
+      - name: packets
+        description: The input packets that contain certificates
+        type: string
+      - name: bad_certs_file
+        description: The filename of the file containing the list of bad certs
+        type: string
+    returns:
+      Success:
+        schema:
+          type: array
+          items:
+            type: string

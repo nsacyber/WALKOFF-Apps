@@ -3,8 +3,8 @@ import splunklib.client as client
 
 
 class Main(App):
-    def __init__(self, name=None, device=None):
-        App.__init__(self, name, device)
+    def __init__(self, name, device, context):
+        App.__init__(self, name, device, context)
         self.service = client.connect(host=self.device_fields['ip'], port=self.device_fields['port'],
                                       username=self.device_fields['username'],
                                       password=self.device.get_encrypted_field('password'))

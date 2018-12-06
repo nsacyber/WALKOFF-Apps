@@ -4,10 +4,10 @@ import requests
 
 class Main(App):
 
-    def __init__(self, name=None, device=None):
+    def __init__(self, name, device, context):
         self.user_id = self.device_fields['username']
         self.user_access_token = self.device.get_encrypted_field('password')
-        App.__init__(self, name, device)
+        App.__init__(self, name, device, context)
 
     @action
     def post_to_user_wall(self, message):

@@ -4,8 +4,8 @@ import pygame.image
 
 
 class Main(App):
-    def __init__(self, name=None, device=None):
-        App.__init__(self, name, device)
+    def __init__(self, name, device, context):
+        App.__init__(self, name, device, context)
         pygame.camera.init()
         self.camera = pygame.camera.Camera(pygame.camera.list_cameras()[0])
         self.is_running = False
