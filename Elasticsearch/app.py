@@ -5,9 +5,6 @@ from elasticsearch import Elasticsearch as ElasticsearchClient
 from elasticsearch_dsl import Search
 
 
-from apps import App, action
-
-
 @action
 def create_search(index=None, doc_type=None):
     return Search(index=index, doc_type=doc_type).to_dict(), 'Success'
