@@ -17,8 +17,8 @@ class OpenVAS(App):
        An app to interface with a running OpenVAS manager.
     """
 
-    def __init__(self, name=None, device=None):
-        App.__init__(self, name, device)
+    def __init__(self, name, device, context):
+        App.__init__(self, name, device, context)
         self.h = self.device_fields['host']
         self.u = self.device_fields['username']
         self.p = self.device_fields['port']

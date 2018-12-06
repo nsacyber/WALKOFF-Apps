@@ -16,8 +16,8 @@ class Main(App):
            
     """
 
-    def __init__(self, name=None, device=None):
-        App.__init__(self, name, device)  # Required to call superconstructor
+    def __init__(self, name, device, context):
+        App.__init__(self, name, device, context)  # Required to call superconstructor
         self.headers = {"Authorization": "Bearer {0}".format(self.device.get_encrypted_field('token'))}
         self.name = device
 

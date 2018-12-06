@@ -7,9 +7,9 @@ logger = logging.getLogger(__name__)
 
 # There is an associated Hello world test workflow which can be executed
 class Main(App):
-    def __init__(self, name=None, device=None):
+    def __init__(self, name, device, context):
         # The parent app constructor looks for a device configuration and returns that as a dict called self.config
-        App.__init__(self, name, device)
+        App.__init__(self, name, device, context)
         # Functions and Variables that are designed to exist across functions go here
         self.introMessage = {"message": "HELLO WORLD"}
 

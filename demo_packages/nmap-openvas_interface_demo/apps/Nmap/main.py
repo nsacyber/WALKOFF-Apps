@@ -215,8 +215,8 @@ def scan_results_as_html(self, nmap_json):
 
 
 class Main(App):
-    def __init__(self, name=None, device=None):
-        App.__init__(self, name, device)
+    def __init__(self, name, device, context):
+        App.__init__(self, name, device, context)
         self.whitelist = []
         self.blacklist = []
 

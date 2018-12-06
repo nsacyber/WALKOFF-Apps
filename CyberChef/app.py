@@ -19,8 +19,8 @@ class CyberChefApp(App):
 
     """
 
-    def __init__(self, name=None, device=None):
-        App.__init__(self, name, device)  # Required to call superconstructor
+    def __init__(self, name, device, context):
+        App.__init__(self, name, device, context)  # Required to call superconstructor
 
 
     def setupOpTemporaryCopy(self, value, action, args):

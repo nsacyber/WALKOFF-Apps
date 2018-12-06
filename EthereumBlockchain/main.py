@@ -4,11 +4,11 @@ import os, subprocess, signal
 
 class Main(App):
 
-    def __init__(self, name=None, device=None):
+    def __init__(self, name, device, context):
         self.curDirPath = os.path.dirname(os.path.realpath(__file__))
         self.greeting = "No greeting provided"
         self.totalNodes = "2"
-        App.__init__(self, name, device)
+        App.__init__(self, name, device, context)
 
     @action
     def create_accounts(self, total_nodes):

@@ -9,8 +9,8 @@ logger = logging.getLogger(__name__)
 
 class AlienVault(App):
 
-    def __init__(self, name=None, device=None):
-        App.__init__(self, name, device)
+    def __init__(self, name, device, context):
+        App.__init__(self, name, device, context)
         self.api_key = self.device_fields['key']
 
     @action

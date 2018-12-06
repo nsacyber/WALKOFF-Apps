@@ -3,8 +3,8 @@ from apps import App, action
 
 
 class Main(App):
-    def __init__(self, name=None, device=None):
-        App.__init__(self, name, device)
+    def __init__(self, name, device, context):
+        App.__init__(self, name, device, context)
         self.owm = pyowm.OWM(self.device.get_encrypted_field('key'))
 
     @action

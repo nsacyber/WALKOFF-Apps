@@ -6,8 +6,8 @@ logger = logging.getLogger(__name__)
 
 
 class Main(App):
-    def __init__(self, name=None, device=None):
-        App.__init__(self, name, device)
+    def __init__(self, name, device, context):
+        App.__init__(self, name, device, context)
 
         self.connection = teslajson.Connection(self.device_fields['username'],
                                                self.device.get_encrypted_field('password'))

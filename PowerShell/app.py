@@ -52,8 +52,8 @@ def exec_local_command(platform, mode, commands, output_filename=None):
 
 
 class PowerShell(App):
-    def __init__(self, name=None, device=None):
-        App.__init__(self, name, device)
+    def __init__(self, name, device, context):
+        App.__init__(self, name, device, context)
 
         self.username = self.device_fields["username"]
         self.options = {}

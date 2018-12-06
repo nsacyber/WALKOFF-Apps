@@ -12,9 +12,9 @@ class Main(App):
 
     global suspicious_pids
 
-    def __init__(self, name=None, device=None):
+    def __init__(self, name, device, context):
         self.is_running = False
-        App.__init__(self, name, device)
+        App.__init__(self, name, device, context)
 
     def __monitor_processes(self):
         while True:
