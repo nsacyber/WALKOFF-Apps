@@ -1,0 +1,168 @@
+walkoff: '0.1'
+info:
+  version: 1.0.3
+  title: Snort App
+  description: An app template.
+  contact:
+    name: Walkoff Team
+  license:
+    name: Creative Commons
+actions:
+  find ip in alert log:
+      run: app.find_ip_in_alert_log
+      description: Searches an ASCII Snort Alert log for an ip address
+      parameters:
+        - name: ip
+          description: ip address to be found
+          required: true
+          type: string
+        - name: path
+          description: path to a directory with Snort rule files.
+          required: true
+          default: "/var/log/snort/alert"
+          type: string
+      returns:  
+        Success:
+          description: The ip was found.
+          schema:
+            type: boolean
+        FileError:
+          description: The alert file does not exist.
+          failure: true
+          schema:
+            type: boolean
+        NotFound:
+          description: The ip was not found.
+          schema:
+            type: boolean
+  write rule:
+      run: app.write_rule
+      description: Writes a Snort rule
+      parameters:
+        - name: action
+          description: action the rule takes
+          default: "alert"
+          required: true
+          type: string
+        - name: protocol
+          description: traffic protocol
+          default: "tcp"
+          required: true
+          type: string
+        - name: srcip
+          description: ip address of source traffic
+          default: "$EXTERNAL_NET"
+          required: true
+          type: string
+        - name: srcport
+          description: port of source traffic
+          default: "any"
+          required: true
+          type: string
+        - name: direction
+          description: direction of traffic the rule considers
+          default: "->"
+          required: true
+          type: string
+        - name: dstip
+          description: ip of destination traffic
+          default: "$HOME_NET"
+          required: true
+          type: string
+        - name: dstport
+          description: port of destination traffic
+          default: "any"
+          required: true
+          type: string
+        - name: options  
+          description: Snort rule options
+          type: string
+        - name: filename
+          description: path to Snort rule file where rule will be written.
+          default: "/etc/snort/rules/walkoff.rules"
+          required: true
+          type: string
+      returns:
+        Success:
+          description: The rule was written to the file.
+          schema:
+            type: boolean
+        Failure:
+          description: The file was unable to be opened.
+          failure: true
+          schema:
+            type: boolean
+  write alert rule based on ip:
+      run: app.write_alert_rule_based_on_ip
+      description: Writes a Snort rule to alert based on traffic incoming from an ip address
+      parameters:
+        - name: ip
+          description: ip address of bad traffic
+          required: true
+          type: string
+        - name: file_name
+          description: path to Snort rule file where rule will be written.
+          default: "/etc/snort/rules/walkoff.rules"
+          required: true
+          type: string
+      returns:
+        Success:
+          description: The rule was written to the file.
+          schema:
+            type: boolean
+        Failure:
+          description: The file was unable to be opened.
+          failure: true
+          schema:
+            type: boolean
+  write alert rules multiple ip's:
+      run: app.write_alert_multi_ip
+      description: Writes Snort rules to alert based on traffic incoming from a list of IPv4 addresses returned from Bro's action 'conn log check malicious'
+      parameters:
+        - name: ips
+          description: string of malicious IPv4's, comma delimited
+          required: true
+          type: string
+        - name: filename
+          description: path to Snort rule file where rules will be written.
+          default: "/etc/snort/rules/walkoff.rules"
+          required: true
+          type: string
+        - name: alert_log_path
+          description: path to a Snort alert log.
+          default: "/var/log/snort/alert"
+          required: true
+          type: string
+      returns:
+        Success:
+          description: Rules were written
+          schema:
+            type: boolean
+        FailureStringIPs:
+          description: Failure, input might not be comma delimited string of IPv4's
+          failure: true
+          schema:
+            type: boolean
+        FailureWriteRule:
+          description: Failure, unable to write rule.
+          failure: true
+          schema:
+            type: boolean
+  delete alert rule based on ip:
+      run: app.deletealertrulebasedonip
+      description: Deletes a Snort rule to alert based on ip address
+      parameters:
+        - name: ip
+          description: ip address of traffic
+          required: true
+          type: string
+        - name: file_name
+          description: path to Snort rule file where rule will be written.
+          default: "/etc/snort/rules/walkoff.rules"
+          required: true
+          type: string
+      returns:
+        Success:
+          description: boolean
+          schema:
+            type: boolean

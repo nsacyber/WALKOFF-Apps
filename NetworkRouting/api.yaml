@@ -1,0 +1,84 @@
+walkoff: '0.1'
+info:
+  version: 1.0.0
+  title: NetworkRouting
+  description: Network Routing actions
+  contact:
+    name: Walkoff Team
+  license:
+    name: Creative Commons
+actions:
+  log_traffic:
+    run: app.log_traffic
+    description: Logs the traffic coming from a specified address for a specified port
+    parameters:
+      - name: logFromIP
+        description: Source IP address from which to drop traffic
+        schema:
+          type: string
+        required: true
+      - name: protocol
+        description: Protocol on which to drop traffic
+        schema:
+          type: string
+        required: true
+    returns:
+      Success:
+        schema:
+          type: boolean
+  drop_traffic:
+    run: app.drop_traffic
+    description: Drops the traffic coming from a specified address for a specified port
+    parameters:
+      - name: dropFromIP
+        description: Source IP address from which to drop traffic
+        schema:
+          type: string
+        required: true
+      - name: protocol
+        description: Protocol on which to drop traffic
+        schema:
+          type: string
+        required: true
+    returns:
+      Success:
+        schema:
+          type: boolean
+  delete_iptable_log_rule:
+    run: app.delete_iptable_log_rule
+    description: Deletes the IPTable rule associated with the IP and protocol
+    parameters:
+      - name: logFromIP
+        description: Source IP address from which the traffic was being logged
+        schema:
+          type: string
+        required: true
+      - name: protocol
+        description: Protocol the traffic was being logged on
+        schema:
+          type: string
+        required: true
+    returns:
+      Success:
+        schema:
+          type: boolean
+  delete_iptable_drop_rule:
+    run: app.delete_iptable_drop_rule
+    description: Deletes the IPTable rule associated with the IP and protocol
+    parameters:
+      - name: dropFromIP
+        description: Source IP address from which the traffic was being dropped
+        schema:
+          type: string
+        required: true
+      - name: protocol
+        description: Protocol the traffic was being dropped on
+        schema:
+          type: string
+        required: true
+    returns:
+      Success:
+        schema:
+          type: boolean
+    
+              
