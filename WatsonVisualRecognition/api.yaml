@@ -8,42 +8,6 @@ info:
   license:
     name: Creative Commons
 actions:
-  'recognize text from url':
-    run: main.Main.recognize_text_from_remote_url
-    description: Gets the text from an image hosted remotely
-    parameters:
-        - name: url
-          description: The url of the image
-          required: true
-          type: string
-    returns:
-      Success:
-        schema:
-          type: string
-  'recognize text from file':
-    run: main.Main.recognize_text_from_local_file
-    description: Gets the text from a local file
-    parameters:
-        - name: path
-          description: The path to the image
-          required: true
-          type: string
-    returns:
-      Success:
-        schema:
-          type: string
-  'detect faces from url':
-    run: main.Main.detect_faces_from_remote_url
-    description: Detects faces from an image hosted remotely
-    parameters:
-        - name: url
-          description: The url of the image
-          required: true
-          type: string
-    returns:
-      Success:
-        schema:
-          type: string
   'detect faces from file':
     run: main.Main.detect_faces_from_local_file
     description: Detects faces from a local file
@@ -52,18 +16,11 @@ actions:
           description: The path to the image
           required: true
           type: string
-    returns:
-      Success:
-        schema:
-          type: string
-  'classify image from url':
-    run: main.Main.classify_from_remote_url
-    description: Classify a remotely-hosted image
-    parameters:
-        - name: url
-          description: The url of the image
+        - name: recursive
+          description: Recursively search all subdirectories for images
           required: true
-          type: string
+          type: boolean
+          default: false
     returns:
       Success:
         schema:
@@ -73,9 +30,65 @@ actions:
     description: Classify an image from a local file
     parameters:
         - name: path
-          description: The path to the image
+          description: The path to the image directory
           required: true
           type: string
+        - name: recursive
+          description: Recursively search all subdirectories for images
+          required: true
+          type: boolean
+          default: false
+    returns:
+      Success:
+        schema:
+          type: string
+  'classify food image from file':
+    run: main.Main.classify_food_from_local_file
+    description: Classify food from a local image file
+    parameters:
+      - name: path
+        description: The path to the image
+        required: true
+        type: string
+      - name: recursive
+        description: Recursively search all subdirectories for images
+        required: true
+        type: boolean
+        default: false
+    returns:
+      Success:
+        schema:
+          type: string
+  'classify explicit image from file':
+    run: main.Main.classify_explicit_from_local_file
+    description: Classify explicit content from a local image file
+    parameters:
+      - name: path
+        description: The path to the image
+        required: true
+        type: string
+      - name: recursive
+        description: Recursively search all subdirectories for images
+        required: true
+        type: boolean
+        default: false
+    returns:
+      Success:
+        schema:
+          type: string
+  'Generate Report':
+    run: main.Main.generate_report
+    description: Generate report based on Watson results
+    parameters:
+      - name: path
+        description: The path to the text file where the report will be saved. If Walkoff is running in a Docker Container, make sure this path is within volume shared by the container and host.
+        type: string
+        required: true
+      - name: keywords
+        description: Space-seperated keywords to look for in image analysis.
+        required: true
+        type: string
+        required: true
     returns:
       Success:
         schema:

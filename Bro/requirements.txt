@@ -3,3 +3,4 @@ networkx
 OTXv2
 six
 ipaddress
+parsebrologs
