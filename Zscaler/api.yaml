@@ -1,0 +1,124 @@
+walkoff: '0.1'
+info:
+  version: 0.1.0
+  title: Zscaler
+  description: A simple app to interact with Zscaler
+  contact:
+    name: https://github.com/richardmhope
+  license:
+    name: Creative Commons
+actions:
+  create_session:
+    run: app.Zscaler.create_session
+    description: Authenticates to Zscaler
+    returns:
+      Success:
+        schema:
+          type: string
+      Fail:
+         failure: true
+         schema:
+            type: string
+  delete_session:
+    run: app.Zscaler.delete_session
+    description: Logs out current session from Zscaler
+    parameters:
+      - name: session
+        required: true
+        type: string
+        description: Session token
+    returns:
+      Success:
+        schema:
+          type: string
+  activate_config:
+    run: app.Zscaler.activate_config
+    description: Activates updated config
+    parameters:
+      - name: session
+        required: true
+        type: string
+        description: Session token
+    returns:
+      Success:
+        schema:
+          type: object
+  url_categories:
+    run: app.Zscaler.url_categories
+    description: gets detail of specified URL category or all categories if ID not specified
+    parameters:
+      - name: session
+        required: true
+        type: string
+        description: Session token
+      - name: category_id
+        type: string
+        description: Unique ID of category
+    returns:
+      Success:
+        schema:
+          type: object
+  url_lookup:
+    run: app.Zscaler.url_lookup
+    description: Lookup a list of URLs to get category and security alert info
+    parameters:
+      - name: session
+        required: true
+        type: string
+        description: Session token
+      - name: domain_list
+        required: true
+        type: array
+        description: List of domains to query
+    returns:
+       Success:
+          schema:
+             type: array
+             items:
+                type: object
+  add_to_custom_category:
+    run: app.Zscaler.add_to_custom_category
+    description: Adds a list of domains to a custom URL Category.
+    parameters:
+      - name: session
+        required: true
+        type: string
+        description: Session token
+      - name: category_id
+        required: true
+        type: string
+        description: Unique ID of category
+      - name: domain_list
+        required: true
+        type: array
+        description: List of domains to add
+    returns:
+      Success:
+        schema:
+          type: object
+devices:
+  Zscaler:
+    description: Zscaler instance
+    fields:
+      - name: api_key
+        type: string
+        description: API Key for Zscaler
+        encrypted: true
+        placeholder: API Key
+        required: true
+      - name: zscaler_pop
+        description: Zscaler instance
+        type: string
+        placeholder: Zscaler instance
+        required: true 
+      - name: username
+        description: Zscaler username
+        type: string
+        placeholder: Zscaler username
+        required: true
+      - name: password
+        type: string
+        description: Zscaler password
+        encrypted: true
+        placeholder: Zscaler password 
+        required: true
