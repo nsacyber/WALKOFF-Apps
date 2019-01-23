@@ -1,0 +1,62 @@
+walkoff: '0.1'
+info:
+  version: 1.0.0
+  title: Domain Utilities App
+  description: An app for manipulating domains and host names
+  contact:
+    name: https://github.com/richardmhope/
+  license:
+    name: Creative Commons
+actions:
+  extract_urls_from_text:
+    run: app.extract_urls_from_text
+    description: Returns a list of urls in given text
+    parameters:
+        - name: text
+          description: text to search for urls
+          required: true
+          type: string
+    returns:
+      Success:
+        description: list of urls
+        schema:
+          type: array
+  hostname_from_url:
+    run: app.hostname_from_url
+    description: Returns hostname for a given url
+    parameters:
+        - name: url
+          description: url to extract hostname from
+          required: true
+          type: string
+    returns:
+      Success:
+        description: hostname
+        schema:
+          type: string
+  tld_from_domain:
+    run: app.tld_from_domain
+    description: Returns tld for a given domain
+    parameters:
+        - name: domain
+          description: domain to extract tld from
+          required: true
+          type: string
+    returns:
+      Success:
+        description: hostname
+        schema:
+          type: string
+  resolve_ip_for_host:
+    run: app.resolve_ip_for_host
+    description: Returns ip for a given hostname
+    parameters:
+        - name: hostname
+          description: hostname to resolve IP for
+          required: true
+          type: string
+    returns:
+      Success:
+        description: IP Address
+        schema:
+          type: string
