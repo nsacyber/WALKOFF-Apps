@@ -1,6 +1,6 @@
 walkoff: '0.1'
 info:
-  version: 0.1.0
+  version: 0.1.5
   title: Bro App
   description: An app to interface with bro network monitoring.
   contact:
@@ -158,6 +158,124 @@ actions:
           type: object
       NoData:
         description: log data has not been loaded yet
+        failure: true
+        schema:
+          type: boolean
+  conn log check malicious:
+    run: app.conn_check_malicious
+    description: Checks conn log against AlienVault
+    parameters:
+      - name: conn_log_name
+        description: file path of the conn log
+        required: true
+        type: string
+    default_return: MaliciousIPFound
+    returns:
+      MaliciousIPFound:
+        description: String of malicious IP
+        schema:
+          type: string
+      NoMaliciousIPFound:
+        description: There were no malicious IP's found
+        schema:
+          type: boolean
+      FileError:
+        description: Log file failed to open
+        failure: true
+        schema:
+          type: boolean
+  set malicious IP's:
+    run: app.set_malicious_ips
+    description: Sets the malicious IP's returned from 'conn log check malicious' to a variable
+    default_return: Success
+    parameters:
+      - name: mal_ips
+        description: the string returned from 'conn log check malicious'
+        required: true
+        type: string
+    returns:
+      Success:
+        description: The variable was set successfully
+        schema:
+          type: boolean
+      Failure:
+        description: The variable was not set. Make sure the input was a string of malicious IP's, comma delimited
+        failure: true
+        schema:
+          type: boolean
+  get malicious IP's:
+    run: app.get_malicious_ips
+    description: get and return a string of malicious IP's found from the 'conn log check malicious' action
+    default_return: Success
+    returns:
+      Success:
+        description: Successfully got the data
+        schema:
+          type: string
+      NoMaliciousIPFound:
+        description: Failed to load malicious IP's, make sure the 'set malicious ips' action was used before using this action
+        failure: true
+        schema:
+          type: boolean
+  parse traffic:
+    run: app.parse_traffic
+    description: Parses traffic based on known good or bad and saves information about unknown traffic
+    default_return: Success
+    parameters:
+      - name: whitelist_input_file
+        description: path to file with list of whitelisted IP's.
+        required: true
+        type: string
+      - name: bad_ips
+        description: a string of comma-delineated bad_ips, such as from 'get malicious IP's'
+        required: true
+        type: string
+      - name: unknown_file_name
+        description: path to a file for unknown traffic
+        required: true
+        type: string
+      - name: log_file_name
+        description: path to a bro conn log
+        required: true
+        type: string
+    returns:
+      Success:
+        description: The traffic was successfully parsed.
+        schema:
+          type: boolean
+      FileError:
+        description: The whitelist or conn log files were not able to be opened.
+        failure: true
+        schema:
+          type: boolean
+  extract images:
+    run: app.extract_images
+    description: Extracts images from PCAP
+    parameters:
+      - name: resultsDir
+        description: Path where the results should be stored; will attempt to create directory if doesn't already exist.
+        type: string
+        required: true
+      - name: pcapFilePath
+        description: Path to PCAP file from which to extract images.
+        type: string
+        required: true
+      - name: pathtoBro
+        description: Path to bro binary
+        type: string
+        required: true
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          type: string
+          enum: ["Success"]
+      PermissionError:
+        failure: true
+        schema:
+          type: string
+          enum: ["Permission error"]
+      DependencyError:
         failure: true
         schema:
           type: boolean

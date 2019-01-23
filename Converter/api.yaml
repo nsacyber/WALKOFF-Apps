@@ -1,0 +1,59 @@
+walkoff: '0.1'
+info:
+  version: 0.0.2
+  title: Converter
+  description: An app that converts files
+  contact:
+    name: Walkoff Team
+  license:
+    name: Creative Commons
+actions:
+  convert image:
+    run: main.convert_image
+    description: Converts an image to a different image file format
+    parameters:
+      - name: input_file
+        required: true
+        type: string
+        description: the file path input
+      - name: output_file
+        required: true
+        type: string
+        description: the path to output to
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          type: string
+          description: output file path string
+      FailedToConvert:
+        schema:
+          type: string
+          description: the file failed to convert
+  batch convert images:
+    run: main.convert_image_batch
+    description: Converts all images in a directory to a different image file format
+    parameters:
+      - name: input_dir
+        required: true
+        type: string
+        description: the directory path to convert
+      - name: output_type
+        required: true
+        type: string
+        description: the type to convert to (PNG, JPG, etc.)
+      - name: sub_directories
+        required: true
+        type: boolean
+        description: boolean to determine if all sub dir will be explored (true or false)
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          type: string
+          description: path to output directory
+      FailedToConvert:
+        schema:
+          type: string
+          description: no files were able to be converted
+  

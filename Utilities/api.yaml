@@ -1,6 +1,6 @@
 walkoff: '0.1'
 info:
-  version: 1.0.0
+  version: 1.0.1
   title: Utilities
   description: Miscellaneous utility actions
   contact:
@@ -8,8 +8,45 @@ info:
   license:
     name: Creative Commons
 actions:
+  Get Devices By Fields:
+    run: actions.get_devices_by_fields
+    description: Gets a list of device IDs that have the specified fields
+    parameters:
+      - name: fields
+        description: A dictionary of search fields, with the key being the field name and value as field value
+        schema:
+          type: object
+    returns:
+      Success:
+        schema:
+          type: array
+          items:
+            type: integer
+  System PRNG:
+    run: actions.system_rand
+    description: Returns random float between 0.0 and 1.0 using system entropy
+    returns:
+      Success:
+        schema:
+          type: number
+  Round to N:
+    run: actions.round_to_n
+    description: Rounds a number to the specified number of decimals
+    parameters:
+        - name: number
+          description: Number to round
+          required: true
+          type: number
+        - name: places
+          description: Decimal places to round to
+          required: true
+          type: integer
+    returns:
+      Success:
+        schema:
+          type: number
   echo object:
-    run: echo_object
+    run: actions.echo_object
     description: returns the same object passed into it
     parameters:
         - name: data
@@ -21,12 +58,38 @@ actions:
       Success:
         schema:
           type: object
+  echo array:
+    run: actions.echo_array
+    description: returns the same array passed into it
+    parameters:
+      - name: data
+        description: array to echo
+        required: true
+        type: array
+    returns:
+      Success:
+        description: echoed list
+        schema:
+          type: array
+  csv as array:
+    run: actions.csv_as_array
+    description: returns a csv string as an array
+    parameters:
+      - name: data
+        description: csv to return
+        required: true
+        type: string
+    returns:
+      Success:
+        description: echoed list
+        schema:
+          type: array
   'json select':
-    run: json_select
+    run: actions.json_select
     description: Gets a selected sub element of a json
     parameters:
         - name: json_reference
-          description: Step reference to the json object
+          description: Action reference to the json object
           required: true
           type: string
         - name: element
@@ -38,11 +101,11 @@ actions:
         schema:
           type: object
   'list select':
-    run: list_select
+    run: actions.list_select
     description: Gets an element from a list
     parameters:
         - name: list_reference
-          description: Step reference to the list from which to select the element
+          description: Action reference to the list from which to select the element
           required: true
           type: string
         - name: index
@@ -54,7 +117,7 @@ actions:
         schema:
           type: object
   'linearly scale':
-    run: linear_scale
+    run: actions.linear_scale
     description: Linearly scales a value which is limited to some min and max value to a number between a low and high value
     parameters:
         - name: value
@@ -84,7 +147,7 @@ actions:
         schema:
           type: number
   'divide':
-    run: divide
+    run: actions.divide
     description: Divides a number
     parameters:
         - name: value
@@ -100,7 +163,7 @@ actions:
         schema:
           type: number
   'multiply':
-    run: multiply
+    run: actions.multiply
     description: Multiplies a number
     parameters:
         - name: value
@@ -116,7 +179,7 @@ actions:
         schema:
           type: number
   'add':
-    run: add
+    run: actions.add
     description: Adds two numbers
     parameters:
         - name: num1
@@ -132,7 +195,7 @@ actions:
         schema:
           type: number
   'subtract':
-    run: subtract
+    run: actions.subtract
     description: Subtracts a number from another number
     parameters:
         - name: value
@@ -148,7 +211,7 @@ actions:
         schema:
           type: number
   'pause':
-    run: pause
+    run: actions.pause
     description: Pauses execution of a workflow for a given amount of time
     parameters:
         - name: seconds
@@ -160,11 +223,11 @@ actions:
         schema:
           type: string
   write IPs to CSV:
-    run: write_ips_to_csv
+    run: actions.write_ips_to_csv
     description: Writes a list of IPs to a CSV file
     parameters:
         - name: ips_reference
-          description: Step reference to the list of IPs
+          description: Action reference to the list of IPs
           required: true
           type: string
         - name: path
@@ -175,12 +238,717 @@ actions:
       Success:
         schema:
           type: string
-  wait for event:
-    run: wait_for_event
-    description: waits for a post to the endpoint /apps/Utilities/resume
-    event: Wait
+  send text message:
+    run: actions.send_text_message
+    description: Send a text only message to users
+    parameters:
+      - name: subject
+        type: string
+        required: true
+      - name: message
+        type: string
+        required: true
+      - name: users
+        type: array
+        items:
+          type: user
+      - name: roles
+        type: array
+        items:
+          type: role
     returns:
       Success:
         schema:
           type: string
-          enum: [success]
+          enum: ['success']
+  request user approval:
+    run: actions.basic_request_user_approval
+    parameters:
+      - name: users
+        type: array
+        items:
+          type: user
+      - name: roles
+        type: array
+        items:
+          type: role
+    returns:
+      Success:
+        schema:
+          type: string
+          enum: ['success']
+  create text message component:
+    run: actions.create_text_message_component
+    description: Creates a text component for a message
+    parameters:
+      - name: text
+        type: string
+        required: true
+    returns:
+      Success:
+        schema:
+          type: object
+          required: [type, data, requires_action]
+          properties:
+            type:
+              type: string
+            requires_action:
+              type: boolean
+              enum: [false]
+            data:
+              type: object
+              required: [text]
+              properties:
+                text:
+                  type: string
+  create url message component:
+    run: actions.create_url_message_component
+    description: Creates a url component for a message
+    parameters:
+      - name: url
+        type: string
+        required: true
+        format: uri
+      - name: title
+        type: string
+        description: The title to display for this URL link
+    returns:
+      Success:
+        schema:
+          type: object
+          required: [type, data, requires_action]
+          properties:
+            type:
+              type: string
+            requires_action:
+              type: boolean
+              enum: [false]
+            data:
+              type: object
+              required: [url]
+              properties:
+                url:
+                  type: string
+                title:
+                  type: string
+  create accept decline message component:
+    run: actions.create_accept_decline_message_component
+    description: Creates a component for a message with buttons to accept or decline.
+    returns:
+      Success:
+        schema:
+          type: object
+          required: [type, data, requires_action]
+          properties:
+            type:
+              type: string
+            requires_action:
+              type: boolean
+              enum: [true]
+            data:
+              type: object
+  append text message component:
+    run: actions.append_text_message_component
+    description: Appends a text component to a message
+    parameters:
+      - name: message
+        schema:
+            type: object
+        description: Existing message object
+        required: true
+      - name: text
+        type: string
+        required: true
+    returns:
+      Success:
+        schema:
+          type: object
+          required: [body]
+          properties:
+            body:
+              type: array
+              description: body of the message
+              items:
+                type: object
+                required: [type, data, requires_action]
+                properties:
+                  type:
+                    type: string
+                  requires_action:
+                    type: boolean
+                    enum: [false]
+                  data:
+                    type: object
+            subject:
+              type: string
+  append url message component:
+    run: actions.append_url_message_component
+    description: Appends a url component to a message
+    parameters:
+      - name: message
+        schema:
+            type: object
+        description: Existing message object
+        required: true
+      - name: url
+        type: string
+        required: true
+        format: uri
+      - name: title
+        type: string
+        description: The title to display for this URL link
+    returns:
+      Success:
+        schema:
+          type: object
+          required: [body]
+          properties:
+            body:
+              type: array
+              description: body of the message
+              items:
+                type: object
+                required: [type, data, requires_action]
+                properties:
+                  type:
+                    type: string
+                  requires_action:
+                    type: boolean
+                    enum: [false]
+                  data:
+                    type: object
+            subject:
+              type: string
+  append accept decline message component:
+    run: actions.append_accept_decline_message_component
+    description: Appends an accept decline component to a message
+    parameters:
+      - name: message
+        schema:
+            type: object
+        description: Existing message object
+        required: true
+    returns:
+      Success:
+        schema:
+          type: object
+          required: [body]
+          properties:
+            body:
+              type: array
+              description: body of the message
+              items:
+                type: object
+                required: [type, data, requires_action]
+                properties:
+                  type:
+                    type: string
+                  requires_action:
+                    type: boolean
+                    enum: [false]
+                  data:
+                    type: object
+            subject:
+              type: string
+  combine message:
+    run: actions.combine_messages
+    description: Combines two messages
+    parameters:
+      - name: message1
+        schema:
+            type: object
+        description: Existing message object
+        required: true
+      - name: message2
+        schema:
+            type: object
+        description: Existing message object to add to message1
+        required: true
+    returns:
+      Success:
+        schema:
+          type: object
+          required: [body]
+          properties:
+            body:
+              type: array
+              description: body of the message
+              items:
+                type: object
+                required: [type, data, requires_action]
+                properties:
+                  type:
+                    type: string
+                  requires_action:
+                    type: boolean
+                    enum: [false]
+                  data:
+                    type: object
+            subject:
+              type: string
+  set message subject:
+    run: actions.set_message_subject
+    description: Sets the subject of a message
+    parameters:
+      - name: message
+        schema:
+            type: object
+        description: Existing message object
+        required: true
+      - name: subject
+        type: string
+        required: true
+    returns:
+      Success:
+        schema:
+          type: object
+          required: [body]
+          properties:
+            body:
+              type: array
+              description: body of the message
+              items:
+                type: object
+                required: [type, data, requires_action]
+                properties:
+                  type:
+                    type: string
+                  requires_action:
+                    type: boolean
+                    enum: [false]
+                  data:
+                    type: object
+            subject:
+              type: string
+  create empty message:
+    run: actions.create_empty_message
+    description: Creates a message with no body
+    parameters:
+      - name: subject
+        type: string
+    returns:
+      Success:
+        schema:
+          type: object
+          required: [body]
+          properties:
+            body:
+              type: array
+              description: body of the message
+              items:
+                type: object
+                required: [type, data, requires_action]
+                properties:
+                  type:
+                    type: string
+                  requires_action:
+                    type: boolean
+                    enum: [false]
+                  data:
+                    type: object
+            subject:
+              type: string
+  send message:
+    run: actions.send_full_message
+    description: Sends a message
+    parameters:
+      - name: message
+        schema:
+            type: object
+        description: Existing message object
+        required: true
+      - name: users
+        type: array
+        items:
+          type: user
+      - name: roles
+        type: array
+        items:
+          type: role
+    returns:
+      Success:
+        schema:
+          type: string
+          enum: ['success']
+  'accept/decline':
+    run: actions.accept_decline
+    description: responds to an accept/decline message
+    parameters:
+      - name: action
+        type: string
+        required: true
+    default_return: Accepted
+    returns:
+      Accepted:
+        schema:
+          type: boolean
+      Declined:
+        failure: true
+        schema:
+          type: boolean
+  csv to json:
+    run: actions.csv_to_json
+    description: Reads a CSV file and return a list of JSON objects representing the CSV
+    parameters:
+      - name: path
+        description: path to the csv file
+        type: string
+        required: true
+      - name: separator
+        type: string
+        default: ','
+      - name: encoding
+        type: string
+        default: ascii
+      - name: headers
+        description: headers to use for teh CSV. If none are provided, the first line of the CSV is used
+        type: array
+        items:
+          type: string
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          type: array
+          items:
+            type: object
+      File Error:
+        failure: true
+        schema:
+          type: string
+  mark blacklist:
+    run: actions.mark_blacklist
+    description: Mark data as being blacklisted by appending a "blacklisted" field to each element of an array of JSON data
+    parameters:
+      - name: data
+        description: The data to mark as blacklisted
+        type: array
+        required: true
+      - name: blacklisted
+        type: boolean
+        default: true
+        required: true
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          type: array
+          items:
+            type: object
+  mark whitelist:
+    run: actions.mark_whitelist
+    description: Mark data as being whitelisted by appending a "whitelisted" field to each element in an array of JSON data
+    parameters:
+      - name: data
+        description: The data to mark as whitelisted
+        type: array
+        required: true
+      - name: whitelisted
+        type: boolean
+        default: true
+        required: true
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          type: array
+          items:
+            type: object
+  mark whitelist and blacklist:
+    run: actions.mark_whitelist_blacklist
+    description: Mark data as being whitelisted or blacklisted by appending a "whitelisted"  and a "blacklisted" field to each element of JSON the data
+    parameters:
+      - name: data
+        description: The data to mark as whitelisted
+        type: array
+        required: true
+      - name: whitelisted
+        type: boolean
+        default: false
+        required: true
+      - name: blacklisted
+        type: boolean
+        default: false
+        required: true
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          type: array
+          items:
+            type: object
+  is string in file:
+    run: actions.is_string_in_file
+    description: Searches a file for a given string, returns true or false
+    parameters:
+      - name: file
+        description: file path to be searched
+        type: string
+        required: true
+      - name: str_to_find
+        description: the string to search for
+        type: string
+        required: true
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          type: boolean
+      File Error:
+        failure: true
+        schema:
+          type: boolean
+  check file not empty:
+    run: actions.check_file_not_empty
+    description: Checks if a target file is empty. Returns when it isn't
+    parameters:
+      - name: fullPath
+        description: full path to file
+        type: string
+        required: true
+      - name: interval
+        description: Time, in seconds, between checks
+        type: number
+        required: true
+    returns:
+      Success:
+        schema:
+          type: string
+  clear lines containing strings:
+    run: actions.clear_lines_containing_strings
+    description: Reads target file and removes lines containing target strings
+    parameters:
+      - name: filePath
+        description: full path to file
+        type: string
+        required: true
+      - name: targetStrings
+        description: Array of strings to look for
+        type: array
+        required: true
+    returns:
+      Success:
+        schema:
+          type: string
+  extract ip from file:
+    run: actions.extract_ip_from_file
+    description: Extracts the first IP address from a file
+    parameters:
+      - name: filepath
+        description: full path to file
+        type: string
+        required: true
+    returns:
+      Success:
+        schema:
+          type: string
+conditions:
+  regex match:
+    run: conditions.regMatch
+    description: Matches an input against a regular expression
+    data_in: value
+    parameters:
+      - name: value
+        description: The input value
+        required: true
+        type: string
+      - name: regex
+        description: The regular expression to match
+        required: true
+        type: string
+  number compare:
+    run: conditions.count
+    description: Compares two numbers
+    data_in: value
+    parameters:
+      - name: value
+        description: The input value
+        required: true
+        type: number
+      - name: operator
+        description: The comparison operator ('g', 'ge', etc.)
+        required: true
+        type: string
+        enum: [g, ge, l, le, e]
+        default: e
+      - name: threshold
+        description: The value with which to compare the input
+        required: true
+        type: number
+  always true:
+    run: conditions.always_true
+    data_in: value
+    parameters:
+      - name: value
+        description: the input value
+        type: string
+        required: true
+  always false:
+    run: conditions.always_false
+    data_in: value
+    parameters:
+      - name: value
+        description: the input value
+        type: string
+        required: true
+  echo boolean:
+    run: conditions.echo_boolean
+    data_in: value
+    parameters:
+      - name: value
+        description: the input value
+        type: boolean
+        required: true
+  reverse boolean:
+    run: conditions.reverse_boolean
+    description: Returns the inverse of the boolean value provided
+    data_in: value
+    parameters:
+      - name: value
+        description: the input value
+        type: boolean
+        required: true
+  'accept/decline':
+    run: conditions.accept_decline
+    description: Used for accept/decline action from messages. If used as a trigger, next action will only run if authorized user clicks "accept"
+    data_in: value
+    parameters:
+      - name: value
+        description: accept or decline
+        type: string
+        required: true
+transforms:
+  length:
+    run: transforms.length
+    description: Returns the length of a collection
+    data_in: value
+    parameters:
+      - name: value
+        description: The input collection
+        required: true
+        type: string
+    returns:
+      Success:
+        description: The length of the collection
+        schema:
+          type: object
+  select json:
+    run: transforms.json_select
+    description: selects an element from a JSON object
+    data_in: json_in
+    parameters:
+        - name: json_in
+          required: true
+          type: object
+        - name: element
+          type: string
+          required: true
+    returns:
+      Success:
+        schema:
+          type: object
+  select list:
+    run: transforms.list_select
+    description: selects an element from a list
+    data_in: list_in
+    parameters:
+        - name: list_in
+          required: true
+          type: object
+        - name: index
+          type: number
+          required: true
+    returns:
+      Success:
+        schema:
+          type: object
+  linear scale:
+    run: transforms.linear_scale
+    data_in: value
+    description: Scale a value linearly between a minimum and a maximum.
+    parameters:
+      - name: value
+        type: number
+        required: true
+      - name: min_value
+        type: number
+        description: minimum value of the input
+        required: true
+      - name: max_value
+        type: number
+        description: maximum value of the input
+        required: true
+      - name: low_scale
+        type: number
+        description: minimum value of the output
+        required: true
+        default: 0.0
+      - name: high_scale
+        type: number
+        description: maximum value of the output
+        required: true
+        default: 1.0
+    returns:
+      Success:
+        schema:
+          type: number
+  divide:
+    run: transforms.divide
+    description: Divides a number
+    data_in: value
+    parameters:
+      - name: value
+        type: number
+        required: true
+      - name: divisor
+        type: number
+        required: true
+    returns:
+      Success:
+        schema:
+          type: number
+  multiply:
+    run: transforms.multiply
+    description: Multiplies a number
+    data_in: value
+    parameters:
+      - name: value
+        type: number
+        required: true
+      - name: multiplier
+        type: number
+        required: true
+    returns:
+      Success:
+        schema:
+          type: number
+  add:
+    run: transforms.add
+    description: Adds a number
+    data_in: num1
+    parameters:
+      - name: num1
+        type: number
+        required: true
+      - name: num2
+        type: number
+        required: true
+    returns:
+      Success:
+        schema:
+          type: number
+  subtract:
+    run: transforms.subtract
+    description: Subtracts a number from the input
+    data_in: value
+    parameters:
+      - name: value
+        type: number
+        required: true
+      - name: subtrahend
+        type: number
+        required: true
+    returns:
+      Success:
+        schema:
+          type: number
