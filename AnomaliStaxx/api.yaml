@@ -1,0 +1,52 @@
+walkoff: '0.1'
+info:
+  version: 0.1.0
+  title: AnomaliStaxx
+  description: An app to download indicators from Anomali Staxx
+  contact:
+    name: Richard Hope
+  license:
+    name: Creative Commons
+actions:
+  download indicators:
+    run: app.AnomaliStaxx.export_indicators
+    description: Exports indicators based on search
+    parameters:
+      - name: search
+        description: Staxx search string
+        type: string
+    default_return: Success
+    returns:
+      Success:
+        schema:
+          type: object
+devices:
+  Anomali Staxx:
+    description: Input your Anomali Staxx details here
+    fields:
+      - name: username
+        type: string
+        description: Username for Staxx
+        placeholder: username
+        required: true
+      - name: password
+        type: string
+        description: Password for Staxx
+        encrypted: true
+        placeholder: password
+        required: true
+      - name: staxx_address
+        description: IP address of Staxx
+        type: string
+        placeholder: ip address
+        required: true
+      - name: staxx_port
+        description: Port of Staxx
+        type: integer
+        minimum: 1
+        maximum: 65355
+        required: true
+      - name: verify_certificate
+        description: Port of Staxx
+        type: boolean
+        required: true

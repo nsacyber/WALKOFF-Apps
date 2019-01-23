@@ -1,0 +1,78 @@
+walkoff: '0.1'
+info:
+  version: 1.0.0
+  title: VirusTotal
+  description: An app which interacts with VirusTotal
+  contact:
+    name: https://github.com/richardmhope
+  license:
+    name: Creative Commons
+actions:
+  search_hash:
+    run: app.VirusTotal.search_hash
+    description: Searches for a given file hash in VT
+    parameters:
+      - name: file_hash
+        description: The hash to search
+        required: true
+        type: string
+    returns:
+      Success:
+        schema:
+          type: object
+  search_ip:
+    run: app.VirusTotal.search_ip
+    description: Searches for a given IP Address in VT
+    parameters:
+      - name: ip
+        description: The IP to search
+        required: true
+        type: string
+    returns:
+      Success:
+        schema:
+          type: object
+  search_domain:
+    run: app.VirusTotal.search_domain
+    description: Searches for a given domain in VT
+    parameters:
+      - name: domain
+        description: The domain to search
+        required: true
+        type: string
+    returns:
+      Success:
+        schema:
+          type: object
+  scan_url:
+    run: app.VirusTotal.scan_url
+    description: Scans a given URL with VT
+    parameters:
+      - name: url
+        description: The URL to scan
+        required: true
+        type: string
+    returns:
+      Success:
+        schema:
+          type: object
+devices:
+  Account:
+    description: VT api key
+    fields:
+      - name: api_key
+        type: string
+        description: API Key
+        placeholder: API Key
+        encrypted: true
+        required: true
+      - name: proxy_address
+        type: string
+        description: Proxy Address
+        placeholder: Proxy Address
+        required: false
+      - name: proxy_port
+        type: string
+        description: Proxy port
+        placeholder: Proxy port
+        required: false
