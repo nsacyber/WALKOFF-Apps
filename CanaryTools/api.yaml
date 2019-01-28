@@ -1,0 +1,136 @@
+walkoff: '0.1'
+info:
+  version: 0.0.1
+  title: CanaryTools
+  description: An app for interacting with Thinkst CanaryTools
+  contact:
+    name: https://github.com/richardmhope
+  license:
+    name: Creative Commons
+actions:
+  list_all_tokens:
+    run: app.CanaryTools.list_all_tokens
+    description: returns a list of all tokens
+    returns:
+      Success:
+        description: token list
+        schema:
+          type: array
+  list_all_token_ids:
+    run: app.CanaryTools.list_all_token_ids
+    description: returns a list of all token ids
+    returns:
+      Success:
+        description: token id list
+        schema:
+          type: array
+  get_token:
+    run: app.CanaryTools.get_token
+    description: returns details of the given token id
+    parameters:
+        - name: canarytoken
+          description: id of canary token
+          required: true
+          type: string
+    returns:
+      Success:
+        description: token
+        schema:
+          type: string
+  enable_token:
+    run: app.CanaryTools.enable_token
+    description: enables a token
+    parameters:
+        - name: canarytoken
+          description: id of canary token
+          required: true
+          type: string
+    returns:
+      Success:
+        description: token
+        schema:
+          type: string
+  disable_token:
+    run: app.CanaryTools.disable_token
+    description: disables a token
+    parameters:
+        - name: canarytoken
+          description: id of canary token
+          required: true
+          type: string
+    returns:
+      Success:
+        description: token
+        schema:
+          type: string
+  delete_token:
+    run: app.CanaryTools.delete_token
+    description: deletes a token
+    parameters:
+        - name: canarytoken
+          description: id of canary token
+          required: true
+          type: string
+    returns:
+      Success:
+        description: token
+        schema:
+          type: string
+  download_token:
+    run: app.CanaryTools.download_token
+    description: downloads a token
+    parameters:
+        - name: canarytoken
+          description: id of canary token
+          required: true
+          type: string
+        - name: path
+          description: path to save token to
+          required: true
+          type: string
+    returns:
+      Success:
+        description: token
+        schema:
+          type: string
+  create_token:
+    run: app.CanaryTools.create_token
+    description: creates a token
+    parameters:
+        - name: memo
+          description: description of token
+          required: true
+          type: string
+        - name: kind
+          description: path to save token to
+          required: true
+          type: string
+        - name: web_image
+          description: path to save token to
+          type: string
+        - name: cloned_web
+          description: path to save token to
+          type: string
+        - name: mimetype
+          description: path to save token to
+          type: string
+    returns:
+      Success:
+        description: token
+        schema:
+          type: string
+devices:
+  CanaryConsole:
+    description: Canary Console instance
+    fields:
+      - name: api_key
+        type: string
+        description: api_key for Canary Console
+        encrypted: true
+        placeholder: api_key
+        required: true
+      - name: console_domain
+        description: Domain of Canary Console minus canary.tools
+        type: string
+        placeholder: domain
+        required: true
